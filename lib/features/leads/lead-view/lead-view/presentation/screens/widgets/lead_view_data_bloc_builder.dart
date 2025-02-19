@@ -5,6 +5,7 @@ import 'package:trick_crm_app/core/cubits/base_state.dart';
 import 'package:trick_crm_app/core/di/dependency_injection.dart';
 import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
 import 'package:trick_crm_app/features/leads/lead-view/lead-view/logic/cubit/lead_view_cubit.dart';
+import 'package:trick_crm_app/features/leads/lead-view/notes/notes-view/model/lead_note.dart';
 import 'package:trick_crm_app/features/leads/lead-view/notes/notes-view/presentation/screen/notes_screen.dart';
 
 import '../../../data/model/leads_view_model.dart';
@@ -69,6 +70,7 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
               ),
             ),
             success: (LeadsViewModel leadsViewModel) {
+              final List<LeadNote>? leadNotes = leadsViewModel.leadNotes;
               return Column(
                 children: [
                   // Show Cards
@@ -86,7 +88,8 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
                     title: 'Notes',
                     icon: 'notes',
                     onTap: () {
-                      Get.to(() => const NotesScreen());
+                      Get.to(() => NotesScreen(
+                          leadNotes: leadNotes ?? [], leadId: leadId));
                     },
                   ),
                   //! edit icon
@@ -117,7 +120,9 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
               );
             },
             error: (message) {
-              return const Text('Error');
+              return const Center(
+                child: Text('Error Occurred Try Again'),
+              );
             },
             orElse: () => const SizedBox.shrink(),
           );

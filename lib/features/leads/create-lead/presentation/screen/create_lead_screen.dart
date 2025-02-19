@@ -6,12 +6,12 @@ import 'package:get_it/get_it.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:trick_crm_app/core/cubits/image_picker_cubit.dart';
 import 'package:trick_crm_app/core/helpers/shaerd_pref_helper.dart';
-import 'package:trick_crm_app/core/widgets/app_top_bar_dialog.dart';
 
 import '../../../../../core/cubits/show_fields.cubit.dart';
 import '../../../../../core/resources/resources.dart';
 import '../../../../../core/cubits/base_state.dart';
 import '../../../leads/logic/cubit/leads_cubit.dart';
+import '../widgets/top_bar_dialog.dart';
 import '../widgets/user_form.dart';
 import '../widgets/user_form_loading.dart';
 
@@ -82,7 +82,7 @@ class _CreateLeadScreenState extends State<CreateLeadScreen> {
               top: 0,
               left: 0,
               right: 0,
-              child: appTopBarDialog(
+              child: topBarDialog(
                 "Create New Lead",
                 "Complete all the fields below the form",
               ),

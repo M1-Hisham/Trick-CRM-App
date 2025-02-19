@@ -70,7 +70,6 @@ class _EditLeadScreenState extends State<EditLeadScreen> {
               right: 0,
               child: appTopBarDialog(
                 "Edit Lead",
-                "Complete all the fields below the form",
               ),
             ),
           ],

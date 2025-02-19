@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trick_crm_app/features/leads/lead-view/create-attachment/data/repo/create_attachment_repo.dart';
+import 'package:trick_crm_app/features/leads/lead-view/Attatchments/create-attachment/data/repo/create_attachment_repo.dart';
 
 import 'create_attachment_state.dart';
 

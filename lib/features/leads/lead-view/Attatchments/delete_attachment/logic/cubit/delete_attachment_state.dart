@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:trick_crm_app/features/leads/lead-view/delete_attachment/data/model/delete_attachment_model.dart';
+import 'package:trick_crm_app/features/leads/lead-view/Attatchments/delete_attachment/data/model/delete_attachment_model.dart';
 
 part 'delete_attachment_state.freezed.dart';
 

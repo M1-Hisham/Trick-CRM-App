@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../../../../core/resources/resources.dart';
 
 /// Global app top bar dialog
-Container appTopBarDialog(String title, String subTitle) {
+Container appTopBarDialog(String title) {
   return Container(
     decoration: BoxDecoration(
       color: R.colors.primaryColor,

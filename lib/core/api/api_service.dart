@@ -11,7 +11,7 @@ import 'package:trick_crm_app/features/leads/lead-view/edit-lead/data/model/edit
 import '../../features/clients/clients/data/model/clients_model.dart';
 import '../../features/home/data/models/dashboard_response.dart';
 import '../../features/leads/create-lead/data/models/create_lead_request_body.dart';
-import '../../features/leads/lead-view/create-attachment/data/model/create_attachment_model.dart';
+import '../../features/leads/lead-view/Attatchments/create-attachment/data/model/create_attachment_model.dart';
 import '../../features/leads/lead-view/create-lead-meeting/data/model/create_lead_meeting_model.dart';
 import '../../features/leads/lead-view/create-lead-meeting/data/model/create_lead_meeting_request_body.dart';
 import '../../features/leads/lead-view/create-lead-task/data/model/create_lead_task_model.dart';
@@ -19,7 +19,7 @@ import '../../features/leads/lead-view/create-lead-task/data/model/create_lead_t
 import '../../features/leads/lead-view/notes/create-note/data/model/create_lead_note_model.dart';
 import '../../features/leads/lead-view/notes/create-note/data/model/create_lead_note_reqest_body.dart';
 import '../../features/leads/lead-view/notes/delete-note/data/model/delete_note_model.dart';
-import '../../features/leads/lead-view/delete_attachment/data/model/delete_attachment_model.dart';
+import '../../features/leads/lead-view/Attatchments/delete_attachment/data/model/delete_attachment_model.dart';
 import '../../features/leads/lead-view/lead-view/data/model/leads_view_model.dart';
 import '../../features/leads/lead-view/notes/update-note/data/models/update_lead_note_model.dart';
 import '../../features/leads/lead-view/notes/update-note/data/models/update_lead_note_request_body.dart';

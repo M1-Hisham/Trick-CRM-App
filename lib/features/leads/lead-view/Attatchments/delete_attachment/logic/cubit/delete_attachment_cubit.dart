@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trick_crm_app/features/leads/lead-view/delete_attachment/data/repo/delete_attachment_repo.dart';
+import 'package:trick_crm_app/features/leads/lead-view/Attatchments/delete_attachment/data/repo/delete_attachment_repo.dart';
 
 import 'delete_attachment_state.dart';
 

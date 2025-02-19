@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:trick_crm_app/features/leads/lead-view/create-attachment/data/model/create_attachment_model.dart';
+import 'package:trick_crm_app/features/leads/lead-view/Attatchments/create-attachment/data/model/create_attachment_model.dart';
 
 part 'create_attachment_state.freezed.dart';
 

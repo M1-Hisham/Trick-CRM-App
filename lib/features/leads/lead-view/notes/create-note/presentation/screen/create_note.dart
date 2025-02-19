@@ -2,14 +2,16 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:trick_crm_app/core/di/dependency_injection.dart';
-
 import 'package:trick_crm_app/core/widgets/app_button.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
-import 'package:trick_crm_app/features/leads/lead-view/notes/create-note/data/model/create_lead_note_reqest_body.dart';
-import 'package:trick_crm_app/features/leads/lead-view/notes/create-note/logic/cubit/create_note_state.dart';
+import 'package:trick_crm_app/core/widgets/app_top_bar_dialog.dart';
 
-import '../../data/model/create_lead_note_model.dart';
+import '../../../../../../../core/helpers/spacing.dart';
+import '../../../../../../../core/resources/resources.dart';
+import '../../data/model/create_lead_note_reqest_body.dart';
 import '../../logic/cubit/create_note_cubit.dart';
 
 class CreateNote extends StatelessWidget {
@@ -23,60 +25,118 @@ class CreateNote extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider.value(
       value: getIt<CreateNoteCubit>(),
-      child: Column(
-        children: [
-          const Text('Create a new Note'),
-          //? Add Create Note Form
-          Form(
-            key: _formKey,
-            child: AppTextFormField(
-              hintText: 'Note',
-              onSaved: (value) {
-                note = value;
-              },
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter a note';
-                }
-                return null;
-              },
-            ),
+      child: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(13),
           ),
-          BlocBuilder<CreateNoteCubit, CreateNoteState>(
-              builder: (context, state) {
-            return state.maybeWhen(
-              loading: () => const Center(
-                child: CircularProgressIndicator(),
-              ),
-              success: (createLeadNoteModel) {
-                log('Create Note: $createLeadNoteModel');
-                final CreateLeadNoteModel noteModel = createLeadNoteModel;
-                return Text('${noteModel.message}');
-              },
-              error: (message) {
-                log('Create Note: $message');
-                return Text('$message');
-              },
-              orElse: () => const SizedBox.shrink(),
-            );
-          }),
-          AppButton(
-            text: 'Create Note',
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                log('Create Note: $note');
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              appTopBarDialog("Add New Note", "subTitle"),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Notes',
+                      style: R.textStyles.font17PrimaryW600,
+                    ),
+                    spacingV(10),
+                    Form(
+                      key: _formKey,
+                      child: AppTextFormField(
+                        hintText: 'Add New Note',
+                        labelText: 'Note',
+                        onSaved: (value) {
+                          note = value;
+                        },
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Please enter a note';
+                          }
+                          return null;
+                        },
+                        maxLines: 8,
+                      ),
+                    ),
+                    spacingV(20),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: AppButton(
+                            icon: SvgPicture.asset(
+                              R.icons.add,
+                            ),
+                            text: 'Add Note',
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                _formKey.currentState!.save();
+                                log('Create Note: success');
 
-                //? Add Create Note Logic
-                getIt<CreateNoteCubit>().createNote(
-                  leadId,
-                  CreateLeadNoteRequestBody(comment: note!),
-                );
-              }
-            },
-          )
-        ],
+                                getIt<CreateNoteCubit>().createLeadNote(
+                                  CreateLeadNoteRequestBody(comment: note!),
+                                  leadId,
+                                );
+                                Get.back();
+
+                                Get.showSnackbar(
+                                  GetSnackBar(
+                                    backgroundColor: R.colors.primaryColor,
+                                    message: 'Note added successfully',
+                                    duration: const Duration(seconds: 2),
+                                  ),
+                                );
+                              }
+                            },
+                          ),
+                        ),
+                        spacingH(10),
+                        Expanded(
+                          child: AppButton(
+                            text: "Cancel",
+                            textStyle: R.textStyles.font14DimGrayW400.copyWith(
+                              fontWeight: FontWeight.w500,
+                            ),
+                            onPressed: Get.back,
+                            backgroundColor: R.colors.white,
+                            borderColor: const Color(0xffC8C8C8),
+                            overlayColor: R.colors.primaryColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
+
+      // BlocBuilder<CreateNoteCubit, BaseState<CreateLeadNoteModel>>(
+      //     builder: (context, state) {
+      //   return state.maybeWhen(
+      //     loading: () => const Center(
+      //       child: CircularProgressIndicator(),
+      //     ),
+      //     success: (createLeadNoteModel) {
+      //       log('Create Note: $createLeadNoteModel');
+      //       final CreateLeadNoteModel noteModel = createLeadNoteModel;
+      //       return Text('${noteModel.message}');
+      //     },
+      //     error: (message) {
+      //       log('Create Note: $message');
+      //       return Text('$message');
+      //     },
+      //     orElse: () => const SizedBox.shrink(),
+      //   );
+      // }),
     );
   }
 }

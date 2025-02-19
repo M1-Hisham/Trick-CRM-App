@@ -88,7 +88,8 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
                     title: 'Notes',
                     icon: 'notes',
                     onTap: () {
-                      Get.to(() => NotesScreen(leadNotes: leadNotes ?? []));
+                      Get.to(() => NotesScreen(
+                          leadNotes: leadNotes ?? [], leadId: leadId));
                     },
                   ),
                   //! edit icon
@@ -119,7 +120,9 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
               );
             },
             error: (message) {
-              return const Text('Error');
+              return const Center(
+                child: Text('Error Occurred Try Again'),
+              );
             },
             orElse: () => const SizedBox.shrink(),
           );

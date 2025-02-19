@@ -59,8 +59,8 @@ class ClientsDataBlocBuilder extends StatelessWidget {
                 },
               );
             },
-            error: (message) => Center(
-                  child: Text(message ?? 'An error occurred'),
+            error: (message) => const Center(
+                  child: Text('An error occurred, Try again'),
                 ),
             orElse: () {
               return const SizedBox.shrink();

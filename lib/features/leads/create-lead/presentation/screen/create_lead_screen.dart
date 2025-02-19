@@ -140,7 +140,7 @@ class _CreateLeadScreenState extends State<CreateLeadScreen> {
             .toList();
       },
       error: (message) => [
-        {'name': 'Error: $message', 'id': null}
+        {'name': 'Error please try again', 'id': null}
       ],
       orElse: () => [
         {'name': 'No data available', 'id': null}

@@ -36,7 +36,7 @@ class CreateNote extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              appTopBarDialog("Add New Note", "subTitle"),
+              appTopBarDialog("Add New Note"),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 20),

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:trick_crm_app/core/api/api_result.dart';
 
-import '../../../../../../core/api/api_service.dart';
+import '../../../../../../../core/api/api_service.dart';
 import '../model/create_attachment_model.dart';
 
 class CreateAttachmentRepo {

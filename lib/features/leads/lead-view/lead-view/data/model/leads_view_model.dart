@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../Attatchments/attachment-view/model/attachments_model.dart';
 import '../../../notes/notes-view/model/lead_note.dart';
 
 part 'leads_view_model.g.dart';
@@ -10,7 +11,7 @@ class LeadsViewModel {
   Lead? lead;
   List<Users>? users;
   List<LeadNote>? leadNotes;
-  List<LeadAttatchment>? leadAttachments;
+  List<LeadAttatchment>? leadAttatchment;
   @JsonKey(name: 'activity_log')
   List<ActivityLog>? activityLog;
   List<OpenActivity>? openActivity;
@@ -29,7 +30,7 @@ class LeadsViewModel {
     this.lead,
     this.users,
     this.leadNotes,
-    this.leadAttachments,
+    this.leadAttatchment,
     this.activityLog,
     this.openActivity,
     // this.closedActivity,
@@ -283,72 +284,6 @@ class Department {
 
   factory Department.fromJson(Map<String, dynamic> json) =>
       _$DepartmentFromJson(json);
-}
-
-@JsonSerializable()
-class LeadAttatchment {
-  int? id;
-  int? leadId;
-  int? userId;
-  String? tenantId;
-  String? name;
-  String? url;
-  int? status;
-  String? createdAt;
-  String? updatedAt;
-  UserAttatchment? userAttatchment;
-
-  LeadAttatchment({
-    this.id,
-    this.leadId,
-    this.userId,
-    this.tenantId,
-    this.name,
-    this.url,
-    this.status,
-    this.createdAt,
-    this.updatedAt,
-    this.userAttatchment,
-  });
-  factory LeadAttatchment.fromJson(Map<String, dynamic> json) =>
-      _$LeadAttatchmentFromJson(json);
-}
-
-@JsonSerializable()
-class UserAttatchment {
-  int? id;
-  String? name;
-  String? email;
-  String? tenantId;
-  String? emailVerifiedAt;
-  dynamic departmentId;
-  int? companyId;
-  String? avatar;
-  int? roleAs;
-  int? isTenant;
-  int? isActive;
-  String? createdAt;
-  String? updatedAt;
-  dynamic department;
-
-  UserAttatchment({
-    this.id,
-    this.name,
-    this.email,
-    this.tenantId,
-    this.emailVerifiedAt,
-    this.departmentId,
-    this.companyId,
-    this.avatar,
-    this.roleAs,
-    this.isTenant,
-    this.isActive,
-    this.createdAt,
-    this.updatedAt,
-    this.department,
-  });
-  factory UserAttatchment.fromJson(Map<String, dynamic> json) =>
-      _$UserAttatchmentFromJson(json);
 }
 
 @JsonSerializable()

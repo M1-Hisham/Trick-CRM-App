@@ -4,6 +4,7 @@ import 'package:trick_crm_app/core/api/api_service.dart';
 import 'package:trick_crm_app/core/api/dio_factory.dart';
 import 'package:trick_crm_app/features/leads/create-lead/logic/cubit/create_lead_cubit.dart';
 import 'package:trick_crm_app/features/leads/lead-view/edit-lead/data/repo/edit_lead_repo.dart';
+import 'package:trick_crm_app/features/leads/lead-view/notes/create-note/logic/cubit/create_note_cubit.dart';
 
 import '../../features/auth/login/data/repos/login_repo.dart';
 import '../../features/auth/login/logic/cubit/login_cubit.dart';
@@ -19,8 +20,6 @@ import '../../features/leads/lead-view/notes/delete-note/logic/cubit/delete_note
 import '../../features/leads/lead-view/delete_attachment/data/repo/delete_attachment_repo.dart';
 import '../../features/leads/lead-view/delete_attachment/logic/cubit/delete_attachment_cubit.dart';
 import '../../features/leads/lead-view/edit-lead/logic/cubit/edit_lead_cubit.dart';
-import '../../features/leads/lead-view/notes/create-note/data/repo/create_note_repo.dart';
-import '../../features/leads/lead-view/notes/create-note/logic/cubit/create_note_cubit.dart';
 import '../../features/leads/lead-view/lead-view/logic/cubit/lead_view_cubit.dart';
 import '../../features/leads/lead-view/notes/update-note/logic/cubit/update_note_cubit.dart';
 import '../../features/leads/leads/logic/cubit/leads_cubit.dart';
@@ -67,9 +66,8 @@ Future<void> setupGetIt() async {
       () => EditLeadCubit(getIt<EditLeadRepo>()));
 
   // Create Note instance
-  getIt.registerLazySingleton<CreateNoteRepo>(() => CreateNoteRepo(getIt()));
   getIt.registerLazySingleton<CreateNoteCubit>(
-      () => CreateNoteCubit(getIt<CreateNoteRepo>()));
+      () => CreateNoteCubit(getIt<ApiService>()));
 
   // Update Note instance
   getIt.registerLazySingleton<UpdateNoteCubit>(

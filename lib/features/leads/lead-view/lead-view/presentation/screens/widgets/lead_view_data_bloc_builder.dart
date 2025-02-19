@@ -8,6 +8,7 @@ import 'package:trick_crm_app/features/leads/lead-view/lead-view/logic/cubit/lea
 import 'package:trick_crm_app/features/leads/lead-view/notes/notes-view/model/lead_note.dart';
 import 'package:trick_crm_app/features/leads/lead-view/notes/notes-view/presentation/screen/notes_screen.dart';
 
+import '../../../../Attatchments/attachment-view/model/attachments_model.dart';
 import '../../../../Attatchments/attachment-view/presentation/attachment_screen.dart';
 import '../../../data/model/leads_view_model.dart';
 import 'card_lead_view.dart';
@@ -73,7 +74,7 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
             success: (LeadsViewModel leadsViewModel) {
               final List<LeadNote>? leadNotes = leadsViewModel.leadNotes;
               final List<LeadAttatchment>? leadAttatchments =
-                  leadsViewModel.leadAttachments;
+                  leadsViewModel.leadAttatchment;
               return Column(
                 children: [
                   // Show Cards

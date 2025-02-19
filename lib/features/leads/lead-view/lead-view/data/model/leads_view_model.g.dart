@@ -18,7 +18,7 @@ LeadsViewModel _$LeadsViewModelFromJson(Map<String, dynamic> json) =>
       leadNotes: (json['leadNotes'] as List<dynamic>?)
           ?.map((e) => LeadNote.fromJson(e as Map<String, dynamic>))
           .toList(),
-      leadAttachments: (json['leadAttachments'] as List<dynamic>?)
+      leadAttatchment: (json['leadAttatchment'] as List<dynamic>?)
           ?.map((e) => LeadAttatchment.fromJson(e as Map<String, dynamic>))
           .toList(),
       activityLog: (json['activity_log'] as List<dynamic>?)
@@ -47,7 +47,7 @@ Map<String, dynamic> _$LeadsViewModelToJson(LeadsViewModel instance) =>
       'lead': instance.lead,
       'users': instance.users,
       'leadNotes': instance.leadNotes,
-      'leadAttachments': instance.leadAttachments,
+      'leadAttatchment': instance.leadAttatchment,
       'activity_log': instance.activityLog,
       'openActivity': instance.openActivity,
       'calls': instance.calls,
@@ -246,73 +246,6 @@ Map<String, dynamic> _$DepartmentToJson(Department instance) =>
       'name': instance.name,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
-    };
-
-LeadAttatchment _$LeadAttatchmentFromJson(Map<String, dynamic> json) =>
-    LeadAttatchment(
-      id: (json['id'] as num?)?.toInt(),
-      leadId: (json['leadId'] as num?)?.toInt(),
-      userId: (json['userId'] as num?)?.toInt(),
-      tenantId: json['tenantId'] as String?,
-      name: json['name'] as String?,
-      url: json['url'] as String?,
-      status: (json['status'] as num?)?.toInt(),
-      createdAt: json['createdAt'] as String?,
-      updatedAt: json['updatedAt'] as String?,
-      userAttatchment: json['userAttatchment'] == null
-          ? null
-          : UserAttatchment.fromJson(
-              json['userAttatchment'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$LeadAttatchmentToJson(LeadAttatchment instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'leadId': instance.leadId,
-      'userId': instance.userId,
-      'tenantId': instance.tenantId,
-      'name': instance.name,
-      'url': instance.url,
-      'status': instance.status,
-      'createdAt': instance.createdAt,
-      'updatedAt': instance.updatedAt,
-      'userAttatchment': instance.userAttatchment,
-    };
-
-UserAttatchment _$UserAttatchmentFromJson(Map<String, dynamic> json) =>
-    UserAttatchment(
-      id: (json['id'] as num?)?.toInt(),
-      name: json['name'] as String?,
-      email: json['email'] as String?,
-      tenantId: json['tenantId'] as String?,
-      emailVerifiedAt: json['emailVerifiedAt'] as String?,
-      departmentId: json['departmentId'],
-      companyId: (json['companyId'] as num?)?.toInt(),
-      avatar: json['avatar'] as String?,
-      roleAs: (json['roleAs'] as num?)?.toInt(),
-      isTenant: (json['isTenant'] as num?)?.toInt(),
-      isActive: (json['isActive'] as num?)?.toInt(),
-      createdAt: json['createdAt'] as String?,
-      updatedAt: json['updatedAt'] as String?,
-      department: json['department'],
-    );
-
-Map<String, dynamic> _$UserAttatchmentToJson(UserAttatchment instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'email': instance.email,
-      'tenantId': instance.tenantId,
-      'emailVerifiedAt': instance.emailVerifiedAt,
-      'departmentId': instance.departmentId,
-      'companyId': instance.companyId,
-      'avatar': instance.avatar,
-      'roleAs': instance.roleAs,
-      'isTenant': instance.isTenant,
-      'isActive': instance.isActive,
-      'createdAt': instance.createdAt,
-      'updatedAt': instance.updatedAt,
-      'department': instance.department,
     };
 
 ActivityLog _$ActivityLogFromJson(Map<String, dynamic> json) => ActivityLog(

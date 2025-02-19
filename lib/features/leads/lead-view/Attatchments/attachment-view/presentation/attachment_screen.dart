@@ -4,9 +4,9 @@ import 'package:trick_crm_app/core/resources/resources.dart';
 import 'package:trick_crm_app/core/widgets/app_bar.dart';
 import 'package:trick_crm_app/core/widgets/app_button.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Attatchments/create-attachment/presentation/add_attachment_screen.dart';
-import 'package:trick_crm_app/features/leads/lead-view/lead-view/data/model/leads_view_model.dart';
 
 import '../../../../../../core/helpers/spacing.dart';
+import '../model/attachments_model.dart';
 
 class AttachmentScreen extends StatelessWidget {
   final List<LeadAttatchment> leadAttatchment;
@@ -46,10 +46,16 @@ class AttachmentScreen extends StatelessWidget {
               shrinkWrap: true,
               itemCount: leadAttatchment.length,
               itemBuilder: (context, index) {
-                return const Column(
+                return Column(
                   children: [
-                    // Attachment Item
-                    Divider(),
+                    //show attachment image
+                    // Image.network(
+                    //   leadAttatchment[index].url ?? '',
+                    //   height: 100,
+                    //   width: 100,
+                    // ),
+                    const Divider(),
+                    spacingV(20),
                   ],
                 );
               },

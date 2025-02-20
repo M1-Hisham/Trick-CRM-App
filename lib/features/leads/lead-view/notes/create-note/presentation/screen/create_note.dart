@@ -29,92 +29,95 @@ class CreateNote extends StatelessWidget {
         onTap: () {
           FocusScope.of(context).unfocus();
         },
-        child: Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(13),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              appTopBarDialog("Add New Note"),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Notes',
-                      style: R.textStyles.font17PrimaryW600,
-                    ),
-                    spacingV(10),
-                    Form(
-                      key: _formKey,
-                      child: AppTextFormField(
-                        hintText: 'Add New Note',
-                        labelText: 'Note',
-                        onSaved: (value) {
-                          note = value;
-                        },
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter a note';
-                          }
-                          return null;
-                        },
-                        maxLines: 8,
+        child: SingleChildScrollView(
+          child: Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(13),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                appTopBarDialog("Add New Note"),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Notes',
+                        style: R.textStyles.font17PrimaryW600,
                       ),
-                    ),
-                    spacingV(20),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: AppButton(
-                            icon: SvgPicture.asset(
-                              R.icons.add,
-                            ),
-                            text: 'Add Note',
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                _formKey.currentState!.save();
-                                log('Create Note: success');
-
-                                getIt<CreateNoteCubit>().createLeadNote(
-                                  CreateLeadNoteRequestBody(comment: note!),
-                                  leadId,
-                                );
-                                Get.back();
-
-                                Get.showSnackbar(
-                                  GetSnackBar(
-                                    backgroundColor: R.colors.primaryColor,
-                                    message: 'Note added successfully',
-                                    duration: const Duration(seconds: 2),
-                                  ),
-                                );
-                              }
-                            },
-                          ),
+                      spacingV(10),
+                      Form(
+                        key: _formKey,
+                        child: AppTextFormField(
+                          hintText: 'Add New Note',
+                          labelText: 'Note',
+                          onSaved: (value) {
+                            note = value;
+                          },
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Please enter a note';
+                            }
+                            return null;
+                          },
+                          maxLines: 8,
                         ),
-                        spacingH(10),
-                        Expanded(
-                          child: AppButton(
-                            text: "Cancel",
-                            textStyle: R.textStyles.font14DimGrayW400.copyWith(
-                              fontWeight: FontWeight.w500,
+                      ),
+                      spacingV(20),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: AppButton(
+                              icon: SvgPicture.asset(
+                                R.icons.add,
+                              ),
+                              text: 'Add Note',
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  _formKey.currentState!.save();
+                                  log('Create Note: success');
+
+                                  getIt<CreateNoteCubit>().createLeadNote(
+                                    CreateLeadNoteRequestBody(comment: note!),
+                                    leadId,
+                                  );
+                                  Get.back();
+
+                                  Get.showSnackbar(
+                                    GetSnackBar(
+                                      backgroundColor: R.colors.primaryColor,
+                                      message: 'Note added successfully',
+                                      duration: const Duration(seconds: 2),
+                                    ),
+                                  );
+                                }
+                              },
                             ),
-                            onPressed: Get.back,
-                            backgroundColor: R.colors.white,
-                            borderColor: const Color(0xffC8C8C8),
-                            overlayColor: R.colors.primaryColor,
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                          spacingH(10),
+                          Expanded(
+                            child: AppButton(
+                              text: "Cancel",
+                              textStyle:
+                                  R.textStyles.font14DimGrayW400.copyWith(
+                                fontWeight: FontWeight.w500,
+                              ),
+                              onPressed: Get.back,
+                              backgroundColor: R.colors.white,
+                              borderColor: const Color(0xffC8C8C8),
+                              overlayColor: R.colors.primaryColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

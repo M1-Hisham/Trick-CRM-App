@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:trick_crm_app/core/cubits/base_state.dart';
 import 'package:trick_crm_app/core/di/dependency_injection.dart';
 import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
+import 'package:trick_crm_app/features/leads/lead-view/Emails/emails_screen.dart';
 import 'package:trick_crm_app/features/leads/lead-view/lead-view/logic/cubit/lead_view_cubit.dart';
 import 'package:trick_crm_app/features/leads/lead-view/notes/notes-view/model/lead_note.dart';
 import 'package:trick_crm_app/features/leads/lead-view/notes/notes-view/presentation/screen/notes_screen.dart';
@@ -121,7 +122,9 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
                   cardLeadView(
                     title: 'Email',
                     icon: 'information',
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const EmailsScreen());
+                    },
                   ),
                   //! edit icon
                   cardLeadView(

@@ -60,10 +60,14 @@ class AddAttachmentScreen extends StatelessWidget {
                     spacingH(10),
                     Expanded(
                       child: AppButton(
-                        text: 'Cancel',
-                        onPressed: () {
-                          Get.back();
-                        },
+                        text: "Cancel",
+                        textStyle: R.textStyles.font14DimGrayW400.copyWith(
+                          fontWeight: FontWeight.w500,
+                        ),
+                        onPressed: Get.back,
+                        backgroundColor: R.colors.white,
+                        borderColor: const Color(0xffC8C8C8),
+                        overlayColor: R.colors.primaryColor,
                       ),
                     ),
                   ],

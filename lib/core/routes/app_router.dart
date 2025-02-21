@@ -8,6 +8,8 @@ import 'package:trick_crm_app/features/leads/leads/presentation/screens/leads_sc
 
 import '../../features/auth/login/logic/cubit/login_cubit.dart';
 import '../../features/auth/login/presentation/screens/login_screen.dart';
+import '../../features/campaigns/logic/cubit/campaigns_cubit.dart';
+import '../../features/campaigns/presentation/campaigns_screen.dart';
 import '../../features/clients/clients/logic/cubit/clients_cubit.dart';
 import '../../features/clients/clients/presentation/screen/clients.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
@@ -55,6 +57,13 @@ abstract class AppRouter {
       page: () => BlocProvider(
         create: (context) => ContactsCubit(getIt<ApiService>())..getData(),
         child: const ContactsScreen(),
+      ),
+    ),
+    GetPage(
+      name: RoutesNames.campaigns,
+      page: () => BlocProvider(
+        create: (context) => CampaignsCubit(getIt<ApiService>())..getData(),
+        child: const CampaignsScreen(),
       ),
     ),
   ];

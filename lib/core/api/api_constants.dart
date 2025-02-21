@@ -10,4 +10,5 @@ class ApiConstants {
   static const String createLead = "/leads-create";
   static const String clients = "/clients";
   static const String contacts = "/contacts";
+  static const String campaigns = "/campaigns";
 }

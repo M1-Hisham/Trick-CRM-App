@@ -9,4 +9,5 @@ class RoutesNames {
   static const String leads = '/leads';
   static const String clients = '/clients';
   static const String contacts = '/contacts';
+  static const String campaigns = '/campaigns';
 }

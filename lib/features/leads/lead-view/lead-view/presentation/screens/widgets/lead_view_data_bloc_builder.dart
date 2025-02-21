@@ -47,28 +47,24 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
                     icon: 'notes',
                     onTap: () {},
                   ),
-                  //! edit icon
                   cardLeadView(
                     title: 'Attachments',
                     icon: 'attachments',
                     onTap: () {},
                   ),
-                  //! edit icon
                   cardLeadView(
                     title: 'Campaigns',
-                    icon: 'information',
+                    icon: 'Campaigns',
                     onTap: () {},
                   ),
-                  //! edit icon
                   cardLeadView(
                     title: 'Email',
-                    icon: 'information',
+                    icon: 'Emails',
                     onTap: () {},
                   ),
-                  //! edit icon
                   cardLeadView(
                     title: 'Open Activities',
-                    icon: 'information',
+                    icon: 'openActivities',
                     onTap: () {},
                   ),
                 ],
@@ -99,7 +95,6 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
                           leadNotes: leadNotes ?? [], leadId: leadId));
                     },
                   ),
-                  //! edit icon
                   cardLeadView(
                     title: 'Attachments',
                     icon: 'attachments',
@@ -111,26 +106,23 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
                       );
                     },
                   ),
-                  //! edit icon
                   cardLeadView(
                     title: 'Campaigns',
-                    icon: 'information',
+                    icon: 'Campaigns',
                     onTap: () {
                       Get.to(() => const CampaignsScreen());
                     },
                   ),
-                  //! edit icon
                   cardLeadView(
                     title: 'Email',
-                    icon: 'information',
+                    icon: 'Emails',
                     onTap: () {
                       Get.to(() => const EmailsScreen());
                     },
                   ),
-                  //! edit icon
                   cardLeadView(
                     title: 'Open Activities',
-                    icon: 'information',
+                    icon: 'openActivities',
                     onTap: () {
                       Get.to(() => const OpenActivitiesScreen());
                     },

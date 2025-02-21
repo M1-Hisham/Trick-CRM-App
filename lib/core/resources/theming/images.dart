@@ -22,22 +22,19 @@ class AppImages {
   String subtract = "assets/icons/Subtract.svg";
   String imageUserError = "assets/icons/image-user-error.png";
   Map<String, String> iconsMenu = {
-    //! dashboard
-    "Dashboard": "assets/icons/iconsMenu/Contacts.svg",
+    "Dashboard": "assets/icons/iconsMenu/Dashboard.svg",
     "Contacts": "assets/icons/iconsMenu/Contacts.svg",
     "Leads": "assets/icons/iconsMenu/Leads.svg",
     "Clients": "assets/icons/iconsMenu/Clients.svg",
     "Tasks": "assets/icons/iconsMenu/Tasks.svg",
     "Meetings": "assets/icons/iconsMenu/Meetings.svg",
-    //! calls
-    "calls": "assets/icons/iconsMenu/Deals.svg",
+    "calls": "assets/icons/iconsMenu/call.svg",
     "Deals": "assets/icons/iconsMenu/Deals.svg",
     "Campaigns": "assets/icons/iconsMenu/Campaigns.svg",
     "Brokers": "assets/icons/iconsMenu/Brokers.svg",
     "Projects": "assets/icons/iconsMenu/Projects.svg",
     "Reports": "assets/icons/iconsMenu/Reports.svg",
-    //! "Settings": "assets/icons/iconsMenu/Settings.svg",
-    "Settings": "assets/icons/iconsMenu/Reports.svg",
+    "Settings": "assets/icons/iconsMenu/Setting.svg",
   };
 
   Map<String, String> iconsLeadView = {

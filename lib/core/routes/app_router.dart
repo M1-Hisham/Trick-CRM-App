@@ -5,6 +5,8 @@ import 'package:trick_crm_app/features/contacts/logic/cubit/contacts_cubit.dart'
 import 'package:trick_crm_app/features/contacts/presentation/contacts_screen.dart';
 import 'package:trick_crm_app/features/home/logic/cubit/dashboard_cubit.dart';
 import 'package:trick_crm_app/features/leads/leads/presentation/screens/leads_screen.dart';
+import 'package:trick_crm_app/features/tasks/logic/cubit/tasks_cubit.dart';
+import 'package:trick_crm_app/features/tasks/presentation/tasks_screen.dart';
 
 import '../../features/auth/login/logic/cubit/login_cubit.dart';
 import '../../features/auth/login/presentation/screens/login_screen.dart';
@@ -64,6 +66,13 @@ abstract class AppRouter {
       page: () => BlocProvider(
         create: (context) => CampaignsCubit(getIt<ApiService>())..getData(),
         child: const CampaignsScreen(),
+      ),
+    ),
+    GetPage(
+      name: RoutesNames.tasks,
+      page: () => BlocProvider(
+        create: (context) => TasksCubit(getIt<ApiService>())..getData(),
+        child: const TasksScreen(),
       ),
     ),
   ];

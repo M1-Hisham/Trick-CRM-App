@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/route_manager.dart';
 import 'package:trick_crm_app/core/routes/routes.dart';
+import 'package:trick_crm_app/features/contacts/logic/cubit/contacts_cubit.dart';
+import 'package:trick_crm_app/features/contacts/presentation/contacts_screen.dart';
 import 'package:trick_crm_app/features/home/logic/cubit/dashboard_cubit.dart';
 import 'package:trick_crm_app/features/leads/leads/presentation/screens/leads_screen.dart';
 
@@ -46,6 +48,13 @@ abstract class AppRouter {
       page: () => BlocProvider(
         create: (context) => ClientsCubit(getIt<ApiService>())..getData(),
         child: const Clients(),
+      ),
+    ),
+    GetPage(
+      name: RoutesNames.contacts,
+      page: () => BlocProvider(
+        create: (context) => ContactsCubit(getIt<ApiService>())..getData(),
+        child: const ContactsScreen(),
       ),
     ),
   ];

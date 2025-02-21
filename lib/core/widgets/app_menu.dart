@@ -119,6 +119,7 @@ class AppMenu extends StatelessWidget {
       'Leads': RoutesNames.leads,
       'Clients': RoutesNames.clients,
       'Campaigns': RoutesNames.campaigns,
+      'Tasks': RoutesNames.tasks,
       //? more routes here
     };
     for (MapEntry menus in R.icons.iconsMenu.entries) {

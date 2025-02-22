@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:trick_crm_app/core/helpers/spacing.dart';
 
@@ -13,7 +14,7 @@ class AppDataTable<T> extends StatefulWidget {
   final List<String Function(T)> dataExtractors;
   final String Function(T)? dataIdExtractor;
   final String Function(T)? dataLeadNameExtractor;
-  final void Function(String,String)? onViewDetails;
+  final void Function(String, String)? onViewDetails;
   final String? dataMessage;
 
   const AppDataTable({
@@ -222,7 +223,11 @@ class _AppDataTableState<T> extends State<AppDataTable<T>> {
                             widget.dataLeadNameExtractor!(data),
                           );
                         },
-                        child: Icon(Icons.visibility, size: 20.sp),
+                        child: SvgPicture.asset(
+                          R.icons.eyeView,
+                          height: 23.h,
+                          width: 23.w,
+                        ),
                       ),
                   ],
                 ),

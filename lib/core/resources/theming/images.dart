@@ -3,6 +3,7 @@ class AppImages {
   String logoMenu = "assets/icons/trick-logo-menu.png";
   String successmark = "assets/icons/Successmark.svg";
   String eye = "assets/icons/eye-filled.svg";
+  String eyeView = "assets/icons/eye-view.svg";
   String openMenu = "assets/icons/Vector.svg";
   String closeMenu = "assets/icons/closeMenu.svg";
   String numberOfClients = "assets/icons/Number-of-clients.svg";

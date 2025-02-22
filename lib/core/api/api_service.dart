@@ -6,7 +6,6 @@ import 'package:trick_crm_app/features/auth/login/data/models/login_request_body
 import 'package:trick_crm_app/features/auth/login/data/models/login_response.dart';
 import 'package:trick_crm_app/features/leads/create-lead/data/models/create_lead_model.dart';
 import 'package:trick_crm_app/features/leads/leads/data/models/leads_model.dart';
-import 'package:trick_crm_app/features/leads/lead-view/edit-lead/data/model/edit_lead_model.dart';
 import 'package:trick_crm_app/features/tasks/data/model/tasks_model.dart';
 
 import '../../features/campaigns/model/campaigns_model.dart';
@@ -15,6 +14,7 @@ import '../../features/contacts/data/contacts_model.dart';
 import '../../features/home/data/models/dashboard_response.dart';
 import '../../features/leads/create-lead/data/models/create_lead_request_body.dart';
 import '../../features/leads/lead-view/Attatchments/create-attachment/data/model/create_attachment_model.dart';
+import '../../features/leads/lead-view/Information/data/model/edit_lead_model.dart';
 import '../../features/leads/lead-view/create-lead-meeting/data/model/create_lead_meeting_model.dart';
 import '../../features/leads/lead-view/create-lead-meeting/data/model/create_lead_meeting_request_body.dart';
 import '../../features/leads/lead-view/create-lead-task/data/model/create_lead_task_model.dart';

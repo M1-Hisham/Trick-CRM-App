@@ -12,6 +12,7 @@ import 'package:trick_crm_app/features/leads/lead-view/notes/notes-view/presenta
 import '../../../../Attatchments/attachment-view/model/attachments_model.dart';
 import '../../../../Attatchments/attachment-view/presentation/attachment_screen.dart';
 import '../../../../Campaigns/campaigns-view/presentation/campaigns_screen.dart';
+import '../../../../Information/presentation/information_screen.dart';
 import '../../../../Open-Activities/presentation/open_activities_screen.dart';
 import '../../../data/model/leads_view_model.dart';
 import 'card_lead_view.dart';
@@ -80,7 +81,9 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
                   cardLeadView(
                     title: 'Information',
                     icon: 'information',
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => InformationScreen(leadId: leadId));
+                    },
                   ),
                   cardLeadView(
                     title: 'Timeline',

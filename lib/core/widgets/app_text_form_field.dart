@@ -7,6 +7,7 @@ import '../resources/resources.dart';
 class AppTextFormField extends StatelessWidget {
   final String hintText;
   final String? labelText;
+  final String? initialValue;
   final bool? isObscureText;
   final bool? isclickable;
   final EdgeInsetsGeometry? contentPadding;
@@ -54,12 +55,14 @@ class AppTextFormField extends StatelessWidget {
     this.valueKey,
     this.isclickable,
     this.disabledBorder,
+    this.initialValue,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       key: valueKey,
+      initialValue: initialValue,
       enabled: isclickable,
       onFieldSubmitted: (value) =>
           FocusScope.of(context).requestFocus(nextFocusNode),

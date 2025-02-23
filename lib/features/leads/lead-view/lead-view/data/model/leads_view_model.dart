@@ -1,6 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../../../campaigns/model/campaigns_model.dart';
 import '../../../Attatchments/attachment-view/model/attachments_model.dart';
+import '../../../Close-activities/data/model/closed_activity_model.dart';
+import '../../../Open-Activities/data/model/open_activity_model.dart';
 import '../../../notes/notes-view/model/lead_note.dart';
 
 part 'leads_view_model.g.dart';
@@ -14,10 +17,10 @@ class LeadsViewModel {
   List<LeadAttatchment>? leadAttatchment;
   @JsonKey(name: 'activity_log')
   List<ActivityLog>? activityLog;
-  List<OpenActivity>? openActivity;
-  // List<dynamic>? closedActivity;
+  List<OpenActivityModel>? openActivity;
+  List<ClosedActivityModel>? closedActivity;
   // List<dynamic>? campaignLeads;
-  // List<dynamic>? campaigns;
+  List<CampaignsModel>? campaigns;
   // List<dynamic>? leadMails;
   List<Calls>? calls;
   // List<dynamic>? contacts;
@@ -33,9 +36,9 @@ class LeadsViewModel {
     this.leadAttatchment,
     this.activityLog,
     this.openActivity,
-    // this.closedActivity,
+    this.closedActivity,
     // this.campaignLeads,
-    // this.campaigns,
+    this.campaigns,
     // this.leadMails,
     this.calls,
     // this.contacts,
@@ -393,7 +396,7 @@ class Attributes {
   @JsonKey(name: 'end_time_hour')
   String? endTimeHour;
   @JsonKey(name: 'assigned_to_id')
-  dynamic assignedToId;
+  int? assignedToId;
   @JsonKey(name: 'fb_campaign_name')
   dynamic fbCampaignName;
 
@@ -482,41 +485,65 @@ class Causer {
 @JsonSerializable()
 class Subject {
   int? id;
+  @JsonKey(name: 'user_id')
   int? userId;
+  @JsonKey(name: 'assigned_to_id')
   String? assignedToId;
+  @JsonKey(name: 'tenant_id')
   String? tenantId;
+  @JsonKey(name: 'compaing_id')
   String? compaingId;
   String? saluation;
+  @JsonKey(name: 'owner_name')
   String? ownerName;
+  @JsonKey(name: 'first_name')
   String? firstName;
+  @JsonKey(name: 'last_name')
   String? lastName;
+  @JsonKey(name: 'lead_name')
   String? leadName;
   String? company;
+  @JsonKey(name: 'job_title')
   String? jobTitle;
   String? email;
   String? mobile;
+  @JsonKey(name: 'mobile_2')
   String? mobile2;
   String? website;
   String? rating;
+  @JsonKey(name: 'lead_status')
   String? leadStatus;
+  @JsonKey(name: 'lead_source')
   String? leadSource;
   String? industry;
+  @JsonKey(name: 'annual_revenue')
   String? annualRevenue;
   String? image;
   String? country;
   String? city;
   String? state;
   String? description;
+  @JsonKey(name: 'fb_lead_id')
   String? fbLeadId;
+  @JsonKey(name: 'fb_ad_name')
   String? fbAdName;
+  @JsonKey(name: 'fb_campaign_name')
   String? fbCampaignName;
+  @JsonKey(name: 'converted_deal_id')
   String? convertedDealId;
+  @JsonKey(name: 'converted_client_id')
   String? convertedClientId;
+  @JsonKey(name: 'is_converted')
   int? isConverted;
-  dynamic endTime;
-  dynamic endTimeHour;
+  @JsonKey(name: 'end_time')
+  String? endTime;
+  @JsonKey(name: 'end_time_hour')
+  String? endTimeHour;
+  @JsonKey(name: 'deleted_at')
   dynamic deletedAt;
+  @JsonKey(name: 'created_at')
   String? createdAt;
+  @JsonKey(name: 'updated_at')
   String? updatedAt;
   Assigned? assigned;
 
@@ -566,104 +593,49 @@ class Subject {
 }
 
 @JsonSerializable()
-class OpenActivity {
-  int? id;
-  int? leadId;
-  int? userId;
-  String? tenantId;
-  int? taskId;
-  dynamic meetingId;
-  dynamic callId;
-  String? status;
-  String? createdAt;
-  String? updatedAt;
-  Task? task;
-  dynamic call;
-  dynamic meeting;
-
-  OpenActivity({
-    this.id,
-    this.leadId,
-    this.userId,
-    this.tenantId,
-    this.taskId,
-    this.meetingId,
-    this.callId,
-    this.status,
-    this.createdAt,
-    this.updatedAt,
-    this.task,
-    this.call,
-    this.meeting,
-  });
-  factory OpenActivity.fromJson(Map<String, dynamic> json) =>
-      _$OpenActivityFromJson(json);
-}
-
-@JsonSerializable()
-class Task {
-  int? id;
-  int? userId;
-  String? tenantId;
-  String? taskOwner;
-  int? assignedToId;
-  int? leadId;
-  dynamic contactId;
-  dynamic clientId;
-  String? subject;
-  String? status;
-  String? priority;
-  String? description;
-  String? dueDate;
-  int? isDeleted;
-  String? createdAt;
-  String? updatedAt;
-
-  Task({
-    this.id,
-    this.userId,
-    this.tenantId,
-    this.taskOwner,
-    this.assignedToId,
-    this.leadId,
-    this.contactId,
-    this.clientId,
-    this.subject,
-    this.status,
-    this.priority,
-    this.description,
-    this.dueDate,
-    this.isDeleted,
-    this.createdAt,
-    this.updatedAt,
-  });
-  factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);
-}
-
-@JsonSerializable()
 class Calls {
   int? id;
+  @JsonKey(name: 'tenant_id')
   String? tenantId;
+  @JsonKey(name: 'call_to')
   String? callTo;
+  @JsonKey(name: 'lead_id')
   int? leadId;
+  @JsonKey(name: 'contact_id')
   String? contactId;
+  @JsonKey(name: 'related_to')
   String? relatedTo;
+  @JsonKey(name: 'related_to_client')
   String? relatedToClient;
+  @JsonKey(name: 'client_id')
   int? clientId;
+  @JsonKey(name: 'deal_id')
   String? dealId;
+  @JsonKey(name: 'campaign_id')
   String? campaignId;
+  @JsonKey(name: 'call_type')
   String? callType;
+  @JsonKey(name: 'call_status')
   String? callStatus;
+  @JsonKey(name: 'start_time')
   String? startTime;
+  @JsonKey(name: 'start_time_hour')
   String? startTimeHour;
+  @JsonKey(name: 'call_owner_id')
   int? callOwnerId;
   String? subject;
+  @JsonKey(name: 'call_purpose')
   String? callPurpose;
+  @JsonKey(name: 'call_agenda')
   String? callAgenda;
+  @JsonKey(name: 'call_result')
   String? callResult;
   String? description;
+  @JsonKey(name: 'is_deleted')
   int? isDeleted;
+  @JsonKey(name: 'created_at')
   String? createdAt;
+  @JsonKey(name: 'updated_at')
   String? updatedAt;
   dynamic lead;
   CallsOwner? owner;
@@ -708,15 +680,24 @@ class CallsOwner {
   int? id;
   String? name;
   String? email;
+  @JsonKey(name: 'tenant_id')
   String? tenantId;
+  @JsonKey(name: 'email_verified_at')
   dynamic emailVerifiedAt;
+  @JsonKey(name: 'department_id')
   int? departmentId;
+  @JsonKey(name: 'company_id')
   int? companyId;
   String? avatar;
+  @JsonKey(name: 'role_as')
   int? roleAs;
+  @JsonKey(name: 'is_tenant')
   int? isTenant;
+  @JsonKey(name: 'is_active')
   int? isActive;
+  @JsonKey(name: 'created_at')
   String? createdAt;
+  @JsonKey(name: 'updated_at')
   String? updatedAt;
   CallsOwnerDepartment? department;
 
@@ -743,9 +724,12 @@ class CallsOwner {
 @JsonSerializable()
 class CallsOwnerDepartment {
   int? id;
+  @JsonKey(name: 'tenant_id')
   String? tenantId;
   String? name;
+  @JsonKey(name: 'created_at')
   String? createdAt;
+  @JsonKey(name: 'updated_at')
   String? updatedAt;
 
   CallsOwnerDepartment(
@@ -758,43 +742,69 @@ class CallsOwnerDepartment {
 @JsonSerializable()
 class Client {
   int? id;
+  @JsonKey(name: 'user_id')
   int? userId;
+  @JsonKey(name: 'tenant_id')
   String? tenantId;
+  @JsonKey(name: 'assigned_to_id')
   int? assignedToId;
+  @JsonKey(name: 'broker_id')
   dynamic brokerId;
+  @JsonKey(name: 'campaing_id')
   dynamic campaingId;
   dynamic saluation;
+  @JsonKey(name: 'owner_name')
   String? ownerName;
+  @JsonKey(name: 'first_name')
   String? firstName;
+  @JsonKey(name: 'last_name')
   String? lastName;
+  @JsonKey(name: 'client_name')
   String? clientName;
   String? company;
+  @JsonKey(name: 'job_title')
   String? jobTitle;
   String? email;
   String? mobile;
+  @JsonKey(name: 'mobile_2')
   String? mobile2;
   String? website;
   String? rating;
+  @JsonKey(name: 'lead_status')
   String? leadStatus;
+  @JsonKey(name: 'lead_source')
   String? leadSource;
   String? industry;
+  @JsonKey(name: 'annual_revenue')
   int? annualRevenue;
   String? image;
   String? country;
   String? city;
   String? state;
   String? description;
+  @JsonKey(name: 'converted_deal_id')
   dynamic convertedDealId;
+  @JsonKey(name: 'converted_contact_id')
   dynamic convertedContactId;
+  @JsonKey(name: 'converted_lead_id')
   dynamic convertedLeadId;
+  @JsonKey(name: 'is_converted')
   int? isConverted;
+  @JsonKey(name: 'end_time')
   String? endTime;
+  @JsonKey(name: 'end_time_hour')
   String? endTimeHour;
+  @JsonKey(name: 'deleted_at')
   dynamic deletedAt;
+  @JsonKey(name: 'created_at')
   String? createdAt;
+  @JsonKey(name: 'updated_at')
   String? updatedAt;
+  @JsonKey(name: 'ar_name')
   String? arName;
+  @JsonKey(name: 'national_id')
   String? nationalId;
+  @JsonKey(name: 'passport_id')
   String? passportId;
   String? nationality;
   String? address;

@@ -5,6 +5,7 @@ import 'package:trick_crm_app/core/cubits/base_state.dart';
 import 'package:trick_crm_app/core/di/dependency_injection.dart';
 import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Emails/emails_screen.dart';
+import 'package:trick_crm_app/features/leads/lead-view/Open-Activities/data/model/open_activity_model.dart';
 import 'package:trick_crm_app/features/leads/lead-view/lead-view/logic/cubit/lead_view_cubit.dart';
 import 'package:trick_crm_app/features/leads/lead-view/notes/notes-view/model/lead_note.dart';
 import 'package:trick_crm_app/features/leads/lead-view/notes/notes-view/presentation/screen/notes_screen.dart';
@@ -75,6 +76,8 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
               final List<LeadNote>? leadNotes = leadsViewModel.leadNotes;
               final List<LeadAttatchment>? leadAttatchments =
                   leadsViewModel.leadAttatchment;
+              final List<OpenActivityModel>? openActivity =
+                  leadsViewModel.openActivity;
               return Column(
                 children: [
                   // Show Cards
@@ -127,15 +130,19 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
                     title: 'Open Activities',
                     icon: 'openActivities',
                     onTap: () {
-                      Get.to(() => const OpenActivitiesScreen());
+                      Get.to(
+                        () => OpenActivitiesScreen(
+                          openActivityModel: openActivity ?? [],
+                        ),
+                      );
                     },
                   ),
                 ],
               );
             },
             error: (message) {
-              return const Center(
-                child: Text('Error Occurred Try Again'),
+              return Center(
+                child: Text('Error Occurred Try Again: $message'),
               );
             },
             orElse: () => const SizedBox.shrink(),

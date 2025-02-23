@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:trick_crm_app/core/widgets/app_bar.dart';
 
+import '../data/model/open_activity_model.dart';
+import '../open-tasks/presentation/open_tasks_screen.dart';
 import 'widget/card_lead_view.dart';
 
 class OpenActivitiesScreen extends StatelessWidget {
-  const OpenActivitiesScreen({super.key});
+  final List<OpenActivityModel> openActivityModel;
+  const OpenActivitiesScreen({super.key, required this.openActivityModel});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,11 @@ class OpenActivitiesScreen extends StatelessWidget {
               title: 'Open Tasks',
               icon: 'OpenTasks',
               onTap: () {
-                // Get.to(() => OpenTasksScreen());
+                Get.to(
+                  () => OpenTasksScreen(
+                    openActivityModel: openActivityModel,
+                  ),
+                );
               },
             ),
             cardActivitesView(

@@ -14,9 +14,9 @@ class OpenActivityModel {
   @JsonKey(name: "task_id")
   int? taskId;
   @JsonKey(name: "meeting_id")
-  dynamic meetingId;
+  int? meetingId;
   @JsonKey(name: "call_id")
-  dynamic callId;
+  int? callId;
   String? status;
   @JsonKey(name: "created_at")
   String? createdAt;
@@ -59,9 +59,9 @@ class Task {
   @JsonKey(name: "lead_id")
   int? leadId;
   @JsonKey(name: "contact_id")
-  dynamic contactId;
+  int? contactId;
   @JsonKey(name: "client_id")
-  dynamic clientId;
+  int? clientId;
   String? subject;
   String? status;
   String? priority;
@@ -124,7 +124,7 @@ class Call {
   @JsonKey(name: "start_time")
   dynamic startTime;
   @JsonKey(name: "start_time_hour")
-  dynamic startTimeHour;
+  String? startTimeHour;
   @JsonKey(name: "call_owner_id")
   int? callOwnerId;
   String? subject;
@@ -134,7 +134,7 @@ class Call {
   dynamic callAgenda;
   @JsonKey(name: "call_result")
   dynamic callResult;
-  dynamic description;
+  String? description;
   @JsonKey(name: "is_deleted")
   int? isDeleted;
   @JsonKey(name: "created_at")
@@ -237,7 +237,7 @@ class Meeting {
   @JsonKey(name: "end_time")
   String? endTime;
   @JsonKey(name: "end_time_hour")
-  dynamic endTimeHour;
+  String? endTimeHour;
   @JsonKey(name: "all_day")
   int? allDay;
   String? participants;
@@ -248,9 +248,9 @@ class Meeting {
   @JsonKey(name: "lead_id")
   int? leadId;
   @JsonKey(name: "contact_id")
-  dynamic contactId;
+  int? contactId;
   @JsonKey(name: "client_id")
-  dynamic clientId;
+  int? clientId;
   String? status;
   @JsonKey(name: "is_deleted")
   int? isDeleted;
@@ -259,9 +259,9 @@ class Meeting {
   @JsonKey(name: "updated_at")
   String? updatedAt;
   @JsonKey(name: "deal_id")
-  dynamic dealId;
+  int? dealId;
   @JsonKey(name: "compaign_id")
-  dynamic compaignId;
+  int? compaignId;
   Host? host;
 
   Meeting({

@@ -9,12 +9,13 @@ part of 'create_lead_task_request_body.dart';
 CreateLeadTaskRequestBody _$CreateLeadTaskRequestBodyFromJson(
         Map<String, dynamic> json) =>
     CreateLeadTaskRequestBody(
-      subject: json['subject'] as String?,
+      subject: json['subject'] as String,
       description: json['description'] as String?,
       dueDate: json['dueDate'] as String?,
-      assignedTo: (json['assignedTo'] as num?)?.toInt(),
-      priority: json['priority'] as String?,
-      status: json['status'] as String?,
+      assignedTo: (json['assignedTo'] as num).toInt(),
+      priority: json['priority'] as String,
+      lead: json['lead'] as String,
+      status: json['status'] as String,
     );
 
 Map<String, dynamic> _$CreateLeadTaskRequestBodyToJson(
@@ -25,5 +26,6 @@ Map<String, dynamic> _$CreateLeadTaskRequestBodyToJson(
       'dueDate': instance.dueDate,
       'assignedTo': instance.assignedTo,
       'priority': instance.priority,
+      'lead': instance.lead,
       'status': instance.status,
     };

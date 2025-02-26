@@ -133,6 +133,7 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
                       Get.to(
                         () => OpenActivitiesScreen(
                           openActivityModel: openActivity ?? [],
+                          leadId: leadId,
                         ),
                       );
                     },

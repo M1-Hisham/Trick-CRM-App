@@ -8,7 +8,9 @@ import 'widget/card_lead_view.dart';
 
 class OpenActivitiesScreen extends StatelessWidget {
   final List<OpenActivityModel> openActivityModel;
-  const OpenActivitiesScreen({super.key, required this.openActivityModel});
+  final int leadId;
+  const OpenActivitiesScreen(
+      {super.key, required this.openActivityModel, required this.leadId});
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class OpenActivitiesScreen extends StatelessWidget {
                 Get.to(
                   () => OpenTasksScreen(
                     openActivityModel: openActivityModel,
+                    leadId: leadId,
                   ),
                 );
               },

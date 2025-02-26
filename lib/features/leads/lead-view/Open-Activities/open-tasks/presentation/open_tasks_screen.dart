@@ -5,12 +5,15 @@ import 'package:trick_crm_app/core/resources/resources.dart';
 import 'package:trick_crm_app/core/widgets/app_button.dart';
 import 'package:trick_crm_app/core/widgets/app_data_table.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Open-Activities/data/model/open_activity_model.dart';
+import 'package:trick_crm_app/features/leads/lead-view/Open-Activities/open-tasks/create-lead-task/presentation/screen/create_lead_task.dart';
 
 import '../../../../../../core/widgets/app_bar.dart';
 
 class OpenTasksScreen extends StatelessWidget {
   final List<OpenActivityModel> openActivityModel;
-  const OpenTasksScreen({super.key, required this.openActivityModel});
+  final int leadId;
+  const OpenTasksScreen(
+      {super.key, required this.openActivityModel, required this.leadId});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,28 @@ class OpenTasksScreen extends StatelessWidget {
             AppButton(
               icon: SvgPicture.asset(R.icons.add),
               text: 'Create a New Task',
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet(
+                  sheetAnimationStyle: AnimationStyle(
+                    duration: const Duration(milliseconds: 1000),
+                    curve: Curves.easeInOutCubicEmphasized,
+                    reverseDuration: const Duration(milliseconds: 600),
+                  ),
+                  useSafeArea: true,
+                  isScrollControlled: true,
+                  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(13),
+                      topRight: Radius.circular(13),
+                    ),
+                  ),
+                  context: context,
+                  builder: (BuildContext context) => CreateLeadTask(
+                    leadId: leadId,
+                  ),
+                );
+              },
             ),
             spacingV(20),
             Text(

@@ -4,20 +4,22 @@ part 'create_lead_task_request_body.g.dart';
 
 @JsonSerializable()
 class CreateLeadTaskRequestBody {
-  String? subject;
+  String subject;
   String? description;
   String? dueDate;
-  int? assignedTo;
-  String? priority;
-  String? status;
+  int assignedTo;
+  String priority;
+  String lead;
+  String status;
 
   CreateLeadTaskRequestBody({
-    this.subject,
+    required this.subject,
     this.description,
     this.dueDate,
-    this.assignedTo,
-    this.priority,
-    this.status,
+    required this.assignedTo,
+    required this.priority,
+    required this.lead,
+    required this.status,
   });
 
   Map<String, dynamic> toJson() => _$CreateLeadTaskRequestBodyToJson(this);

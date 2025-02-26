@@ -17,8 +17,8 @@ import '../../features/leads/lead-view/Attatchments/create-attachment/data/model
 import '../../features/leads/lead-view/Information/data/model/edit_lead_model.dart';
 import '../../features/leads/lead-view/create-lead-meeting/data/model/create_lead_meeting_model.dart';
 import '../../features/leads/lead-view/create-lead-meeting/data/model/create_lead_meeting_request_body.dart';
-import '../../features/leads/lead-view/create-lead-task/data/model/create_lead_task_model.dart';
-import '../../features/leads/lead-view/create-lead-task/data/model/create_lead_task_request_body.dart';
+import '../../features/leads/lead-view/Open-Activities/open-tasks/create-lead-task/data/model/create_lead_task_model.dart';
+import '../../features/leads/lead-view/Open-Activities/open-tasks/create-lead-task/data/model/create_lead_task_request_body.dart';
 import '../../features/leads/lead-view/notes/create-note/data/model/create_lead_note_model.dart';
 import '../../features/leads/lead-view/notes/create-note/data/model/create_lead_note_reqest_body.dart';
 import '../../features/leads/lead-view/notes/delete-note/data/model/delete_note_model.dart';

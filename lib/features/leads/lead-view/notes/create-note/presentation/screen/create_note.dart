@@ -23,19 +23,20 @@ class CreateNote extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: getIt<CreateNoteCubit>(),
+    return BlocProvider(
+      create: (context) => getIt<CreateNoteCubit>(),
+      //getIt<CreateNoteCubit>(),
       child: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
         },
-        child: SingleChildScrollView(
-          child: Dialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(13),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+        child: Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(13),
+          ),
+          child: SingleChildScrollView(
+            child: Wrap(
+              alignment: WrapAlignment.center,
               children: [
                 appTopBarDialog("Add New Note"),
                 Padding(
@@ -67,52 +68,9 @@ class CreateNote extends StatelessWidget {
                         ),
                       ),
                       spacingV(20),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: AppButton(
-                              icon: SvgPicture.asset(
-                                R.icons.add,
-                              ),
-                              text: 'Add Note',
-                              onPressed: () {
-                                if (_formKey.currentState!.validate()) {
-                                  _formKey.currentState!.save();
-                                  log('Create Note: success');
 
-                                  getIt<CreateNoteCubit>().createLeadNote(
-                                    CreateLeadNoteRequestBody(comment: note!),
-                                    leadId,
-                                  );
-                                  Get.back();
-
-                                  Get.showSnackbar(
-                                    GetSnackBar(
-                                      backgroundColor: R.colors.primaryColor,
-                                      message: 'Note added successfully',
-                                      duration: const Duration(seconds: 2),
-                                    ),
-                                  );
-                                }
-                              },
-                            ),
-                          ),
-                          spacingH(10),
-                          Expanded(
-                            child: AppButton(
-                              text: "Cancel",
-                              textStyle:
-                                  R.textStyles.font14DimGrayW400.copyWith(
-                                fontWeight: FontWeight.w500,
-                              ),
-                              onPressed: Get.back,
-                              backgroundColor: R.colors.white,
-                              borderColor: const Color(0xffC8C8C8),
-                              overlayColor: R.colors.primaryColor,
-                            ),
-                          ),
-                        ],
-                      ),
+                      /// Submit and Cancel Button
+                      _submitAndCancel(),
                     ],
                   ),
                 ),
@@ -121,25 +79,54 @@ class CreateNote extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
 
-      // BlocBuilder<CreateNoteCubit, BaseState<CreateLeadNoteModel>>(
-      //     builder: (context, state) {
-      //   return state.maybeWhen(
-      //     loading: () => const Center(
-      //       child: CircularProgressIndicator(),
-      //     ),
-      //     success: (createLeadNoteModel) {
-      //       log('Create Note: $createLeadNoteModel');
-      //       final CreateLeadNoteModel noteModel = createLeadNoteModel;
-      //       return Text('${noteModel.message}');
-      //     },
-      //     error: (message) {
-      //       log('Create Note: $message');
-      //       return Text('$message');
-      //     },
-      //     orElse: () => const SizedBox.shrink(),
-      //   );
-      // }),
+  Widget _submitAndCancel() {
+    return Row(
+      children: [
+        Expanded(
+          child: AppButton(
+            icon: SvgPicture.asset(
+              R.icons.add,
+            ),
+            text: 'Add Note',
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
+                log('Create Note: success');
+
+                getIt<CreateNoteCubit>().createLeadNote(
+                  CreateLeadNoteRequestBody(comment: note!),
+                  leadId,
+                );
+                Get.back();
+
+                Get.showSnackbar(
+                  GetSnackBar(
+                    backgroundColor: R.colors.primaryColor,
+                    message: 'Note added successfully',
+                    duration: const Duration(seconds: 2),
+                  ),
+                );
+              }
+            },
+          ),
+        ),
+        spacingH(10),
+        Expanded(
+          child: AppButton(
+            text: "Cancel",
+            textStyle: R.textStyles.font14DimGrayW400.copyWith(
+              fontWeight: FontWeight.w500,
+            ),
+            onPressed: Get.back,
+            backgroundColor: R.colors.white,
+            borderColor: const Color(0xffC8C8C8),
+            overlayColor: R.colors.primaryColor,
+          ),
+        ),
+      ],
     );
   }
 }

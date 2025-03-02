@@ -16,6 +16,7 @@ import '../../features/clients/clients/logic/cubit/clients_cubit.dart';
 import '../../features/clients/clients/presentation/screen/clients.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/leads/leads/logic/cubit/leads_cubit.dart';
+import '../../features/projects/presentation/projects_screen.dart';
 import '../../features/splash/splash_screen.dart';
 import '../api/api_service.dart';
 import '../di/dependency_injection.dart';
@@ -74,6 +75,10 @@ abstract class AppRouter {
         create: (context) => TasksCubit(getIt<ApiService>())..getData(),
         child: const TasksScreen(),
       ),
+    ),
+    GetPage(
+      name: RoutesNames.projects,
+      page: () => const ProjectsScreen(),
     ),
   ];
 }

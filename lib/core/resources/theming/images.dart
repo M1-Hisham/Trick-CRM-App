@@ -22,6 +22,7 @@ class AppImages {
   String closeIcon = "assets/icons/close-icon.svg";
   String subtract = "assets/icons/Subtract.svg";
   String imageUserError = "assets/icons/image-user-error.png";
+  String projects = "assets/icons/projects.svg";
   Map<String, String> iconsMenu = {
     "Dashboard": "assets/icons/iconsMenu/Dashboard.svg",
     "Contacts": "assets/icons/iconsMenu/Contacts.svg",

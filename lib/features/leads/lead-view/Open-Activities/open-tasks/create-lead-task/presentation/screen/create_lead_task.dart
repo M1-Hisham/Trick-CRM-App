@@ -52,40 +52,14 @@ class CreateLeadTask extends StatelessWidget {
                         'Priority', true, ['High', 'Medium', 'Low']),
                     _buildFormFieldSelection(
                         'Lead', true, ['Lead 1', 'Lead 2', 'Lead 3']),
+                    //! Add contact selection and Client selection
                     _buildFormFieldSelection(
                         'Status', true, ['Open', 'In Progress', 'Completed']),
                   ],
                 ),
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: AppButton(
-                      icon: SvgPicture.asset(R.icons.add),
-                      text: 'Create',
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          _formKey.currentState!.save();
-                          // Handle form submission
-                        }
-                      },
-                    ),
-                  ),
-                  spacingH(20),
-                  Expanded(
-                    child: AppButton(
-                      text: "Cancel",
-                      textStyle: R.textStyles.font14DimGrayW400.copyWith(
-                        fontWeight: FontWeight.w500,
-                      ),
-                      onPressed: Get.back,
-                      backgroundColor: R.colors.white,
-                      borderColor: const Color(0xffC8C8C8),
-                      overlayColor: R.colors.primaryColor,
-                    ),
-                  ),
-                ],
-              ),
+              // submit and cancel button
+              _submitAndCancelButton(),
             ],
           ),
           Positioned(
@@ -96,6 +70,38 @@ class CreateLeadTask extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _submitAndCancelButton() {
+    return Row(
+      children: [
+        Expanded(
+          child: AppButton(
+            icon: SvgPicture.asset(R.icons.add),
+            text: 'Create',
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
+                // Handle form submission
+              }
+            },
+          ),
+        ),
+        spacingH(20),
+        Expanded(
+          child: AppButton(
+            text: "Cancel",
+            textStyle: R.textStyles.font14DimGrayW400.copyWith(
+              fontWeight: FontWeight.w500,
+            ),
+            onPressed: Get.back,
+            backgroundColor: R.colors.white,
+            borderColor: const Color(0xffC8C8C8),
+            overlayColor: R.colors.primaryColor,
+          ),
+        ),
+      ],
     );
   }
 

@@ -1,7 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../../../campaigns/model/campaigns_model.dart';
 import '../../../Attatchments/attachment-view/model/attachments_model.dart';
+import '../../../Campaigns/campaigns-view/data/model/campaigns_model.dart';
+import '../../../Campaigns/create-campaigns/data/model/campaign_leads_model.dart';
 import '../../../Close-activities/data/model/closed_activity_model.dart';
 import '../../../Open-Activities/data/model/open_activity_model.dart';
 import '../../../notes/notes-view/model/lead_note.dart';
@@ -19,7 +20,7 @@ class LeadsViewModel {
   List<ActivityLog>? activityLog;
   List<OpenActivityModel>? openActivity;
   List<ClosedActivityModel>? closedActivity;
-  // List<dynamic>? campaignLeads;
+  List<CampaignLeadsModel>? campaignLeads;
   List<CampaignsModel>? campaigns;
   // List<dynamic>? leadMails;
   List<Calls>? calls;
@@ -37,7 +38,7 @@ class LeadsViewModel {
     this.activityLog,
     this.openActivity,
     this.closedActivity,
-    // this.campaignLeads,
+    this.campaignLeads,
     this.campaigns,
     // this.leadMails,
     this.calls,
@@ -488,7 +489,7 @@ class Subject {
   @JsonKey(name: 'user_id')
   int? userId;
   @JsonKey(name: 'assigned_to_id')
-  String? assignedToId;
+  int? assignedToId;
   @JsonKey(name: 'tenant_id')
   String? tenantId;
   @JsonKey(name: 'compaing_id')
@@ -517,7 +518,7 @@ class Subject {
   String? leadSource;
   String? industry;
   @JsonKey(name: 'annual_revenue')
-  String? annualRevenue;
+  int? annualRevenue;
   String? image;
   String? country;
   String? city;

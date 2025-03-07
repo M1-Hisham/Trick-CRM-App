@@ -5,10 +5,16 @@ import '../../../../../../core/helpers/spacing.dart';
 import '../../../../../../core/resources/resources.dart';
 import '../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/widgets/app_button.dart';
+import '../../../../../../core/widgets/app_data_table.dart';
+import '../../create-campaigns/data/model/campaign_leads_model.dart';
 import '../../create-campaigns/presentation/add_campaign.dart';
+import '../data/model/campaigns_model.dart';
 
 class CampaignsScreen extends StatelessWidget {
-  const CampaignsScreen({super.key});
+  final List<CampaignsModel> campaigns;
+  final List<CampaignLeadsModel> campaignLeads;
+  const CampaignsScreen(
+      {super.key, required this.campaigns, required this.campaignLeads});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +32,9 @@ class CampaignsScreen extends StatelessWidget {
                 showDialog(
                   context: context,
                   builder: (context) {
-                    return const AddCampaign();
+                    return AddCampaign(
+                      campaignLeads: campaignLeads,
+                    );
                   },
                 );
               },
@@ -37,19 +45,25 @@ class CampaignsScreen extends StatelessWidget {
               style: R.textStyles.font17PrimaryW600,
             ),
             spacingV(10),
-            // const AppDataTable(
-            //   data: [],
-            //   headers: [
-            //     'Campaign Name',
-            //     'Type',
-            //     'Campaign Status',
-            //     'Start date',
-            //     'End date',
-            //     'Status',
-            //     'Actions',
-            //   ],
-            //   dataExtractors: [],
-            // ),
+            AppDataTable<CampaignsModel>(
+              data: campaigns,
+              headers: const [
+                'Campaign Name',
+                'Type',
+                'Campaign Status',
+                'Start date',
+                'End date',
+                'Status',
+              ],
+              dataExtractors: [
+                (data) => data.campaignName ?? '',
+                (data) => data.type ?? '',
+                (data) => data.status ?? '',
+                (data) => data.startDate ?? '',
+                (data) => data.endDate ?? '',
+                (data) => data.status ?? '',
+              ],
+            ),
           ],
         ),
       ),

@@ -6,9 +6,11 @@ import 'package:trick_crm_app/core/widgets/app_selection_form_field.dart';
 import 'package:trick_crm_app/core/widgets/app_top_bar_dialog.dart';
 
 import '../../../../../../core/resources/resources.dart';
+import '../data/model/campaign_leads_model.dart';
 
 class AddCampaign extends StatelessWidget {
-  const AddCampaign({super.key});
+  final List<CampaignLeadsModel> campaignLeads;
+  const AddCampaign({super.key, required this.campaignLeads});
 
   @override
   Widget build(BuildContext context) {

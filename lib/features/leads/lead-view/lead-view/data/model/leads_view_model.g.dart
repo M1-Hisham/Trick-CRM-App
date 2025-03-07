@@ -30,6 +30,9 @@ LeadsViewModel _$LeadsViewModelFromJson(Map<String, dynamic> json) =>
       closedActivity: (json['closedActivity'] as List<dynamic>?)
           ?.map((e) => ClosedActivityModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      campaignLeads: (json['campaignLeads'] as List<dynamic>?)
+          ?.map((e) => CampaignLeadsModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       campaigns: (json['campaigns'] as List<dynamic>?)
           ?.map((e) => CampaignsModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -57,6 +60,7 @@ Map<String, dynamic> _$LeadsViewModelToJson(LeadsViewModel instance) =>
       'activity_log': instance.activityLog,
       'openActivity': instance.openActivity,
       'closedActivity': instance.closedActivity,
+      'campaignLeads': instance.campaignLeads,
       'campaigns': instance.campaigns,
       'calls': instance.calls,
       'clients': instance.clients,
@@ -414,7 +418,7 @@ Map<String, dynamic> _$CauserToJson(Causer instance) => <String, dynamic>{
 Subject _$SubjectFromJson(Map<String, dynamic> json) => Subject(
       id: (json['id'] as num?)?.toInt(),
       userId: (json['user_id'] as num?)?.toInt(),
-      assignedToId: json['assigned_to_id'] as String?,
+      assignedToId: (json['assigned_to_id'] as num?)?.toInt(),
       tenantId: json['tenant_id'] as String?,
       compaingId: json['compaing_id'] as String?,
       saluation: json['saluation'] as String?,
@@ -432,7 +436,7 @@ Subject _$SubjectFromJson(Map<String, dynamic> json) => Subject(
       leadStatus: json['lead_status'] as String?,
       leadSource: json['lead_source'] as String?,
       industry: json['industry'] as String?,
-      annualRevenue: json['annual_revenue'] as String?,
+      annualRevenue: (json['annual_revenue'] as num?)?.toInt(),
       image: json['image'] as String?,
       country: json['country'] as String?,
       city: json['city'] as String?,

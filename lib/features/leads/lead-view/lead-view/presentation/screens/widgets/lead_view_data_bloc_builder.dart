@@ -7,6 +7,8 @@ import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Campaigns/create-campaigns/data/model/campaign_leads_model.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Emails/emails_screen.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Open-Activities/data/model/open_activity_model.dart';
+import 'package:trick_crm_app/features/leads/lead-view/Timeline/data/model/activity_log_model.dart';
+import 'package:trick_crm_app/features/leads/lead-view/Timeline/presentation/timeline_sccreen.dart';
 import 'package:trick_crm_app/features/leads/lead-view/lead-view/logic/cubit/lead_view_cubit.dart';
 import 'package:trick_crm_app/features/leads/lead-view/notes/notes-view/model/lead_note.dart';
 import 'package:trick_crm_app/features/leads/lead-view/notes/notes-view/presentation/screen/notes_screen.dart';
@@ -83,6 +85,7 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
               final List<CampaignsModel>? campaigns = leadsViewModel.campaigns;
               final List<CampaignLeadsModel>? campaignLeads =
                   leadsViewModel.campaignLeads;
+              final List<ActivityLog>? activityLogs = leadsViewModel.activityLog;
               return Column(
                 children: [
                   // Show Cards
@@ -96,7 +99,11 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
                   cardLeadView(
                     title: 'Timeline',
                     icon: 'timeline',
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() =>  TimelineSccreen(
+                        activityLogs: activityLogs ?? [],
+                      ));
+                    },
                   ),
                   cardLeadView(
                     title: 'Notes',

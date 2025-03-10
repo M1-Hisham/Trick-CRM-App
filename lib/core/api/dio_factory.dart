@@ -66,9 +66,9 @@ class DioFactory {
       PrettyDioLogger(
         request: true,
         requestBody: true,
-        requestHeader: true,
-        responseBody: true,
-        responseHeader: true,
+        requestHeader: false,
+        responseBody: false,
+        responseHeader: false,
         error: true,
       ),
     );

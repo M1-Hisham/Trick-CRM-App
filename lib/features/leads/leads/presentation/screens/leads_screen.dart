@@ -18,6 +18,7 @@ class LeadsScreen extends StatelessWidget {
       child: Scaffold(
         appBar: appBar('Leads'),
         body: SingleChildScrollView(
+          // physics: const AlwaysScrollableScrollPhysics(),
           child: Padding(
             padding: const EdgeInsets.all(22),
             child: Column(

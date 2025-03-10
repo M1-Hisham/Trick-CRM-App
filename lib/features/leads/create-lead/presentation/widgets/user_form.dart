@@ -12,6 +12,7 @@ import '../../../../../core/widgets/app_button.dart';
 import '../../../../../core/widgets/app_date_picker_field.dart';
 import '../../../../../core/widgets/app_selection_form_field.dart';
 import '../../../../../core/widgets/app_text_form_field.dart';
+import '../../../leads/logic/cubit/leads_cubit.dart';
 import '../../data/models/create_lead_request_body.dart';
 import 'upload_image.dart';
 
@@ -415,5 +416,6 @@ void _submitCreateLead(context) async {
     log("createLeadRequestBody: $createLeadRequestBody");
     log("Submit Successfully");
     Get.back();
+    await getIt.get<LeadsCubit>().getData();
   }
 }

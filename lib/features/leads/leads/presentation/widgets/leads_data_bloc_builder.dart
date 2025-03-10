@@ -16,7 +16,8 @@ class LeadsDataBlocBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LeadsCubit, BaseState<LeadsModel>>(
-      buildWhen: (previous, current) => current is Success || current is Error,
+      buildWhen: (previous, current) =>
+          current is Loading || current is Success || current is Error,
       builder: (context, state) {
         return state.maybeWhen(
             loading: () => Shimmer.fromColors(

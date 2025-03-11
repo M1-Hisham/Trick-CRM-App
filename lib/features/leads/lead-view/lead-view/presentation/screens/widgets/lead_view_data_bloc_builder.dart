@@ -15,7 +15,6 @@ import 'package:trick_crm_app/features/leads/lead-view/notes/notes-view/presenta
 
 import '../../../../Attatchments/attachment-view/model/attachments_model.dart';
 import '../../../../Attatchments/attachment-view/presentation/attachment_screen.dart';
-import '../../../../Campaigns/campaigns-view/data/model/campaigns_model.dart';
 import '../../../../Campaigns/campaigns-view/presentation/campaigns_screen.dart';
 import '../../../../Information/presentation/information_screen.dart';
 import '../../../../Open-Activities/presentation/open_activities_screen.dart';
@@ -82,10 +81,10 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
                   leadsViewModel.leadAttatchment;
               final List<OpenActivityModel>? openActivity =
                   leadsViewModel.openActivity;
-              final List<CampaignsModel>? campaigns = leadsViewModel.campaigns;
               final List<CampaignLeadsModel>? campaignLeads =
                   leadsViewModel.campaignLeads;
-              final List<ActivityLog>? activityLogs = leadsViewModel.activityLog;
+              final List<ActivityLog>? activityLogs =
+                  leadsViewModel.activityLog;
               return Column(
                 children: [
                   // Show Cards
@@ -100,9 +99,9 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
                     title: 'Timeline',
                     icon: 'timeline',
                     onTap: () {
-                      Get.to(() =>  TimelineSccreen(
-                        activityLogs: activityLogs ?? [],
-                      ));
+                      Get.to(() => TimelineSccreen(
+                            activityLogs: activityLogs ?? [],
+                          ));
                     },
                   ),
                   cardLeadView(
@@ -129,7 +128,6 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
                     icon: 'Campaigns',
                     onTap: () {
                       Get.to(() => CampaignsScreen(
-                            campaigns: campaigns ?? [],
                             campaignLeads: campaignLeads ?? [],
                           ));
                     },

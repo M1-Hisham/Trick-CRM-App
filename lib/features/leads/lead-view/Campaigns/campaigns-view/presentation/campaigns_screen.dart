@@ -8,13 +8,10 @@ import '../../../../../../core/widgets/app_button.dart';
 import '../../../../../../core/widgets/app_data_table.dart';
 import '../../create-campaigns/data/model/campaign_leads_model.dart';
 import '../../create-campaigns/presentation/add_campaign.dart';
-import '../data/model/campaigns_model.dart';
 
 class CampaignsScreen extends StatelessWidget {
-  final List<CampaignsModel> campaigns;
   final List<CampaignLeadsModel> campaignLeads;
-  const CampaignsScreen(
-      {super.key, required this.campaigns, required this.campaignLeads});
+  const CampaignsScreen({super.key, required this.campaignLeads});
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +42,8 @@ class CampaignsScreen extends StatelessWidget {
               style: R.textStyles.font17PrimaryW600,
             ),
             spacingV(10),
-            AppDataTable<CampaignsModel>(
-              data: campaigns,
+            AppDataTable<CampaignLeadsModel>(
+              data: campaignLeads,
               headers: const [
                 'Campaign Name',
                 'Type',
@@ -56,11 +53,11 @@ class CampaignsScreen extends StatelessWidget {
                 'Status',
               ],
               dataExtractors: [
-                (data) => data.campaignName ?? '',
-                (data) => data.type ?? '',
-                (data) => data.status ?? '',
-                (data) => data.startDate ?? '',
-                (data) => data.endDate ?? '',
+                (data) => data.campaign?.campaignName ?? '',
+                (data) => data.campaign?.type ?? '',
+                (data) => data.campaign?.status ?? '',
+                (data) => data.campaign?.startDate ?? '',
+                (data) => data.campaign?.endDate ?? '',
                 (data) => data.status ?? '',
               ],
             ),

@@ -16,9 +16,7 @@ ActivityLog _$ActivityLogFromJson(Map<String, dynamic> json) => ActivityLog(
       subjectId: (json['subject_id'] as num?)?.toInt(),
       causerType: json['causer_type'] as String?,
       causerId: (json['causer_id'] as num?)?.toInt(),
-      properties: json['properties'] == null
-          ? null
-          : Properties.fromJson(json['properties'] as Map<String, dynamic>),
+      properties: json['properties'],
       batchUuid: json['batch_uuid'],
       createdAt: json['created_at'] as String?,
       updatedAt: json['updated_at'] as String?,

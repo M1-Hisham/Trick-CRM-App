@@ -80,16 +80,16 @@ class TimelineTile extends StatelessWidget {
                   ),
                 ),
                 // Show comment if available
-                if (activityLog.properties?.comment != null) ...[
-                  spacingV(4),
-                  Text(
-                    'Comment: ${activityLog.properties?.comment ?? ''}',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: isActive ? R.colors.black : Colors.grey,
-                    ),
-                  ),
-                ],
+                // if (activityLog.properties?.comment != null) ...[
+                //   spacingV(4),
+                //   Text(
+                //     'Comment: ${activityLog.properties?.comment ?? ''}',
+                //     style: TextStyle(
+                //       fontSize: 14,
+                //       color: isActive ? R.colors.black : Colors.grey,
+                //     ),
+                //   ),
+                // ],
                 spacingV(16),
               ],
             ),

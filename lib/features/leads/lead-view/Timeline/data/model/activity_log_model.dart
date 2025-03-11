@@ -19,7 +19,7 @@ class ActivityLog {
   String? causerType;
   @JsonKey(name: 'causer_id')
   int? causerId;
-  Properties? properties;
+  dynamic properties;
   @JsonKey(name: 'batch_uuid')
   dynamic batchUuid;
   @JsonKey(name: 'created_at')

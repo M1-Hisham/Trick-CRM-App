@@ -8,6 +8,7 @@ import 'package:trick_crm_app/features/leads/create-lead/data/models/create_lead
 import 'package:trick_crm_app/features/leads/leads/data/models/leads_model.dart';
 import 'package:trick_crm_app/features/tasks/data/model/tasks_model.dart';
 
+import '../../features/calls/data/model/calls_model.dart';
 import '../../features/campaigns/model/campaigns_model.dart';
 import '../../features/clients/clients/data/model/clients_model.dart';
 import '../../features/contacts/data/contacts_model.dart';
@@ -118,4 +119,8 @@ abstract class ApiService {
   /// service for Tasks
   @GET(ApiConstants.tasks)
   Future<TasksModel> getTasks();
+
+  /// service for Calls
+  @GET(ApiConstants.calls)
+  Future<CallsModel> getCalls();
 }

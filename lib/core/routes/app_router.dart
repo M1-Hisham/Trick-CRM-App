@@ -7,6 +7,7 @@ import 'package:trick_crm_app/features/contacts/logic/cubit/contacts_cubit.dart'
 import 'package:trick_crm_app/features/contacts/presentation/contacts_screen.dart';
 import 'package:trick_crm_app/features/home/logic/cubit/dashboard_cubit.dart';
 import 'package:trick_crm_app/features/leads/leads/presentation/screens/leads_screen.dart';
+import 'package:trick_crm_app/features/meetings/logic/cubit/meetings_cubit.dart';
 import 'package:trick_crm_app/features/tasks/logic/cubit/tasks_cubit.dart';
 import 'package:trick_crm_app/features/tasks/presentation/tasks_screen.dart';
 
@@ -18,6 +19,7 @@ import '../../features/clients/clients/logic/cubit/clients_cubit.dart';
 import '../../features/clients/clients/presentation/screen/clients.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/leads/leads/logic/cubit/leads_cubit.dart';
+import '../../features/meetings/presentation/meetings_screen.dart';
 import '../../features/projects/presentation/project_screen.dart';
 import '../../features/splash/splash_screen.dart';
 import '../api/api_service.dart';
@@ -76,6 +78,13 @@ abstract class AppRouter {
       page: () => BlocProvider(
         create: (context) => TasksCubit(getIt<ApiService>())..getData(),
         child: const TasksScreen(),
+      ),
+    ),
+    GetPage(
+      name: RoutesNames.meetings,
+      page: () => BlocProvider(
+        create: (context) => MeetingsCubit(getIt<ApiService>())..getData(),
+        child: const MeetingsScreen(),
       ),
     ),
     GetPage(

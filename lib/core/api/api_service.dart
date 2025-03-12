@@ -27,6 +27,7 @@ import '../../features/leads/lead-view/Attatchments/delete_attachment/data/model
 import '../../features/leads/lead-view/lead-view/data/model/leads_view_model.dart';
 import '../../features/leads/lead-view/notes/update-note/data/models/update_lead_note_model.dart';
 import '../../features/leads/lead-view/notes/update-note/data/models/update_lead_note_request_body.dart';
+import '../../features/meetings/data/model/meetings_model.dart';
 import 'api_constants.dart';
 
 part 'api_service.g.dart';
@@ -119,6 +120,10 @@ abstract class ApiService {
   /// service for Tasks
   @GET(ApiConstants.tasks)
   Future<TasksModel> getTasks();
+
+  /// service for Meetings
+  @GET(ApiConstants.meetings)
+  Future<MeetingsModel> getMeetings();
 
   /// service for Calls
   @GET(ApiConstants.calls)

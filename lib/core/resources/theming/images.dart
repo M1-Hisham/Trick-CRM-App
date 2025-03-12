@@ -30,7 +30,7 @@ class AppImages {
     "Clients": "assets/icons/iconsMenu/Clients.svg",
     "Tasks": "assets/icons/iconsMenu/Tasks.svg",
     "Meetings": "assets/icons/iconsMenu/Meetings.svg",
-    "calls": "assets/icons/iconsMenu/call.svg",
+    "Calls": "assets/icons/iconsMenu/call.svg",
     "Deals": "assets/icons/iconsMenu/Deals.svg",
     "Campaigns": "assets/icons/iconsMenu/Campaigns.svg",
     "Brokers": "assets/icons/iconsMenu/Brokers.svg",

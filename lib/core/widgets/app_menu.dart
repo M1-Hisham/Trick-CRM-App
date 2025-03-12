@@ -120,6 +120,7 @@ class AppMenu extends StatelessWidget {
       'Clients': RoutesNames.clients,
       'Campaigns': RoutesNames.campaigns,
       'Tasks': RoutesNames.tasks,
+      'Calls': RoutesNames.calls,
       'Projects': RoutesNames.project,
       //? more routes here
     };

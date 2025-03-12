@@ -14,7 +14,7 @@ class _ApiService implements ApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://crm-crmsubdomain.hcvuje.easypanel.host/api/v1/tenant';
+    baseUrl ??= 'https://crm-crmsubdomain.xv6jr6.easypanel.host/api/v1/tenant';
   }
 
   final Dio _dio;

@@ -114,7 +114,7 @@ class AppMenu extends StatelessWidget {
   List<Widget> _menuList() {
     List<Widget> menuItems = [];
     Map<String, String> menuRoutes = {
-      'Dashboard': RoutesNames.home,
+      // 'Dashboard': RoutesNames.home,
       'Contacts': RoutesNames.contacts,
       'Leads': RoutesNames.leads,
       'Clients': RoutesNames.clients,

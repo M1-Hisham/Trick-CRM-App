@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import 'package:trick_crm_app/core/helpers/spacing.dart';
-import 'package:trick_crm_app/core/widgets/app_bottom_nav_bar.dart';
 import 'package:trick_crm_app/core/widgets/app_menu.dart';
 import 'package:trick_crm_app/features/auth/logout/logout.dart';
 
@@ -63,7 +62,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const AppBottomNavBar(),
     );
   }
 }

@@ -1,0 +1,41 @@
+import 'package:flutter/material.dart';
+import 'package:trick_crm_app/core/widgets/app_bottom_nav_bar.dart';
+
+import '../home/presentation/screens/home_screen.dart';
+import '../profile/presentation/profile_screen.dart';
+import '../wallet/presentation/wallet_screen.dart';
+
+class BaseViewScreen extends StatefulWidget {
+  const BaseViewScreen({super.key});
+
+  @override
+  State<BaseViewScreen> createState() => _BaseViewScreenState();
+}
+
+class _BaseViewScreenState extends State<BaseViewScreen> {
+  int _selectedIndex = 0;
+
+  void _onTabChange(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: const [
+          HomeScreen(),
+          WalletScreen(),
+          ProfileScreen(),
+        ],
+      ),
+      bottomNavigationBar: AppBottomNavBar(
+        selectedIndex: _selectedIndex,
+        onTabChange: _onTabChange,
+      ),
+    );
+  }
+}

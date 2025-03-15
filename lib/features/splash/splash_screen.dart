@@ -74,7 +74,7 @@ class _SplashScreenState extends State<SplashScreen>
     final String? token = await SharedPrefHelper.getSecuredString('auth_token');
     log('_checkLoginStatus token: $token');
     if (token != null && token.isNotEmpty) {
-      Get.offAllNamed(RoutesNames.home);
+      Get.offAllNamed(RoutesNames.baseView);
     } else {
       Get.offAllNamed(RoutesNames.login);
     }

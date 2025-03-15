@@ -123,6 +123,7 @@ class AppMenu extends StatelessWidget {
       'Meetings': RoutesNames.meetings,
       'Calls': RoutesNames.calls,
       'Projects': RoutesNames.project,
+      'Brokers': RoutesNames.brokers,
       //? more routes here
     };
     for (MapEntry menus in R.icons.iconsMenu.entries) {

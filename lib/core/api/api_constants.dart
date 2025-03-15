@@ -14,4 +14,5 @@ class ApiConstants {
   static const String tasks = "/tasks";
   static const String meetings = "/meetings";
   static const String calls = "/calls";
+  static const String brokers = "/brokers";
 }

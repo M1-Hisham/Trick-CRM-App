@@ -13,6 +13,8 @@ import 'package:trick_crm_app/features/tasks/presentation/tasks_screen.dart';
 
 import '../../features/auth/login/logic/cubit/login_cubit.dart';
 import '../../features/auth/login/presentation/screens/login_screen.dart';
+import '../../features/brokers/logic/cubit/brokers_cubit.dart';
+import '../../features/brokers/presentation/brokers_screen.dart';
 import '../../features/campaigns/logic/cubit/campaigns_cubit.dart';
 import '../../features/campaigns/presentation/campaigns_screen.dart';
 import '../../features/clients/clients/logic/cubit/clients_cubit.dart';
@@ -97,6 +99,13 @@ abstract class AppRouter {
     GetPage(
       name: RoutesNames.project,
       page: () => const ProjectScreen(),
+    ),
+    GetPage(
+      name: RoutesNames.brokers,
+      page: () => BlocProvider(
+        create: (context) => BrokersCubit(getIt<ApiService>())..getData(),
+        child: const BrokersScreen(),
+      ),
     ),
   ];
 }

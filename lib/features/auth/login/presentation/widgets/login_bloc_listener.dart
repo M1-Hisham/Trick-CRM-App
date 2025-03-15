@@ -39,7 +39,7 @@ class LoginBlocListener extends StatelessWidget {
             Future.delayed(
               const Duration(milliseconds: 500),
               () {
-                Get.offAllNamed(RoutesNames.home);
+                Get.offAllNamed(RoutesNames.baseView);
               },
             );
           },

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import 'package:trick_crm_app/core/widgets/app_bottom_nav_bar.dart';
 
+import '../../core/cubits/menu_cubit.dart';
+import '../../core/widgets/app_menu.dart';
 import '../home/presentation/screens/home_screen.dart';
 import '../profile/presentation/profile_screen.dart';
 import '../wallet/presentation/wallet_screen.dart';
@@ -23,14 +26,23 @@ class _BaseViewScreenState extends State<BaseViewScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = MenuCubit.get(context);
     return Scaffold(
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: const [
-          HomeScreen(),
-          WalletScreen(),
-          ProfileScreen(),
-        ],
+      body: SliderDrawer(
+        isDraggable: false,
+        animationDuration: 110,
+        sliderOpenSize: 290,
+        key: cubit.key,
+        appBar: null,
+        slider: const AppMenu(),
+        child: IndexedStack(
+          index: _selectedIndex,
+          children: const [
+            HomeScreen(),
+            WalletScreen(),
+            ProfileScreen(),
+          ],
+        ),
       ),
       bottomNavigationBar: AppBottomNavBar(
         selectedIndex: _selectedIndex,

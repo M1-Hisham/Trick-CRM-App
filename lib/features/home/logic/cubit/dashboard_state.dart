@@ -13,5 +13,4 @@ class DashboardState with _$DashboardState {
       Success;
   const factory DashboardState.error({required String error}) = Error;
 
-  const factory DashboardState.menu({required bool isOpenOrClose}) = Menu;
 }

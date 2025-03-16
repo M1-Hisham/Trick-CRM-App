@@ -3,9 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:trick_crm_app/features/home/logic/cubit/dashboard_cubit.dart';
-import 'package:trick_crm_app/features/home/logic/cubit/dashboard_state.dart';
-
+import 'package:trick_crm_app/core/cubits/menu_cubit.dart';
 import '../../features/auth/login/data/models/login_response.dart';
 import '../helpers/shaerd_pref_helper.dart';
 import '../helpers/spacing.dart';
@@ -26,9 +24,9 @@ class AppMenu extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  BlocBuilder<DashboardCubit, DashboardState>(
+                  BlocBuilder<MenuCubit, bool>(
                     builder: (context, state) {
-                      final cubit = DashboardCubit.get(context);
+                      final cubit = MenuCubit.get(context);
 
                       return GestureDetector(
                         onTap: () {

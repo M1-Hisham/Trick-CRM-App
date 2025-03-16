@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:trick_crm_app/core/cubits/menu_cubit.dart';
 
 import '../../features/Base-view/base_view_screen.dart';
 import '../../features/auth/login/logic/cubit/login_cubit.dart';
@@ -41,8 +42,15 @@ abstract class AppRouter {
     ),
     GetPage(
       name: RoutesNames.baseView,
-      page: () => BlocProvider(
-        create: (context) => DashboardCubit(getIt())..getDashboard(),
+      page: () => MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => DashboardCubit(getIt())..getDashboard(),
+          ),
+          BlocProvider(
+            create: (context) => MenuCubit(),
+          ),
+        ],
         child: const BaseViewScreen(),
       ),
       transitionDuration: const Duration(milliseconds: 1200),

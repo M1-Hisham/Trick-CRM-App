@@ -30,7 +30,7 @@ AppBar appBar(String title) {
     // nottification icon
     actions: [
       Padding(
-        padding: EdgeInsets.only(right: 16.w, bottom: paddingBottom),
+        padding: EdgeInsets.only(right: 16.w, bottom: 6.h),
         child: IconButton(
           onPressed: () {
             //? Add your action here

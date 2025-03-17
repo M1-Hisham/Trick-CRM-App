@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:trick_crm_app/core/helpers/spacing.dart';
 import 'package:trick_crm_app/core/widgets/app_button.dart';
-import 'package:trick_crm_app/features/leads/lead-view/Open-Activities/open-meetings/data/model/meeting_model.dart';
+import 'package:trick_crm_app/features/leads/lead-view/Open-Activities/open-meetings/data/model/open_meeting_model.dart';
 
 import '../../../../../../core/resources/resources.dart';
 import '../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/widgets/app_data_table.dart';
 
 class OpenMeetingsScreen extends StatelessWidget {
-  final List<MeetingModel> meetings;
+  final List<OpenMeetingModel> meetings;
   const OpenMeetingsScreen({super.key, required this.meetings});
 
   @override
@@ -34,7 +34,7 @@ class OpenMeetingsScreen extends StatelessWidget {
                 style: R.textStyles.font17PrimaryW600,
               ),
               spacingV(20),
-              AppDataTable<MeetingModel>(
+              AppDataTable<OpenMeetingModel>(
                 dataMessage: 'No Open Meetings',
                 data: meetings,
                 headers: const [

@@ -20,13 +20,13 @@ OpenActivityModel _$OpenActivityModelFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updated_at'] as String?,
       task: json['task'] == null
           ? null
-          : TaskModel.fromJson(json['task'] as Map<String, dynamic>),
+          : OpenTaskModel.fromJson(json['task'] as Map<String, dynamic>),
       call: json['call'] == null
           ? null
           : OpenCallModel.fromJson(json['call'] as Map<String, dynamic>),
       meeting: json['meeting'] == null
           ? null
-          : MeetingModel.fromJson(json['meeting'] as Map<String, dynamic>),
+          : OpenMeetingModel.fromJson(json['meeting'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$OpenActivityModelToJson(OpenActivityModel instance) =>

@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'meeting_model.g.dart';
+part 'open_meeting_model.g.dart';
 
 @JsonSerializable()
-class MeetingModel {
+class OpenMeetingModel {
   int? id;
   @JsonKey(name: "created_by")
   int? createdBy;
@@ -48,7 +48,7 @@ class MeetingModel {
   int? compaignId;
   Host? host;
 
-  MeetingModel({
+  OpenMeetingModel({
     this.id,
     this.createdBy,
     this.hostId,
@@ -76,8 +76,8 @@ class MeetingModel {
     this.host,
   });
 
-  factory MeetingModel.fromJson(Map<String, dynamic> json) =>
-      _$MeetingModelFromJson(json);
+  factory OpenMeetingModel.fromJson(Map<String, dynamic> json) =>
+      _$OpenMeetingModelFromJson(json);
 }
 
 @JsonSerializable()

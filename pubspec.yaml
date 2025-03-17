@@ -117,6 +117,7 @@ flutter:
     - assets/icons/iconsMenu/
     - assets/icons/icons-lead-view/
     - assets/icons/icons-activities-view/
+    - assets/icons/icons-profile/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

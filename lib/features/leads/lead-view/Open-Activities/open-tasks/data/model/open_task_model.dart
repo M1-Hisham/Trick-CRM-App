@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'task_model.g.dart';
+part 'open_task_model.g.dart';
 
 @JsonSerializable()
-class TaskModel {
+class OpenTaskModel {
   int? id;
   @JsonKey(name: "user_id")
   int? userId;
@@ -32,7 +32,7 @@ class TaskModel {
   @JsonKey(name: "updated_at")
   String? updatedAt;
 
-  TaskModel({
+  OpenTaskModel({
     this.id,
     this.userId,
     this.tenantId,
@@ -50,5 +50,6 @@ class TaskModel {
     this.createdAt,
     this.updatedAt,
   });
-  factory TaskModel.fromJson(Map<String, dynamic> json) => _$TaskModelFromJson(json); 
+  factory OpenTaskModel.fromJson(Map<String, dynamic> json) =>
+      _$OpenTaskModelFromJson(json);
 }

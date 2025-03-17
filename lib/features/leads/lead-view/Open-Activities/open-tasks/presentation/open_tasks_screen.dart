@@ -7,10 +7,10 @@ import 'package:trick_crm_app/core/widgets/app_data_table.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Open-Activities/open-tasks/create-lead-task/presentation/screen/create_lead_task.dart';
 
 import '../../../../../../core/widgets/app_bar.dart';
-import '../data/model/task_model.dart';
+import '../data/model/open_task_model.dart';
 
 class OpenTasksScreen extends StatelessWidget {
-  final List<TaskModel> taskModel;
+  final List<OpenTaskModel> taskModel;
   final int leadId;
   const OpenTasksScreen(
       {super.key, required this.taskModel, required this.leadId});
@@ -58,7 +58,7 @@ class OpenTasksScreen extends StatelessWidget {
                 style: R.textStyles.font17PrimaryW600,
               ),
               spacingV(20),
-              AppDataTable<TaskModel>(
+              AppDataTable<OpenTaskModel>(
                 dataMessage: 'No Open Tasks',
                 data: taskModel,
                 headers: const [

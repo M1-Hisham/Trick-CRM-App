@@ -1,8 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Open-Activities/open-calls/data/model/open_call_model.dart';
 
-import '../../../open-meetings/data/model/meeting_model.dart';
-import '../../../open-tasks/data/model/task_model.dart';
+import '../../../open-meetings/data/model/open_meeting_model.dart';
+import '../../../open-tasks/data/model/open_task_model.dart';
 
 part 'open_activity_model.g.dart';
 
@@ -26,9 +26,9 @@ class OpenActivityModel {
   String? createdAt;
   @JsonKey(name: "updated_at")
   String? updatedAt;
-  TaskModel? task;
+  OpenTaskModel? task;
   OpenCallModel? call;
-  MeetingModel? meeting;
+  OpenMeetingModel? meeting;
 
   OpenActivityModel({
     this.id,

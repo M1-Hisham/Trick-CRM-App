@@ -4,10 +4,10 @@ import 'package:trick_crm_app/core/widgets/app_bar.dart';
 
 import '../../open-calls/data/model/open_call_model.dart';
 import '../../open-calls/presentation/open_calls_screen.dart';
+import '../../open-meetings/data/model/open_meeting_model.dart';
+import '../../open-tasks/data/model/open_task_model.dart';
 import '../data/model/open_activity_model.dart';
-import '../../open-meetings/data/model/meeting_model.dart';
 import '../../open-meetings/presentation/open_meetings_screen.dart';
-import '../../open-tasks/data/model/task_model.dart';
 import '../../open-tasks/presentation/open_tasks_screen.dart';
 import 'widget/card_lead_view.dart';
 
@@ -34,7 +34,7 @@ class OpenActivitiesScreen extends StatelessWidget {
                     taskModel: openActivityModel
                         .map((openActivityModel) => openActivityModel.task)
                         .where((task) => task != null)
-                        .cast<TaskModel>()
+                        .cast<OpenTaskModel>()
                         .toList(),
                     leadId: leadId,
                   ),
@@ -49,7 +49,7 @@ class OpenActivitiesScreen extends StatelessWidget {
                       meetings: openActivityModel
                           .map((openActivityModel) => openActivityModel.meeting)
                           .where((meeting) => meeting != null)
-                          .cast<MeetingModel>()
+                          .cast<OpenMeetingModel>()
                           .toList(),
                     ));
               },

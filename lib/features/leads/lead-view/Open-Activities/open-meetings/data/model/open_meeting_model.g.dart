@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'meeting_model.dart';
+part of 'open_meeting_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-MeetingModel _$MeetingModelFromJson(Map<String, dynamic> json) => MeetingModel(
+OpenMeetingModel _$OpenMeetingModelFromJson(Map<String, dynamic> json) =>
+    OpenMeetingModel(
       id: (json['id'] as num?)?.toInt(),
       createdBy: (json['created_by'] as num?)?.toInt(),
       hostId: (json['host_id'] as num?)?.toInt(),
@@ -36,7 +37,7 @@ MeetingModel _$MeetingModelFromJson(Map<String, dynamic> json) => MeetingModel(
           : Host.fromJson(json['host'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$MeetingModelToJson(MeetingModel instance) =>
+Map<String, dynamic> _$OpenMeetingModelToJson(OpenMeetingModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'created_by': instance.createdBy,

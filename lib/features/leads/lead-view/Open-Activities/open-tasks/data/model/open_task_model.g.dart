@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'task_model.dart';
+part of 'open_task_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-TaskModel _$TaskModelFromJson(Map<String, dynamic> json) => TaskModel(
+OpenTaskModel _$OpenTaskModelFromJson(Map<String, dynamic> json) =>
+    OpenTaskModel(
       id: (json['id'] as num?)?.toInt(),
       userId: (json['user_id'] as num?)?.toInt(),
       tenantId: json['tenant_id'] as String?,
@@ -25,7 +26,8 @@ TaskModel _$TaskModelFromJson(Map<String, dynamic> json) => TaskModel(
       updatedAt: json['updated_at'] as String?,
     );
 
-Map<String, dynamic> _$TaskModelToJson(TaskModel instance) => <String, dynamic>{
+Map<String, dynamic> _$OpenTaskModelToJson(OpenTaskModel instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'user_id': instance.userId,
       'tenant_id': instance.tenantId,

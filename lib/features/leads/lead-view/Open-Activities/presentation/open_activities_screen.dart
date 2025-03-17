@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:trick_crm_app/core/widgets/app_bar.dart';
 
 import '../data/model/open_activity_model.dart';
+import '../open-meetings/data/model/meeting_model.dart';
 import '../open-meetings/presentation/open_meetings_screen.dart';
 import '../open-tasks/data/model/task_model.dart';
 import '../open-tasks/presentation/open_tasks_screen.dart';
@@ -28,7 +29,11 @@ class OpenActivitiesScreen extends StatelessWidget {
               onTap: () {
                 Get.to(
                   () => OpenTasksScreen(
-                    taskModel: openActivityModel.map((openActivityModel) => openActivityModel.task).where((task) => task != null).cast<TaskModel>().toList(),
+                    taskModel: openActivityModel
+                        .map((openActivityModel) => openActivityModel.task)
+                        .where((task) => task != null)
+                        .cast<TaskModel>()
+                        .toList(),
                     leadId: leadId,
                   ),
                 );
@@ -38,7 +43,13 @@ class OpenActivitiesScreen extends StatelessWidget {
               title: 'Open Meetings',
               icon: 'OpenMeetings',
               onTap: () {
-                Get.to(() => const OpenMeetingsScreen());
+                Get.to(() => OpenMeetingsScreen(
+                      meetings: openActivityModel
+                          .map((openActivityModel) => openActivityModel.meeting)
+                          .where((meeting) => meeting != null)
+                          .cast<MeetingModel>()
+                          .toList(),
+                    ));
               },
             ),
             cardActivitesView(

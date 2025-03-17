@@ -12,7 +12,6 @@ class AppImages {
   String box = "assets/icons/box.svg";
   String home = "assets/icons/home.svg";
   String wallet = "assets/icons/wallet.svg";
-  String graph = "assets/icons/graph.svg";
   String user = "assets/icons/user.svg";
   String notification = "assets/icons/notification.svg";
   String add = "assets/icons/create-leads.svg";
@@ -23,6 +22,14 @@ class AppImages {
   String subtract = "assets/icons/Subtract.svg";
   String imageUserError = "assets/icons/image-user-error.png";
   String projects = "assets/icons/projects.svg";
+  String generalInfo = "assets/icons/icons-profile/generalInfo.svg";
+  String lock = "assets/icons/icons-profile/lock.svg";
+  String company = "assets/icons/icons-profile/company.svg";
+  String subscription = "assets/icons/icons-profile/Subscription.svg";
+  String recycleBin = "assets/icons/icons-profile/RecycleBin.svg";
+  String support = "assets/icons/icons-profile/Support.svg";
+  String administration = "assets/icons/icons-profile/Administration.svg";
+
   Map<String, String> iconsMenu = {
     // "Dashboard": "assets/icons/iconsMenu/Dashboard.svg",
     "Contacts": "assets/icons/iconsMenu/Contacts.svg",

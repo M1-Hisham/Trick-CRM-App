@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/core/widgets/app_bar.dart';
 
+import '../../open-calls/data/model/open_call_model.dart';
+import '../../open-calls/presentation/open_calls_screen.dart';
 import '../data/model/open_activity_model.dart';
-import '../open-meetings/data/model/meeting_model.dart';
-import '../open-meetings/presentation/open_meetings_screen.dart';
-import '../open-tasks/data/model/task_model.dart';
-import '../open-tasks/presentation/open_tasks_screen.dart';
+import '../../open-meetings/data/model/meeting_model.dart';
+import '../../open-meetings/presentation/open_meetings_screen.dart';
+import '../../open-tasks/data/model/task_model.dart';
+import '../../open-tasks/presentation/open_tasks_screen.dart';
 import 'widget/card_lead_view.dart';
 
 class OpenActivitiesScreen extends StatelessWidget {
@@ -56,7 +58,14 @@ class OpenActivitiesScreen extends StatelessWidget {
               title: 'Open Calls',
               icon: 'OpenCalls',
               onTap: () {
-                // Get.to(() => OpenCallsScreen());
+                Get.to(() => OpenCallsScreen(
+                  callsModel: openActivityModel
+                          .map((openActivityModel) => openActivityModel.call)
+                          .where((call) => call != null)
+                          .cast<OpenCallModel>()
+                          .toList(),
+                      leadId: leadId,
+                ));
               },
             ),
           ],

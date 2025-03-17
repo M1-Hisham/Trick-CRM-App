@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../../../core/helpers/spacing.dart';
-import '../../../../../../../core/resources/resources.dart';
+import '../../../../../../../../core/helpers/spacing.dart';
+import '../../../../../../../../core/resources/resources.dart';
 
 /// Generate a card view for the leads view
 cardActivitesView({

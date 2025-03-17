@@ -4,7 +4,7 @@ import '../../../Attatchments/attachment-view/model/attachments_model.dart';
 import '../../../Campaigns/campaigns-view/data/model/campaigns_model.dart';
 import '../../../Campaigns/create-campaigns/data/model/campaign_leads_model.dart';
 import '../../../Close-activities/data/model/closed_activity_model.dart';
-import '../../../Open-Activities/data/model/open_activity_model.dart';
+import '../../../Open-Activities/open-activities/data/model/open_activity_model.dart';
 import '../../../Timeline/data/model/activity_log_model.dart';
 import '../../../notes/notes-view/model/lead_note.dart';
 

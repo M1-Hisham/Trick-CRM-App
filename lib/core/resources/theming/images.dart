@@ -54,11 +54,15 @@ class AppImages {
     "Campaigns": "assets/icons/icons-lead-view/Campaians.svg",
     "Emails": "assets/icons/icons-lead-view/Email.svg",
     "openActivities": "assets/icons/icons-lead-view/OpenActivities.svg",
+    "closedActivities": "assets/icons/icons-lead-view/ClosedActivities.svg",
   };
 
   Map<String, String> iconsActivitiesView = {
     "OpenCalls": "assets/icons/icons-activities-view/OpenCalls.svg",
     "OpenTasks": "assets/icons/icons-activities-view/OpenTasks.svg",
     "OpenMeetings": "assets/icons/icons-activities-view/OpenMeetings.svg",
+    "ClosedCalls": "assets/icons/icons-activities-view/ClosedCalls.svg",
+    "ClosedTasks": "assets/icons/icons-activities-view/ClosedTasks.svg",
+    "ClosedMeetings": "assets/icons/icons-activities-view/ClosedMeetings.svg",
   };
 }

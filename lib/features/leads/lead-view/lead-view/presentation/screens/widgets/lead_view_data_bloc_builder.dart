@@ -5,6 +5,8 @@ import 'package:trick_crm_app/core/cubits/base_state.dart';
 import 'package:trick_crm_app/core/di/dependency_injection.dart';
 import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Campaigns/create-campaigns/data/model/campaign_leads_model.dart';
+import 'package:trick_crm_app/features/leads/lead-view/Closed-Activities/closed-activities/data/model/closed_activity_model.dart';
+import 'package:trick_crm_app/features/leads/lead-view/Closed-Activities/closed-activities/presentation/closed_activities_screen.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Emails/emails_screen.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Open-Activities/open-activities/data/model/open_activity_model.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Timeline/data/model/activity_log_model.dart';
@@ -81,6 +83,8 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
                   leadsViewModel.leadAttatchment;
               final List<OpenActivityModel>? openActivity =
                   leadsViewModel.openActivity;
+              final List<ClosedActivityModel>? closedActivityModel =
+                  leadsViewModel.closedActivity;
               final List<CampaignLeadsModel>? campaignLeads =
                   leadsViewModel.campaignLeads;
               final List<ActivityLog>? activityLogs =
@@ -146,6 +150,18 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
                       Get.to(
                         () => OpenActivitiesScreen(
                           openActivityModel: openActivity ?? [],
+                          leadId: leadId,
+                        ),
+                      );
+                    },
+                  ),
+                  cardLeadView(
+                    title: 'Closed Activities',
+                    icon: 'closedActivities',
+                    onTap: () {
+                      Get.to(
+                        () => ClosedActivitiesScreen(
+                          closedActivityModel: closedActivityModel ?? [],
                           leadId: leadId,
                         ),
                       );

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/core/helpers/spacing.dart';
 import 'package:trick_crm_app/core/widgets/app_bar.dart';
 
+import '../../../core/di/dependency_injection.dart';
 import '../../../core/resources/resources.dart';
 import '../payment-plans/presentation/payment_plans_screen.dart';
+import '../projects/logic/cubit/projects_cubit.dart';
 import '../projects/presentation/projects_screen.dart';
 
 class ProjectScreen extends StatelessWidget {
@@ -23,7 +26,10 @@ class ProjectScreen extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                Get.to(() => const ProjectsScreen());
+                Get.to(() => BlocProvider(
+                      create: (context) => ProjectsCubit(getIt())..getData(),
+                      child: const ProjectsScreen(),
+                    ));
               },
               child: Container(
                 width: 180.w,

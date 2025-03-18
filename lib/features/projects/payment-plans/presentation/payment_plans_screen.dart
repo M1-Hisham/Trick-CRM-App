@@ -5,6 +5,7 @@ import 'package:trick_crm_app/core/widgets/app_bar.dart';
 import 'package:trick_crm_app/core/widgets/app_button.dart';
 
 import '../../../../core/resources/resources.dart';
+import 'widget/payment_plans_data_bloc_builder.dart';
 
 class PaymentPlansScreen extends StatelessWidget {
   const PaymentPlansScreen({super.key});
@@ -23,11 +24,7 @@ class PaymentPlansScreen extends StatelessWidget {
               onPressed: () {},
             ),
             spacingV(20),
-            // const AppDataTable(
-            //   data: [],
-            //   headers: ['headers'],
-            //   dataExtractors: ,
-            // ),
+            const PaymentPlansDataBlocBuilder(),
           ],
         ),
       ),

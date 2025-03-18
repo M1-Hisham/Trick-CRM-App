@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/core/helpers/spacing.dart';
 import 'package:trick_crm_app/core/widgets/app_bar.dart';
+import 'package:trick_crm_app/features/projects/payment-plans/logic/cubit/payment_plans_cubit.dart';
 
 import '../../../core/di/dependency_injection.dart';
 import '../../../core/resources/resources.dart';
@@ -55,7 +56,11 @@ class ProjectScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Get.to(() => const PaymentPlansScreen());
+                Get.to(() => BlocProvider(
+                      create: (context) =>
+                          PaymentPlansCubit(getIt())..getData(),
+                      child: const PaymentPlansScreen(),
+                    ));
               },
               child: Container(
                 width: 180.w,

@@ -43,10 +43,20 @@ class PaymentPlansDataBlocBuilder extends StatelessWidget {
                 dataExtractors: [
                   (paymentPlans) => paymentPlans.planName ?? '_',
                   (paymentPlans) =>
-                      paymentPlans.downPaymentPercentage.toString() ,
-                  (paymentPlans) => paymentPlans.years.toString() ,
+                      paymentPlans.downPaymentPercentage.toString(),
+                  (paymentPlans) => paymentPlans.years.toString(),
                   (paymentPlans) => paymentPlans.discount ?? '_',
-                  (paymentPlans) => paymentPlans.status.toString() ,
+                  (paymentPlans) {
+                    if (paymentPlans.status == 0) {
+                      return 'Active';
+                    } else if (paymentPlans.status == 1) {
+                      return 'Not Active';
+                    } else if (paymentPlans.status == 2) {
+                      return 'Deleted';
+                    } else {
+                      return '_';
+                    }
+                  },
                 ],
                 dataIdExtractor: (paymentPlans) =>
                     (paymentPlans.id ?? 0).toString(),

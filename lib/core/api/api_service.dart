@@ -32,6 +32,8 @@ import '../../features/leads/lead-view/lead-view/data/model/leads_view_model.dar
 import '../../features/leads/lead-view/notes/update-note/data/models/update_lead_note_model.dart';
 import '../../features/leads/lead-view/notes/update-note/data/models/update_lead_note_request_body.dart';
 import '../../features/meetings/data/model/meetings_model.dart';
+import '../../features/projects/payment-plans/create-payment-plans/data/model/create_payment_plans_model.dart';
+import '../../features/projects/payment-plans/create-payment-plans/data/model/create_payment_plans_request_body.dart';
 import '../../features/projects/projects/data/model/projects_model.dart';
 import 'api_constants.dart';
 
@@ -152,4 +154,9 @@ abstract class ApiService {
   /// service for payment plans
   @GET(ApiConstants.paymentPlans)
   Future<PaymentPlansModel> getPaymentPlans();
+
+  /// service for create payment plans
+  @POST(ApiConstants.createPaymentPlans)
+  Future<CreatePaymentPlansModel> createPaymentPlans(
+      @Body() CreatePaymentPlansRequestBody createPaymentPlansRequestBody);
 }

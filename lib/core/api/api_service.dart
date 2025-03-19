@@ -6,6 +6,7 @@ import 'package:trick_crm_app/features/auth/login/data/models/login_request_body
 import 'package:trick_crm_app/features/auth/login/data/models/login_response.dart';
 import 'package:trick_crm_app/features/brokers/data/model/brokers_model.dart';
 import 'package:trick_crm_app/features/leads/create-lead/data/models/create_lead_model.dart';
+import 'package:trick_crm_app/features/leads/lead-view/Campaigns/create-campaigns/data/model/campaign_leads_request_body.dart';
 import 'package:trick_crm_app/features/leads/leads/data/models/leads_model.dart';
 import 'package:trick_crm_app/features/projects/payment-plans/data/model/payment_plans_model.dart';
 import 'package:trick_crm_app/features/tasks/data/model/tasks_model.dart';
@@ -17,6 +18,7 @@ import '../../features/contacts/data/contacts_model.dart';
 import '../../features/home/data/models/dashboard_response.dart';
 import '../../features/leads/create-lead/data/models/create_lead_request_body.dart';
 import '../../features/leads/lead-view/Attatchments/create-attachment/data/model/create_attachment_model.dart';
+import '../../features/leads/lead-view/Campaigns/create-campaigns/data/model/create_campaign_leads_model.dart';
 import '../../features/leads/lead-view/Information/data/model/edit_lead_model.dart';
 import '../../features/leads/lead-view/Open-Activities/open-meetings/create-lead-meeting/data/model/create_lead_meeting_model.dart';
 import '../../features/leads/lead-view/Open-Activities/open-meetings/create-lead-meeting/data/model/create_lead_meeting_request_body.dart';
@@ -93,6 +95,13 @@ abstract class ApiService {
   @GET("/leads/{id}/{idAttachment}/delete-attachment")
   Future<DeleteAttachmentModel> deleteAttachment(
       @Path("id") int id, @Path("idAttachment") int idAttachment);
+
+  /// service for create lead campaign
+  @POST("/leads/{id}/create-campaign")
+  Future<CreateCampaignLeadsModel> createLeadCampaign(
+    @Path("id") int leadId,
+    @Body() CampaignLeadsRequestBody campaignLeadsRequestBody,
+  );
 
   /// service for create lead task
   @POST("/leads/{id}/create-task")

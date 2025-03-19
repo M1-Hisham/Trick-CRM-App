@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:trick_crm_app/core/cubits/base_state.dart';
 import 'package:trick_crm_app/core/di/dependency_injection.dart';
 import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
-import 'package:trick_crm_app/features/leads/lead-view/Campaigns/create-campaigns/data/model/campaign_leads_model.dart';
+import 'package:trick_crm_app/features/leads/lead-view/Campaigns/campaigns-view/data/model/campaign_leads_model.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Closed-Activities/closed-activities/data/model/closed_activity_model.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Closed-Activities/closed-activities/presentation/closed_activities_screen.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Emails/emails_screen.dart';
@@ -17,6 +17,7 @@ import 'package:trick_crm_app/features/leads/lead-view/notes/notes-view/presenta
 
 import '../../../../Attatchments/attachment-view/model/attachments_model.dart';
 import '../../../../Attatchments/attachment-view/presentation/attachment_screen.dart';
+import '../../../../Campaigns/campaigns-view/data/model/campaigns_model.dart';
 import '../../../../Campaigns/campaigns-view/presentation/campaigns_screen.dart';
 import '../../../../Information/presentation/information_screen.dart';
 import '../../../../Open-Activities/open-activities/presentation/open_activities_screen.dart';
@@ -87,6 +88,8 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
                   leadsViewModel.closedActivity;
               final List<CampaignLeadsModel>? campaignLeads =
                   leadsViewModel.campaignLeads;
+              final List<CampaignsModel>? campaignsModel =
+                  leadsViewModel.campaigns;
               final List<ActivityLog>? activityLogs =
                   leadsViewModel.activityLog;
               return Column(
@@ -131,9 +134,13 @@ class LeadViewDataBlocBuilder extends StatelessWidget {
                     title: 'Campaigns',
                     icon: 'Campaigns',
                     onTap: () {
-                      Get.to(() => CampaignsScreen(
-                            campaignLeads: campaignLeads ?? [],
-                          ));
+                      Get.to(
+                        () => CampaignsScreen(
+                          campaignLeads: campaignLeads ?? [],
+                          campaignsModel: campaignsModel ?? [],
+                          leadId: leadId,
+                        ),
+                      );
                     },
                   ),
                   cardLeadView(

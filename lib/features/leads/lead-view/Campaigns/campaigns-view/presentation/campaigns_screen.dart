@@ -6,12 +6,15 @@ import '../../../../../../core/resources/resources.dart';
 import '../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/widgets/app_button.dart';
 import '../../../../../../core/widgets/app_data_table.dart';
-import '../../create-campaigns/data/model/campaign_leads_model.dart';
+import '../data/model/campaign_leads_model.dart';
 import '../../create-campaigns/presentation/add_campaign.dart';
+import '../data/model/campaigns_model.dart';
 
 class CampaignsScreen extends StatelessWidget {
   final List<CampaignLeadsModel> campaignLeads;
-  const CampaignsScreen({super.key, required this.campaignLeads});
+  final List<CampaignsModel> campaignsModel;
+  final int leadId;
+  const CampaignsScreen({super.key, required this.campaignLeads, required this.leadId, required this.campaignsModel});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,8 @@ class CampaignsScreen extends StatelessWidget {
                   context: context,
                   builder: (context) {
                     return AddCampaign(
-                      campaignLeads: campaignLeads,
+                      campaignsModel: campaignsModel,
+                      leadId: leadId,
                     );
                   },
                 );

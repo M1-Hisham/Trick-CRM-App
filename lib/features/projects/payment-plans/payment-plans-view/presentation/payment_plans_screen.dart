@@ -5,6 +5,7 @@ import 'package:trick_crm_app/core/widgets/app_bar.dart';
 import 'package:trick_crm_app/core/widgets/app_button.dart';
 
 import '../../../../../core/resources/resources.dart';
+import '../../create-payment-plans/presentation/create_payment_plans_screen.dart';
 import 'widget/payment_plans_data_bloc_builder.dart';
 
 class PaymentPlansScreen extends StatelessWidget {
@@ -21,7 +22,11 @@ class PaymentPlansScreen extends StatelessWidget {
             AppButton(
               icon: SvgPicture.asset(R.icons.add),
               text: 'Create Payment Plan',
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (context) => CreatePaymentPlansScreen());
+              },
             ),
             spacingV(20),
             const PaymentPlansDataBlocBuilder(),

@@ -4,7 +4,7 @@ import 'package:trick_crm_app/core/helpers/spacing.dart';
 import 'package:trick_crm_app/core/widgets/app_bar.dart';
 import 'package:trick_crm_app/core/widgets/app_button.dart';
 
-import '../../../../core/resources/resources.dart';
+import '../../../../../core/resources/resources.dart';
 import 'widget/payment_plans_data_bloc_builder.dart';
 
 class PaymentPlansScreen extends StatelessWidget {

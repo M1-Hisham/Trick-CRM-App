@@ -8,7 +8,7 @@ import 'package:trick_crm_app/features/brokers/data/model/brokers_model.dart';
 import 'package:trick_crm_app/features/leads/create-lead/data/models/create_lead_model.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Campaigns/create-campaigns/data/model/campaign_leads_request_body.dart';
 import 'package:trick_crm_app/features/leads/leads/data/models/leads_model.dart';
-import 'package:trick_crm_app/features/projects/payment-plans/data/model/payment_plans_model.dart';
+import 'package:trick_crm_app/features/projects/payment-plans/payment-plans-view/data/model/payment_plans_model.dart';
 import 'package:trick_crm_app/features/tasks/data/model/tasks_model.dart';
 
 import '../../features/calls/data/model/calls_model.dart';

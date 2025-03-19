@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../../../core/cubits/base_state.dart';
-import '../../../../../core/resources/resources.dart';
-import '../../../../../core/widgets/app_data_table.dart';
+import '../../../../../../core/cubits/base_state.dart';
+import '../../../../../../core/resources/resources.dart';
+import '../../../../../../core/widgets/app_data_table.dart';
 import '../../data/model/payment_plans_model.dart';
 import '../../logic/cubit/payment_plans_cubit.dart';
 

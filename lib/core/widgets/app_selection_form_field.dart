@@ -25,6 +25,11 @@ class AppSelectionFormField extends StatefulWidget {
 class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
   late final List<dynamic> _currencies = widget.selections;
   String? _selectedValue;
+  bool _isSpecialLabel(String? label) {
+    return label == 'Lead Owner' ||
+        label == 'Assign To' ||
+        label == 'Campaign Name';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,15 +98,11 @@ class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
           onSaved: widget.onSaved,
           items: _currencies.map((dynamic value) {
             return DropdownMenuItem<String>(
-              value: widget.labelText == 'Lead Owner' ||
-                      widget.labelText == 'Assign To'
+              value: _isSpecialLabel(widget.labelText)
                   ? value['id'].toString()
                   : value,
               child: Text(
-                widget.labelText == 'Lead Owner' ||
-                        widget.labelText == 'Assign To'
-                    ? value['name']
-                    : value,
+                _isSpecialLabel(widget.labelText) ? value['name'] : value,
                 style: TextStyle(
                   fontSize: 14.sp,
                 ),

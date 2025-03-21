@@ -64,17 +64,22 @@ class _CreateLeadScreenState extends State<CreateLeadScreen> {
                   final cubit = context.read<ShowFieldsCubit>();
                   isShowFields = cubit.isShowFields;
 
-                  return userForm(
-                    context,
-                    leadOwner ??
-                        [
-                          {'name': 'No data'}
-                        ],
-                    assignedToNames ??
-                        [
-                          {'name': 'No data'}
-                        ],
-                    isShowFields,
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).viewInsets.bottom,
+                    ),
+                    child: userForm(
+                      context,
+                      leadOwner ??
+                          [
+                            {'name': 'No data'}
+                          ],
+                      assignedToNames ??
+                          [
+                            {'name': 'No data'}
+                          ],
+                      isShowFields,
+                    ),
                   );
                 },
               ),

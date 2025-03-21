@@ -58,6 +58,7 @@ ListView userForm(
     controller: scrollController,
     shrinkWrap: true,
     padding: const EdgeInsets.all(20),
+    keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
     children: [
       spacingV(120),
       ...uploadImage(

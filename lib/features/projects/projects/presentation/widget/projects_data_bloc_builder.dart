@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:trick_crm_app/features/projects/projects/data/model/projects_model.dart';
 import 'package:trick_crm_app/features/projects/projects/logic/cubit/projects_cubit.dart';
 
 import '../../../../../core/cubits/base_state.dart';
+import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/resources/resources.dart';
+import '../../../../../core/widgets/app_button.dart';
 import '../../../../../core/widgets/app_data_table.dart';
+import '../../create-project/presentation/create_project_screen.dart';
 
 class ProjectsDataBlocBuilder extends StatelessWidget {
   const ProjectsDataBlocBuilder({super.key});
@@ -21,38 +25,67 @@ class ProjectsDataBlocBuilder extends StatelessWidget {
                   baseColor: R.colors.baseColorShimmer,
                   highlightColor: R.colors.highlightColorShimmer,
                   enabled: true,
-                  child: const AppDataTable<Projects>(
-                    data: [],
-                    headers: [],
-                    dataExtractors: [],
+                  child: Column(
+                    children: [
+                      AppButton(
+                        icon: SvgPicture.asset(R.icons.add),
+                        text: 'Create Project',
+                        onPressed: () {},
+                      ),
+                      spacingV(20),
+                      const AppDataTable<Projects>(
+                        data: [],
+                        headers: [],
+                        dataExtractors: [],
+                      ),
+                    ],
                   ),
                 ),
             success: (ProjectsModel projectsModel) {
               final String? projectMessage = projectsModel.message;
               final projects = projectsModel.projects;
-              return AppDataTable<Projects>(
-                dataMessage: projectMessage,
-                data: projects ?? [],
-                headers: const [
-                  "Project Id",
-                  "Project Name",
-                  "Size",
-                  "Location",
+              final paymentPlans = projectsModel.paymentPlans;
+              return Column(
+                children: [
+                  AppButton(
+                    icon: SvgPicture.asset(R.icons.add),
+                    text: 'Create Project',
+                    onPressed: () {
+                      showDialog(
+                        useSafeArea: false,
+                        context: context,
+                        builder: (context) => CreateProjectScreen(
+                          paymentPlans: paymentPlans ?? [],
+                        ),
+                      );
+                    },
+                  ),
+                  spacingV(20),
+                  AppDataTable<Projects>(
+                    dataMessage: projectMessage,
+                    data: projects ?? [],
+                    headers: const [
+                      "Project Id",
+                      "Project Name",
+                      "Size",
+                      "Location",
+                    ],
+                    dataExtractors: [
+                      (project) => project.id.toString(),
+                      (project) => project.name ?? '',
+                      (project) => project.size ?? '',
+                      (project) => project.location ?? '',
+                    ],
+                    dataIdExtractor: (project) => (project.id ?? 0).toString(),
+                    // dataLeadNameExtractor: (project) => project.leadName ?? '_',
+                    onViewDetails: (id, leadName) {
+                      // Get.toNamed(
+                      //   RoutesNames.leadsView,
+                      //   arguments: id != '' ? int.parse(id) : 0,
+                      // );
+                    },
+                  ),
                 ],
-                dataExtractors: [
-                  (project) => project.id.toString(),
-                  (project) => project.name ?? '',
-                  (project) => project.size ?? '',
-                  (project) => project.location ?? '',
-                ],
-                dataIdExtractor: (project) => (project.id ?? 0).toString(),
-                // dataLeadNameExtractor: (project) => project.leadName ?? '_',
-                onViewDetails: (id, leadName) {
-                  // Get.toNamed(
-                  //   RoutesNames.leadsView,
-                  //   arguments: id != '' ? int.parse(id) : 0,
-                  // );
-                },
               );
             },
             error: (message) => const Center(

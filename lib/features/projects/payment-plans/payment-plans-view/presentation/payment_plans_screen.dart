@@ -15,22 +15,25 @@ class PaymentPlansScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar('Payment Plans'),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: Column(
-          children: [
-            AppButton(
-              icon: SvgPicture.asset(R.icons.add),
-              text: 'Create Payment Plan',
-              onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) => CreatePaymentPlansScreen());
-              },
-            ),
-            spacingV(20),
-            const PaymentPlansDataBlocBuilder(),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          child: Column(
+            children: [
+              AppButton(
+                icon: SvgPicture.asset(R.icons.add),
+                text: 'Create Payment Plan',
+                onPressed: () {
+                  showDialog(
+                      useSafeArea: false,
+                      context: context,
+                      builder: (context) => CreatePaymentPlansScreen());
+                },
+              ),
+              spacingV(20),
+              const PaymentPlansDataBlocBuilder(),
+            ],
+          ),
         ),
       ),
     );

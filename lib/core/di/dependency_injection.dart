@@ -14,6 +14,7 @@ import '../../features/leads/lead-view/lead-view/logic/cubit/lead_view_cubit.dar
 import '../../features/leads/lead-view/notes/update-note/logic/cubit/update_note_cubit.dart';
 import '../../features/leads/leads/logic/cubit/leads_cubit.dart';
 import '../../features/projects/payment-plans/create-payment-plans/logic/cubit/create_payment_plans_cubit.dart';
+import '../../features/projects/projects/create-project/logic/cubit/create_project_cubit.dart';
 import '../cubits/image_picker_cubit.dart';
 import '../cubits/show_fields.cubit.dart';
 
@@ -66,7 +67,12 @@ Future<void> setupGetIt() async {
   // Create Campaign Lead instance
   getIt.registerLazySingleton<CreateCampaignLeadCubit>(
       () => CreateCampaignLeadCubit(getIt<ApiService>()));
-  
+
+  // Create Payment Plans instance
   getIt.registerLazySingleton<CreatePaymentPlansCubit>(
       () => CreatePaymentPlansCubit(getIt<ApiService>()));
+
+  // Create Project instance
+  getIt.registerLazySingleton<CreateProjectCubit>(
+      () => CreateProjectCubit(getIt<ApiService>()));
 }

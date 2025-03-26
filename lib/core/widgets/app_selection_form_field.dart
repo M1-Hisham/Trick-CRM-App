@@ -28,7 +28,8 @@ class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
   bool _isSpecialLabel(String? label) {
     return label == 'Lead Owner' ||
         label == 'Assign To' ||
-        label == 'Campaign Name';
+        label == 'Campaign Name' ||
+        label == 'Campaign Owner';
   }
 
   @override
@@ -102,7 +103,9 @@ class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
                   ? value['id'].toString()
                   : value,
               child: Text(
-                _isSpecialLabel(widget.labelText) ? value['name'] : value,
+                _isSpecialLabel(widget.labelText)
+                    ? value['name'].toString()
+                    : value,
                 style: TextStyle(
                   fontSize: 14.sp,
                 ),

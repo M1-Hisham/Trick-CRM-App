@@ -189,16 +189,28 @@ class _AppDataTableState<T> extends State<AppDataTable<T>> {
                   .map((extractor) => extractor(data))
                   .toList();
 
-              int? indexCreatedAt = widget.headers.indexOf('Created At');
-              var dateValue = DateFormat("yyyy-MM-ddTHH:mm:ssZ")
-                  .parseUTC(indexCreatedAt != -1
-                      ? dataBody[indexCreatedAt] ?? "0000-00-00T00:00:21Z"
-                      : "0000-00-00T00:00:21Z")
-                  .toLocal();
-              String formattedDate = DateFormat("yyyy-MM-dd").format(dateValue);
-              indexCreatedAt != -1
-                  ? dataBody[indexCreatedAt] = formattedDate
-                  : null;
+              List<int> indices = widget.headers
+                  .asMap()
+                  .entries
+                  .where(
+                    (entry) =>
+                        entry.value == 'Created At' ||
+                        entry.value == 'End date' ||
+                        entry.value == 'Start date' ||
+                        entry.value == 'From' ||
+                        entry.value == 'To' ||
+                        entry.value == 'Due Date',
+                  )
+                  .map((entry) => entry.key)
+                  .toList();
+
+              if (indices.isNotEmpty) {
+                for (int index in indices) {
+                  var dateStr = dataBody[index];
+                  String formattedDate = _parseDate(dateStr);
+                  dataBody[index] = formattedDate;
+                }
+              }
 
               return Container(
                 padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
@@ -235,6 +247,27 @@ class _AppDataTableState<T> extends State<AppDataTable<T>> {
             }).toList()
           : [],
     );
+  }
+
+  String _parseDate(String? dateStr) {
+    if (dateStr == null || dateStr.isEmpty) {
+      return "0000-00-00";
+    }
+
+    List<String> formats = [
+      "yyyy-MM-dd HH:mm:ss",
+      "yyyy-MM-ddTHH:mm:ss.SSSSSSZ",
+      "yyyy-MM-ddTHH:mm:ssZ",
+    ];
+
+    for (String format in formats) {
+      try {
+        var dateValue = DateFormat(format).parseUTC(dateStr).toLocal();
+        return DateFormat("yyyy-MM-dd").format(dateValue);
+      } catch (_) {}
+    }
+
+    return "0000-00-00";
   }
 
   void _filterData() {

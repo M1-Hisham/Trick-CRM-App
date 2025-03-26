@@ -5,7 +5,10 @@ import 'app_text_form_field.dart';
 
 class AppDatePickerField extends StatefulWidget {
   final Function(String?)? onSaved;
-  const AppDatePickerField({super.key, required this.onSaved});
+  final String? hintText;
+  final bool? validator;
+  const AppDatePickerField(
+      {super.key, required this.onSaved, this.hintText, this.validator});
 
   @override
   State<AppDatePickerField> createState() => _AppDatePickerFieldState();
@@ -21,8 +24,8 @@ class _AppDatePickerFieldState extends State<AppDatePickerField> {
       child: AppTextFormField(
         controller: TextEditingController(text: selectedDate),
         isclickable: false,
-        labelText: selectedDate != null ? 'Due Date' : null,
-        hintText: 'Due Date',
+        labelText: selectedDate != null ? widget.hintText ?? 'Due Date' : null,
+        hintText: widget.hintText ?? 'Due Date',
         style: R.textStyles.font15RegentGrayW500.copyWith(
           color: R.colors.black,
         ),
@@ -34,8 +37,10 @@ class _AppDatePickerFieldState extends State<AppDatePickerField> {
         disabledBorder: const Color(0xFFE8ECF4),
         onSaved: widget.onSaved,
         validator: (value) {
-          if (selectedDate == null || selectedDate!.isEmpty) {
-            return 'Please enter a valid date';
+          if (widget.validator != false) {
+            if (selectedDate == null || selectedDate!.isEmpty) {
+              return 'Please enter a valid date';
+            }
           }
           return null;
         },

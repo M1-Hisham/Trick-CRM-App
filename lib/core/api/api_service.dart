@@ -5,6 +5,7 @@ import 'package:retrofit/retrofit.dart';
 import 'package:trick_crm_app/features/auth/login/data/models/login_request_body.dart';
 import 'package:trick_crm_app/features/auth/login/data/models/login_response.dart';
 import 'package:trick_crm_app/features/brokers/data/model/brokers_model.dart';
+import 'package:trick_crm_app/features/campaigns/create-campaign/data/model/create_campaign_request_body.dart';
 import 'package:trick_crm_app/features/leads/create-lead/data/models/create_lead_model.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Campaigns/create-campaigns/data/model/campaign_leads_request_body.dart';
 import 'package:trick_crm_app/features/leads/leads/data/models/leads_model.dart';
@@ -12,6 +13,7 @@ import 'package:trick_crm_app/features/projects/payment-plans/payment-plans-view
 import 'package:trick_crm_app/features/tasks/data/model/tasks_model.dart';
 
 import '../../features/calls/data/model/calls_model.dart';
+import '../../features/campaigns/create-campaign/data/model/create_campaign_model.dart';
 import '../../features/campaigns/model/campaigns_model.dart';
 import '../../features/clients/clients/data/model/clients_model.dart';
 import '../../features/contacts/data/contacts_model.dart';
@@ -132,6 +134,11 @@ abstract class ApiService {
   /// service for Campaigns
   @GET(ApiConstants.campaigns)
   Future<CampaignsModel> getCampaigns();
+
+  /// service for create Campaign
+  @POST(ApiConstants.createCampaign)
+  Future<CreateCampaignModel> createCampaign(
+      @Body() CreateCampaignRequestBody createCampaignRequestBody);
 
   /// service for Tasks
   @GET(ApiConstants.tasks)

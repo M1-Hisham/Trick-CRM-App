@@ -8,6 +8,7 @@ import 'package:trick_crm_app/features/leads/lead-view/notes/create-note/logic/c
 
 import '../../features/auth/login/data/repos/login_repo.dart';
 import '../../features/auth/login/logic/cubit/login_cubit.dart';
+import '../../features/campaigns/create-campaign/logic/cubit/create_campaign_cubit.dart';
 import '../../features/home/data/repo/dashboard_repo.dart';
 import '../../features/leads/lead-view/Campaigns/create-campaigns/logic/cubit/create_campaign_lead_cubit.dart';
 import '../../features/leads/lead-view/lead-view/logic/cubit/lead_view_cubit.dart';
@@ -17,6 +18,7 @@ import '../../features/projects/payment-plans/create-payment-plans/logic/cubit/c
 import '../../features/projects/projects/create-project/logic/cubit/create_project_cubit.dart';
 import '../cubits/image_picker_cubit.dart';
 import '../cubits/show_fields.cubit.dart';
+import '../cubits/user_cubit.dart';
 
 /// This is the dependency injection file for the app.
 final getIt = GetIt.instance;
@@ -24,6 +26,10 @@ final getIt = GetIt.instance;
 Future<void> setupGetIt() async {
   // Dio Instance
   Dio dio = await DioFactory.getDio();
+
+  // User Data Cubit Instance
+  getIt.registerLazySingleton<UserCubit>(() => UserCubit()..loadUserData());
+
   // Api Service Instance
   getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
 
@@ -75,4 +81,12 @@ Future<void> setupGetIt() async {
   // Create Project instance
   getIt.registerLazySingleton<CreateProjectCubit>(
       () => CreateProjectCubit(getIt<ApiService>()));
+
+  // Campaigns instance
+  // getIt.registerLazySingleton<CampaignsCubit>(
+  //     () => CampaignsCubit(getIt<ApiService>()));
+
+  // Create Campaign instance
+  getIt.registerLazySingleton<CreateCampaignCubit>(
+      () => CreateCampaignCubit(getIt<ApiService>()));
 }

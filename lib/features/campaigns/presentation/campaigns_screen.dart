@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
-import '../../../core/helpers/spacing.dart';
-import '../../../core/resources/resources.dart';
 import '../../../core/widgets/app_bar.dart';
-import '../../../core/widgets/app_button.dart';
-import 'widget/campaigns_data_bloc_builder.dart';
+import 'widgets/campaigns_data_bloc_builder.dart';
 
 class CampaignsScreen extends StatelessWidget {
   const CampaignsScreen({super.key});
@@ -14,21 +10,16 @@ class CampaignsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar('Campaigns'),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 20,
-        ),
-        child: Column(
-          children: [
-            AppButton(
-              icon: SvgPicture.asset(R.icons.add),
-              text: 'Create Campaign',
-              onPressed: () {},
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: const SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 20,
             ),
-            spacingV(20),
-            const CampaignsDataBlocBuilder(),
-          ],
+            child: CampaignsDataBlocBuilder(),
+          ),
         ),
       ),
     );

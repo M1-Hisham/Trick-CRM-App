@@ -12,43 +12,48 @@ class TasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar('Tasks'),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 20,
-        ),
-        child: Column(
-          children: [
-            AppButton(
-              icon: SvgPicture.asset(R.icons.add),
-              text: 'Create Task',
-              onPressed: () {},
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        appBar: appBar('Tasks'),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 20,
             ),
-            spacingV(15),
-            Row(
+            child: Column(
               children: [
-                Expanded(
-                  child: AppButton(
-                    icon: SvgPicture.asset(R.icons.importOptions),
-                    text: 'Import Options',
-                    onPressed: () {},
-                  ),
+                AppButton(
+                  icon: SvgPicture.asset(R.icons.add),
+                  text: 'Create Task',
+                  onPressed: () {},
                 ),
-                spacingH(8),
-                Expanded(
-                  child: AppButton(
-                    icon: SvgPicture.asset(R.icons.exportOptions),
-                    text: 'Export Options',
-                    onPressed: () {},
-                  ),
+                spacingV(15),
+                Row(
+                  children: [
+                    Expanded(
+                      child: AppButton(
+                        icon: SvgPicture.asset(R.icons.importOptions),
+                        text: 'Import Options',
+                        onPressed: () {},
+                      ),
+                    ),
+                    spacingH(8),
+                    Expanded(
+                      child: AppButton(
+                        icon: SvgPicture.asset(R.icons.exportOptions),
+                        text: 'Export Options',
+                        onPressed: () {},
+                      ),
+                    ),
+                  ],
                 ),
+                spacingV(20),
+                const TasksDataBlocBuilder(),
               ],
             ),
-            spacingV(20),
-            const TasksDataBlocBuilder(),
-          ],
+          ),
         ),
       ),
     );

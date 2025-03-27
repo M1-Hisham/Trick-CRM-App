@@ -6,6 +6,7 @@ import 'package:trick_crm_app/features/auth/login/data/models/login_request_body
 import 'package:trick_crm_app/features/auth/login/data/models/login_response.dart';
 import 'package:trick_crm_app/features/brokers/data/model/brokers_model.dart';
 import 'package:trick_crm_app/features/campaigns/create-campaign/data/model/create_campaign_request_body.dart';
+import 'package:trick_crm_app/features/deals/data/model/deals_model.dart';
 import 'package:trick_crm_app/features/leads/create-lead/data/models/create_lead_model.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Campaigns/create-campaigns/data/model/campaign_leads_request_body.dart';
 import 'package:trick_crm_app/features/leads/leads/data/models/leads_model.dart';
@@ -151,6 +152,10 @@ abstract class ApiService {
   /// service for Calls
   @GET(ApiConstants.calls)
   Future<CallsModel> getCalls();
+
+  /// service for Deals
+  @GET(ApiConstants.deals)
+  Future<DealsModel> getDeals();
 
   /// service for Brokers
   @GET(ApiConstants.brokers)

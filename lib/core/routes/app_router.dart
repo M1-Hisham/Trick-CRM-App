@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/core/cubits/menu_cubit.dart';
+import 'package:trick_crm_app/features/deals/logic/cubit/deals_cubit.dart';
+import 'package:trick_crm_app/features/deals/presentation/deals_screen.dart';
 
 import '../../features/Base-view/base_view_screen.dart';
 import '../../features/auth/login/logic/cubit/login_cubit.dart';
@@ -127,6 +129,13 @@ abstract class AppRouter {
       page: () => BlocProvider(
         create: (context) => CallsCubit(getIt<ApiService>())..getData(),
         child: const CallsScreen(),
+      ),
+    ),
+    GetPage(
+      name: RoutesNames.deals,
+      page: () => BlocProvider(
+        create: (context) => DealsCubit(getIt<ApiService>())..getData(),
+        child: const DealsScreen(),
       ),
     ),
     GetPage(

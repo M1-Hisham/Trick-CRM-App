@@ -50,11 +50,7 @@ class DealsDataBlocBuilder extends StatelessWidget {
                         ),
                         context: context,
                         builder: (BuildContext context) =>
-                            const CreateDealScreen(
-                                // campaignOwner: campaignOwner!
-                                //     .map((e) => {'name': e.name, 'id': e.id})
-                                //     .toList(),
-                                ),
+                            CreateDealScreen(dealsModel: dealsModel),
                       );
                     },
                   ),

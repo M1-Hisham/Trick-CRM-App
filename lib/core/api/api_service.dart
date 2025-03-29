@@ -18,6 +18,8 @@ import '../../features/campaigns/create-campaign/data/model/create_campaign_mode
 import '../../features/campaigns/model/campaigns_model.dart';
 import '../../features/clients/clients/data/model/clients_model.dart';
 import '../../features/contacts/data/contacts_model.dart';
+import '../../features/deals/create-deal/data/model/create_deal_model.dart';
+import '../../features/deals/create-deal/data/model/create_deal_request_body.dart';
 import '../../features/home/data/models/dashboard_response.dart';
 import '../../features/leads/create-lead/data/models/create_lead_request_body.dart';
 import '../../features/leads/lead-view/Attatchments/create-attachment/data/model/create_attachment_model.dart';
@@ -156,6 +158,12 @@ abstract class ApiService {
   /// service for Deals
   @GET(ApiConstants.deals)
   Future<DealsModel> getDeals();
+
+  /// service for create Deal
+  @POST(ApiConstants.createDeal)
+  Future<CreateDealModel> createDeal(
+    @Body() CreateDealRequestBody createDealRequestBody,
+  );
 
   /// service for Brokers
   @GET(ApiConstants.brokers)

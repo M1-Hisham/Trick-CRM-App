@@ -10,6 +10,7 @@ class AppTextFormField extends StatelessWidget {
   final String? initialValue;
   final bool? isObscureText;
   final bool? isclickable;
+  final bool isRequired;
   final EdgeInsetsGeometry? contentPadding;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
@@ -56,6 +57,7 @@ class AppTextFormField extends StatelessWidget {
     this.isclickable,
     this.disabledBorder,
     this.initialValue,
+    this.isRequired = false,
   });
 
   @override
@@ -70,7 +72,20 @@ class AppTextFormField extends StatelessWidget {
       onSaved: onSaved,
       maxLines: maxLines ?? 1,
       decoration: InputDecoration(
-        labelText: labelText,
+        label: isRequired
+            ? RichText(
+                text: TextSpan(
+                  text: labelText,
+                  style: const TextStyle(color: Colors.black),
+                  children: const [
+                    TextSpan(
+                      text: ' *',
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ],
+                ),
+              )
+            : Text(labelText ?? hintText),
         hintText: hintText,
         labelStyle: R.textStyles.font14DimGrayW400.copyWith(
           color: const Color(0XFF2C2E32),
@@ -84,7 +99,7 @@ class AppTextFormField extends StatelessWidget {
         suffixIcon: suffixIcon,
         hoverColor: hoverColor ?? R.colors.primaryColor,
         filled: true,
-        fillColor: fillColor ?? const Color(0xFFF7F8F9),
+        fillColor: fillColor ?? Colors.white,
         alignLabelWithHint: true,
         prefixIcon: prefixIcon,
         border: const OutlineInputBorder(

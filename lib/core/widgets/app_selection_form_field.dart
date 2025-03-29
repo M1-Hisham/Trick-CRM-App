@@ -10,12 +10,14 @@ class AppSelectionFormField extends StatefulWidget {
   final List<dynamic> selections;
   final FormFieldSetter<dynamic>? onSaved;
   final String? Function(String?)? validator;
+  final bool isRequired;
   const AppSelectionFormField({
     super.key,
     required this.labelText,
     required this.selections,
     required this.onSaved,
     this.validator,
+    this.isRequired = false,
   });
 
   @override
@@ -29,14 +31,33 @@ class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
     return label == 'Lead Owner' ||
         label == 'Assign To' ||
         label == 'Campaign Name' ||
-        label == 'Campaign Owner';
+        label == 'Campaign Owner' ||
+        label == 'Deal Owner' ||
+        label == 'Borker' ||
+        label == 'Campaign' ||
+        label == 'Project Name' ||
+        label == 'Unit Code' ||
+        label == 'Client Name';
   }
 
   @override
   Widget build(BuildContext context) {
     return InputDecorator(
       decoration: InputDecoration(
-        labelText: widget.labelText ?? '',
+        label: widget.isRequired
+            ? RichText(
+                text: TextSpan(
+                  text: widget.labelText,
+                  style: const TextStyle(color: Colors.black),
+                  children: const [
+                    TextSpan(
+                      text: ' *',
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ],
+                ),
+              )
+            : Text(widget.labelText ?? ''),
         labelStyle: R.textStyles.font14DimGrayW400.copyWith(
           color: const Color(0XFF2C2E32),
           fontSize: 15.sp,

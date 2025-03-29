@@ -172,17 +172,18 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                   size: int.parse(_formData['size']),
                   location: _formData['location'],
                   description: _formData['description'],
-                  paymentplans: _formData['payment_plan_ids'].cast<int>(),
+                  paymentplans: _formData['payment_plan_ids'] == null
+                      ? []
+                      : _formData['payment_plan_ids'].cast<int>(),
                 );
                 final cubit = getIt.get<CreateProjectCubit>();
-                await cubit.createProject(createProjectRequestBody);
-
                 Get.back();
+                await cubit.createProject(createProjectRequestBody);
 
                 // Get.showSnackbar(
                 //   GetSnackBar(
                 //     backgroundColor: R.colors.primaryColor,
-                //     message: 'Project Created Successfully',
+                //     // message: createProjectRequestBody.message,
                 //     duration: const Duration(seconds: 2),
                 //   ),
                 // );

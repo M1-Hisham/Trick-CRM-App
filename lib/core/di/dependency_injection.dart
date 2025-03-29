@@ -9,6 +9,7 @@ import 'package:trick_crm_app/features/leads/lead-view/notes/create-note/logic/c
 import '../../features/auth/login/data/repos/login_repo.dart';
 import '../../features/auth/login/logic/cubit/login_cubit.dart';
 import '../../features/campaigns/create-campaign/logic/cubit/create_campaign_cubit.dart';
+import '../../features/deals/create-deal/logic/cubit/create_deal_cubit.dart';
 import '../../features/home/data/repo/dashboard_repo.dart';
 import '../../features/leads/lead-view/Campaigns/create-campaigns/logic/cubit/create_campaign_lead_cubit.dart';
 import '../../features/leads/lead-view/lead-view/logic/cubit/lead_view_cubit.dart';
@@ -89,4 +90,8 @@ Future<void> setupGetIt() async {
   // Create Campaign instance
   getIt.registerLazySingleton<CreateCampaignCubit>(
       () => CreateCampaignCubit(getIt<ApiService>()));
+
+  // Create Deal instance
+  getIt.registerLazySingleton<CreateDealCubit>(
+      () => CreateDealCubit(getIt<ApiService>()));
 }

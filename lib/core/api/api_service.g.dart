@@ -853,6 +853,41 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<CreateBrokersModel> createBroker(
+      CreateBrokerRequestBody createBrokerRequestBody) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(createBrokerRequestBody.toJson());
+    final _options = _setStreamType<CreateBrokersModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/brokers-create',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late CreateBrokersModel _value;
+    try {
+      _value = CreateBrokersModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<ProjectsModel> getProjects() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

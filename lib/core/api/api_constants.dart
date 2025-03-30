@@ -18,6 +18,7 @@ class ApiConstants {
   static const String deals = "/deals";
   static const String createDeal = "/deals-create";
   static const String brokers = "/brokers";
+  static const String createBroker = "/brokers-create";
   static const String projects = "/projects";
   static const String createProject = "/project-create";
   static const String paymentPlans = "/paymentplans";

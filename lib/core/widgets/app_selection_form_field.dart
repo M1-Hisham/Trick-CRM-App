@@ -30,6 +30,7 @@ class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
   bool _isSpecialLabel(String? label) {
     return label == 'Lead Owner' ||
         label == 'Assign To' ||
+        label == 'Assigned To' ||
         label == 'Campaign Name' ||
         label == 'Campaign Owner' ||
         label == 'Deal Owner' ||
@@ -37,7 +38,16 @@ class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
         label == 'Campaign' ||
         label == 'Project Name' ||
         label == 'Unit Code' ||
+        label == 'Broker Owner' ||
+        label == 'Current Status' ||
         label == 'Client Name';
+  }
+
+  String? _currenciesFirst() {
+    return widget.labelText == 'Lead Owner' ||
+            widget.labelText == 'Broker Owner'
+        ? _currencies.first['id'].toString()
+        : _selectedValue;
   }
 
   @override
@@ -95,9 +105,7 @@ class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
             isDense: true,
           ),
           dropdownColor: R.colors.white,
-          value: widget.labelText == 'Lead Owner'
-              ? _currencies.first['id'].toString()
-              : _selectedValue,
+          value: _currenciesFirst(),
           isDense: true,
           hint: Text(
             "Select an option",

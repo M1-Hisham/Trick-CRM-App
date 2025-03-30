@@ -4,6 +4,7 @@ import 'package:trick_crm_app/core/helpers/spacing.dart';
 import 'package:trick_crm_app/core/resources/resources.dart';
 import 'package:trick_crm_app/core/widgets/app_button.dart';
 import 'package:trick_crm_app/core/widgets/app_data_table.dart';
+import 'package:trick_crm_app/core/widgets/app_show_modal_bottom_sheet.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Open-Activities/open-tasks/create-lead-task/presentation/screen/create_lead_task.dart';
 
 import '../../../../../../core/widgets/app_bar.dart';
@@ -30,23 +31,9 @@ class OpenTasksScreen extends StatelessWidget {
                 icon: SvgPicture.asset(R.icons.add),
                 text: 'Create a New Task',
                 onPressed: () {
-                  showModalBottomSheet(
-                    sheetAnimationStyle: AnimationStyle(
-                      duration: const Duration(milliseconds: 1000),
-                      curve: Curves.easeInOutCubicEmphasized,
-                      reverseDuration: const Duration(milliseconds: 600),
-                    ),
-                    useSafeArea: true,
-                    isScrollControlled: true,
-                    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(13),
-                        topRight: Radius.circular(13),
-                      ),
-                    ),
+                  appShowModalBottomSheet(
                     context: context,
-                    builder: (BuildContext context) => CreateLeadTask(
+                    builder: (context) => CreateLeadTask(
                       leadId: leadId,
                     ),
                   );

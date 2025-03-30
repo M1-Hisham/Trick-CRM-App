@@ -9,6 +9,7 @@ import '../../../../core/helpers/spacing.dart';
 import '../../../../core/resources/resources.dart';
 import '../../../../core/widgets/app_button.dart';
 import '../../../../core/widgets/app_data_table.dart';
+import '../../../../core/widgets/app_show_modal_bottom_sheet.dart';
 import '../../create-deal/presentation/create_deal_screen.dart';
 import 'deals_screen_loading.dart';
 
@@ -32,25 +33,11 @@ class DealsDataBlocBuilder extends StatelessWidget {
                     icon: SvgPicture.asset(R.icons.add),
                     text: 'Create Deal',
                     onPressed: () {
-                      showModalBottomSheet(
-                        sheetAnimationStyle: AnimationStyle(
-                          duration: const Duration(milliseconds: 1000),
-                          curve: Curves.easeInOutCubicEmphasized,
-                          reverseDuration: const Duration(milliseconds: 600),
-                        ),
-                        useSafeArea: true,
-                        isScrollControlled: true,
-                        backgroundColor:
-                            Theme.of(context).scaffoldBackgroundColor,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(13),
-                            topRight: Radius.circular(13),
-                          ),
-                        ),
+                      appShowModalBottomSheet(
                         context: context,
-                        builder: (BuildContext context) =>
-                            CreateDealScreen(dealsModel: dealsModel),
+                        builder: (context) => CreateDealScreen(
+                          dealsModel: dealsModel,
+                        ),
                       );
                     },
                   ),

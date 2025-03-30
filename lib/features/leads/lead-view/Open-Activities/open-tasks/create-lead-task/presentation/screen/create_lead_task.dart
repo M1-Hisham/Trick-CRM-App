@@ -46,15 +46,15 @@ class CreateLeadTask extends StatelessWidget {
                         _formData['Due Date'] = value;
                       }),
                     ),
-                    _buildFormFieldSelection(
-                        'Assigned To', true, ['User 1', 'User 2', 'User 3']),
-                    _buildFormFieldSelection(
-                        'Priority', true, ['High', 'Medium', 'Low']),
-                    _buildFormFieldSelection(
-                        'Lead', true, ['Lead 1', 'Lead 2', 'Lead 3']),
-                    //! Add contact selection and Client selection
-                    _buildFormFieldSelection(
-                        'Status', true, ['Open', 'In Progress', 'Completed']),
+                    // _buildFormFieldSelection(
+                    //     'Assigned To', true, ['User 1', 'User 2', 'User 3']),
+                    // _buildFormFieldSelection(
+                    //     'Priority', true, ['High', 'Medium', 'Low']),
+                    // _buildFormFieldSelection(
+                    //     'Lead', true, ['Lead 1', 'Lead 2', 'Lead 3']),
+                    // //! Add contact selection and Client selection
+                    // _buildFormFieldSelection(
+                    //     'Status', true, ['Open', 'In Progress', 'Completed']),
                   ],
                 ),
               ),

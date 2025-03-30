@@ -111,7 +111,7 @@ class _CreateLeadScreenState extends State<CreateLeadScreen> {
         setState(() {
           leadOwner = [
             {
-              'name': userName,
+              'name': "$userName(You)",
               'id': userId,
               'Tenant Id': userTenantId,
             },

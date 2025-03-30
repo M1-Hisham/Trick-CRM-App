@@ -61,7 +61,7 @@ class CreateCampaignScreen extends StatelessWidget {
                             labelText: "Campaign Owner",
                             selections: [
                               {
-                                "name": userData.name,
+                                "name": "${userData.name}(You)",
                                 'id': userData.id,
                               },
                               ...campaignOwner,

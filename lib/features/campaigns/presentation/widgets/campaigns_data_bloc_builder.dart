@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:trick_crm_app/core/widgets/app_show_modal_bottom_sheet.dart';
 import 'package:trick_crm_app/features/campaigns/logic/cubit/campaigns_cubit.dart';
 
 import '../../../../core/cubits/base_state.dart';
@@ -33,27 +34,14 @@ class CampaignsDataBlocBuilder extends StatelessWidget {
                     icon: SvgPicture.asset(R.icons.add),
                     text: 'Create Campaign',
                     onPressed: () {
-                      showModalBottomSheet(
-                        sheetAnimationStyle: AnimationStyle(
-                          duration: const Duration(milliseconds: 1000),
-                          curve: Curves.easeInOutCubicEmphasized,
-                          reverseDuration: const Duration(milliseconds: 600),
-                        ),
-                        useSafeArea: true,
-                        isScrollControlled: true,
-                        backgroundColor:
-                            Theme.of(context).scaffoldBackgroundColor,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(13),
-                            topRight: Radius.circular(13),
-                          ),
-                        ),
+                      appShowModalBottomSheet(
                         context: context,
-                        builder: (BuildContext context) => CreateCampaignScreen(
-                          campaignOwner: campaignOwner!
-                              .map((e) => {'name': e.name, 'id': e.id})
-                              .toList(),
+                        builder: (context) => CreateCampaignScreen(
+                          campaignOwner: campaignOwner != null
+                              ? campaignOwner
+                                  .map((e) => {'name': e.name, 'id': e.id})
+                                  .toList()
+                              : [],
                         ),
                       );
                     },

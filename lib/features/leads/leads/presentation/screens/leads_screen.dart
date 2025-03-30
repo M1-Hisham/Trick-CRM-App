@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trick_crm_app/core/helpers/spacing.dart';
 import 'package:trick_crm_app/core/widgets/app_button.dart';
+import 'package:trick_crm_app/core/widgets/app_show_modal_bottom_sheet.dart';
 
 import '../../../../../core/resources/resources.dart';
 import '../../../../../core/widgets/app_bar.dart';
@@ -30,23 +31,7 @@ class LeadsScreen extends StatelessWidget {
                         icon: SvgPicture.asset(R.icons.add),
                         text: 'Create Lead',
                         onPressed: () {
-                          showModalBottomSheet(
-                            sheetAnimationStyle: AnimationStyle(
-                              duration: const Duration(milliseconds: 1000),
-                              curve: Curves.easeInOutCubicEmphasized,
-                              reverseDuration:
-                                  const Duration(milliseconds: 600),
-                            ),
-                            useSafeArea: true,
-                            isScrollControlled: true,
-                            backgroundColor:
-                                Theme.of(context).scaffoldBackgroundColor,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(13),
-                                topRight: Radius.circular(13),
-                              ),
-                            ),
+                          appShowModalBottomSheet(
                             context: context,
                             builder: (BuildContext context) =>
                                 const CreateLeadScreen(),

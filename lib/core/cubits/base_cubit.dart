@@ -16,7 +16,9 @@ class BaseCubit<T> extends Cubit<BaseState<T>> {
     response.when(
       success: (data) {
         log("Data cubit: success");
-        emit(BaseState.success(data));
+        if (!isClosed) {
+          emit(BaseState.success(data));
+        }
       },
       error: (e) {
         log("Error message BaseCubit: $e");

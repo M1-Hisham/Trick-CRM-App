@@ -17,7 +17,9 @@ class DashboardCubit extends Cubit<DashboardState> {
     dashboardData.when(
       success: (dashboardData) {
         log("Dashboard data: success");
-        emit(DashboardState.success(dashboardData));
+        if (!isClosed) {
+          emit(DashboardState.success(dashboardData));
+        }
       },
       error: (message) {
         log("Error message DashboardCubit: $message");

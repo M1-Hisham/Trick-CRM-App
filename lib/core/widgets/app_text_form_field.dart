@@ -87,11 +87,12 @@ class AppTextFormField extends StatelessWidget {
               )
             : Text(labelText ?? hintText),
         hintText: hintText,
-        labelStyle: R.textStyles.font14DimGrayW400.copyWith(
-          color: const Color(0XFF2C2E32),
-          fontSize: 15.sp,
-          fontWeight: FontWeight.bold,
-        ),
+        labelStyle: const TextStyle(color: Colors.black),
+        // R.textStyles.font14DimGrayW400.copyWith(
+        //   color: const Color(0XFF2C2E32),
+        //   fontSize: 15.sp,
+        //   fontWeight: FontWeight.bold,
+        // ),
         isDense: true,
         contentPadding: contentPadding ??
             EdgeInsets.symmetric(horizontal: 20.w, vertical: 19.h),

@@ -15,7 +15,9 @@ ClientsModel _$ClientsModelFromJson(Map<String, dynamic> json) => ClientsModel(
       clients: (json['clients'] as List<dynamic>?)
           ?.map((e) => Clients.fromJson(e as Map<String, dynamic>))
           .toList(),
-      brokers: json['brokers'] as List<dynamic>?,
+      brokers: (json['brokers'] as List<dynamic>?)
+          ?.map((e) => Brokers.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ClientsModelToJson(ClientsModel instance) =>
@@ -204,4 +206,40 @@ Map<String, dynamic> _$AssignedToJson(Assigned instance) => <String, dynamic>{
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
       'department': instance.department,
+    };
+
+Brokers _$BrokersFromJson(Map<String, dynamic> json) => Brokers(
+      id: (json['id'] as num?)?.toInt(),
+      tenantId: json['tenant_id'] as String?,
+      ownerId: (json['owner_id'] as num?)?.toInt(),
+      email: json['email'] as String?,
+      companyName: json['company_name'] as String?,
+      commercialRegister: json['commercial_register'] as String?,
+      taxCard: json['tax_card'] as String?,
+      address: json['address'] as String?,
+      personName: json['person_name'] as String?,
+      mobile: json['mobile'] as String?,
+      mobile2: json['mobile_2'] as String?,
+      assignedToId: (json['assigned_to_id'] as num?)?.toInt(),
+      isActive: (json['is_active'] as num?)?.toInt(),
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
+    );
+
+Map<String, dynamic> _$BrokersToJson(Brokers instance) => <String, dynamic>{
+      'id': instance.id,
+      'tenant_id': instance.tenantId,
+      'owner_id': instance.ownerId,
+      'email': instance.email,
+      'company_name': instance.companyName,
+      'commercial_register': instance.commercialRegister,
+      'tax_card': instance.taxCard,
+      'address': instance.address,
+      'person_name': instance.personName,
+      'mobile': instance.mobile,
+      'mobile_2': instance.mobile2,
+      'assigned_to_id': instance.assignedToId,
+      'is_active': instance.isActive,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
     };

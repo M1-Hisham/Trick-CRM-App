@@ -10,6 +10,7 @@ import '../../features/auth/login/data/repos/login_repo.dart';
 import '../../features/auth/login/logic/cubit/login_cubit.dart';
 import '../../features/brokers/create-broker/logic/cubit/create_broker_cubit.dart';
 import '../../features/campaigns/create-campaign/logic/cubit/create_campaign_cubit.dart';
+import '../../features/clients/create-client/logic/cubit/create_client_cubit.dart';
 import '../../features/deals/create-deal/logic/cubit/create_deal_cubit.dart';
 import '../../features/home/data/repo/dashboard_repo.dart';
 import '../../features/leads/lead-view/Campaigns/create-campaigns/logic/cubit/create_campaign_lead_cubit.dart';
@@ -71,6 +72,10 @@ Future<void> setupGetIt() async {
   // Update Note instance
   getIt.registerLazySingleton<UpdateNoteCubit>(
       () => UpdateNoteCubit(getIt<ApiService>()));
+
+  // Create Client instance
+  getIt.registerLazySingleton<CreateClientCubit>(
+      () => CreateClientCubit(getIt<ApiService>()));
 
   // Create Campaign Lead instance
   getIt.registerLazySingleton<CreateCampaignLeadCubit>(

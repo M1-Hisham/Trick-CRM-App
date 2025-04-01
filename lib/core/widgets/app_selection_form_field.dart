@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:trick_crm_app/core/di/dependency_injection.dart';
 
 import '../cubits/show_fields.cubit.dart';
 import '../resources/resources.dart';
@@ -11,6 +11,8 @@ class AppSelectionFormField extends StatefulWidget {
   final FormFieldSetter<dynamic>? onSaved;
   final String? Function(String?)? validator;
   final bool isRequired;
+  final bool isChange;
+  final Function(String?)? onChanged;
   const AppSelectionFormField({
     super.key,
     required this.labelText,
@@ -18,6 +20,8 @@ class AppSelectionFormField extends StatefulWidget {
     required this.onSaved,
     this.validator,
     this.isRequired = false,
+    this.isChange = true,
+    this.onChanged,
   });
 
   @override
@@ -39,13 +43,16 @@ class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
         label == 'Project Name' ||
         label == 'Unit Code' ||
         label == 'Broker Owner' ||
+        label == 'Broker name' ||
         label == 'Current Status' ||
+        label == 'Client Owner' ||
         label == 'Client Name';
   }
 
   String? _currenciesFirst() {
     return widget.labelText == 'Lead Owner' ||
-            widget.labelText == 'Broker Owner'
+            widget.labelText == 'Broker Owner' ||
+            widget.labelText == 'Client Owner'
         ? _currencies.first['id'].toString()
         : _selectedValue;
   }
@@ -114,16 +121,19 @@ class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
               color: Colors.grey,
             ),
           ),
-          onChanged: (dynamic value) {
-            if (value != null) {
-              setState(() {
-                widget.labelText == 'Assign To' && value != null
-                    ? context.read<ShowFieldsCubit>().showFields()
-                    : null;
-                _selectedValue = value;
-              });
-            }
-          },
+          onChanged: widget.isChange
+              ? (String? value) {
+                  if (value != null) {
+                    setState(() {
+                      if (widget.labelText == 'Assign To') {
+                        getIt<ShowFieldsCubit>().showFields();
+                      }
+                      _selectedValue = value;
+                    });
+                    widget.onChanged?.call(value);
+                  }
+                }
+              : null,
           validator: widget.validator,
           onSaved: widget.onSaved,
           items: _currencies.map((dynamic value) {

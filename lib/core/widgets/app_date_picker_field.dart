@@ -7,8 +7,14 @@ class AppDatePickerField extends StatefulWidget {
   final Function(String?)? onSaved;
   final String? hintText;
   final bool? validator;
-  const AppDatePickerField(
-      {super.key, required this.onSaved, this.hintText, this.validator});
+  final bool isRequired;
+  const AppDatePickerField({
+    super.key,
+    required this.onSaved,
+    this.hintText,
+    this.validator,
+    this.isRequired = false,
+  });
 
   @override
   State<AppDatePickerField> createState() => _AppDatePickerFieldState();
@@ -22,9 +28,11 @@ class _AppDatePickerFieldState extends State<AppDatePickerField> {
     return GestureDetector(
       onTap: () => _selectDate(context),
       child: AppTextFormField(
+        isRequired: widget.isRequired,
         controller: TextEditingController(text: selectedDate),
         isclickable: false,
-        labelText: selectedDate != null ? widget.hintText ?? 'Due Date' : null,
+        labelText:
+            selectedDate != null ? widget.hintText ?? 'Due Date' : 'Due Date',
         hintText: widget.hintText ?? 'Due Date',
         style: R.textStyles.font15RegentGrayW500.copyWith(
           color: R.colors.black,

@@ -46,13 +46,15 @@ class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
         label == 'Broker name' ||
         label == 'Current Status' ||
         label == 'Client Owner' ||
+        label == 'Contact Owner' ||
         label == 'Client Name';
   }
 
   String? _currenciesFirst() {
     return widget.labelText == 'Lead Owner' ||
             widget.labelText == 'Broker Owner' ||
-            widget.labelText == 'Client Owner'
+            widget.labelText == 'Client Owner' ||
+            widget.labelText == 'Contact Owner'
         ? _currencies.first['id'].toString()
         : _selectedValue;
   }

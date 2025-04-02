@@ -21,6 +21,8 @@ import '../../features/campaigns/model/campaigns_model.dart';
 import '../../features/clients/clients/data/model/clients_model.dart';
 import '../../features/clients/create-client/data/model/create_client_model.dart';
 import '../../features/clients/create-client/data/model/create_client_request_body.dart';
+import '../../features/contacts/create-contacts/data/model/create_contact_model.dart';
+import '../../features/contacts/create-contacts/data/model/create_contact_request_body.dart';
 import '../../features/contacts/data/contacts_model.dart';
 import '../../features/deals/create-deal/data/model/create_deal_model.dart';
 import '../../features/deals/create-deal/data/model/create_deal_request_body.dart';
@@ -142,6 +144,11 @@ abstract class ApiService {
   /// service for Contacts
   @GET(ApiConstants.contacts)
   Future<ContactsModel> getContacts();
+
+  /// service for create Contact
+  @POST(ApiConstants.createContact)
+  Future<CreateContactModel> createContact(
+      @Body() CreateContactRequestBody createContactRequestBody);
 
   /// service for Campaigns
   @GET(ApiConstants.campaigns)

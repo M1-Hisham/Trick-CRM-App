@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 
-appShowModalBottomSheet({
+Future<bool?> appShowModalBottomSheet({
   required context,
   required Widget Function(BuildContext context) builder,
 }) {
-  showModalBottomSheet(
-    sheetAnimationStyle: AnimationStyle(
-      duration: const Duration(milliseconds: 1000),
-      curve: Curves.easeInOutCubicEmphasized,
-      reverseDuration: const Duration(milliseconds: 600),
-    ),
+  return showModalBottomSheet<bool?>(
+    context: context,
+    builder: builder,
     useSafeArea: true,
     isScrollControlled: true,
     backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -19,7 +16,5 @@ appShowModalBottomSheet({
         topRight: Radius.circular(13),
       ),
     ),
-    context: context,
-    builder: builder,
   );
 }

@@ -15,6 +15,7 @@ class ApiConstants {
   static const String campaigns = "/campaigns";
   static const String createCampaign = "/campaigns-create";
   static const String tasks = "/tasks";
+  static const String createTask = "/tasks-create";
   static const String meetings = "/meetings";
   static const String calls = "/calls";
   static const String deals = "/deals";

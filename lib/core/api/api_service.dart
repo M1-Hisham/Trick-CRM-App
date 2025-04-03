@@ -48,6 +48,8 @@ import '../../features/projects/payment-plans/create-payment-plans/data/model/cr
 import '../../features/projects/projects/create-project/data/model/create_project_model.dart';
 import '../../features/projects/projects/create-project/data/model/create_project_request_body.dart';
 import '../../features/projects/projects/data/model/projects_model.dart';
+import '../../features/tasks/create-task/data/model/create_task_model.dart';
+import '../../features/tasks/create-task/data/model/create_task_request_body.dart';
 import 'api_constants.dart';
 
 part 'api_service.g.dart';
@@ -162,6 +164,11 @@ abstract class ApiService {
   /// service for Tasks
   @GET(ApiConstants.tasks)
   Future<TasksModel> getTasks();
+
+  /// service for create Task
+  @POST(ApiConstants.createTask)
+  Future<CreateTaskModel> createTask(
+      @Body() CreateTaskRequestBody createTaskRequestBody);
 
   /// service for Meetings
   @GET(ApiConstants.meetings)

@@ -44,14 +44,16 @@ class _AppDatePickerFieldState extends State<AppDatePickerField> {
         fillColor: R.colors.white,
         disabledBorder: const Color(0xFFE8ECF4),
         onSaved: widget.onSaved,
-        validator: (value) {
-          if (widget.validator != false) {
-            if (selectedDate == null || selectedDate!.isEmpty) {
-              return 'Please enter a valid date';
-            }
-          }
-          return null;
-        },
+        validator: widget.isRequired
+            ? (value) {
+                if (widget.validator != false) {
+                  if (selectedDate == null || selectedDate!.isEmpty) {
+                    return 'Please enter a valid date';
+                  }
+                }
+                return null;
+              }
+            : null,
       ),
     );
   }

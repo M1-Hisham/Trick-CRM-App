@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:trick_crm_app/core/widgets/app_date_picker_field.dart';
 import 'package:trick_crm_app/core/widgets/app_selection_form_field.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
+
+import 'package:trick_crm_app/features/meetings/create-meeting/data/model/create_meeting_request_body.dart';
 import '../../../../core/cubits/user_cubit.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/helpers/spacing.dart';
@@ -16,6 +18,7 @@ import '../../../../core/widgets/app_waiting_feature.dart';
 import '../../../auth/login/data/models/login_response.dart';
 import '../../../leads/create-lead/presentation/widgets/top_bar_dialog.dart';
 import '../../data/model/meetings_model.dart';
+import '../logic/cubit/create_meeting_cubit.dart';
 
 class CreateMeetingScreen extends StatefulWidget {
   final MeetingsModel meetingsModel;
@@ -34,6 +37,8 @@ class _CreateMeetingScreenState extends State<CreateMeetingScreen> {
   final _formKey = GlobalKey<FormState>();
 
   final Map<String, dynamic> _formData = {};
+
+  bool isSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -97,11 +102,123 @@ class _CreateMeetingScreenState extends State<CreateMeetingScreen> {
                               return null;
                             },
                           ),
+                          spacingV(10),
+                          _paymentPlanRow(
+                            isSelected: isSelected,
+                            onChanged: (bool? value) {
+                              setState(() {
+                                isSelected = !isSelected;
+                                if (isSelected) {
+                                  _formData['startDate'] = null;
+                                  _formData['endDate'] = null;
+                                }
+                              });
+                            },
+                          ),
+                          spacingV(10),
+                          //Meeting Start Date
+                          Row(
+                            children: [
+                              Expanded(
+                                child: AppDatePickerField(
+                                    hintText: "Start Date",
+                                    onSaved: (value) {
+                                      _formData['startDate'] = value;
+                                    }),
+                              ),
+                              spacingH(20),
+                              Visibility(
+                                visible: !isSelected,
+                                child: Expanded(
+                                  child: AppSelectionFormField(
+                                      labelText: 'Time',
+                                      selections: const [
+                                        '6:00 AM',
+                                        '7:00 AM',
+                                        '8:00 AM',
+                                        '9:00 AM',
+                                        '10:00 AM',
+                                        '11:00 AM',
+                                        '12:00 PM',
+                                        '1:00 PM',
+                                        '2:00 PM',
+                                        '3:00 PM',
+                                        '4:00 PM',
+                                        '5:00 PM',
+                                        '6:00 PM',
+                                        '7:00 PM',
+                                        '8:00 PM',
+                                        '9:00 PM',
+                                        '10:00 PM',
+                                        '11:00 PM',
+                                        '12:00 AM',
+                                      ],
+                                      onSaved: (value) {
+                                        _formData['End Time Hour'] = value;
+                                      },
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          _scrollToTop();
+                                          return 'Please enter a valid time';
+                                        }
+                                        return null;
+                                      }),
+                                ),
+                              ),
+                            ],
+                          ),
                           spacingV(20),
-                          //Due Date
-                          AppDatePickerField(onSaved: (value) {
-                            _formData['dueDate'] = value;
-                          }),
+                          //Meeting End Date
+                          Row(
+                            children: [
+                              Expanded(
+                                child: AppDatePickerField(
+                                    hintText: "End Date",
+                                    onSaved: (value) {
+                                      _formData['endDate'] = value;
+                                    }),
+                              ),
+                              spacingH(20),
+                              Visibility(
+                                visible: !isSelected,
+                                child: Expanded(
+                                  child: AppSelectionFormField(
+                                      labelText: 'Time',
+                                      selections: const [
+                                        '6:00 AM',
+                                        '7:00 AM',
+                                        '8:00 AM',
+                                        '9:00 AM',
+                                        '10:00 AM',
+                                        '11:00 AM',
+                                        '12:00 PM',
+                                        '1:00 PM',
+                                        '2:00 PM',
+                                        '3:00 PM',
+                                        '4:00 PM',
+                                        '5:00 PM',
+                                        '6:00 PM',
+                                        '7:00 PM',
+                                        '8:00 PM',
+                                        '9:00 PM',
+                                        '10:00 PM',
+                                        '11:00 PM',
+                                        '12:00 AM',
+                                      ],
+                                      onSaved: (value) {
+                                        _formData['End Time Hour'] = value;
+                                      },
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          _scrollToTop();
+                                          return 'Please enter a valid time';
+                                        }
+                                        return null;
+                                      }),
+                                ),
+                              ),
+                            ],
+                          ),
                           spacingV(20),
                           //Host
                           AppSelectionFormField(
@@ -127,6 +244,186 @@ class _CreateMeetingScreenState extends State<CreateMeetingScreen> {
                                 return null;
                               }),
                           spacingV(20),
+                          // //!Participants
+                          AppSelectionFormField(
+                            isRequired: true,
+                            labelText: "Participants",
+                            selections: const [],
+                            onSaved: (value) {
+                              _formData['participants'] = value;
+                            },
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                _scrollToTop();
+                                return "Please select participants";
+                              }
+                              return null;
+                            },
+                          ),
+                          spacingV(20),
+                          //Related to
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 20),
+                            child: AppSelectionFormField(
+                              labelText: "Related To",
+                              selections: const [
+                                "-None-",
+                                "Leads",
+                                "Clients",
+                                "Contacts",
+                              ],
+                              onSaved: (value) {
+                                _formData['relatedTo'] = value;
+                              },
+                              onChanged: (value) {
+                                setState(() {
+                                  _formData['relatedTo'] = value;
+                                });
+                              },
+                            ),
+                          ),
+                          //Lead
+                          Visibility(
+                            visible: _formData['relatedTo'] == "Leads",
+                            child:
+                                //Lead
+                                Padding(
+                              padding: const EdgeInsets.only(bottom: 20),
+                              child: AppSelectionFormField(
+                                labelText: "Lead",
+                                selections: [
+                                  ...?widget.meetingsModel.leads != null
+                                      ? widget.meetingsModel.leads?.map((e) => {
+                                            "name": "${e.leadName}",
+                                            "id": e.id,
+                                          })
+                                      : [],
+                                ],
+                                onSaved: (value) {
+                                  _formData['leadId'] = value;
+                                },
+                              ),
+                            ),
+                          ),
+                          //Client
+                          Visibility(
+                            visible: _formData['relatedTo'] == "Clients",
+                            child: Column(
+                              children: [
+                                //Client
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 20),
+                                  child: AppSelectionFormField(
+                                    labelText: "Client",
+                                    selections: [
+                                      ...?widget.meetingsModel.clients != null
+                                          ? widget.meetingsModel.clients
+                                              ?.map((e) => {
+                                                    "name": "${e.clientName}",
+                                                    "id": e.id,
+                                                  })
+                                          : [],
+                                    ],
+                                    onSaved: (value) {
+                                      _formData['clientId'] = value;
+                                    },
+                                  ),
+                                ),
+                                // Client Related To
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 20),
+                                  child: AppSelectionFormField(
+                                    labelText: "Related To",
+                                    selections: const [
+                                      "-None-",
+                                      "Deal",
+                                      "Campaigns",
+                                    ],
+                                    onSaved: (value) {
+                                      _formData['clientRelatedTo'] = value;
+                                    },
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _formData['clientRelatedTo'] = value;
+                                      });
+                                    },
+                                  ),
+                                ),
+                                //Deal
+                                Visibility(
+                                  visible:
+                                      _formData['clientRelatedTo'] == "Deal",
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(bottom: 20),
+                                    child: AppSelectionFormField(
+                                      labelText: "Deal",
+                                      selections: [
+                                        ...?widget.meetingsModel.deals != null
+                                            ? widget.meetingsModel.deals
+                                                ?.map((e) => {
+                                                      "name": "${e.dealName}",
+                                                      "id": e.id,
+                                                    })
+                                            : [],
+                                      ],
+                                      onSaved: (value) {
+                                        _formData['dealId'] = value;
+                                      },
+                                    ),
+                                  ),
+                                ),
+                                //Campaign
+                                Visibility(
+                                  visible: _formData['clientRelatedTo'] ==
+                                      "Campaigns",
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(bottom: 20),
+                                    child: AppSelectionFormField(
+                                      labelText: "Campaign",
+                                      selections: [
+                                        ...?widget.meetingsModel.campaigns !=
+                                                null
+                                            ? widget.meetingsModel.campaigns
+                                                ?.map((e) => {
+                                                      "name":
+                                                          "${e.campaignName}",
+                                                      "id": e.id,
+                                                    })
+                                            : [],
+                                      ],
+                                      onSaved: (value) {
+                                        _formData['campaignId'] = value;
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          //Contact
+                          Visibility(
+                            visible: _formData['relatedTo'] == "Contacts",
+                            child:
+                                //Contact
+                                Padding(
+                              padding: const EdgeInsets.only(bottom: 20),
+                              child: AppSelectionFormField(
+                                labelText: "Contact",
+                                selections: [
+                                  ...?widget.meetingsModel.contacts != null
+                                      ? widget.meetingsModel.contacts
+                                          ?.map((e) => {
+                                                "name": "${e.contactName}",
+                                                "id": e.id,
+                                              })
+                                      : [],
+                                ],
+                                onSaved: (value) {
+                                  _formData['contactId'] = value;
+                                },
+                              ),
+                            ),
+                          ),
                           //description
                           AppTextFormField(
                             hintText: "Enter Description",
@@ -136,7 +433,6 @@ class _CreateMeetingScreenState extends State<CreateMeetingScreen> {
                               _formData['description'] = value;
                             },
                           ),
-                          spacingV(20),
                         ],
                       ),
                     ),
@@ -162,330 +458,33 @@ class _CreateMeetingScreenState extends State<CreateMeetingScreen> {
     );
   }
 
-  // Widget _leadAndContactAndClientSelections() {
-  //   bool isRequired = _formData['lead'] == null &&
-  //       _formData['contact'] == null &&
-  //       _formData['client'] == null;
-  //   return Column(
-  //     children: [
-  //       //Lead
-  //       InputDecorator(
-  //         decoration: InputDecoration(
-  //           label: isRequired
-  //               ? RichText(
-  //                   text: const TextSpan(
-  //                     text: "Lead",
-  //                     style: TextStyle(color: Colors.black),
-  //                     children: [
-  //                       TextSpan(
-  //                         text: ' *',
-  //                         style: TextStyle(color: Colors.red),
-  //                       ),
-  //                     ],
-  //                   ),
-  //                 )
-  //               : const Text("Lead"),
-  //           labelStyle: R.textStyles.font14DimGrayW400.copyWith(
-  //             color: const Color(0XFF2C2E32),
-  //             fontSize: 15.sp,
-  //             fontWeight: FontWeight.bold,
-  //           ),
-  //           isDense: true,
-  //           contentPadding:
-  //               EdgeInsets.symmetric(horizontal: 20.w, vertical: 19.h),
-  //           hintStyle: R.textStyles.font15RegentGrayW500,
-  //           filled: true,
-  //           fillColor: R.colors.white,
-  //           alignLabelWithHint: true,
-  //           border: const OutlineInputBorder(
-  //             borderSide: BorderSide(
-  //               color: Color.fromARGB(255, 139, 139, 139),
-  //             ),
-  //           ),
-  //           focusedBorder: const OutlineInputBorder(
-  //             borderRadius: BorderRadius.all(Radius.circular(14)),
-  //             borderSide: BorderSide(
-  //               color: Color.fromARGB(255, 139, 139, 139),
-  //             ),
-  //           ),
-  //           enabledBorder: const OutlineInputBorder(
-  //             borderRadius: BorderRadius.all(Radius.circular(8)),
-  //             borderSide: BorderSide(
-  //               color: Color(0xFFE8ECF4),
-  //             ),
-  //           ),
-  //         ),
-  //         child: DropdownButtonHideUnderline(
-  //           child: DropdownButtonFormField<String>(
-  //             menuMaxHeight: 250,
-  //             decoration: const InputDecoration(
-  //               border: InputBorder.none,
-  //               isDense: true,
-  //             ),
-  //             dropdownColor: R.colors.white,
-  //             value: _formData['lead'],
-  //             isDense: true,
-  //             hint: Text(
-  //               "Select an option",
-  //               style: TextStyle(
-  //                 fontSize: 14.sp,
-  //                 color: Colors.grey,
-  //               ),
-  //             ),
-  //             onChanged: (value) {
-  //               setState(() {
-  //                 _formData['lead'] = value;
-  //                 _formData['contact'] = null;
-  //                 _formData['client'] = null;
-  //               });
-  //             },
-  //             validator: isRequired
-  //                 ? (value) {
-  //                     if (value == null || value.isEmpty) {
-  //                       _scrollToTop();
-  //                       return "Please select lead";
-  //                     }
-  //                     return null;
-  //                   }
-  //                 : null,
-  //             onSaved: (value) {
-  //               _formData['lead'] = value;
-  //             },
-  //             items: _formData['contact'] != null || _formData['client'] != null
-  //                 ? []
-  //                 : widget.tasksModel.leads
-  //                     ?.map((e) => {
-  //                           "name": "${e.leadName}",
-  //                           "id": e.id,
-  //                         })
-  //                     .map((dynamic value) {
-  //                     return DropdownMenuItem<String>(
-  //                       value: value['id'].toString(),
-  //                       child: Text(
-  //                         value['name'],
-  //                         style: TextStyle(
-  //                           fontSize: 14.sp,
-  //                         ),
-  //                       ),
-  //                     );
-  //                   }).toList(),
-  //           ),
-  //         ),
-  //       ),
-  //       spacingV(20),
-  //       //Contact
-  //       InputDecorator(
-  //         decoration: InputDecoration(
-  //           label: isRequired
-  //               ? RichText(
-  //                   text: const TextSpan(
-  //                     text: "Contact",
-  //                     style: TextStyle(color: Colors.black),
-  //                     children: [
-  //                       TextSpan(
-  //                         text: ' *',
-  //                         style: TextStyle(color: Colors.red),
-  //                       ),
-  //                     ],
-  //                   ),
-  //                 )
-  //               : const Text("Contact"),
-  //           labelStyle: R.textStyles.font14DimGrayW400.copyWith(
-  //             color: const Color(0XFF2C2E32),
-  //             fontSize: 15.sp,
-  //             fontWeight: FontWeight.bold,
-  //           ),
-  //           isDense: true,
-  //           contentPadding:
-  //               EdgeInsets.symmetric(horizontal: 20.w, vertical: 19.h),
-  //           hintStyle: R.textStyles.font15RegentGrayW500,
-  //           filled: true,
-  //           fillColor: R.colors.white,
-  //           alignLabelWithHint: true,
-  //           border: const OutlineInputBorder(
-  //             borderSide: BorderSide(
-  //               color: Color.fromARGB(255, 139, 139, 139),
-  //             ),
-  //           ),
-  //           focusedBorder: const OutlineInputBorder(
-  //             borderRadius: BorderRadius.all(Radius.circular(14)),
-  //             borderSide: BorderSide(
-  //               color: Color.fromARGB(255, 139, 139, 139),
-  //             ),
-  //           ),
-  //           enabledBorder: const OutlineInputBorder(
-  //             borderRadius: BorderRadius.all(Radius.circular(8)),
-  //             borderSide: BorderSide(
-  //               color: Color(0xFFE8ECF4),
-  //             ),
-  //           ),
-  //         ),
-  //         child: DropdownButtonHideUnderline(
-  //           child: DropdownButtonFormField<String>(
-  //             menuMaxHeight: 250,
-  //             decoration: const InputDecoration(
-  //               border: InputBorder.none,
-  //               isDense: true,
-  //             ),
-  //             dropdownColor: R.colors.white,
-  //             value: _formData['contact'],
-  //             isDense: true,
-  //             hint: Text(
-  //               "Select an option",
-  //               style: TextStyle(
-  //                 fontSize: 14.sp,
-  //                 color: Colors.grey,
-  //               ),
-  //             ),
-  //             onChanged: (value) {
-  //               setState(() {
-  //                 _formData['lead'] = null;
-  //                 _formData['contact'] = value;
-  //                 _formData['client'] = null;
-  //               });
-  //             },
-  //             validator: isRequired
-  //                 ? (value) {
-  //                     if (value == null || value.isEmpty) {
-  //                       _scrollToTop();
-  //                       return "Please select contact";
-  //                     }
-  //                     return null;
-  //                   }
-  //                 : null,
-  //             onSaved: (value) {
-  //               _formData['contact'] = value;
-  //             },
-  //             items: _formData['lead'] != null || _formData['client'] != null
-  //                 ? []
-  //                 : widget.tasksModel.contacts
-  //                     ?.map((e) => {
-  //                           "name": "${e.contactName}",
-  //                           "id": e.id,
-  //                         })
-  //                     .map((dynamic value) {
-  //                     return DropdownMenuItem<String>(
-  //                       value: value['id'].toString(),
-  //                       child: Text(
-  //                         value['name'],
-  //                         style: TextStyle(
-  //                           fontSize: 14.sp,
-  //                         ),
-  //                       ),
-  //                     );
-  //                   }).toList(),
-  //           ),
-  //         ),
-  //       ),
-  //       spacingV(20),
-  //       //Client
-  //       InputDecorator(
-  //         decoration: InputDecoration(
-  //           label: isRequired
-  //               ? RichText(
-  //                   text: const TextSpan(
-  //                     text: "Client",
-  //                     style: TextStyle(color: Colors.black),
-  //                     children: [
-  //                       TextSpan(
-  //                         text: ' *',
-  //                         style: TextStyle(color: Colors.red),
-  //                       ),
-  //                     ],
-  //                   ),
-  //                 )
-  //               : const Text("Client"),
-  //           labelStyle: R.textStyles.font14DimGrayW400.copyWith(
-  //             color: const Color(0XFF2C2E32),
-  //             fontSize: 15.sp,
-  //             fontWeight: FontWeight.bold,
-  //           ),
-  //           isDense: true,
-  //           contentPadding:
-  //               EdgeInsets.symmetric(horizontal: 20.w, vertical: 19.h),
-  //           hintStyle: R.textStyles.font15RegentGrayW500,
-  //           filled: true,
-  //           fillColor: R.colors.white,
-  //           alignLabelWithHint: true,
-  //           border: const OutlineInputBorder(
-  //             borderSide: BorderSide(
-  //               color: Color.fromARGB(255, 139, 139, 139),
-  //             ),
-  //           ),
-  //           focusedBorder: const OutlineInputBorder(
-  //             borderRadius: BorderRadius.all(Radius.circular(14)),
-  //             borderSide: BorderSide(
-  //               color: Color.fromARGB(255, 139, 139, 139),
-  //             ),
-  //           ),
-  //           enabledBorder: const OutlineInputBorder(
-  //             borderRadius: BorderRadius.all(Radius.circular(8)),
-  //             borderSide: BorderSide(
-  //               color: Color(0xFFE8ECF4),
-  //             ),
-  //           ),
-  //         ),
-  //         child: DropdownButtonHideUnderline(
-  //           child: DropdownButtonFormField<String>(
-  //             menuMaxHeight: 250,
-  //             decoration: const InputDecoration(
-  //               border: InputBorder.none,
-  //               isDense: true,
-  //             ),
-  //             dropdownColor: R.colors.white,
-  //             value: _formData['client'],
-  //             isDense: true,
-  //             hint: Text(
-  //               "Select an option",
-  //               style: TextStyle(
-  //                 fontSize: 14.sp,
-  //                 color: Colors.grey,
-  //               ),
-  //             ),
-  //             onChanged: (value) {
-  //               setState(() {
-  //                 _formData['lead'] = null;
-  //                 _formData['contact'] = null;
-  //                 _formData['client'] = value;
-  //               });
-  //             },
-  //             validator: isRequired
-  //                 ? (value) {
-  //                     if (value == null || value.isEmpty) {
-  //                       _scrollToTop();
-  //                       return "Please select client";
-  //                     }
-  //                     return null;
-  //                   }
-  //                 : null,
-  //             onSaved: (value) {
-  //               _formData['client'] = value;
-  //             },
-  //             items: _formData['lead'] != null || _formData['contact'] != null
-  //                 ? []
-  //                 : widget.tasksModel.leads
-  //                     ?.map((e) => {
-  //                           "name": "${e.leadName}",
-  //                           "id": e.id,
-  //                         })
-  //                     .map((dynamic value) {
-  //                     return DropdownMenuItem<String>(
-  //                       value: value['id'].toString(),
-  //                       child: Text(
-  //                         value['name'],
-  //                         style: TextStyle(
-  //                           fontSize: 14.sp,
-  //                         ),
-  //                       ),
-  //                     );
-  //                   }).toList(),
-  //           ),
-  //         ),
-  //       ),
-  //       spacingV(20),
-  //     ],
-  //   );
-  // }
+  Widget _paymentPlanRow({
+    required final bool isSelected,
+    required final ValueChanged<bool?> onChanged,
+  }) {
+    return Row(
+      children: [
+        Checkbox(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4),
+          ),
+          activeColor: R.colors.primaryColor,
+          side: const BorderSide(
+            color: Color(0xffC8C8C8),
+            width: 1,
+          ),
+          value: isSelected,
+          onChanged: onChanged,
+        ),
+        const Expanded(
+          child: Text(
+            'All Day',
+            style: TextStyle(fontSize: 14),
+          ),
+        ),
+      ],
+    );
+  }
 
   void _scrollToTop() {
     scrollController.animateTo(0,
@@ -525,23 +524,42 @@ class _CreateMeetingScreenState extends State<CreateMeetingScreen> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState?.save();
       log("_formData: $_formData");
-      // var createTaskRequestBody = CreateTaskRequestBody(
-      //   subject: _formData['subject'],
-      //   assignedToId: int.parse(_formData['assignedToId']),
-      //   priority: _formData['priority'],
-      //   contactId: _formData['contact'] != null
-      //       ? int.parse(_formData['contact'])
-      //       : null,
-      //   leadId: _formData['lead'] != null ? int.parse(_formData['lead']) : null,
-      //   clientId:
-      //       _formData['client'] != null ? int.parse(_formData['client']) : null,
-      //   status: _formData['status'],
-      //   dueDate: _formData['dueDate'],
-      //   description: _formData['description'],
-      // );
-      // final cubit = getIt.get<CreateMeetingCubit>();
+      var createMeetingRequestBody = CreateMeetingRequestBody(
+        title: _formData["title"],
+        location: _formData["location"],
+        hostId: int.parse(_formData["hostId"]),
+        participants: [
+          "{\"name\":\"sales manager\",\"user_id\":3}",
+          "{\"name\":\"developer\",\"user_id\":4}"
+        ],
+        startTime: _formData["startDate"],
+        startTimeHour: _formData["End Time Hour"],
+        endTime: _formData["endDate"],
+        endTimeHour: _formData["End Time Hour"],
+        relatedTo: _formData["relatedTo"],
+        relatedToClient: _formData["clientRelatedTo"],
+        leadId: _formData["leadId"] != null && _formData["leadId"] != ""
+            ? int.parse(_formData["leadId"])
+            : null,
+        contactId:
+            _formData["contactId"] != null && _formData["contactId"] != ""
+                ? int.parse(_formData["contactId"])
+                : null,
+        clientId: _formData["clientId"] != null && _formData["clientId"] != ""
+            ? int.parse(_formData["clientId"])
+            : null,
+        dealId: _formData["dealId"] != null && _formData["dealId"] != ""
+            ? int.parse(_formData["dealId"])
+            : null,
+        compaignId:
+            _formData["campaignId"] != null && _formData["campaignId"] != ""
+                ? int.parse(_formData["campaignId"])
+                : null,
+        description: _formData["description"],
+      );
+      final cubit = getIt.get<CreateMeetingCubit>();
       appWaitingFeature(context);
-      // await cubit.createMeeting(createTaskRequestBody);
+      await cubit.createMeeting(createMeetingRequestBody);
       Navigator.pop(context);
       Navigator.pop(context, true);
       log("Submit Successfully");

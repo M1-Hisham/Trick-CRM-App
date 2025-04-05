@@ -31,8 +31,9 @@ class _AppDatePickerFieldState extends State<AppDatePickerField> {
         isRequired: widget.isRequired,
         controller: TextEditingController(text: selectedDate),
         isclickable: false,
-        labelText:
-            selectedDate != null ? widget.hintText ?? 'Due Date' : 'Due Date',
+        labelText: selectedDate != null
+            ? widget.hintText ?? 'Due Date'
+            : widget.hintText,
         hintText: widget.hintText ?? 'Due Date',
         style: R.textStyles.font15RegentGrayW500.copyWith(
           color: R.colors.black,

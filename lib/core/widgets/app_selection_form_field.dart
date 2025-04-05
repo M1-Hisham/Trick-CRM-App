@@ -51,6 +51,7 @@ class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
         label == 'Contact' ||
         label == 'Client' ||
         label == 'Host' ||
+        label == 'Deal' ||
         label == 'Client Name';
   }
 

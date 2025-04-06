@@ -62,6 +62,7 @@ class CreateBrokerScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           AppSelectionFormField(
+                            isChange: false,
                             isRequired: true,
                             labelText: "Broker Owner",
                             selections: [

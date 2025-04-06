@@ -188,7 +188,7 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
             left: 0,
             right: 0,
             child: topBarDialog(
-              "Create New Taask",
+              "Create New Task",
               "Complete all the fields below the form",
             ),
           ),

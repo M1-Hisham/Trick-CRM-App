@@ -51,6 +51,7 @@ class CreatePaymentPlansScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           AppTextFormField(
+                            isRequired: true,
                             hintText: 'DownPayment Percent (%)',
                             labelText: 'DownPayment Percent (%)',
                             onSaved: (value) {
@@ -66,6 +67,7 @@ class CreatePaymentPlansScreen extends StatelessWidget {
                           ),
                           spacingV(20),
                           AppTextFormField(
+                            isRequired: true,
                             hintText: 'Years',
                             labelText: 'Years',
                             onSaved: (value) {
@@ -81,6 +83,7 @@ class CreatePaymentPlansScreen extends StatelessWidget {
                           ),
                           spacingV(20),
                           AppTextFormField(
+                            isRequired: true,
                             hintText: 'Discount Percent (%)',
                             labelText: 'Discount Percent (%)',
                             onSaved: (value) {

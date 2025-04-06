@@ -60,6 +60,7 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           AppTextFormField(
+                            isRequired: true,
                             hintText: 'Name',
                             labelText: 'Name',
                             onSaved: (value) {
@@ -74,6 +75,7 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                           ),
                           spacingV(20),
                           AppTextFormField(
+                            isRequired: true,
                             hintText: 'Size',
                             labelText: 'Size',
                             onSaved: (value) {
@@ -89,6 +91,7 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                           ),
                           spacingV(20),
                           AppTextFormField(
+                            isRequired: true,
                             hintText: 'Location',
                             labelText: 'Location',
                             onSaved: (value) {

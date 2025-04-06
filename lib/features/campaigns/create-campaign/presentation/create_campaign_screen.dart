@@ -59,6 +59,7 @@ class CreateCampaignScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           AppSelectionFormField(
+                            isRequired: true,
                             labelText: "Campaign Owner",
                             selections: [
                               {
@@ -119,6 +120,7 @@ class CreateCampaignScreen extends StatelessWidget {
                           ),
                           spacingV(20),
                           AppTextFormField(
+                            isRequired: true,
                             hintText: 'Enter Campaign Name',
                             labelText: "Campaign Name",
                             validator: (value) {

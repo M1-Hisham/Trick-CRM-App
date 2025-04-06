@@ -15,6 +15,8 @@ import 'package:trick_crm_app/features/leads/leads/data/models/leads_model.dart'
 import 'package:trick_crm_app/features/projects/payment-plans/payment-plans-view/data/model/payment_plans_model.dart';
 import 'package:trick_crm_app/features/tasks/data/model/tasks_model.dart';
 
+import '../../features/calls/create-call/data/model/create_call_model.dart';
+import '../../features/calls/create-call/data/model/create_call_request_body.dart';
 import '../../features/calls/data/model/calls_model.dart';
 import '../../features/campaigns/create-campaign/data/model/create_campaign_model.dart';
 import '../../features/campaigns/model/campaigns_model.dart';
@@ -184,6 +186,11 @@ abstract class ApiService {
   /// service for Calls
   @GET(ApiConstants.calls)
   Future<CallsModel> getCalls();
+
+  /// service for create Call
+  @POST(ApiConstants.createCall)
+  Future<CreateCallModel> createCall(
+      @Body() CreateCallRequestBody createCallRequestBody);
 
   /// service for Deals
   @GET(ApiConstants.deals)

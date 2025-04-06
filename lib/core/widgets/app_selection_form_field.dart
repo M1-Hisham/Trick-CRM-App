@@ -47,6 +47,7 @@ class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
         label == 'Current Status' ||
         label == 'Client Owner' ||
         label == 'Contact Owner' ||
+        label == 'Call Owner' ||
         label == 'Lead' ||
         label == 'Contact' ||
         label == 'Client' ||
@@ -81,12 +82,9 @@ class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
                   ],
                 ),
               )
-            : Text(widget.labelText ?? ''),
-        labelStyle: R.textStyles.font14DimGrayW400.copyWith(
-          color: const Color(0XFF2C2E32),
-          fontSize: 15.sp,
-          fontWeight: FontWeight.bold,
-        ),
+            : FittedBox(
+                fit: BoxFit.scaleDown, child: Text(widget.labelText ?? '')),
+        labelStyle: const TextStyle(color: Colors.black),
         isDense: true,
         contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 19.h),
         hintStyle: R.textStyles.font15RegentGrayW500,
@@ -121,11 +119,14 @@ class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
           dropdownColor: R.colors.white,
           value: _currenciesFirst(),
           isDense: true,
-          hint: Text(
-            "Select an option",
-            style: TextStyle(
-              fontSize: 14.sp,
-              color: Colors.grey,
+          hint: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              "Select an option",
+              style: TextStyle(
+                fontSize: 14.sp,
+                color: Colors.grey,
+              ),
             ),
           ),
           onChanged: widget.isChange
@@ -148,12 +149,15 @@ class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
               value: _isSpecialLabel(widget.labelText)
                   ? value['id'].toString()
                   : value,
-              child: Text(
-                _isSpecialLabel(widget.labelText)
-                    ? value['name'].toString()
-                    : value,
-                style: TextStyle(
-                  fontSize: 14.sp,
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  _isSpecialLabel(widget.labelText)
+                      ? value['name'].toString()
+                      : value,
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                  ),
                 ),
               ),
             );

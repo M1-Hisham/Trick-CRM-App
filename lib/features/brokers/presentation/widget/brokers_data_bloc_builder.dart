@@ -31,13 +31,18 @@ class BrokersDataBlocBuilder extends StatelessWidget {
                   AppButton(
                     icon: SvgPicture.asset(R.icons.add),
                     text: 'Create Broker',
-                    onPressed: () {
-                      appShowModalBottomSheet(
+                    onPressed: () async {
+                      final result = await appShowModalBottomSheet(
                         context: context,
                         builder: (context) => CreateBrokerScreen(
                           brokersModel: brokersModel,
                         ),
                       );
+                      if (result == true) {
+                        // Refresh the data after creating a new meeting
+                        // ignore: use_build_context_synchronously
+                        context.read<BrokersCubit>().getData();
+                      }
                     },
                   ),
                   spacingV(20),
@@ -75,8 +80,32 @@ class BrokersDataBlocBuilder extends StatelessWidget {
                 ],
               );
             },
-            error: (message) => const Center(
-                  child: Text('An error occurred, Try again'),
+            error: (message) => Center(
+                  child: Column(
+                    children: [
+                      const Text('An error occurred, Try again'),
+                      spacingV(10),
+                      const Icon(
+                        Icons.error,
+                        color: Colors.red,
+                      ),
+                      spacingV(10),
+                      const Text('Please check your internet connection'),
+                      spacingV(10),
+                      const Text('Or try again later'),
+                      spacingV(10),
+                      const Text('If the problem persists, contact support'),
+                      spacingV(10),
+                      Text('Error: $message'),
+                      spacingV(10),
+                      AppButton(
+                        text: 'Retry',
+                        onPressed: () {
+                          context.read<BrokersCubit>().getData();
+                        },
+                      ),
+                    ],
+                  ),
                 ),
             orElse: () {
               return const SizedBox.shrink();

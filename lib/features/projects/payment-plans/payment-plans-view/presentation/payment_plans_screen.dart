@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:trick_crm_app/core/helpers/spacing.dart';
 import 'package:trick_crm_app/core/widgets/app_bar.dart';
-import 'package:trick_crm_app/core/widgets/app_button.dart';
 
-import '../../../../../core/resources/resources.dart';
-import '../../create-payment-plans/presentation/create_payment_plans_screen.dart';
 import 'widget/payment_plans_data_bloc_builder.dart';
 
 class PaymentPlansScreen extends StatelessWidget {
@@ -13,26 +8,14 @@ class PaymentPlansScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar('Payment Plans'),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Column(
-            children: [
-              AppButton(
-                icon: SvgPicture.asset(R.icons.add),
-                text: 'Create Payment Plan',
-                onPressed: () {
-                  showDialog(
-                      useSafeArea: false,
-                      context: context,
-                      builder: (context) => CreatePaymentPlansScreen());
-                },
-              ),
-              spacingV(20),
-              const PaymentPlansDataBlocBuilder(),
-            ],
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        appBar: appBar('Payment Plans'),
+        body: const SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            child: PaymentPlansDataBlocBuilder(),
           ),
         ),
       ),

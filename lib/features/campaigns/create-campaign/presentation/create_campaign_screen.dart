@@ -13,6 +13,7 @@ import '../../../../core/helpers/spacing.dart';
 import '../../../../core/resources/resources.dart';
 import '../../../../core/widgets/app_button.dart';
 import '../../../../core/widgets/app_selection_form_field.dart';
+import '../../../../core/widgets/app_waiting_feature.dart';
 import '../../../auth/login/data/models/login_response.dart';
 import '../../../leads/create-lead/presentation/widgets/top_bar_dialog.dart';
 import '../data/model/create_campaign_request_body.dart';
@@ -286,9 +287,11 @@ class CreateCampaignScreen extends StatelessWidget {
         description: _formData['Description'],
       );
       final cubit = getIt.get<CreateCampaignCubit>();
+      appWaitingFeature(context);
       await cubit.createCampaign(createCampaignRequestBody);
+      Navigator.pop(context);
+      Navigator.pop(context, true);
       log("Submit Successfully");
-      Get.back();
     }
   }
 }

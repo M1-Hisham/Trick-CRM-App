@@ -13,6 +13,7 @@ import '../../../../core/helpers/spacing.dart';
 import '../../../../core/resources/resources.dart';
 import '../../../../core/widgets/app_button.dart';
 import '../../../../core/widgets/app_date_picker_field.dart';
+import '../../../../core/widgets/app_waiting_feature.dart';
 import '../../../auth/login/data/models/login_response.dart';
 import '../../../leads/create-lead/presentation/widgets/top_bar_dialog.dart';
 import '../../data/contacts_model.dart';
@@ -527,10 +528,11 @@ class _CreateContactScreenState extends State<CreateContactScreen> {
         description: _formData['description'],
       );
       final cubit = getIt.get<CreateContactCubit>();
-      Get.back();
+      appWaitingFeature(context);
       await cubit.createContact(createContactRequestBody);
+      Navigator.pop(context);
+      Navigator.pop(context, true);
       log("Submit Successfully");
-      // getIt.get<ContactsCubit>().getData();
     }
   }
 }

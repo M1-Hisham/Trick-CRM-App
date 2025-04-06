@@ -12,6 +12,7 @@ import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/resources/resources.dart';
 import '../../../../core/widgets/app_button.dart';
+import '../../../../core/widgets/app_waiting_feature.dart';
 import '../../../auth/login/data/models/login_response.dart';
 import '../../../leads/create-lead/presentation/widgets/top_bar_dialog.dart';
 import '../../data/model/brokers_model.dart';
@@ -276,8 +277,10 @@ class CreateBrokerScreen extends StatelessWidget {
         personName: _formData['personName'],
       );
       final cubit = getIt.get<CreateBrokerCubit>();
-      Get.back();
+      appWaitingFeature(context);
       await cubit.createBroker(createBrokerRequestBody);
+      Navigator.pop(context);
+      Navigator.pop(context, true);
       log("Submit Successfully");
     }
   }

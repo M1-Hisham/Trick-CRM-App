@@ -10,6 +10,7 @@ import '../../../../../../../core/helpers/spacing.dart';
 import '../../../../../../../core/resources/resources.dart';
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/widgets/app_text_form_field.dart';
+import '../../../../../core/widgets/app_waiting_feature.dart';
 import '../../data/model/projects_model.dart';
 import '../data/model/create_project_request_body.dart';
 import '../logic/cubit/create_project_cubit.dart';
@@ -142,7 +143,7 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                     spacingV(20),
 
                     /// Submit and Cancel Button
-                    _submitAndCancel(),
+                    _submitAndCancel(context),
                   ],
                 ),
               ),
@@ -153,7 +154,7 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
     );
   }
 
-  Widget _submitAndCancel() {
+  Widget _submitAndCancel(context) {
     return Row(
       children: [
         Expanded(
@@ -177,16 +178,17 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
                       : _formData['payment_plan_ids'].cast<int>(),
                 );
                 final cubit = getIt.get<CreateProjectCubit>();
-                Get.back();
+                appWaitingFeature(context);
                 await cubit.createProject(createProjectRequestBody);
-
-                // Get.showSnackbar(
-                //   GetSnackBar(
-                //     backgroundColor: R.colors.primaryColor,
-                //     // message: createProjectRequestBody.message,
-                //     duration: const Duration(seconds: 2),
-                //   ),
-                // );
+                Navigator.pop(context);
+                Navigator.pop(context, true);
+                Get.showSnackbar(
+                  GetSnackBar(
+                    backgroundColor: R.colors.primaryColor,
+                    message: 'Project Created Successfully',
+                    duration: const Duration(seconds: 2),
+                  ),
+                );
               }
             },
           ),

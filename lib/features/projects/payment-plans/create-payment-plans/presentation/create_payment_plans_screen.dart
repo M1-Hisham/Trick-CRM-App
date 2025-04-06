@@ -11,6 +11,7 @@ import 'package:trick_crm_app/features/projects/payment-plans/create-payment-pla
 import '../../../../../../../core/helpers/spacing.dart';
 import '../../../../../../../core/resources/resources.dart';
 import '../../../../../core/di/dependency_injection.dart';
+import '../../../../../core/widgets/app_waiting_feature.dart';
 import '../logic/cubit/create_payment_plans_cubit.dart';
 
 class CreatePaymentPlansScreen extends StatelessWidget {
@@ -99,7 +100,7 @@ class CreatePaymentPlansScreen extends StatelessWidget {
                     spacingV(20),
 
                     /// Submit and Cancel Button
-                    _submitAndCancel(),
+                    _submitAndCancel(context),
                   ],
                 ),
               ),
@@ -110,7 +111,7 @@ class CreatePaymentPlansScreen extends StatelessWidget {
     );
   }
 
-  Widget _submitAndCancel() {
+  Widget _submitAndCancel(context) {
     return Row(
       children: [
         Expanded(
@@ -131,11 +132,12 @@ class CreatePaymentPlansScreen extends StatelessWidget {
                   discount: int.parse(_formData['discount']),
                 );
                 final cubit = getIt.get<CreatePaymentPlansCubit>();
+                appWaitingFeature(context);
                 await cubit.createPaymentPlan(
                   createPaymentPlanRequestBody,
                 );
-                Get.back();
-
+                Navigator.pop(context);
+                Navigator.pop(context, true);
                 Get.showSnackbar(
                   GetSnackBar(
                     backgroundColor: R.colors.primaryColor,

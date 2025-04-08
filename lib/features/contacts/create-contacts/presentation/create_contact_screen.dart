@@ -16,7 +16,7 @@ import '../../../../core/widgets/app_date_picker_field.dart';
 import '../../../../core/widgets/app_waiting_feature.dart';
 import '../../../auth/login/data/models/login_response.dart';
 import '../../../leads/create-lead/presentation/widgets/top_bar_dialog.dart';
-import '../../data/contacts_model.dart';
+import '../../contacts/data/contacts_model.dart';
 import '../data/model/create_contact_request_body.dart';
 import '../logic/cubit/create_contact_cubit.dart';
 

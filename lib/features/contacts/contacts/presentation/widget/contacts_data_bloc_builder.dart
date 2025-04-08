@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:trick_crm_app/core/widgets/app_error_message.dart';
 import 'package:trick_crm_app/core/widgets/app_show_modal_bottom_sheet.dart';
-import 'package:trick_crm_app/features/contacts/data/contacts_model.dart';
-import 'package:trick_crm_app/features/contacts/logic/cubit/contacts_cubit.dart';
+import 'package:trick_crm_app/features/contacts/contacts/data/contacts_model.dart';
+import 'package:trick_crm_app/features/contacts/contact-view/contact-view/presentation/screens/contact_view.dart';
+import 'package:trick_crm_app/features/contacts/contacts/logic/cubit/contacts_cubit.dart';
 
-import '../../../../core/cubits/base_state.dart';
-import '../../../../core/helpers/spacing.dart';
-import '../../../../core/resources/resources.dart';
-import '../../../../core/widgets/app_button.dart';
-import '../../../../core/widgets/app_data_table.dart';
-import '../../create-contacts/presentation/create_contact_screen.dart';
+import '../../../../../core/cubits/base_state.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/resources/resources.dart';
+import '../../../../../core/widgets/app_button.dart';
+import '../../../../../core/widgets/app_data_table.dart';
+import '../../../create-contacts/presentation/create_contact_screen.dart';
 import 'contacts_loading_screen.dart';
 
 class ContactsDataBlocBuilder extends StatelessWidget {
@@ -89,43 +92,24 @@ class ContactsDataBlocBuilder extends StatelessWidget {
                     dataIdExtractor: (contacts) =>
                         (contacts.id ?? 0).toString(),
                     dataLeadNameExtractor: (contacts) =>
-                        contacts.firstName ?? '',
-                    onViewDetails: (id, leadName) {
-                      // Get.toNamed(
-                      //   RoutesNames.leadsView,
-                      //   arguments: id != '' ? int.parse(id) : 0,
-                      // );
+                        contacts.contactName ?? '',
+                    onViewDetails: (id, contactName) {
+                      Get.to(
+                        () => ContactView(
+                          contactId: int.parse(id),
+                          contactName: contactName,
+                        ),
+                      );
                     },
                   ),
                 ],
               );
             },
-            error: (message) => Center(
-                  child: Column(
-                    children: [
-                      const Text('An error occurred, Try again'),
-                      spacingV(10),
-                      const Icon(
-                        Icons.error,
-                        color: Colors.red,
-                      ),
-                      spacingV(10),
-                      const Text('Please check your internet connection'),
-                      spacingV(10),
-                      const Text('Or try again later'),
-                      spacingV(10),
-                      const Text('If the problem persists, contact support'),
-                      spacingV(10),
-                      Text('Error: $message'),
-                      spacingV(10),
-                      AppButton(
-                        text: 'Retry',
-                        onPressed: () {
-                          context.read<ContactsCubit>().getData();
-                        },
-                      ),
-                    ],
-                  ),
+            error: (message) => appErrorMessage(
+                  message,
+                  () {
+                    context.read<ContactsCubit>().getData();
+                  },
                 ),
             orElse: () {
               return const SizedBox.shrink();

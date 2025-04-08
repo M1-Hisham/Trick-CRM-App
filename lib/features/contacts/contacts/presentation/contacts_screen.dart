@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/widgets/app_bar.dart';
+import '../../../../core/widgets/app_bar.dart';
 import 'widget/contacts_data_bloc_builder.dart';
 
 class ContactsScreen extends StatelessWidget {

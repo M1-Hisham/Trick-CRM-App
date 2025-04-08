@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:trick_crm_app/core/widgets/app_error_message.dart';
 import 'package:trick_crm_app/core/widgets/app_show_modal_bottom_sheet.dart';
 import 'package:trick_crm_app/features/tasks/data/model/tasks_model.dart';
 import 'package:trick_crm_app/features/tasks/logic/cubit/tasks_cubit.dart';
@@ -106,32 +107,11 @@ class _TasksDataBlocBuilderState extends State<TasksDataBlocBuilder> {
                 ],
               );
             },
-            error: (message) => Center(
-                  child: Column(
-                    children: [
-                      const Text('An error occurred, Try again'),
-                      spacingV(10),
-                      const Icon(
-                        Icons.error,
-                        color: Colors.red,
-                      ),
-                      spacingV(10),
-                      const Text('Please check your internet connection'),
-                      spacingV(10),
-                      const Text('Or try again later'),
-                      spacingV(10),
-                      const Text('If the problem persists, contact support'),
-                      spacingV(10),
-                      Text('Error: $message'),
-                      spacingV(10),
-                      AppButton(
-                        text: 'Retry',
-                        onPressed: () {
-                          context.read<TasksCubit>().getData();
-                        },
-                      ),
-                    ],
-                  ),
+            error: (message) => appErrorMessage(
+                  message,
+                  () {
+                    context.read<TasksCubit>().getData();
+                  },
                 ),
             orElse: () {
               return const SizedBox.shrink();

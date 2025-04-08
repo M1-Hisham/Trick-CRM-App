@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:trick_crm_app/core/widgets/app_error_message.dart';
 import 'package:trick_crm_app/core/widgets/app_show_modal_bottom_sheet.dart';
+import 'package:trick_crm_app/features/tasks/task-view/task-view/presentation/screens/task_view.dart';
 import 'package:trick_crm_app/features/tasks/tasks/data/model/tasks_model.dart';
 import 'package:trick_crm_app/features/tasks/tasks/logic/cubit/tasks_cubit.dart';
 
@@ -98,10 +100,12 @@ class _TasksDataBlocBuilderState extends State<TasksDataBlocBuilder> {
                     dataIdExtractor: (tasks) => (tasks.id ?? 0).toString(),
                     dataLeadNameExtractor: (tasks) => tasks.subject ?? '_',
                     onViewDetails: (id, taskName) {
-                      // Get.toNamed(
-                      //   RoutesNames.leadsView,
-                      //   arguments: id != '' ? int.parse(id) : 0,
-                      // );
+                      Get.to(
+                        () => TaskView(
+                          taskName: taskName,
+                          taskId: int.parse(id),
+                        ),
+                      );
                     },
                   ),
                 ],

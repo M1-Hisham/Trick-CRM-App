@@ -8,6 +8,7 @@ import 'package:trick_crm_app/features/contacts/contact-view/Information/logic/c
 import 'package:trick_crm_app/features/leads/create-lead/logic/cubit/create_lead_cubit.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Information/logic/cubit/information_cubit.dart';
 import 'package:trick_crm_app/features/leads/lead-view/notes/create-note/logic/cubit/create_note_cubit.dart';
+import 'package:trick_crm_app/features/tasks/task-view/Information/logic/cubit/info_task_view_cubit.dart';
 
 import '../../features/auth/login/data/repos/login_repo.dart';
 import '../../features/auth/login/logic/cubit/login_cubit.dart';
@@ -103,6 +104,10 @@ Future<void> setupGetIt() async {
   // Create Task instance
   getIt.registerLazySingleton<CreateTaskCubit>(
       () => CreateTaskCubit(getIt<ApiService>()));
+
+  // Information Task View instance
+  getIt.registerLazySingleton<InfoTaskViewCubit>(
+      () => InfoTaskViewCubit(getIt<ApiService>()));
 
   // Create Meeting instance
   getIt.registerLazySingleton<CreateMeetingCubit>(

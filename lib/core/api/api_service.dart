@@ -49,7 +49,7 @@ import '../../features/leads/lead-view/notes/update-note/data/models/update_lead
 import '../../features/leads/lead-view/notes/update-note/data/models/update_lead_note_request_body.dart';
 import '../../features/meetings/create-meeting/data/model/create_meeting_model.dart';
 import '../../features/meetings/create-meeting/data/model/create_meeting_request_body.dart';
-import '../../features/meetings/data/model/meetings_model.dart';
+import '../../features/meetings/meetings/data/model/meetings_model.dart';
 import '../../features/projects/payment-plans/create-payment-plans/data/model/create_payment_plans_model.dart';
 import '../../features/projects/payment-plans/create-payment-plans/data/model/create_payment_plans_request_body.dart';
 import '../../features/projects/projects/create-project/data/model/create_project_model.dart';

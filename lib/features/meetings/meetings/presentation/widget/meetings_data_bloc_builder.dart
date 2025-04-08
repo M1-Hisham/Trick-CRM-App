@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:trick_crm_app/core/widgets/app_show_modal_bottom_sheet.dart';
-import 'package:trick_crm_app/features/meetings/data/model/meetings_model.dart';
-import 'package:trick_crm_app/features/meetings/logic/cubit/meetings_cubit.dart';
+import 'package:trick_crm_app/features/meetings/meetings/data/model/meetings_model.dart';
+import 'package:trick_crm_app/features/meetings/meetings/logic/cubit/meetings_cubit.dart';
 
-import '../../../../core/cubits/base_state.dart';
-import '../../../../core/helpers/spacing.dart';
-import '../../../../core/resources/resources.dart';
-import '../../../../core/widgets/app_button.dart';
-import '../../../../core/widgets/app_data_table.dart';
-import '../../create-meeting/presentation/create_meeting_screen.dart';
+import '../../../../../core/cubits/base_state.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/resources/resources.dart';
+import '../../../../../core/widgets/app_button.dart';
+import '../../../../../core/widgets/app_data_table.dart';
+import '../../../create-meeting/presentation/create_meeting_screen.dart';
 import 'meeting_loading_screen.dart';
 
 class MeetingsDataBlocBuilder extends StatefulWidget {

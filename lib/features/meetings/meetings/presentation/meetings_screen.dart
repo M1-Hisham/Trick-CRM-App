@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/widgets/app_bar.dart';
+import '../../../../core/widgets/app_bar.dart';
 import 'widget/meetings_data_bloc_builder.dart';
 
 class MeetingsScreen extends StatelessWidget {

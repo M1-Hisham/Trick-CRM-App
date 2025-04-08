@@ -30,9 +30,7 @@ class InfoContactDataBlocBuilder extends StatelessWidget {
           error: (message) => appErrorMessage(
             message,
             () {
-              context
-                  .read<InfoContactViewCubit>()
-                  .getInformationView(contactId);
+              getIt<InfoContactViewCubit>().getInformationView(contactId);
             },
           ),
           orElse: () => const SizedBox.shrink(),

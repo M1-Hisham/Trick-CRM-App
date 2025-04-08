@@ -1,41 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:trick_crm_app/core/resources/resources.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
-import 'package:trick_crm_app/features/contacts/contact-view/contact-view/data/model/contacts_view_model.dart';
+import 'package:trick_crm_app/features/clients/client-view/client-view/data/model/clients_view_model.dart';
 
-Widget informationContactDetails(ContactsViewModel contactsViewModel) {
-  final contact = contactsViewModel.contact;
+Widget informationClientDetails(ClientsViewModel clientsViewModel) {
+  final client = clientsViewModel.client;
   final userInfo = {
-    "Contact Owner": contact?.ownerName ?? "-",
-    "Email": contact?.email ?? "-",
-    "Mobile": contact?.mobile ?? "-",
+    "Client Owner": client?.ownerName ?? "-",
+    "Email": client?.email ?? "-",
+    "Mobile": client?.mobile ?? "-",
+    "Client Status": client?.leadStatus ?? "-",
   };
 
-  final contactInfo = {
-    "Contact Owner": contact?.ownerName ?? "-",
-    "Contact Assigner To": contact?.assigned?.name ?? "-",
-    "Contact End At": contact?.endTime ?? "-",
-    "Contact End At Hour": contact?.endTimeHour ?? "-",
-    "Title": contact?.jobTitle ?? "-",
-    "Contact Source": contact?.leadSource ?? "-",
-    "Industry": contact?.industry ?? "-",
-    "Email": contact?.email ?? "-",
-    "Mobile": contact?.mobile ?? "-",
-    "Sec. Mobile": contact?.mobile2 ?? "-",
-    "Company": contact?.company ?? "-",
-    "Contact Name": contact?.contactName ?? "-",
-    "Website": contact?.website ?? "-",
-    "Rating": contact?.rating ?? "-",
+  final clientInfo = {
+    "Client Owner": client?.ownerName ?? "-",
+    "Client Assigner To": client?.assigned?.name ?? "-",
+    "Client End At": client?.endTime ?? "-",
+    "Client End At Hour": client?.endTimeHour ?? "-",
+    "Title": client?.jobTitle ?? "-",
+    "Client Source": client?.leadSource ?? "-",
+    "Client Status": client?.leadStatus ?? "-",
+    "Industry": client?.industry ?? "-",
+    "Email": client?.email ?? "-",
+    "Mobile": client?.mobile ?? "-",
+    "Sec. Mobile": client?.mobile2 ?? "-",
+    "Ar_Name": client?.arName ?? "-",
+    "National ID": client?.nationalId ?? "-",
+    "Passport ID": client?.passportId ?? "-",
+    "Nationality": client?.nationality ?? "-",
+    "Ar_Address": client?.address ?? "-",
+    "Company": client?.company ?? "-",
+    "Client Name": client?.clientName ?? "-",
+    "Website": client?.website ?? "-",
+    "Rating": client?.rating ?? "-",
   };
 
   final addressInformation = {
-    "State": contact?.state ?? "-",
-    "City": contact?.city ?? "-",
-    "Country": contact?.country ?? "-",
+    "State": client?.state ?? "-",
+    "City": client?.city ?? "-",
+    "Country": client?.country ?? "-",
   };
 
   final description = {
-    "Description": contact?.description ?? "-",
+    "Description": client?.description ?? "-",
   };
 
   return Padding(
@@ -46,8 +53,8 @@ Widget informationContactDetails(ContactsViewModel contactsViewModel) {
       children: [
         sectionTitle("User Info"),
         buildFields(userInfo),
-        sectionTitle("Contact Information"),
-        buildFields(contactInfo),
+        sectionTitle("Client Information"),
+        buildFields(clientInfo),
         sectionTitle("Address Information"),
         buildFields(addressInformation),
         sectionTitle("Description"),

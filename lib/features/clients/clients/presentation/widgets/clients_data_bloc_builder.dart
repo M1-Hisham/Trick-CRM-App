@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:trick_crm_app/core/widgets/app_error_message.dart';
+import 'package:trick_crm_app/features/clients/client-view/client-view/presentation/screens/client_view.dart';
 
 import '../../../../../core/cubits/base_state.dart';
 import '../../../../../core/helpers/spacing.dart';
@@ -19,7 +22,8 @@ class ClientsDataBlocBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ClientsCubit, BaseState<ClientsModel>>(
-      buildWhen: (previous, current) => current is Success || current is Error,
+      buildWhen: (previous, current) =>
+          current is Loading || current is Success || current is Error,
       builder: (context, state) {
         return state.maybeWhen(
             loading: () => clientsLoadingScreen(),
@@ -85,43 +89,24 @@ class ClientsDataBlocBuilder extends StatelessWidget {
                       (client) => client.assigned?.name ?? '_',
                     ],
                     dataIdExtractor: (client) => (client.id ?? 0).toString(),
-                    dataLeadNameExtractor: (client) => client.firstName ?? '',
-                    onViewDetails: (id, leadName) {
-                      // Get.toNamed(
-                      //   RoutesNames.leadsView,
-                      //   arguments: id != '' ? int.parse(id) : 0,
-                      // );
+                    dataLeadNameExtractor: (client) => client.clientName ?? '',
+                    onViewDetails: (id, clientName) {
+                      Get.to(
+                        () => ClientView(
+                          clientName: clientName,
+                          clientId: int.parse(id),
+                        ),
+                      );
                     },
                   ),
                 ],
               );
             },
-            error: (message) => Center(
-                  child: Column(
-                    children: [
-                      const Text('An error occurred, Try again'),
-                      spacingV(10),
-                      const Icon(
-                        Icons.error,
-                        color: Colors.red,
-                      ),
-                      spacingV(10),
-                      const Text('Please check your internet connection'),
-                      spacingV(10),
-                      const Text('Or try again later'),
-                      spacingV(10),
-                      const Text('If the problem persists, contact support'),
-                      spacingV(10),
-                      Text('Error: $message'),
-                      spacingV(10),
-                      AppButton(
-                        text: 'Retry',
-                        onPressed: () {
-                          context.read<ClientsCubit>().getData();
-                        },
-                      ),
-                    ],
-                  ),
+            error: (message) => appErrorMessage(
+                  message,
+                  () {
+                    context.read<ClientsCubit>().getData();
+                  },
                 ),
             orElse: () {
               return const SizedBox.shrink();

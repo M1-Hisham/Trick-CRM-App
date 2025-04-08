@@ -21,9 +21,12 @@ Widget appErrorMessage(String? message, Function()? onPressedRetry) {
         spacingV(10),
         Text('Error: $message'),
         spacingV(10),
-        AppButton(
-          text: 'Retry',
-          onPressed: onPressedRetry ?? () {},
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: AppButton(
+            text: 'Retry',
+            onPressed: onPressedRetry ?? () {},
+          ),
         ),
       ],
     ),

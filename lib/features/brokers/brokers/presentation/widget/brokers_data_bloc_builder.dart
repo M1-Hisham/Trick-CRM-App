@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:trick_crm_app/features/brokers/create-broker/presentation/create_broker_screen.dart';
-import 'package:trick_crm_app/features/brokers/data/model/brokers_model.dart';
-import 'package:trick_crm_app/features/brokers/logic/cubit/brokers_cubit.dart';
+import 'package:trick_crm_app/features/brokers/brokers/data/model/brokers_model.dart';
+import 'package:trick_crm_app/features/brokers/brokers/logic/cubit/brokers_cubit.dart';
 
-import '../../../../core/cubits/base_state.dart';
-import '../../../../core/helpers/spacing.dart';
-import '../../../../core/resources/resources.dart';
-import '../../../../core/widgets/app_button.dart';
-import '../../../../core/widgets/app_data_table.dart';
-import '../../../../core/widgets/app_show_modal_bottom_sheet.dart';
+import '../../../../../core/cubits/base_state.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/resources/resources.dart';
+import '../../../../../core/widgets/app_button.dart';
+import '../../../../../core/widgets/app_data_table.dart';
+import '../../../../../core/widgets/app_show_modal_bottom_sheet.dart';
 import 'brokers_loading_screen.dart';
 
 class BrokersDataBlocBuilder extends StatelessWidget {

@@ -7,8 +7,8 @@ import 'package:trick_crm_app/features/deals/deals/presentation/deals_screen.dar
 import '../../features/Base-view/base_view_screen.dart';
 import '../../features/auth/login/logic/cubit/login_cubit.dart';
 import '../../features/auth/login/presentation/screens/login_screen.dart';
-import '../../features/brokers/logic/cubit/brokers_cubit.dart';
-import '../../features/brokers/presentation/brokers_screen.dart';
+import '../../features/brokers/brokers/logic/cubit/brokers_cubit.dart';
+import '../../features/brokers/brokers/presentation/brokers_screen.dart';
 import '../../features/calls/calls/logic/cubit/calls_cubit.dart';
 import '../../features/calls/calls/presentation/calls_screen.dart';
 import '../../features/campaigns/campaigns/logic/cubit/campaigns_cubit.dart';

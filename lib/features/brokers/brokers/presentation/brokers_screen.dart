@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../core/widgets/app_bar.dart';
+import '../../../../core/widgets/app_bar.dart';
 import 'widget/brokers_data_bloc_builder.dart';
 
 class BrokersScreen extends StatelessWidget {

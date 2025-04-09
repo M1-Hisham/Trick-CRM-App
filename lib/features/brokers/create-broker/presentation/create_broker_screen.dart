@@ -15,7 +15,7 @@ import '../../../../core/widgets/app_button.dart';
 import '../../../../core/widgets/app_waiting_feature.dart';
 import '../../../auth/login/data/models/login_response.dart';
 import '../../../leads/create-lead/presentation/widgets/top_bar_dialog.dart';
-import '../../data/model/brokers_model.dart';
+import '../../brokers/data/model/brokers_model.dart';
 import '../data/model/create_broker_request_body.dart';
 import '../logic/cubit/create_broker_cubit.dart';
 

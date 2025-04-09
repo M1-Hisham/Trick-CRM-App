@@ -6,7 +6,7 @@ import 'package:trick_crm_app/features/auth/login/data/models/login_request_body
 import 'package:trick_crm_app/features/auth/login/data/models/login_response.dart';
 import 'package:trick_crm_app/features/brokers/create-broker/data/model/create_broker_request_body.dart';
 import 'package:trick_crm_app/features/brokers/create-broker/data/model/create_brokers_model.dart';
-import 'package:trick_crm_app/features/brokers/data/model/brokers_model.dart';
+import 'package:trick_crm_app/features/brokers/brokers/data/model/brokers_model.dart';
 import 'package:trick_crm_app/features/calls/call-view/call-view/data/model/call_view_model.dart';
 import 'package:trick_crm_app/features/campaigns/campaign-view/campaign-view/data/model/campaign_view_model.dart';
 import 'package:trick_crm_app/features/campaigns/create-campaign/data/model/create_campaign_request_body.dart';

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../../core/helpers/spacing.dart';
-import '../../../../core/resources/resources.dart';
-import '../../../../core/widgets/app_button.dart';
-import '../../../../core/widgets/app_data_table.dart';
-import '../../../calls/calls/data/model/calls_model.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/resources/resources.dart';
+import '../../../../../core/widgets/app_button.dart';
+import '../../../../../core/widgets/app_data_table.dart';
+import '../../../../calls/calls/data/model/calls_model.dart';
 
 Widget brokersLoadingScreen() {
   return Shimmer.fromColors(

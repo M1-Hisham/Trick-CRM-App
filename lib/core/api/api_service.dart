@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:trick_crm_app/features/auth/login/data/models/login_request_body.dart';
 import 'package:trick_crm_app/features/auth/login/data/models/login_response.dart';
+import 'package:trick_crm_app/features/brokers/broker-view/broker-view/data/model/broker_view_model.dart';
 import 'package:trick_crm_app/features/brokers/create-broker/data/model/create_broker_request_body.dart';
 import 'package:trick_crm_app/features/brokers/create-broker/data/model/create_brokers_model.dart';
 import 'package:trick_crm_app/features/brokers/brokers/data/model/brokers_model.dart';
@@ -245,6 +246,10 @@ abstract class ApiService {
   @POST(ApiConstants.createBroker)
   Future<CreateBrokersModel> createBroker(
       @Body() CreateBrokerRequestBody createBrokerRequestBody);
+
+  /// service for Broker View
+  @GET("/brokers/{id}/view")
+  Future<BrokerViewModel> getBrokerView(@Path("id") int id);
 
   /// service for projects
   @GET(ApiConstants.projects)

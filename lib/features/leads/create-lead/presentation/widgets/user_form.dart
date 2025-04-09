@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:trick_crm_app/core/di/dependency_injection.dart';
+import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
 import 'package:trick_crm_app/features/leads/create-lead/logic/cubit/create_lead_cubit.dart';
 
 import '../../../../../core/helpers/spacing.dart';

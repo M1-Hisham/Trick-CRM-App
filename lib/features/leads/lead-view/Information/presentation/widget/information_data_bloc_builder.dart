@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:trick_crm_app/core/cubits/base_state.dart';
-import 'package:trick_crm_app/core/di/dependency_injection.dart';
+import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Information/logic/cubit/information_cubit.dart';
 
 import '../../../../../../core/resources/resources.dart';

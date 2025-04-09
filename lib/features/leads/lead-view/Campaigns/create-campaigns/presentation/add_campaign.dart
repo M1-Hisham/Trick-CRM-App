@@ -7,7 +7,7 @@ import 'package:trick_crm_app/core/widgets/app_button.dart';
 import 'package:trick_crm_app/core/widgets/app_selection_form_field.dart';
 import 'package:trick_crm_app/core/widgets/app_top_bar_dialog.dart';
 
-import '../../../../../../core/di/dependency_injection.dart';
+import '../../../../../../core/di/setup-di/dependency_injection.dart';
 import '../../../../../../core/resources/resources.dart';
 import '../../campaigns-view/data/model/campaigns_model.dart';
 import '../data/model/campaign_leads_request_body.dart';

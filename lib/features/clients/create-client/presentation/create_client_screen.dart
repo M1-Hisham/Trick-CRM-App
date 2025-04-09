@@ -10,7 +10,7 @@ import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
 import 'package:trick_crm_app/features/clients/clients/data/model/clients_model.dart';
 
 import '../../../../core/cubits/user_cubit.dart';
-import '../../../../core/di/dependency_injection.dart';
+import '../../../../core/di/setup-di/dependency_injection.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/resources/resources.dart';
 import '../../../../core/widgets/app_button.dart';

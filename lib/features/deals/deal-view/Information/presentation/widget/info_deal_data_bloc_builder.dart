@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trick_crm_app/core/cubits/base_state.dart';
-import 'package:trick_crm_app/core/di/dependency_injection.dart';
+import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
 import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
 import 'package:trick_crm_app/core/widgets/app_error_message.dart';
 import 'package:trick_crm_app/features/deals/deal-view/Information/logic/cubit/info_deal_view_cubit.dart';

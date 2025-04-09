@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/core/cubits/base_state.dart';
-import 'package:trick_crm_app/core/di/dependency_injection.dart';
+import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
 import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Campaigns/campaigns-view/data/model/campaign_leads_model.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Closed-Activities/closed-activities/data/model/closed_activity_model.dart';

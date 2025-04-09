@@ -10,7 +10,7 @@ import 'package:trick_crm_app/features/projects/payment-plans/create-payment-pla
 
 import '../../../../../../../core/helpers/spacing.dart';
 import '../../../../../../../core/resources/resources.dart';
-import '../../../../../core/di/dependency_injection.dart';
+import '../../../../../core/di/setup-di/dependency_injection.dart';
 import '../../../../../core/widgets/app_waiting_feature.dart';
 import '../logic/cubit/create_payment_plans_cubit.dart';
 

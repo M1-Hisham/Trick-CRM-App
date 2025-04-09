@@ -7,7 +7,7 @@ import 'package:trick_crm_app/core/helpers/spacing.dart';
 import 'package:trick_crm_app/core/widgets/app_bar.dart';
 import 'package:trick_crm_app/features/projects/payment-plans/payment-plans-view/logic/cubit/payment_plans_cubit.dart';
 
-import '../../../core/di/dependency_injection.dart';
+import '../../../core/di/setup-di/dependency_injection.dart';
 import '../../../core/resources/resources.dart';
 import '../payment-plans/payment-plans-view/presentation/payment_plans_screen.dart';
 import '../projects/logic/cubit/projects_cubit.dart';

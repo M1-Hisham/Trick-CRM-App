@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/core/cubits/user_cubit.dart';
-import 'package:trick_crm_app/core/di/dependency_injection.dart';
+import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
 import 'package:trick_crm_app/core/widgets/app_date_picker_field.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
 

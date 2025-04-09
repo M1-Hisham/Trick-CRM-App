@@ -1,0 +1,40 @@
+import 'package:trick_crm_app/core/api/api_service.dart';
+import 'package:trick_crm_app/features/leads/create-lead/logic/cubit/create_lead_cubit.dart';
+import 'package:trick_crm_app/features/leads/lead-view/Campaigns/create-campaigns/logic/cubit/create_campaign_lead_cubit.dart';
+import 'package:trick_crm_app/features/leads/lead-view/Information/logic/cubit/information_cubit.dart';
+import 'package:trick_crm_app/features/leads/lead-view/lead-view/logic/cubit/lead_view_cubit.dart';
+import 'package:trick_crm_app/features/leads/lead-view/notes/create-note/logic/cubit/create_note_cubit.dart';
+import 'package:trick_crm_app/features/leads/lead-view/notes/update-note/logic/cubit/update_note_cubit.dart';
+import 'package:trick_crm_app/features/leads/leads/logic/cubit/leads_cubit.dart';
+
+import '../setup-di/dependency_injection.dart';
+
+void setupLeadsModule() {
+  /// Leads cubit instance
+  getIt
+      .registerLazySingleton<LeadsCubit>(() => LeadsCubit(getIt<ApiService>()));
+
+  // leads view cubit instance
+  getIt
+      .registerFactory<LeadViewCubit>(() => LeadViewCubit(getIt<ApiService>()));
+
+  // leads information cubit instance
+  getIt.registerFactory<InformationCubit>(
+      () => InformationCubit(getIt<ApiService>()));
+
+  // create lead instance
+  getIt.registerLazySingleton<CreateLeadCubit>(
+      () => CreateLeadCubit(getIt<ApiService>()));
+
+  // Create Note instance
+  getIt.registerLazySingleton<CreateNoteCubit>(
+      () => CreateNoteCubit(getIt<ApiService>()));
+
+  // Update Note instance
+  getIt.registerLazySingleton<UpdateNoteCubit>(
+      () => UpdateNoteCubit(getIt<ApiService>()));
+
+  // Create Campaign Lead instance
+  getIt.registerLazySingleton<CreateCampaignLeadCubit>(
+      () => CreateCampaignLeadCubit(getIt<ApiService>()));
+}

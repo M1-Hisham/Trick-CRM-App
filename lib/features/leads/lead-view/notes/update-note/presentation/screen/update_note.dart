@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trick_crm_app/core/cubits/base_state.dart';
-import 'package:trick_crm_app/core/di/dependency_injection.dart';
+import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
 
 import 'package:trick_crm_app/core/widgets/app_button.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';

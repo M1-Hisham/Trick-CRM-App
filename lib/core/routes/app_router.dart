@@ -27,7 +27,7 @@ import '../../features/splash/splash_screen.dart';
 import '../../features/tasks/tasks/logic/cubit/tasks_cubit.dart';
 import '../../features/tasks/tasks/presentation/tasks_screen.dart';
 import '../api/api_service.dart';
-import '../di/dependency_injection.dart';
+import '../di/setup-di/dependency_injection.dart';
 import 'routes.dart';
 
 /// App Router class for the app

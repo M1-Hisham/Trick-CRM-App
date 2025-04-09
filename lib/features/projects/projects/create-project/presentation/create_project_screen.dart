@@ -8,7 +8,7 @@ import 'package:trick_crm_app/core/widgets/app_top_bar_dialog.dart';
 
 import '../../../../../../../core/helpers/spacing.dart';
 import '../../../../../../../core/resources/resources.dart';
-import '../../../../../core/di/dependency_injection.dart';
+import '../../../../../core/di/setup-di/dependency_injection.dart';
 import '../../../../../core/widgets/app_text_form_field.dart';
 import '../../../../../core/widgets/app_waiting_feature.dart';
 import '../../data/model/projects_model.dart';

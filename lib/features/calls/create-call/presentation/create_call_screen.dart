@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/core/widgets/app_selection_form_field.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
-import 'package:trick_crm_app/features/calls/data/model/calls_model.dart';
+import 'package:trick_crm_app/features/calls/calls/data/model/calls_model.dart';
 
 import '../../../../core/cubits/user_cubit.dart';
 import '../../../../core/di/dependency_injection.dart';

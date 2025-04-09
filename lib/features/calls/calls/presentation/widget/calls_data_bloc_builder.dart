@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:trick_crm_app/features/calls/data/model/calls_model.dart';
-import 'package:trick_crm_app/features/calls/logic/cubit/calls_cubit.dart';
+import 'package:trick_crm_app/features/calls/calls/data/model/calls_model.dart';
+import 'package:trick_crm_app/features/calls/calls/logic/cubit/calls_cubit.dart';
 
-import '../../../../core/cubits/base_state.dart';
-import '../../../../core/helpers/spacing.dart';
-import '../../../../core/resources/resources.dart';
-import '../../../../core/widgets/app_button.dart';
-import '../../../../core/widgets/app_data_table.dart';
-import '../../../../core/widgets/app_show_modal_bottom_sheet.dart';
-import '../../create-call/presentation/create_call_screen.dart';
+import '../../../../../core/cubits/base_state.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/resources/resources.dart';
+import '../../../../../core/widgets/app_button.dart';
+import '../../../../../core/widgets/app_data_table.dart';
+import '../../../../../core/widgets/app_show_modal_bottom_sheet.dart';
+import '../../../create-call/presentation/create_call_screen.dart';
 import 'calls_loading_screen.dart';
 
 class CallsDataBlocBuilder extends StatefulWidget {

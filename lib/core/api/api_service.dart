@@ -20,7 +20,7 @@ import 'package:trick_crm_app/features/tasks/tasks/data/model/tasks_model.dart';
 
 import '../../features/calls/create-call/data/model/create_call_model.dart';
 import '../../features/calls/create-call/data/model/create_call_request_body.dart';
-import '../../features/calls/data/model/calls_model.dart';
+import '../../features/calls/calls/data/model/calls_model.dart';
 import '../../features/campaigns/create-campaign/data/model/create_campaign_model.dart';
 import '../../features/campaigns/model/campaigns_model.dart';
 import '../../features/clients/clients/data/model/clients_model.dart';

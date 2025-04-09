@@ -23,6 +23,7 @@ import '../../features/leads/lead-view/lead-view/logic/cubit/lead_view_cubit.dar
 import '../../features/leads/lead-view/notes/update-note/logic/cubit/update_note_cubit.dart';
 import '../../features/leads/leads/logic/cubit/leads_cubit.dart';
 import '../../features/meetings/create-meeting/logic/cubit/create_meeting_cubit.dart';
+import '../../features/meetings/meeting-view/Information/logic/cubit/info_meeting_view_cubit.dart';
 import '../../features/projects/payment-plans/create-payment-plans/logic/cubit/create_payment_plans_cubit.dart';
 import '../../features/projects/projects/create-project/logic/cubit/create_project_cubit.dart';
 import '../../features/tasks/create-task/logic/cubit/create_task_cubit.dart';
@@ -112,6 +113,10 @@ Future<void> setupGetIt() async {
   // Create Meeting instance
   getIt.registerLazySingleton<CreateMeetingCubit>(
       () => CreateMeetingCubit(getIt<ApiService>()));
+
+  // Information Meeting View instance
+  getIt.registerLazySingleton<InfoMeetingViewCubit>(
+      () => InfoMeetingViewCubit(getIt<ApiService>()));
 
   // Create Calls instance
   getIt.registerLazySingleton<CreateCallCubit>(

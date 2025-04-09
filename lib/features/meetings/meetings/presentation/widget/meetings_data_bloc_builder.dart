@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:trick_crm_app/core/widgets/app_show_modal_bottom_sheet.dart';
 import 'package:trick_crm_app/features/meetings/meetings/data/model/meetings_model.dart';
 import 'package:trick_crm_app/features/meetings/meetings/logic/cubit/meetings_cubit.dart';
@@ -11,6 +12,7 @@ import '../../../../../core/resources/resources.dart';
 import '../../../../../core/widgets/app_button.dart';
 import '../../../../../core/widgets/app_data_table.dart';
 import '../../../create-meeting/presentation/create_meeting_screen.dart';
+import '../../../meeting-view/meeting-view/presentation/screens/meeting_view.dart';
 import 'meeting_loading_screen.dart';
 
 class MeetingsDataBlocBuilder extends StatefulWidget {
@@ -79,11 +81,13 @@ class _MeetingsDataBlocBuilderState extends State<MeetingsDataBlocBuilder> {
                     dataIdExtractor: (meetings) =>
                         (meetings.id ?? 0).toString(),
                     dataLeadNameExtractor: (meetings) => meetings.title ?? '',
-                    onViewDetails: (id, leadName) {
-                      // Get.toNamed(
-                      //   RoutesNames.leadsView,
-                      //   arguments: id != '' ? int.parse(id) : 0,
-                      // );
+                    onViewDetails: (id, meetingName) {
+                      Get.to(
+                        () => MeetingView(
+                          meetingName: meetingName,
+                          meetingId: int.parse(id),
+                        ),
+                      );
                     },
                   ),
                 ],

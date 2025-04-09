@@ -13,6 +13,7 @@ import 'package:trick_crm_app/features/deals/data/model/deals_model.dart';
 import 'package:trick_crm_app/features/leads/create-lead/data/models/create_lead_model.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Campaigns/create-campaigns/data/model/campaign_leads_request_body.dart';
 import 'package:trick_crm_app/features/leads/leads/data/models/leads_model.dart';
+import 'package:trick_crm_app/features/meetings/meeting-view/meeting-view/data/model/meeting_view_model.dart';
 import 'package:trick_crm_app/features/projects/payment-plans/payment-plans-view/data/model/payment_plans_model.dart';
 import 'package:trick_crm_app/features/tasks/task-view/task-view/data/model/task_view_model.dart';
 import 'package:trick_crm_app/features/tasks/tasks/data/model/tasks_model.dart';
@@ -197,6 +198,10 @@ abstract class ApiService {
   @POST(ApiConstants.createMeeting)
   Future<CreateMeetingModel> createMeeting(
       @Body() CreateMeetingRequestBody createMeetingRequestBody);
+
+  /// service for Meeting View
+  @GET("/meetings/{id}/view")
+  Future<MeetingViewModel> getMeetingView(@Path("id") int id);
 
   /// service for Calls
   @GET(ApiConstants.calls)

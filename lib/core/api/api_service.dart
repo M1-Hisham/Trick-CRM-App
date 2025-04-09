@@ -8,6 +8,7 @@ import 'package:trick_crm_app/features/brokers/create-broker/data/model/create_b
 import 'package:trick_crm_app/features/brokers/create-broker/data/model/create_brokers_model.dart';
 import 'package:trick_crm_app/features/brokers/data/model/brokers_model.dart';
 import 'package:trick_crm_app/features/calls/call-view/call-view/data/model/call_view_model.dart';
+import 'package:trick_crm_app/features/campaigns/campaign-view/campaign-view/data/model/campaign_view_model.dart';
 import 'package:trick_crm_app/features/campaigns/create-campaign/data/model/create_campaign_request_body.dart';
 import 'package:trick_crm_app/features/clients/client-view/client-view/data/model/clients_view_model.dart';
 import 'package:trick_crm_app/features/deals/deal-view/deal-view/data/model/deal_view_model.dart';
@@ -178,6 +179,10 @@ abstract class ApiService {
   @POST(ApiConstants.createCampaign)
   Future<CreateCampaignModel> createCampaign(
       @Body() CreateCampaignRequestBody createCampaignRequestBody);
+
+  /// service for Campaign View
+  @GET("/campaigns/{id}/view")
+  Future<CampaignViewModel> getCampaignView(@Path("id") int id);
 
   /// service for Tasks
   @GET(ApiConstants.tasks)

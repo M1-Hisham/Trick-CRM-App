@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:trick_crm_app/features/deals/data/model/deals_model.dart';
-import 'package:trick_crm_app/features/deals/logic/cubit/deals_cubit.dart';
+import 'package:trick_crm_app/features/deals/deals/data/model/deals_model.dart';
+import 'package:trick_crm_app/features/deals/deals/logic/cubit/deals_cubit.dart';
 
-import '../../../../core/cubits/base_state.dart';
-import '../../../../core/helpers/spacing.dart';
-import '../../../../core/resources/resources.dart';
-import '../../../../core/widgets/app_button.dart';
-import '../../../../core/widgets/app_data_table.dart';
-import '../../../../core/widgets/app_show_modal_bottom_sheet.dart';
-import '../../create-deal/presentation/create_deal_screen.dart';
+import '../../../../../core/cubits/base_state.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/resources/resources.dart';
+import '../../../../../core/widgets/app_button.dart';
+import '../../../../../core/widgets/app_data_table.dart';
+import '../../../../../core/widgets/app_show_modal_bottom_sheet.dart';
+import '../../../create-deal/presentation/create_deal_screen.dart';
 import 'deals_screen_loading.dart';
 
 class DealsDataBlocBuilder extends StatelessWidget {

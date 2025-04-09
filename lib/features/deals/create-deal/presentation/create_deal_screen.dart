@@ -17,7 +17,7 @@ import '../../../../core/widgets/app_button.dart';
 import '../../../../core/widgets/app_waiting_feature.dart';
 import '../../../auth/login/data/models/login_response.dart';
 import '../../../leads/create-lead/presentation/widgets/top_bar_dialog.dart';
-import '../../data/model/deals_model.dart';
+import '../../deals/data/model/deals_model.dart';
 import '../data/model/create_deal_request_body.dart';
 import '../logic/cubit/create_deal_cubit.dart';
 

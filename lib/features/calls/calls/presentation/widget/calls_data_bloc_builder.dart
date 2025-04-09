@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:trick_crm_app/features/calls/call-view/call-view/presentation/screens/call_view.dart';
 import 'package:trick_crm_app/features/calls/calls/data/model/calls_model.dart';
 import 'package:trick_crm_app/features/calls/calls/logic/cubit/calls_cubit.dart';
 
@@ -82,10 +84,12 @@ class _CallsDataBlocBuilderState extends State<CallsDataBlocBuilder> {
                     dataIdExtractor: (calls) => (calls.id ?? 0).toString(),
                     dataLeadNameExtractor: (calls) => calls.subject ?? '',
                     onViewDetails: (id, callName) {
-                      // Get.toNamed(
-                      //   RoutesNames.leadsView,
-                      //   arguments: id != '' ? int.parse(id) : 0,
-                      // );
+                      Get.to(
+                        () => CallView(
+                          callName: callName,
+                          callId: int.parse(id),
+                        ),
+                      );
                     },
                   ),
                 ],

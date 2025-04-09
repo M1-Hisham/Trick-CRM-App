@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:trick_crm_app/core/api/api_service.dart';
 import 'package:trick_crm_app/core/api/dio_factory.dart';
+import 'package:trick_crm_app/features/calls/call-view/Information/logic/cubit/info_call_view_cubit.dart';
 import 'package:trick_crm_app/features/calls/create-call/logic/cubit/create_call_cubit.dart';
 import 'package:trick_crm_app/features/clients/client-view/Information/logic/cubit/info_client_view_cubit.dart';
 import 'package:trick_crm_app/features/contacts/contact-view/Information/logic/cubit/info_contact_view_cubit.dart';
@@ -121,6 +122,10 @@ Future<void> setupGetIt() async {
   // Create Calls instance
   getIt.registerLazySingleton<CreateCallCubit>(
       () => CreateCallCubit(getIt<ApiService>()));
+
+  // Information Call View instance
+  getIt.registerLazySingleton<InfoCallViewCubit>(
+      () => InfoCallViewCubit(getIt<ApiService>()));
 
   // Create Campaign Lead instance
   getIt.registerLazySingleton<CreateCampaignLeadCubit>(

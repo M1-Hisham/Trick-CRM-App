@@ -7,6 +7,7 @@ import 'package:trick_crm_app/features/auth/login/data/models/login_response.dar
 import 'package:trick_crm_app/features/brokers/create-broker/data/model/create_broker_request_body.dart';
 import 'package:trick_crm_app/features/brokers/create-broker/data/model/create_brokers_model.dart';
 import 'package:trick_crm_app/features/brokers/data/model/brokers_model.dart';
+import 'package:trick_crm_app/features/calls/call-view/call-view/data/model/call_view_model.dart';
 import 'package:trick_crm_app/features/campaigns/create-campaign/data/model/create_campaign_request_body.dart';
 import 'package:trick_crm_app/features/clients/client-view/client-view/data/model/clients_view_model.dart';
 import 'package:trick_crm_app/features/deals/data/model/deals_model.dart';
@@ -211,6 +212,10 @@ abstract class ApiService {
   @POST(ApiConstants.createCall)
   Future<CreateCallModel> createCall(
       @Body() CreateCallRequestBody createCallRequestBody);
+
+  /// service for Call View
+  @GET("/calls/{id}/view")
+  Future<CallViewModel> getCallView(@Path("id") int id);
 
   /// service for Deals
   @GET(ApiConstants.deals)

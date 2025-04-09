@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trick_crm_app/core/cubits/base_state.dart';
+import 'package:trick_crm_app/core/di/dependency_injection.dart';
+import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
+import 'package:trick_crm_app/core/widgets/app_error_message.dart';
+import 'package:trick_crm_app/features/calls/call-view/Information/logic/cubit/info_call_view_cubit.dart';
+import 'package:trick_crm_app/features/calls/call-view/Information/presentation/widget/information_call_details.dart';
+import 'package:trick_crm_app/features/calls/call-view/call-view/data/model/call_view_model.dart';
+
+class InfoCallDataBlocBuilder extends StatelessWidget {
+  final int callId;
+  const InfoCallDataBlocBuilder({super.key, required this.callId});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<InfoCallViewCubit, BaseState<CallViewModel>>(
+      bloc: getIt<InfoCallViewCubit>()..getInformationView(callId),
+      buildWhen: (previous, current) =>
+          current is Success || current is Loading || current is Error,
+      builder: (context, state) {
+        return state.maybeWhen(
+          loading: () => loadingShimmer(
+            child: informationCallDetails(CallViewModel()),
+          ),
+          success: (CallViewModel callViewModel) {
+            return informationCallDetails(callViewModel);
+          },
+          error: (message) => appErrorMessage(
+            message,
+            () {
+              getIt<InfoCallViewCubit>().getInformationView(callId);
+            },
+          ),
+          orElse: () => const SizedBox.shrink(),
+        );
+      },
+    );
+  }
+}

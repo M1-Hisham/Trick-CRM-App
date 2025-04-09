@@ -24,7 +24,7 @@ import '../../features/calls/create-call/data/model/create_call_model.dart';
 import '../../features/calls/create-call/data/model/create_call_request_body.dart';
 import '../../features/calls/calls/data/model/calls_model.dart';
 import '../../features/campaigns/create-campaign/data/model/create_campaign_model.dart';
-import '../../features/campaigns/model/campaigns_model.dart';
+import '../../features/campaigns/campaigns/model/campaigns_model.dart';
 import '../../features/clients/clients/data/model/clients_model.dart';
 import '../../features/clients/create-client/data/model/create_client_model.dart';
 import '../../features/clients/create-client/data/model/create_client_request_body.dart';

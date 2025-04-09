@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:trick_crm_app/core/widgets/app_show_modal_bottom_sheet.dart';
-import 'package:trick_crm_app/features/campaigns/logic/cubit/campaigns_cubit.dart';
+import 'package:trick_crm_app/features/campaigns/campaigns/logic/cubit/campaigns_cubit.dart';
 
-import '../../../../core/cubits/base_state.dart';
-import '../../../../core/helpers/spacing.dart';
-import '../../../../core/resources/resources.dart';
-import '../../../../core/widgets/app_button.dart';
-import '../../../../core/widgets/app_data_table.dart';
-import '../../create-campaign/presentation/create_campaign_screen.dart';
+import '../../../../../core/cubits/base_state.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/resources/resources.dart';
+import '../../../../../core/widgets/app_button.dart';
+import '../../../../../core/widgets/app_data_table.dart';
+import '../../../create-campaign/presentation/create_campaign_screen.dart';
 import '../../model/campaigns_model.dart';
 import 'campaign_screen_loading.dart';
 

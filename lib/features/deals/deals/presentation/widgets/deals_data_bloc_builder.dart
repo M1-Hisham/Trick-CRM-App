@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:trick_crm_app/features/deals/deal-view/deal-view/presentation/screens/deal_view.dart';
 import 'package:trick_crm_app/features/deals/deals/data/model/deals_model.dart';
 import 'package:trick_crm_app/features/deals/deals/logic/cubit/deals_cubit.dart';
 
@@ -69,10 +71,10 @@ class DealsDataBlocBuilder extends StatelessWidget {
                     dataIdExtractor: (deals) => (deals.id ?? 0).toString(),
                     dataLeadNameExtractor: (deals) => deals.dealName ?? '',
                     onViewDetails: (id, dealName) {
-                      // Get.toNamed(
-                      //   RoutesNames.leadsView,
-                      //   arguments: id != '' ? int.parse(id) : 0,
-                      // );
+                      Get.to(() => DealView(
+                            dealName: dealName,
+                            dealId: int.parse(id),
+                          ));
                     },
                   ),
                 ],

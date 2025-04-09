@@ -6,6 +6,7 @@ import 'package:trick_crm_app/features/calls/call-view/Information/logic/cubit/i
 import 'package:trick_crm_app/features/calls/create-call/logic/cubit/create_call_cubit.dart';
 import 'package:trick_crm_app/features/clients/client-view/Information/logic/cubit/info_client_view_cubit.dart';
 import 'package:trick_crm_app/features/contacts/contact-view/Information/logic/cubit/info_contact_view_cubit.dart';
+import 'package:trick_crm_app/features/deals/deal-view/Information/logic/cubit/info_deal_view_cubit.dart';
 import 'package:trick_crm_app/features/leads/create-lead/logic/cubit/create_lead_cubit.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Information/logic/cubit/information_cubit.dart';
 import 'package:trick_crm_app/features/leads/lead-view/notes/create-note/logic/cubit/create_note_cubit.dart';
@@ -146,6 +147,10 @@ Future<void> setupGetIt() async {
   // Create Deal instance
   getIt.registerLazySingleton<CreateDealCubit>(
       () => CreateDealCubit(getIt<ApiService>()));
+
+  // Information Deal View instance
+  getIt.registerLazySingleton<InfoDealViewCubit>(
+      () => InfoDealViewCubit(getIt<ApiService>()));
 
   // Create Broker instance
   getIt.registerLazySingleton<CreateBrokerCubit>(

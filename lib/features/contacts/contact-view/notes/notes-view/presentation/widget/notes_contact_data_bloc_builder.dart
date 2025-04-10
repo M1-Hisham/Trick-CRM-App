@@ -70,9 +70,8 @@ class NotesContactDataBlocBuilder extends StatelessWidget {
                           isclickable: false,
                           hintText: '',
                           labelText: 'Note',
-                          controller: TextEditingController(
-                            text: data.contactNotes?[index].comment ?? '-',
-                          ),
+                          initialValue:
+                              data.contactNotes?[index].comment ?? '-',
                           style: TextStyle(
                             color: R.colors.black,
                             fontSize: 14,

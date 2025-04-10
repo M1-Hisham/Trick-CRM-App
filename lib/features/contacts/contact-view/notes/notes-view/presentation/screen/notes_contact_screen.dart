@@ -9,17 +9,12 @@ class NotesContactScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-      },
-      child: Scaffold(
-        appBar: appBar('Notes'),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            child: NotesContactDataBlocBuilder(contactId: contactId),
-          ),
+    return Scaffold(
+      appBar: appBar('Notes'),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          child: NotesContactDataBlocBuilder(contactId: contactId),
         ),
       ),
     );

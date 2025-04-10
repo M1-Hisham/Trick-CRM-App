@@ -6,7 +6,7 @@ import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
 import 'package:trick_crm_app/core/widgets/app_error_message.dart';
 
 import '../../../contact-view/data/model/contacts_view_model.dart';
-import '../../logic/cubit/info_contact_view_cubit.dart';
+import '../../../contact-view/logic/cubit/contact_view_cubit.dart';
 import 'information_contact_details.dart';
 
 class InfoContactDataBlocBuilder extends StatelessWidget {
@@ -15,8 +15,8 @@ class InfoContactDataBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<InfoContactViewCubit, BaseState<ContactsViewModel>>(
-      bloc: getIt<InfoContactViewCubit>()..getInformationView(contactId),
+    return BlocBuilder<ContactViewCubit, BaseState<ContactsViewModel>>(
+      bloc: getIt<ContactViewCubit>()..getContactView(contactId),
       buildWhen: (previous, current) =>
           current is Success || current is Loading || current is Error,
       builder: (context, state) {
@@ -30,7 +30,7 @@ class InfoContactDataBlocBuilder extends StatelessWidget {
           error: (message) => appErrorMessage(
             message,
             () {
-              getIt<InfoContactViewCubit>().getInformationView(contactId);
+              getIt<ContactViewCubit>().getContactView(contactId);
             },
           ),
           orElse: () => const SizedBox.shrink(),

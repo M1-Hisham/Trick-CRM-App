@@ -4,13 +4,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:trick_crm_app/core/cubits/base_state.dart';
 import 'package:trick_crm_app/core/widgets/app_error_message.dart';
 import 'package:trick_crm_app/features/contacts/contact-view/contact-view/data/model/contacts_view_model.dart';
-import 'package:trick_crm_app/features/contacts/contact-view/notes/notes-view/logic/cubit/notes_contact_view_cubit.dart';
 
 import '../../../../../../../core/di/setup-di/dependency_injection.dart';
 import '../../../../../../../core/helpers/spacing.dart';
 import '../../../../../../../core/resources/resources.dart';
 import '../../../../../../../core/widgets/app_button.dart';
 import '../../../../../../../core/widgets/app_text_form_field.dart';
+import '../../../../contact-view/logic/cubit/contact_view_cubit.dart';
 import '../../../create-note/presentation/screen/create_note_contact.dart';
 import 'loading_notes_screen.dart';
 
@@ -20,8 +20,8 @@ class NotesContactDataBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NotesContactViewCubit, BaseState<ContactsViewModel>>(
-      bloc: getIt<NotesContactViewCubit>()..getNotesView(contactId),
+    return BlocBuilder<ContactViewCubit, BaseState<ContactsViewModel>>(
+      bloc: getIt<ContactViewCubit>()..getContactView(contactId),
       buildWhen: (previous, current) =>
           current is Success || current is Loading || current is Error,
       builder: (context, state) {
@@ -49,7 +49,7 @@ class NotesContactDataBlocBuilder extends StatelessWidget {
                       },
                     );
                     if (result == true) {
-                      getIt<NotesContactViewCubit>().getNotesView(contactId);
+                      getIt<ContactViewCubit>().getContactView(contactId);
                     }
                   },
                 ),
@@ -88,7 +88,7 @@ class NotesContactDataBlocBuilder extends StatelessWidget {
           },
           error: (message) => appErrorMessage(
             message,
-            () => getIt<NotesContactViewCubit>()..getNotesView(contactId),
+            () => getIt<ContactViewCubit>()..getContactView(contactId),
           ),
           orElse: () => const SizedBox.shrink(),
         );

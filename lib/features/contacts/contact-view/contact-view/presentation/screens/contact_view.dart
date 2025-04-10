@@ -4,6 +4,7 @@ import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/contacts/contact-view/Information/presentation/information_contact_screen.dart';
 import 'package:trick_crm_app/features/contacts/contact-view/notes/notes-view/presentation/screen/notes_contact_screen.dart';
 import '../../../../../../../core/widgets/app_bar.dart';
+import '../../../Timeline/presentation/contact_timeline_sccreen.dart';
 
 class ContactView extends StatelessWidget {
   final int contactId;
@@ -40,9 +41,9 @@ class ContactView extends StatelessWidget {
                 title: 'Timeline',
                 icon: 'timeline',
                 onTap: () {
-                  // Get.to(() => TimelineSccreen(
-                  //       activityLogs: activityLogs ?? [],
-                  //     ));
+                  Get.to(
+                    () => ContactTimelineSccreen(contactId: contactId),
+                  );
                 },
               ),
               appCardFeatView(

@@ -16,6 +16,9 @@ ContactsViewModel _$ContactsViewModelFromJson(Map<String, dynamic> json) =>
       users: (json['users'] as List<dynamic>?)
           ?.map((e) => Users.fromJson(e as Map<String, dynamic>))
           .toList(),
+      contactNotes: (json['contactNotes'] as List<dynamic>?)
+          ?.map((e) => ContactNotesModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ContactsViewModelToJson(ContactsViewModel instance) =>
@@ -24,6 +27,7 @@ Map<String, dynamic> _$ContactsViewModelToJson(ContactsViewModel instance) =>
       'message': instance.message,
       'contact': instance.contact,
       'users': instance.users,
+      'contactNotes': instance.contactNotes,
     };
 
 Contact _$ContactFromJson(Map<String, dynamic> json) => Contact(
@@ -116,7 +120,9 @@ Assigned _$AssignedFromJson(Map<String, dynamic> json) => Assigned(
       isActive: (json['is_active'] as num?)?.toInt(),
       createdAt: json['created_at'] as String?,
       updatedAt: json['updated_at'] as String?,
-      department: json['department'],
+      department: json['department'] == null
+          ? null
+          : Department.fromJson(json['department'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AssignedToJson(Assigned instance) => <String, dynamic>{

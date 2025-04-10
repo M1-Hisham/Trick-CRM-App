@@ -721,6 +721,43 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<CreateContactNoteModel> createContactNote(
+    int id,
+    CreateContactNoteRequestBody createContactNoteRequestBody,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(createContactNoteRequestBody.toJson());
+    final _options = _setStreamType<CreateContactNoteModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/contacts/${id}/create-note',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late CreateContactNoteModel _value;
+    try {
+      _value = CreateContactNoteModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<CampaignsModel> getCampaigns() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

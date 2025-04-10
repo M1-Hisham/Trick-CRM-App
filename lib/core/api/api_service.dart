@@ -12,6 +12,8 @@ import 'package:trick_crm_app/features/calls/call-view/call-view/data/model/call
 import 'package:trick_crm_app/features/campaigns/campaign-view/campaign-view/data/model/campaign_view_model.dart';
 import 'package:trick_crm_app/features/campaigns/create-campaign/data/model/create_campaign_request_body.dart';
 import 'package:trick_crm_app/features/clients/client-view/client-view/data/model/clients_view_model.dart';
+import 'package:trick_crm_app/features/contacts/contact-view/notes/create-note/data/model/create_contact_note_model.dart';
+import 'package:trick_crm_app/features/contacts/contact-view/notes/create-note/data/model/create_contact_note_request_body.dart';
 import 'package:trick_crm_app/features/deals/deal-view/deal-view/data/model/deal_view_model.dart';
 import 'package:trick_crm_app/features/deals/deals/data/model/deals_model.dart';
 import 'package:trick_crm_app/features/leads/create-lead/data/models/create_lead_model.dart';
@@ -71,13 +73,19 @@ part 'api_service.g.dart';
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 
+  // =================== Auth ===================
+
   /// service for login
   @POST(ApiConstants.login)
   Future<LoginResponseModel> login(@Body() LoginRequestBody loginRequestBody);
 
+  // =================== Dashboard ===================
+
   /// service for dashboard
   @GET(ApiConstants.dashboard)
   Future<DashboardResponseModel> getDashboard();
+
+  // =================== Leads ===================
 
   /// service for Leads
   @GET(ApiConstants.leads)
@@ -159,6 +167,8 @@ abstract class ApiService {
   @GET("/clients/{id}/view")
   Future<ClientsViewModel> getClientView(@Path("id") int id);
 
+  // =================== Contacts ===================
+
   /// service for Contacts
   @GET(ApiConstants.contacts)
   Future<ContactsModel> getContacts();
@@ -171,6 +181,13 @@ abstract class ApiService {
   /// service for Contact View
   @GET("/contacts/{id}/view")
   Future<ContactsViewModel> getContactView(@Path("id") int id);
+
+  /// service for Contact Create Note
+  @POST("/contacts/{id}/create-note")
+  Future<CreateContactNoteModel> createContactNote(@Path("id") int id,
+      @Body() CreateContactNoteRequestBody createContactNoteRequestBody);
+
+  // =================== Campaigns ===================
 
   /// service for Campaigns
   @GET(ApiConstants.campaigns)
@@ -185,6 +202,8 @@ abstract class ApiService {
   @GET("/campaigns/{id}/view")
   Future<CampaignViewModel> getCampaignView(@Path("id") int id);
 
+  // =================== Tasks ===================
+
   /// service for Tasks
   @GET(ApiConstants.tasks)
   Future<TasksModel> getTasks();
@@ -197,6 +216,8 @@ abstract class ApiService {
   /// service for Task View
   @GET("/tasks/{id}/view")
   Future<TaskViewModel> getTaskView(@Path("id") int id);
+
+  // =================== Meetings ===================
 
   /// service for Meetings
   @GET(ApiConstants.meetings)
@@ -211,6 +232,8 @@ abstract class ApiService {
   @GET("/meetings/{id}/view")
   Future<MeetingViewModel> getMeetingView(@Path("id") int id);
 
+  // =================== Calls ===================
+
   /// service for Calls
   @GET(ApiConstants.calls)
   Future<CallsModel> getCalls();
@@ -223,6 +246,8 @@ abstract class ApiService {
   /// service for Call View
   @GET("/calls/{id}/view")
   Future<CallViewModel> getCallView(@Path("id") int id);
+
+  // =================== Deals ===================
 
   /// service for Deals
   @GET(ApiConstants.deals)
@@ -238,6 +263,8 @@ abstract class ApiService {
   @GET("/deals/{id}/view")
   Future<DealViewModel> getDealView(@Path("id") int id);
 
+  // =================== Brokers ===================
+
   /// service for Brokers
   @GET(ApiConstants.brokers)
   Future<BrokersModel> getBrokers();
@@ -251,6 +278,8 @@ abstract class ApiService {
   @GET("/brokers/{id}/view")
   Future<BrokerViewModel> getBrokerView(@Path("id") int id);
 
+  // =================== Projects ===================
+
   /// service for projects
   @GET(ApiConstants.projects)
   Future<ProjectsModel> getProjects();
@@ -259,6 +288,8 @@ abstract class ApiService {
   @POST(ApiConstants.createProject)
   Future<CreateProjectModel> createProject(
       @Body() CreateProjectRequestBody createProjectRequestBody);
+
+  // =================== Payment Plans ===================
 
   /// service for payment plans
   @GET(ApiConstants.paymentPlans)

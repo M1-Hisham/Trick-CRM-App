@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/contacts/contact-view/Information/presentation/information_contact_screen.dart';
+import 'package:trick_crm_app/features/contacts/contact-view/notes/notes-view/presentation/screen/notes_contact_screen.dart';
 import '../../../../../../../core/widgets/app_bar.dart';
 
 class ContactView extends StatelessWidget {
@@ -48,8 +49,11 @@ class ContactView extends StatelessWidget {
                 title: 'Notes',
                 icon: 'notes',
                 onTap: () {
-                  // Get.to(
-                  //     () => NotesScreen(leadNotes: leadNotes ?? [], leadId: leadId));
+                  Get.to(
+                    () => NotesContactScreen(
+                      contactId: contactId,
+                    ),
+                  );
                 },
               ),
               appCardFeatView(

@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../notes/notes-view/model/contact_notes_model.dart';
+
 part 'contacts_view_model.g.dart';
 
 @JsonSerializable()
@@ -8,7 +10,7 @@ class ContactsViewModel {
   String? message;
   Contact? contact;
   List<Users>? users;
-  // List<ContactNotes>? contactNotes;
+  List<ContactNotesModel>? contactNotes;
   // List<ContactAttatchment>? contactAttatchment;
   // @JsonKey(name: 'activity_log')
   // List<ActivityLog>? activityLog;
@@ -23,7 +25,7 @@ class ContactsViewModel {
     this.message,
     this.contact,
     this.users,
-    // this.contactNotes,
+    this.contactNotes,
     // this.contactAttatchment,
     // this.activityLog,
     // this.openActivity,
@@ -156,7 +158,7 @@ class Assigned {
   String? createdAt;
   @JsonKey(name: 'updated_at')
   String? updatedAt;
-  dynamic department;
+  Department? department;
 
   Assigned(
       {this.id,
@@ -204,21 +206,23 @@ class Users {
   String? updatedAt;
   Department? department;
 
-  Users(
-      {this.id,
-      this.name,
-      this.email,
-      this.tenantId,
-      this.emailVerifiedAt,
-      this.departmentId,
-      this.companyId,
-      this.avatar,
-      this.roleAs,
-      this.isTenant,
-      this.isActive,
-      this.createdAt,
-      this.updatedAt,
-      this.department});
+  Users({
+    this.id,
+    this.name,
+    this.email,
+    this.tenantId,
+    this.emailVerifiedAt,
+    this.departmentId,
+    this.companyId,
+    this.avatar,
+    this.roleAs,
+    this.isTenant,
+    this.isActive,
+    this.createdAt,
+    this.updatedAt,
+    this.department,
+  });
+
   factory Users.fromJson(Map<String, dynamic> json) => _$UsersFromJson(json);
 }
 
@@ -239,39 +243,6 @@ class Department {
   factory Department.fromJson(Map<String, dynamic> json) =>
       _$DepartmentFromJson(json);
 }
-
-// @JsonSerializable()
-// class ContactNotes {
-//   int? id;
-//   @JsonKey(name: 'contact_id')
-//   int? contactId;
-//   @JsonKey(name: 'user_id')
-//   int? userId;
-//   @JsonKey(name: 'tenant_id')
-//   String? tenantId;
-//   String? comment;
-//   int? status;
-//   @JsonKey(name: 'created_at')
-//   String? createdAt;
-//   @JsonKey(name: 'updated_at')
-//   String? updatedAt;
-//   @JsonKey(name: 'user_note')
-//   Assigned? userNote;
-
-//   ContactNotes(
-//       {this.id,
-//       this.contactId,
-//       this.userId,
-//       this.tenantId,
-//       this.comment,
-//       this.status,
-//       this.createdAt,
-//       this.updatedAt,
-//       this.userNote});
-
-//   factory ContactNotes.fromJson(Map<String, dynamic> json) =>
-//       _$ContactNotesFromJson(json);
-// }
 
 // @JsonSerializable()
 // class ContactAttatchment {

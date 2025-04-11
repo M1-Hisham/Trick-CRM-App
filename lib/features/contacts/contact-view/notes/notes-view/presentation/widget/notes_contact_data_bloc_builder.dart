@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:trick_crm_app/core/cubits/base_state.dart';
 import 'package:trick_crm_app/core/widgets/app_error_message.dart';
 import 'package:trick_crm_app/features/contacts/contact-view/contact-view/data/model/contacts_view_model.dart';
-import 'package:trick_crm_app/features/contacts/contact-view/notes/delete-note/presentation/delete_note_screen.dart';
+import 'package:trick_crm_app/features/contacts/contact-view/notes/delete-note/presentation/delete_note_contact.dart';
 import 'package:trick_crm_app/features/contacts/contact-view/notes/edit-note/presentation/edit_note_contact.dart';
 
 import '../../../../../../../core/di/setup-di/dependency_injection.dart';
@@ -100,7 +100,7 @@ class NotesContactDataBlocBuilder extends StatelessWidget {
                               label: 'Edit',
                             ),
                             SlidableAction(
-                              onPressed: (context) => deleteNoteScreen(
+                              onPressed: (context) => deleteNoteContact(
                                 context,
                                 contactId,
                                 data.contactNotes?[index].id ?? 0,

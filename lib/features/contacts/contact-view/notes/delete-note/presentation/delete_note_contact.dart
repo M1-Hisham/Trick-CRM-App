@@ -7,7 +7,7 @@ import '../../../../../../core/widgets/app_waiting_feature.dart';
 import '../../../contact-view/logic/cubit/contact_view_cubit.dart';
 import '../logic/cubit/delete_note_contact_cubit.dart';
 
-Future deleteNoteScreen(context, contactId, idNote) {
+Future deleteNoteContact(context, contactId, idNote) {
   return showDialog(
     context: context,
     builder: (context) {

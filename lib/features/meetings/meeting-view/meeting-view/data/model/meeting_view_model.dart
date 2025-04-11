@@ -1,5 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../Attatchments/attachment-view/model/meeting_attatchments_model.dart';
+import '../../../notes/notes-view/model/meeting_notes_model.dart';
+
 part 'meeting_view_model.g.dart';
 
 @JsonSerializable()
@@ -7,6 +10,8 @@ class MeetingViewModel {
   String? status;
   String? message;
   MeetingViewData? meeting;
+  List<MeetingNotesModel>? meetingNotes;
+  List<MeetingAttatchmentsModel>? meetingAttatchments;
   MeetingViewModel({this.status, this.message, this.meeting});
   factory MeetingViewModel.fromJson(Map<String, dynamic> json) =>
       _$MeetingViewModelFromJson(json);

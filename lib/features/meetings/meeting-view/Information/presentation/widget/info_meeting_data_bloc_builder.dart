@@ -7,7 +7,7 @@ import 'package:trick_crm_app/features/meetings/meeting-view/Information/present
 
 import '../../../../../../core/cubits/base_state.dart';
 import '../../../meeting-view/data/model/meeting_view_model.dart';
-import '../../logic/cubit/info_meeting_view_cubit.dart';
+import '../../../meeting-view/logic/cubit/meeting_view_cubit.dart';
 
 class InfoMeetingDataBlocBuilder extends StatelessWidget {
   final int meetingId;
@@ -15,8 +15,8 @@ class InfoMeetingDataBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<InfoMeetingViewCubit, BaseState<MeetingViewModel>>(
-      bloc: getIt<InfoMeetingViewCubit>()..getInformationView(meetingId),
+    return BlocBuilder<MeetingViewCubit, BaseState<MeetingViewModel>>(
+      bloc: getIt<MeetingViewCubit>()..getMeetingView(meetingId),
       buildWhen: (previous, current) =>
           current is Success || current is Loading || current is Error,
       builder: (context, state) {
@@ -30,7 +30,7 @@ class InfoMeetingDataBlocBuilder extends StatelessWidget {
           error: (message) => appErrorMessage(
             message,
             () {
-              getIt<InfoMeetingViewCubit>().getInformationView(meetingId);
+              getIt<MeetingViewCubit>().getMeetingView(meetingId);
             },
           ),
           orElse: () => const SizedBox.shrink(),

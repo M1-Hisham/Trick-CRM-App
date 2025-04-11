@@ -244,8 +244,8 @@ class Department {
 @JsonSerializable()
 class ClientAttatchment {
   int? id;
-  @JsonKey(name: 'contact_id')
-  int? contactId;
+  @JsonKey(name: 'client_id')
+  int? clientId;
   @JsonKey(name: 'user_id')
   int? userId;
   @JsonKey(name: 'tenant_id')
@@ -261,7 +261,7 @@ class ClientAttatchment {
 
   ClientAttatchment(
       {this.id,
-      this.contactId,
+      this.clientId,
       this.userId,
       this.tenantId,
       this.name,

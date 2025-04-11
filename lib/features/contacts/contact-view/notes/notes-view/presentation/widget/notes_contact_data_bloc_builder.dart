@@ -6,6 +6,7 @@ import 'package:trick_crm_app/core/cubits/base_state.dart';
 import 'package:trick_crm_app/core/widgets/app_error_message.dart';
 import 'package:trick_crm_app/features/contacts/contact-view/contact-view/data/model/contacts_view_model.dart';
 import 'package:trick_crm_app/features/contacts/contact-view/notes/delete-note/presentation/delete_note_screen.dart';
+import 'package:trick_crm_app/features/contacts/contact-view/notes/edit-note/presentation/edit_note_contact.dart';
 
 import '../../../../../../../core/di/setup-di/dependency_injection.dart';
 import '../../../../../../../core/helpers/spacing.dart';
@@ -74,7 +75,25 @@ class NotesContactDataBlocBuilder extends StatelessWidget {
                           motion: const ScrollMotion(),
                           children: [
                             SlidableAction(
-                              onPressed: (context) {},
+                              onPressed: (context) async {
+                                final result = await showDialog(
+                                  useSafeArea: false,
+                                  context: context,
+                                  builder: (context) {
+                                    return EditNoteContact(
+                                      contactId: contactId,
+                                      noteId: data.contactNotes?[index].id ?? 0,
+                                      contextNotes: context,
+                                      note: data.contactNotes?[index].comment ??
+                                          '',
+                                    );
+                                  },
+                                );
+                                if (result == true) {
+                                  getIt<ContactViewCubit>()
+                                      .getContactView(contactId);
+                                }
+                              },
                               backgroundColor: const Color(0xFF21B7CA),
                               foregroundColor: Colors.white,
                               icon: Icons.edit_outlined,

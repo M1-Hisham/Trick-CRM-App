@@ -65,6 +65,7 @@ import '../../features/projects/projects/create-project/data/model/create_projec
 import '../../features/projects/projects/data/model/projects_model.dart';
 import '../../features/tasks/create-task/data/model/create_task_model.dart';
 import '../../features/tasks/create-task/data/model/create_task_request_body.dart';
+import '../models/note/edit_note_request_body.dart';
 import 'api_constants.dart';
 
 part 'api_service.g.dart';
@@ -192,6 +193,13 @@ abstract class ApiService {
   @GET("/contacts/{id}/{idNote}/delete-note")
   Future<FeatStatusModel> deleteContactNote(
       @Path("id") int id, @Path("idNote") int idNote);
+
+  /// service for Contact Edit Note
+  @POST("/contacts/{id}/{idNote}/update-note")
+  Future<FeatStatusModel> editContactNote(
+      @Path("id") int id,
+      @Path("idNote") int idNote,
+      @Body() EditNoteRequestBody editNoteRequestBody);
 
   // =================== Campaigns ===================
 

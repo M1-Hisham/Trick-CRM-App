@@ -1,5 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../Timeline/data/model/client_activity_log_model.dart';
+import '../../../notes/notes-view/model/client_notes_model.dart';
+
 part 'clients_view_model.g.dart';
 
 @JsonSerializable()
@@ -8,9 +11,10 @@ class ClientsViewModel {
   String? message;
   Client? client;
   // List<Users>? users;
-  // List<ClientNotes>? clientNotes;
-  // List<ClientAttatchment>? clientAttatchment;
-  // List<ActivityLog>? activityLog;
+  List<ClientNotesModel>? clientNotes;
+  List<ClientAttatchment>? clientAttatchment;
+  @JsonKey(name: 'activity_log')
+  List<ClientActivityLogModel>? activityLog;
   // Null oldActivityLog;
   // List<Null>? openActivity;
   // List<Null>? closedActivity;
@@ -32,9 +36,9 @@ class ClientsViewModel {
     this.message,
     this.client,
     // this.users,
-    // this.clientNotes,
-    // this.clientAttatchment,
-    // this.activityLog,
+    this.clientNotes,
+    this.clientAttatchment,
+    this.activityLog,
     // this.oldActivityLog,
     // this.openActivity,
     // this.closedActivity,
@@ -235,4 +239,38 @@ class Department {
 
   factory Department.fromJson(Map<String, dynamic> json) =>
       _$DepartmentFromJson(json);
+}
+
+@JsonSerializable()
+class ClientAttatchment {
+  int? id;
+  @JsonKey(name: 'contact_id')
+  int? contactId;
+  @JsonKey(name: 'user_id')
+  int? userId;
+  @JsonKey(name: 'tenant_id')
+  String? tenantId;
+  String? name;
+  String? url;
+  int? status;
+  @JsonKey(name: 'created_at')
+  String? createdAt;
+  @JsonKey(name: 'updated_at')
+  String? updatedAt;
+  Assigned? user;
+
+  ClientAttatchment(
+      {this.id,
+      this.contactId,
+      this.userId,
+      this.tenantId,
+      this.name,
+      this.url,
+      this.status,
+      this.createdAt,
+      this.updatedAt,
+      this.user});
+
+  factory ClientAttatchment.fromJson(Map<String, dynamic> json) =>
+      _$ClientAttatchmentFromJson(json);
 }

@@ -5,37 +5,29 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
-import 'package:trick_crm_app/core/helpers/show_snack_bar.dart';
-import 'package:trick_crm_app/core/models/note/create_and_edit_note_request_body.dart';
 import 'package:trick_crm_app/core/widgets/app_button.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
 import 'package:trick_crm_app/core/widgets/app_top_bar_dialog.dart';
 import 'package:trick_crm_app/core/widgets/app_waiting_feature.dart';
 
 import '../../../../../../../core/helpers/spacing.dart';
+import '../../../../../../../core/models/note/create_and_edit_note_request_body.dart';
 import '../../../../../../../core/resources/resources.dart';
-import '../logic/cubit/edit_note_contact_cubit.dart';
+import '../../logic/cubit/create_note_client_cubit.dart';
 
-class EditNoteContact extends StatelessWidget {
-  final int contactId;
-  final int noteId;
+class CreateNoteClient extends StatelessWidget {
+  final int clientId;
   final BuildContext contextNotes;
-  final String note;
-  EditNoteContact({
-    super.key,
-    required this.contactId,
-    required this.noteId,
-    required this.contextNotes,
-    required this.note,
-  });
+  CreateNoteClient(
+      {super.key, required this.clientId, required this.contextNotes});
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  late final String? updateNote;
+  late final String? note;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<EditNoteContactCubit>(),
+      create: (context) => getIt<CreateNoteClientCubit>(),
       child: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -48,7 +40,7 @@ class EditNoteContact extends StatelessWidget {
             child: Wrap(
               alignment: WrapAlignment.center,
               children: [
-                appTopBarDialog("Update Note"),
+                appTopBarDialog("Add New Note"),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -56,18 +48,17 @@ class EditNoteContact extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Note',
+                        'Notes',
                         style: R.textStyles.font17PrimaryW600,
                       ),
                       spacingV(10),
                       Form(
                         key: _formKey,
                         child: AppTextFormField(
-                          hintText: 'Update Note',
+                          hintText: 'Add New Note',
                           labelText: 'Note',
-                          initialValue: note,
                           onSaved: (value) {
-                            updateNote = value;
+                            note = value;
                           },
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -101,22 +92,24 @@ class EditNoteContact extends StatelessWidget {
             icon: SvgPicture.asset(
               R.icons.add,
             ),
-            text: 'Update',
+            text: 'Add Note',
             onPressed: () async {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
-                log('Update Note: success');
+                log('Create Note: success');
                 appWaitingFeature(contextNotes);
-                await getIt<EditNoteContactCubit>().editContactNote(
-                  contactId,
-                  noteId,
-                  CreateAndEditNoteRequestBody(comment: updateNote),
+                await getIt<CreateNoteClientCubit>().createclientNote(
+                  CreateAndEditNoteRequestBody(comment: note!),
+                  clientId,
                 );
                 Get.back();
                 Navigator.pop(contextNotes, true);
-                showSnackBar(
-                  contextNotes,
-                  "Note Updated Successfully",
+                Get.showSnackbar(
+                  GetSnackBar(
+                    backgroundColor: R.colors.primaryColor,
+                    message: 'Note added successfully',
+                    duration: const Duration(seconds: 2),
+                  ),
                 );
               }
             },

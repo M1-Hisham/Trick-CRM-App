@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trick_crm_app/features/contacts/contact-view/Attatchments/delete_attachment/logic/cubit/delete_attachment_contact_cubit.dart';
 
 import '../../../../../../../core/di/setup-di/dependency_injection.dart';
 import '../../../../../../../core/helpers/show_snack_bar.dart';
 import '../../../../../../../core/widgets/app_waiting_feature.dart';
-import '../../../../contact-view/logic/cubit/contact_view_cubit.dart';
+import '../../../../client-view/logic/cubit/client_view_cubit.dart';
+import '../../logic/cubit/delete_attachment_client_cubit.dart';
 
-Future deleteAttachmentContact(context, contactId, idAttachment) {
+Future deleteAttachmentClient(context, clientId, idAttachment) {
   return showDialog(
     context: context,
     builder: (context) {
@@ -27,14 +27,11 @@ Future deleteAttachmentContact(context, contactId, idAttachment) {
           TextButton(
             onPressed: () async {
               appWaitingFeature(context);
-              await getIt<DeleteAttachmentContactCubit>()
-                  .deleteContactAttachment(
-                contactId,
-                idAttachment,
-              );
+              await getIt<DeleteAttachmentClientCubit>()
+                  .deleteClientAttachment(clientId, idAttachment);
               Get.back();
               Get.back();
-              getIt<ContactViewCubit>().getContactView(contactId);
+              getIt<ClientViewCubit>().getClientView(clientId);
               showSnackBar(context, "Attachment Deleted Successfully");
             },
             child: const Text(

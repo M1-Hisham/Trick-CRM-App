@@ -9,10 +9,10 @@ import 'package:trick_crm_app/core/widgets/app_button.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
 import 'package:trick_crm_app/core/widgets/app_top_bar_dialog.dart';
 import 'package:trick_crm_app/core/widgets/app_waiting_feature.dart';
-import 'package:trick_crm_app/features/contacts/contact-view/notes/create-note/data/model/create_contact_note_request_body.dart';
 import 'package:trick_crm_app/features/contacts/contact-view/notes/create-note/logic/cubit/create_note_contact_cubit.dart';
 
 import '../../../../../../../core/helpers/spacing.dart';
+import '../../../../../../../core/models/note/create_and_edit_note_request_body.dart';
 import '../../../../../../../core/resources/resources.dart';
 
 class CreateNoteContact extends StatelessWidget {
@@ -99,7 +99,7 @@ class CreateNoteContact extends StatelessWidget {
                 log('Create Note: success');
                 appWaitingFeature(contextNotes);
                 await getIt<CreateNoteContactCubit>().createContactNote(
-                  CreateContactNoteRequestBody(comment: note!),
+                  CreateAndEditNoteRequestBody(comment: note!),
                   contactId,
                 );
                 Get.back();

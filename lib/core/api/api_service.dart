@@ -13,8 +13,6 @@ import 'package:trick_crm_app/features/calls/call-view/call-view/data/model/call
 import 'package:trick_crm_app/features/campaigns/campaign-view/campaign-view/data/model/campaign_view_model.dart';
 import 'package:trick_crm_app/features/campaigns/create-campaign/data/model/create_campaign_request_body.dart';
 import 'package:trick_crm_app/features/clients/client-view/client-view/data/model/clients_view_model.dart';
-import 'package:trick_crm_app/features/contacts/contact-view/notes/create-note/data/model/create_contact_note_model.dart';
-import 'package:trick_crm_app/features/contacts/contact-view/notes/create-note/data/model/create_contact_note_request_body.dart';
 import 'package:trick_crm_app/features/deals/deal-view/deal-view/data/model/deal_view_model.dart';
 import 'package:trick_crm_app/features/deals/deals/data/model/deals_model.dart';
 import 'package:trick_crm_app/features/leads/create-lead/data/models/create_lead_model.dart';
@@ -65,7 +63,7 @@ import '../../features/projects/projects/create-project/data/model/create_projec
 import '../../features/projects/projects/data/model/projects_model.dart';
 import '../../features/tasks/create-task/data/model/create_task_model.dart';
 import '../../features/tasks/create-task/data/model/create_task_request_body.dart';
-import '../models/note/edit_note_request_body.dart';
+import '../models/note/create_and_edit_note_request_body.dart';
 import 'api_constants.dart';
 
 part 'api_service.g.dart';
@@ -156,6 +154,8 @@ abstract class ApiService {
     @Body() CreateLeadMeetingRequestBody createLeadMeetingRequestBody,
   );
 
+  // =================== Clients ===================
+
   /// service for Clients
   @GET(ApiConstants.clients)
   Future<ClientsModel> getClients();
@@ -168,6 +168,28 @@ abstract class ApiService {
   /// service for Client View
   @GET("/clients/{id}/view")
   Future<ClientsViewModel> getClientView(@Path("id") int id);
+
+  /// service for Client Create Note
+  @POST("/clients/{id}/create-note")
+  Future<FeatStatusModel> createClientNote(@Path("id") int id,
+      @Body() CreateAndEditNoteRequestBody createClientNoteRequestBody);
+
+  /// service for Client Delete Note
+  @GET("/clients/{id}/{idNote}/delete-note")
+  Future<FeatStatusModel> deleteClientNote(
+      @Path("id") int id, @Path("idNote") int idNote);
+
+  /// service for Client Edit Note
+  @POST("/clients/{id}/{idNote}/update-note")
+  Future<FeatStatusModel> editClientNote(
+      @Path("id") int id,
+      @Path("idNote") int idNote,
+      @Body() CreateAndEditNoteRequestBody editNoteRequestBody);
+
+  /// service for Client Delete Attachment
+  @GET("/clients/{id}/{idAttachment}/delete-file")
+  Future<FeatStatusModel> deleteClientAttachment(
+      @Path("id") int id, @Path("idAttachment") int idAttachment);
 
   // =================== Contacts ===================
 
@@ -186,8 +208,8 @@ abstract class ApiService {
 
   /// service for Contact Create Note
   @POST("/contacts/{id}/create-note")
-  Future<CreateContactNoteModel> createContactNote(@Path("id") int id,
-      @Body() CreateContactNoteRequestBody createContactNoteRequestBody);
+  Future<FeatStatusModel> createContactNote(@Path("id") int id,
+      @Body() CreateAndEditNoteRequestBody createContactNoteRequestBody);
 
   /// service for Contact Delete Note
   @GET("/contacts/{id}/{idNote}/delete-note")
@@ -199,7 +221,7 @@ abstract class ApiService {
   Future<FeatStatusModel> editContactNote(
       @Path("id") int id,
       @Path("idNote") int idNote,
-      @Body() EditNoteRequestBody editNoteRequestBody);
+      @Body() CreateAndEditNoteRequestBody editNoteRequestBody);
 
   /// service for Contact Delete Attachment
   @GET("/contacts/{id}/{idAttachment}/delete-file")

@@ -7,7 +7,7 @@ import 'package:trick_crm_app/core/widgets/app_error_message.dart';
 import 'package:trick_crm_app/features/clients/client-view/Information/presentation/widget/information_client_details.dart';
 import 'package:trick_crm_app/features/clients/client-view/client-view/data/model/clients_view_model.dart';
 
-import '../../logic/cubit/info_client_view_cubit.dart';
+import '../../../client-view/logic/cubit/client_view_cubit.dart';
 
 class InfoClientDataBlocBuilder extends StatelessWidget {
   final int clientId;
@@ -15,8 +15,8 @@ class InfoClientDataBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<InfoClientViewCubit, BaseState<ClientsViewModel>>(
-      bloc: getIt<InfoClientViewCubit>()..getInformationView(clientId),
+    return BlocBuilder<ClientViewCubit, BaseState<ClientsViewModel>>(
+      bloc: getIt<ClientViewCubit>()..getClientView(clientId),
       buildWhen: (previous, current) =>
           current is Success || current is Loading || current is Error,
       builder: (context, state) {
@@ -30,7 +30,7 @@ class InfoClientDataBlocBuilder extends StatelessWidget {
           error: (message) => appErrorMessage(
             message,
             () {
-              getIt<InfoClientViewCubit>().getInformationView(clientId);
+              getIt<ClientViewCubit>().getClientView(clientId);
             },
           ),
           orElse: () => const SizedBox.shrink(),

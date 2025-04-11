@@ -1,19 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'create_contact_note_request_body.dart';
+part of 'create_and_edit_note_request_body.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CreateContactNoteRequestBody _$CreateContactNoteRequestBodyFromJson(
+CreateAndEditNoteRequestBody _$CreateAndEditNoteRequestBodyFromJson(
         Map<String, dynamic> json) =>
-    CreateContactNoteRequestBody(
+    CreateAndEditNoteRequestBody(
       comment: json['comment'] as String?,
     );
 
-Map<String, dynamic> _$CreateContactNoteRequestBodyToJson(
-        CreateContactNoteRequestBody instance) =>
+Map<String, dynamic> _$CreateAndEditNoteRequestBodyToJson(
+        CreateAndEditNoteRequestBody instance) =>
     <String, dynamic>{
       'comment': instance.comment,
     };

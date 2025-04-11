@@ -13,6 +13,12 @@ ClientsViewModel _$ClientsViewModelFromJson(Map<String, dynamic> json) =>
       client: json['client'] == null
           ? null
           : Client.fromJson(json['client'] as Map<String, dynamic>),
+      clientNotes: (json['clientNotes'] as List<dynamic>?)
+          ?.map((e) => ClientNotesModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      clientAttatchment: (json['clientAttatchment'] as List<dynamic>?)
+          ?.map((e) => ClientAttatchment.fromJson(e as Map<String, dynamic>))
+          .toList(),
       activityLog: (json['activity_log'] as List<dynamic>?)
           ?.map(
               (e) => ClientActivityLogModel.fromJson(e as Map<String, dynamic>))
@@ -24,6 +30,8 @@ Map<String, dynamic> _$ClientsViewModelToJson(ClientsViewModel instance) =>
       'status': instance.status,
       'message': instance.message,
       'client': instance.client,
+      'clientNotes': instance.clientNotes,
+      'clientAttatchment': instance.clientAttatchment,
       'activity_log': instance.activityLog,
     };
 
@@ -170,4 +178,34 @@ Map<String, dynamic> _$DepartmentToJson(Department instance) =>
       'name': instance.name,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
+    };
+
+ClientAttatchment _$ClientAttatchmentFromJson(Map<String, dynamic> json) =>
+    ClientAttatchment(
+      id: (json['id'] as num?)?.toInt(),
+      contactId: (json['contact_id'] as num?)?.toInt(),
+      userId: (json['user_id'] as num?)?.toInt(),
+      tenantId: json['tenant_id'] as String?,
+      name: json['name'] as String?,
+      url: json['url'] as String?,
+      status: (json['status'] as num?)?.toInt(),
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
+      user: json['user'] == null
+          ? null
+          : Assigned.fromJson(json['user'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$ClientAttatchmentToJson(ClientAttatchment instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'contact_id': instance.contactId,
+      'user_id': instance.userId,
+      'tenant_id': instance.tenantId,
+      'name': instance.name,
+      'url': instance.url,
+      'status': instance.status,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
+      'user': instance.user,
     };

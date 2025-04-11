@@ -13,6 +13,10 @@ ClientsViewModel _$ClientsViewModelFromJson(Map<String, dynamic> json) =>
       client: json['client'] == null
           ? null
           : Client.fromJson(json['client'] as Map<String, dynamic>),
+      activityLog: (json['activity_log'] as List<dynamic>?)
+          ?.map(
+              (e) => ClientActivityLogModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ClientsViewModelToJson(ClientsViewModel instance) =>
@@ -20,6 +24,7 @@ Map<String, dynamic> _$ClientsViewModelToJson(ClientsViewModel instance) =>
       'status': instance.status,
       'message': instance.message,
       'client': instance.client,
+      'activity_log': instance.activityLog,
     };
 
 Client _$ClientFromJson(Map<String, dynamic> json) => Client(

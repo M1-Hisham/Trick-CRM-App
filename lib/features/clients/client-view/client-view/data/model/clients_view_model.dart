@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../Timeline/data/model/client_activity_log_model.dart';
+
 part 'clients_view_model.g.dart';
 
 @JsonSerializable()
@@ -10,7 +12,8 @@ class ClientsViewModel {
   // List<Users>? users;
   // List<ClientNotes>? clientNotes;
   // List<ClientAttatchment>? clientAttatchment;
-  // List<ActivityLog>? activityLog;
+  @JsonKey(name: 'activity_log')
+  List<ClientActivityLogModel>? activityLog;
   // Null oldActivityLog;
   // List<Null>? openActivity;
   // List<Null>? closedActivity;
@@ -34,7 +37,7 @@ class ClientsViewModel {
     // this.users,
     // this.clientNotes,
     // this.clientAttatchment,
-    // this.activityLog,
+    this.activityLog,
     // this.oldActivityLog,
     // this.openActivity,
     // this.closedActivity,

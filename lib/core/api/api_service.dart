@@ -156,6 +156,8 @@ abstract class ApiService {
     @Body() CreateLeadMeetingRequestBody createLeadMeetingRequestBody,
   );
 
+  // =================== Clients ===================
+
   /// service for Clients
   @GET(ApiConstants.clients)
   Future<ClientsModel> getClients();

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/clients/client-view/Information/presentation/information_client_screen.dart';
+
 import '../../../../../../../core/widgets/app_bar.dart';
+import '../../../Timeline/presentation/client_timeline_sccreen.dart';
 
 class ClientView extends StatelessWidget {
   final int clientId;
@@ -39,9 +41,7 @@ class ClientView extends StatelessWidget {
                 title: 'Timeline',
                 icon: 'timeline',
                 onTap: () {
-                  // Get.to(() => TimelineSccreen(
-                  //       activityLogs: activityLogs ?? [],
-                  //     ));
+                  Get.to(() => ClientTimelineSccreen(clientId: clientId));
                 },
               ),
               appCardFeatView(

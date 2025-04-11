@@ -4,6 +4,7 @@ import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/contacts/contact-view/Information/presentation/information_contact_screen.dart';
 import 'package:trick_crm_app/features/contacts/contact-view/notes/notes-view/presentation/screen/notes_contact_screen.dart';
 import '../../../../../../../core/widgets/app_bar.dart';
+import '../../../Attatchments/attachment-view/presentation/attachment_contact_screen.dart';
 import '../../../Timeline/presentation/contact_timeline_sccreen.dart';
 
 class ContactView extends StatelessWidget {
@@ -51,9 +52,7 @@ class ContactView extends StatelessWidget {
                 icon: 'notes',
                 onTap: () {
                   Get.to(
-                    () => NotesContactScreen(
-                      contactId: contactId,
-                    ),
+                    () => NotesContactScreen(contactId: contactId),
                   );
                 },
               ),
@@ -61,11 +60,9 @@ class ContactView extends StatelessWidget {
                 title: 'Attachments',
                 icon: 'attachments',
                 onTap: () {
-                  // Get.to(
-                  //   () => AttachmentScreen(
-                  //     leadAttatchment: leadAttatchments ?? [],
-                  //   ),
-                  // );
+                  Get.to(
+                    () => AttachmentContactScreen(contactId: contactId),
+                  );
                 },
               ),
               appCardFeatView(

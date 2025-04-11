@@ -19,6 +19,9 @@ ContactsViewModel _$ContactsViewModelFromJson(Map<String, dynamic> json) =>
       contactNotes: (json['contactNotes'] as List<dynamic>?)
           ?.map((e) => ContactNotesModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      contactAttatchment: (json['contactAttatchment'] as List<dynamic>?)
+          ?.map((e) => ContactAttatchment.fromJson(e as Map<String, dynamic>))
+          .toList(),
       activityLog: (json['activity_log'] as List<dynamic>?)
           ?.map((e) =>
               ContactActivityLogModel.fromJson(e as Map<String, dynamic>))
@@ -32,6 +35,7 @@ Map<String, dynamic> _$ContactsViewModelToJson(ContactsViewModel instance) =>
       'contact': instance.contact,
       'users': instance.users,
       'contactNotes': instance.contactNotes,
+      'contactAttatchment': instance.contactAttatchment,
       'activity_log': instance.activityLog,
     };
 
@@ -198,4 +202,34 @@ Map<String, dynamic> _$DepartmentToJson(Department instance) =>
       'name': instance.name,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
+    };
+
+ContactAttatchment _$ContactAttatchmentFromJson(Map<String, dynamic> json) =>
+    ContactAttatchment(
+      id: (json['id'] as num?)?.toInt(),
+      contactId: (json['contact_id'] as num?)?.toInt(),
+      userId: (json['user_id'] as num?)?.toInt(),
+      tenantId: json['tenant_id'] as String?,
+      name: json['name'] as String?,
+      url: json['url'] as String?,
+      status: (json['status'] as num?)?.toInt(),
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
+      user: json['user'] == null
+          ? null
+          : Assigned.fromJson(json['user'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$ContactAttatchmentToJson(ContactAttatchment instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'contact_id': instance.contactId,
+      'user_id': instance.userId,
+      'tenant_id': instance.tenantId,
+      'name': instance.name,
+      'url': instance.url,
+      'status': instance.status,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
+      'user': instance.user,
     };

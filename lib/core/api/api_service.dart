@@ -201,6 +201,11 @@ abstract class ApiService {
       @Path("idNote") int idNote,
       @Body() EditNoteRequestBody editNoteRequestBody);
 
+  /// service for Contact Delete Attachment
+  @GET("/contacts/{id}/{idAttachment}/delete-file")
+  Future<FeatStatusModel> deleteContactAttachment(
+      @Path("id") int id, @Path("idAttachment") int idAttachment);
+
   // =================== Campaigns ===================
 
   /// service for Campaigns

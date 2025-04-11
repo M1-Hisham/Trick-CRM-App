@@ -12,7 +12,7 @@ class ContactsViewModel {
   Contact? contact;
   List<Users>? users;
   List<ContactNotesModel>? contactNotes;
-  // List<ContactAttatchment>? contactAttatchment;
+  List<ContactAttatchment>? contactAttatchment;
   // @JsonKey(name: 'activity_log')
   @JsonKey(name: 'activity_log')
   List<ContactActivityLogModel>? activityLog;
@@ -28,7 +28,7 @@ class ContactsViewModel {
     this.contact,
     this.users,
     this.contactNotes,
-    // this.contactAttatchment,
+    this.contactAttatchment,
     this.activityLog,
     // this.openActivity,
     // this.closedActivity,
@@ -246,39 +246,39 @@ class Department {
       _$DepartmentFromJson(json);
 }
 
-// @JsonSerializable()
-// class ContactAttatchment {
-//   int? id;
-//   @JsonKey(name: 'contact_id')
-//   int? contactId;
-//   @JsonKey(name: 'user_id')
-//   int? userId;
-//   @JsonKey(name: 'tenant_id')
-//   String? tenantId;
-//   String? name;
-//   String? url;
-//   int? status;
-//   @JsonKey(name: 'created_at')
-//   String? createdAt;
-//   @JsonKey(name: 'updated_at')
-//   String? updatedAt;
-//   Assigned? user;
+@JsonSerializable()
+class ContactAttatchment {
+  int? id;
+  @JsonKey(name: 'contact_id')
+  int? contactId;
+  @JsonKey(name: 'user_id')
+  int? userId;
+  @JsonKey(name: 'tenant_id')
+  String? tenantId;
+  String? name;
+  String? url;
+  int? status;
+  @JsonKey(name: 'created_at')
+  String? createdAt;
+  @JsonKey(name: 'updated_at')
+  String? updatedAt;
+  Assigned? user;
 
-//   ContactAttatchment(
-//       {this.id,
-//       this.contactId,
-//       this.userId,
-//       this.tenantId,
-//       this.name,
-//       this.url,
-//       this.status,
-//       this.createdAt,
-//       this.updatedAt,
-//       this.user});
+  ContactAttatchment(
+      {this.id,
+      this.contactId,
+      this.userId,
+      this.tenantId,
+      this.name,
+      this.url,
+      this.status,
+      this.createdAt,
+      this.updatedAt,
+      this.user});
 
-//   factory ContactAttatchment.fromJson(Map<String, dynamic> json) =>
-//       _$ContactAttatchmentFromJson(json);
-// }
+  factory ContactAttatchment.fromJson(Map<String, dynamic> json) =>
+      _$ContactAttatchmentFromJson(json);
+}
 
 
 

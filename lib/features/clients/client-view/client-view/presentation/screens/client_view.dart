@@ -4,7 +4,9 @@ import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/clients/client-view/Information/presentation/information_client_screen.dart';
 
 import '../../../../../../../core/widgets/app_bar.dart';
+import '../../../Attatchments/attachment-view/presentation/attachment_client_screen.dart';
 import '../../../Timeline/presentation/client_timeline_sccreen.dart';
+import '../../../notes/notes-view/presentation/screen/notes_client_screen.dart';
 
 class ClientView extends StatelessWidget {
   final int clientId;
@@ -48,19 +50,18 @@ class ClientView extends StatelessWidget {
                 title: 'Notes',
                 icon: 'notes',
                 onTap: () {
-                  // Get.to(
-                  //     () => NotesScreen(leadNotes: leadNotes ?? [], leadId: leadId));
+                  Get.to(
+                    () => NotesClientScreen(clientId: clientId),
+                  );
                 },
               ),
               appCardFeatView(
                 title: 'Attachments',
                 icon: 'attachments',
                 onTap: () {
-                  // Get.to(
-                  //   () => AttachmentScreen(
-                  //     leadAttatchment: leadAttatchments ?? [],
-                  //   ),
-                  // );
+                  Get.to(
+                    () => AttachmentClientScreen(clientId: clientId),
+                  );
                 },
               ),
               appCardFeatView(

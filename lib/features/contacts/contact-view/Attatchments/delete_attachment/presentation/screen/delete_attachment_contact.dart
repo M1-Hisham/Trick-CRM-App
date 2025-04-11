@@ -13,7 +13,7 @@ Future deleteAttachmentContact(context, contactId, idAttachment) {
     builder: (context) {
       return AlertDialog(
         title: const Text('Delete Note'),
-        content: const Text('Are you sure you want to delete this photo?'),
+        content: const Text('Are you sure you want to delete this File?'),
         actions: [
           TextButton(
             onPressed: Get.back,

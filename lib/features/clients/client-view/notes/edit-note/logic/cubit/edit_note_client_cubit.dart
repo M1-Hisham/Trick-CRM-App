@@ -5,20 +5,20 @@ import 'package:trick_crm_app/core/repo/base_repo.dart';
 
 import '../../../../../../../core/models/note/create_and_edit_note_request_body.dart';
 
-class EditNoteContactCubit extends BaseCubit<FeatStatusModel> {
-  EditNoteContactCubit(ApiService apiService)
+class EditNoteClientCubit extends BaseCubit<FeatStatusModel> {
+  EditNoteClientCubit(ApiService apiService)
       : super(
           BaseRepo(
             sendData: (editNoteRequestBody, {Map<String, dynamic>? params}) =>
-                apiService.editContactNote(
+                apiService.editClientNote(
                     params!['id'], params['idNote'], editNoteRequestBody),
           ),
         );
-  Future<void> editContactNote(int contactId, int noteId,
+  Future<void> editClientNote(int clientId, int noteId,
       CreateAndEditNoteRequestBody editNoteRequestBody) async {
     await sendData(
       editNoteRequestBody,
-      params: {'id': contactId, 'idNote': noteId},
+      params: {'id': clientId, 'idNote': noteId},
     );
   }
 }

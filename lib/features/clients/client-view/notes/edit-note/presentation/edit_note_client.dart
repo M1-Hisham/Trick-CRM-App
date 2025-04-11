@@ -6,7 +6,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
 import 'package:trick_crm_app/core/helpers/show_snack_bar.dart';
-import 'package:trick_crm_app/core/models/note/create_and_edit_note_request_body.dart';
 import 'package:trick_crm_app/core/widgets/app_button.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
 import 'package:trick_crm_app/core/widgets/app_top_bar_dialog.dart';
@@ -14,16 +13,17 @@ import 'package:trick_crm_app/core/widgets/app_waiting_feature.dart';
 
 import '../../../../../../../core/helpers/spacing.dart';
 import '../../../../../../../core/resources/resources.dart';
-import '../logic/cubit/edit_note_contact_cubit.dart';
+import '../../../../../../core/models/note/create_and_edit_note_request_body.dart';
+import '../logic/cubit/edit_note_client_cubit.dart';
 
-class EditNoteContact extends StatelessWidget {
-  final int contactId;
+class EditNoteClient extends StatelessWidget {
+  final int clientId;
   final int noteId;
   final BuildContext contextNotes;
   final String note;
-  EditNoteContact({
+  EditNoteClient({
     super.key,
-    required this.contactId,
+    required this.clientId,
     required this.noteId,
     required this.contextNotes,
     required this.note,
@@ -35,7 +35,7 @@ class EditNoteContact extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<EditNoteContactCubit>(),
+      create: (context) => getIt<EditNoteClientCubit>(),
       child: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -107,8 +107,8 @@ class EditNoteContact extends StatelessWidget {
                 _formKey.currentState!.save();
                 log('Update Note: success');
                 appWaitingFeature(contextNotes);
-                await getIt<EditNoteContactCubit>().editContactNote(
-                  contactId,
+                await getIt<EditNoteClientCubit>().editClientNote(
+                  clientId,
                   noteId,
                   CreateAndEditNoteRequestBody(comment: updateNote),
                 );

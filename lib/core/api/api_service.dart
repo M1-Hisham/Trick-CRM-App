@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:trick_crm_app/core/models/feat_status_model.dart';
 import 'package:trick_crm_app/features/auth/login/data/models/login_request_body.dart';
 import 'package:trick_crm_app/features/auth/login/data/models/login_response.dart';
 import 'package:trick_crm_app/features/brokers/broker-view/broker-view/data/model/broker_view_model.dart';
@@ -186,6 +187,11 @@ abstract class ApiService {
   @POST("/contacts/{id}/create-note")
   Future<CreateContactNoteModel> createContactNote(@Path("id") int id,
       @Body() CreateContactNoteRequestBody createContactNoteRequestBody);
+
+  /// service for Contact Delete Note
+  @GET("/contacts/{id}/{idNote}/delete-note")
+  Future<FeatStatusModel> deleteContactNote(
+      @Path("id") int id, @Path("idNote") int idNote);
 
   // =================== Campaigns ===================
 

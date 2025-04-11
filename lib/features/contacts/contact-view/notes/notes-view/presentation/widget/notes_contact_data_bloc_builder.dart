@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:trick_crm_app/core/cubits/base_state.dart';
 import 'package:trick_crm_app/core/widgets/app_error_message.dart';
 import 'package:trick_crm_app/features/contacts/contact-view/contact-view/data/model/contacts_view_model.dart';
+import 'package:trick_crm_app/features/contacts/contact-view/notes/delete-note/presentation/delete_note_screen.dart';
 
 import '../../../../../../../core/di/setup-di/dependency_injection.dart';
 import '../../../../../../../core/helpers/spacing.dart';
@@ -64,9 +66,34 @@ class NotesContactDataBlocBuilder extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: data.contactNotes?.length ?? 0,
                   itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        AppTextFormField(
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15),
+                      child: Slidable(
+                        key: const ValueKey(0),
+                        endActionPane: ActionPane(
+                          motion: const ScrollMotion(),
+                          children: [
+                            SlidableAction(
+                              onPressed: (context) {},
+                              backgroundColor: const Color(0xFF21B7CA),
+                              foregroundColor: Colors.white,
+                              icon: Icons.edit_outlined,
+                              label: 'Edit',
+                            ),
+                            SlidableAction(
+                              onPressed: (context) => deleteNoteScreen(
+                                context,
+                                contactId,
+                                data.contactNotes?[index].id ?? 0,
+                              ),
+                              backgroundColor: const Color(0xFFFE4A49),
+                              foregroundColor: Colors.white,
+                              icon: Icons.delete,
+                              label: 'Delete',
+                            ),
+                          ],
+                        ),
+                        child: AppTextFormField(
                           isclickable: false,
                           hintText: '',
                           labelText: 'Note',
@@ -78,8 +105,7 @@ class NotesContactDataBlocBuilder extends StatelessWidget {
                             fontWeight: FontWeight.w400,
                           ),
                         ),
-                        spacingV(25),
-                      ],
+                      ),
                     );
                   },
                 ),

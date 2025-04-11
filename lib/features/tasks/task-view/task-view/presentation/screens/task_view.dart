@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:trick_crm_app/core/helpers/spacing.dart';
 import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/tasks/task-view/Information/presentation/information_task_screen.dart';
+
 import '../../../../../../../core/widgets/app_bar.dart';
 
 class TaskView extends StatelessWidget {
@@ -25,6 +27,11 @@ class TaskView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Column(
             children: [
+              // AppButton(
+              //   text: "Mark as completed",
+              //   onPressed: () {},
+              // ),
+              spacingV(20),
               // Show Cards
               appCardFeatView(
                 title: 'Information',
@@ -35,65 +42,25 @@ class TaskView extends StatelessWidget {
                   );
                 },
               ),
-              appCardFeatView(
-                title: 'Timeline',
-                icon: 'timeline',
-                onTap: () {
-                  // Get.to(() => TimelineSccreen(
-                  //       activityLogs: activityLogs ?? [],
-                  //     ));
-                },
-              ),
-              appCardFeatView(
-                title: 'Notes',
-                icon: 'notes',
-                onTap: () {
-                  // Get.to(
-                  //     () => NotesScreen(leadNotes: leadNotes ?? [], leadId: leadId));
-                },
-              ),
-              appCardFeatView(
-                title: 'Attachments',
-                icon: 'attachments',
-                onTap: () {
-                  // Get.to(
-                  //   () => AttachmentScreen(
-                  //     leadAttatchment: leadAttatchments ?? [],
-                  //   ),
-                  // );
-                },
-              ),
-              appCardFeatView(
-                title: 'Email',
-                icon: 'Emails',
-                onTap: () {
-                  // Get.to(() => const EmailsScreen());
-                },
-              ),
-              appCardFeatView(
-                title: 'Open Activities',
-                icon: 'openActivities',
-                onTap: () {
-                  // Get.to(
-                  //   () => OpenActivitiesScreen(
-                  //     openActivityModel: openActivity ?? [],
-                  //     leadId: leadId,
-                  //   ),
-                  // );
-                },
-              ),
-              appCardFeatView(
-                title: 'Closed Activities',
-                icon: 'closedActivities',
-                onTap: () {
-                  // Get.to(
-                  //   () => ClosedActivitiesScreen(
-                  //     closedActivityModel: closedActivityModel ?? [],
-                  //     leadId: leadId,
-                  //   ),
-                  // );
-                },
-              ),
+              // appCardFeatView(
+              //   title: 'Notes',
+              //   icon: 'notes',
+              //   onTap: () {
+              //     // Get.to(
+              //     //     () => NotesScreen(leadNotes: leadNotes ?? [], leadId: leadId));
+              //   },
+              // ),
+              // appCardFeatView(
+              //   title: 'Attachments',
+              //   icon: 'attachments',
+              //   onTap: () {
+              //     // Get.to(
+              //     //   () => AttachmentScreen(
+              //     //     leadAttatchment: leadAttatchments ?? [],
+              //     //   ),
+              //     // );
+              //   },
+              // ),
             ],
           ),
         ),

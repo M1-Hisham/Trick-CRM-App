@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/meetings/meeting-view/Information/presentation/information_meeting_screen.dart';
 import '../../../../../../../core/widgets/app_bar.dart';
+import '../../../Attatchments/attachment-view/presentation/attachment_meeting_screen.dart';
+import '../../../notes/notes-view/presentation/screen/notes_meeting_screen.dart';
 
 class MeetingView extends StatelessWidget {
   final int meetingId;
@@ -36,62 +38,21 @@ class MeetingView extends StatelessWidget {
                 },
               ),
               appCardFeatView(
-                title: 'Timeline',
-                icon: 'timeline',
-                onTap: () {
-                  // Get.to(() => TimelineSccreen(
-                  //       activityLogs: activityLogs ?? [],
-                  //     ));
-                },
-              ),
-              appCardFeatView(
                 title: 'Notes',
                 icon: 'notes',
                 onTap: () {
-                  // Get.to(
-                  //     () => NotesScreen(leadNotes: leadNotes ?? [], leadId: leadId));
+                  Get.to(
+                    () => NotesMeetingScreen(meetingId: meetingId),
+                  );
                 },
               ),
               appCardFeatView(
                 title: 'Attachments',
                 icon: 'attachments',
                 onTap: () {
-                  // Get.to(
-                  //   () => AttachmentScreen(
-                  //     leadAttatchment: leadAttatchments ?? [],
-                  //   ),
-                  // );
-                },
-              ),
-              appCardFeatView(
-                title: 'Email',
-                icon: 'Emails',
-                onTap: () {
-                  // Get.to(() => const EmailsScreen());
-                },
-              ),
-              appCardFeatView(
-                title: 'Open Activities',
-                icon: 'openActivities',
-                onTap: () {
-                  // Get.to(
-                  //   () => OpenActivitiesScreen(
-                  //     openActivityModel: openActivity ?? [],
-                  //     leadId: leadId,
-                  //   ),
-                  // );
-                },
-              ),
-              appCardFeatView(
-                title: 'Closed Activities',
-                icon: 'closedActivities',
-                onTap: () {
-                  // Get.to(
-                  //   () => ClosedActivitiesScreen(
-                  //     closedActivityModel: closedActivityModel ?? [],
-                  //     leadId: leadId,
-                  //   ),
-                  // );
+                  Get.to(
+                    () => AttachmentMeetingScreen(meetingId: meetingId),
+                  );
                 },
               ),
             ],

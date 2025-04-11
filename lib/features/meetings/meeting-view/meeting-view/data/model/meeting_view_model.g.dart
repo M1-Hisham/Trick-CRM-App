@@ -13,13 +13,22 @@ MeetingViewModel _$MeetingViewModelFromJson(Map<String, dynamic> json) =>
       meeting: json['meeting'] == null
           ? null
           : MeetingViewData.fromJson(json['meeting'] as Map<String, dynamic>),
-    );
+    )
+      ..meetingNotes = (json['meetingNotes'] as List<dynamic>?)
+          ?.map((e) => MeetingNotesModel.fromJson(e as Map<String, dynamic>))
+          .toList()
+      ..meetingAttatchments = (json['meetingAttatchments'] as List<dynamic>?)
+          ?.map((e) =>
+              MeetingAttatchmentsModel.fromJson(e as Map<String, dynamic>))
+          .toList();
 
 Map<String, dynamic> _$MeetingViewModelToJson(MeetingViewModel instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,
       'meeting': instance.meeting,
+      'meetingNotes': instance.meetingNotes,
+      'meetingAttatchments': instance.meetingAttatchments,
     };
 
 MeetingViewData _$MeetingViewDataFromJson(Map<String, dynamic> json) =>

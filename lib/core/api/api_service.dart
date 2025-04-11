@@ -273,6 +273,28 @@ abstract class ApiService {
   @GET("/meetings/{id}/view")
   Future<MeetingViewModel> getMeetingView(@Path("id") int id);
 
+  /// service for Meeting Create Note
+  @POST("/meetings/{id}/create-note")
+  Future<FeatStatusModel> createMeetingNote(@Path("id") int id,
+      @Body() CreateAndEditNoteRequestBody createMeetingNoteRequestBody);
+
+  /// service for Meeting Delete Note
+  @GET("/meetings/{id}/{idNote}/delete-note")
+  Future<FeatStatusModel> deleteMeetingNote(
+      @Path("id") int id, @Path("idNote") int idNote);
+
+  /// service for Meeting Edit Note
+  @POST("/meetings/{id}/{idNote}/update-note")
+  Future<FeatStatusModel> editMeetingNote(
+      @Path("id") int id,
+      @Path("idNote") int idNote,
+      @Body() CreateAndEditNoteRequestBody editNoteRequestBody);
+
+  /// Service for Meeting Delete Attachment
+  @GET("/meetings/{id}/{idAttachment}/delete-file")
+  Future<FeatStatusModel> deleteMeetingAttachment(
+      @Path("id") int id, @Path("idAttachment") int idAttachment);
+
   // =================== Calls ===================
 
   /// service for Calls

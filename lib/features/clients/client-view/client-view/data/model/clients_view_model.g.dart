@@ -183,7 +183,7 @@ Map<String, dynamic> _$DepartmentToJson(Department instance) =>
 ClientAttatchment _$ClientAttatchmentFromJson(Map<String, dynamic> json) =>
     ClientAttatchment(
       id: (json['id'] as num?)?.toInt(),
-      contactId: (json['contact_id'] as num?)?.toInt(),
+      clientId: (json['client_id'] as num?)?.toInt(),
       userId: (json['user_id'] as num?)?.toInt(),
       tenantId: json['tenant_id'] as String?,
       name: json['name'] as String?,
@@ -199,7 +199,7 @@ ClientAttatchment _$ClientAttatchmentFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$ClientAttatchmentToJson(ClientAttatchment instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'contact_id': instance.contactId,
+      'client_id': instance.clientId,
       'user_id': instance.userId,
       'tenant_id': instance.tenantId,
       'name': instance.name,

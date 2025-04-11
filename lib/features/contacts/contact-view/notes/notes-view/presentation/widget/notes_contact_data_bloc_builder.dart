@@ -33,6 +33,7 @@ class NotesContactDataBlocBuilder extends StatelessWidget {
             return loadingNotesScreen();
           },
           success: (ContactsViewModel data) {
+            final contactNotes = data.contactNotes;
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -62,72 +63,77 @@ class NotesContactDataBlocBuilder extends StatelessWidget {
                   style: R.textStyles.font17PrimaryW600,
                 ),
                 spacingV(10),
-                ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: data.contactNotes?.length ?? 0,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 15),
-                      child: Slidable(
-                        key: const ValueKey(0),
-                        endActionPane: ActionPane(
-                          motion: const ScrollMotion(),
-                          children: [
-                            SlidableAction(
-                              onPressed: (context) async {
-                                final result = await showDialog(
-                                  useSafeArea: false,
-                                  context: context,
-                                  builder: (context) {
-                                    return EditNoteContact(
-                                      contactId: contactId,
-                                      noteId: data.contactNotes?[index].id ?? 0,
-                                      contextNotes: context,
-                                      note: data.contactNotes?[index].comment ??
-                                          '',
-                                    );
-                                  },
-                                );
-                                if (result == true) {
-                                  getIt<ContactViewCubit>()
-                                      .getContactView(contactId);
-                                }
-                              },
-                              backgroundColor: const Color(0xFF21B7CA),
-                              foregroundColor: Colors.white,
-                              icon: Icons.edit_outlined,
-                              label: 'Edit',
-                            ),
-                            SlidableAction(
-                              onPressed: (context) => deleteNoteContact(
-                                context,
-                                contactId,
-                                data.contactNotes?[index].id ?? 0,
+                contactNotes?.isEmpty ?? true
+                    ? const Center(child: Text("No notes"))
+                    : ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: data.contactNotes?.length ?? 0,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 15),
+                            child: Slidable(
+                              key: const ValueKey(0),
+                              endActionPane: ActionPane(
+                                motion: const ScrollMotion(),
+                                children: [
+                                  SlidableAction(
+                                    onPressed: (context) async {
+                                      final result = await showDialog(
+                                        useSafeArea: false,
+                                        context: context,
+                                        builder: (context) {
+                                          return EditNoteContact(
+                                            contactId: contactId,
+                                            noteId:
+                                                data.contactNotes?[index].id ??
+                                                    0,
+                                            contextNotes: context,
+                                            note: data.contactNotes?[index]
+                                                    .comment ??
+                                                '',
+                                          );
+                                        },
+                                      );
+                                      if (result == true) {
+                                        getIt<ContactViewCubit>()
+                                            .getContactView(contactId);
+                                      }
+                                    },
+                                    backgroundColor: const Color(0xFF21B7CA),
+                                    foregroundColor: Colors.white,
+                                    icon: Icons.edit_outlined,
+                                    label: 'Edit',
+                                  ),
+                                  SlidableAction(
+                                    onPressed: (context) => deleteNoteContact(
+                                      context,
+                                      contactId,
+                                      data.contactNotes?[index].id ?? 0,
+                                    ),
+                                    backgroundColor: const Color(0xFFFE4A49),
+                                    foregroundColor: Colors.white,
+                                    icon: Icons.delete,
+                                    label: 'Delete',
+                                  ),
+                                ],
                               ),
-                              backgroundColor: const Color(0xFFFE4A49),
-                              foregroundColor: Colors.white,
-                              icon: Icons.delete,
-                              label: 'Delete',
+                              child: AppTextFormField(
+                                isclickable: false,
+                                hintText: '',
+                                labelText: 'Note',
+                                initialValue:
+                                    data.contactNotes?[index].comment ?? '-',
+                                style: TextStyle(
+                                  color: R.colors.black,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
                             ),
-                          ],
-                        ),
-                        child: AppTextFormField(
-                          isclickable: false,
-                          hintText: '',
-                          labelText: 'Note',
-                          initialValue:
-                              data.contactNotes?[index].comment ?? '-',
-                          style: TextStyle(
-                            color: R.colors.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
               ],
             );
           },

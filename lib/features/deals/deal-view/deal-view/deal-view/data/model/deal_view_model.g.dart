@@ -13,6 +13,13 @@ DealViewModel _$DealViewModelFromJson(Map<String, dynamic> json) =>
       deal: json['deal'] == null
           ? null
           : Deal.fromJson(json['deal'] as Map<String, dynamic>),
+      dealAttachments: (json['dealAttachments'] as List<dynamic>?)
+          ?.map(
+              (e) => DealAttatchmentsModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      dealNotes: (json['dealNotes'] as List<dynamic>?)
+          ?.map((e) => DealNotesModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       projects: (json['projects'] as List<dynamic>?)
           ?.map((e) => Projects.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -40,6 +47,8 @@ Map<String, dynamic> _$DealViewModelToJson(DealViewModel instance) =>
       'status': instance.status,
       'message': instance.message,
       'deal': instance.deal,
+      'dealAttachments': instance.dealAttachments,
+      'dealNotes': instance.dealNotes,
       'projects': instance.projects,
       'dealProject': instance.dealProject,
       'dealUnit': instance.dealUnit,

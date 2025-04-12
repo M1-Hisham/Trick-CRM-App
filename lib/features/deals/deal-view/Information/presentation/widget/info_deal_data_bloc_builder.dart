@@ -4,9 +4,10 @@ import 'package:trick_crm_app/core/cubits/base_state.dart';
 import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
 import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
 import 'package:trick_crm_app/core/widgets/app_error_message.dart';
-import 'package:trick_crm_app/features/deals/deal-view/Information/logic/cubit/info_deal_view_cubit.dart';
 import 'package:trick_crm_app/features/deals/deal-view/Information/presentation/widget/information_deal_details.dart';
-import 'package:trick_crm_app/features/deals/deal-view/deal-view/data/model/deal_view_model.dart';
+import 'package:trick_crm_app/features/deals/deal-view/deal-view/deal-view/data/model/deal_view_model.dart';
+
+import '../../../deal-view/deal-view/logic/cubit/deal_view_cubit.dart';
 
 class InfoDealDataBlocBuilder extends StatelessWidget {
   final int dealId;
@@ -14,8 +15,8 @@ class InfoDealDataBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<InfoDealViewCubit, BaseState<DealViewModel>>(
-      bloc: getIt<InfoDealViewCubit>()..getInformationView(dealId),
+    return BlocBuilder<DealViewCubit, BaseState<DealViewModel>>(
+      bloc: getIt<DealViewCubit>()..getDealView(dealId),
       buildWhen: (previous, current) =>
           current is Success || current is Loading || current is Error,
       builder: (context, state) {
@@ -29,7 +30,7 @@ class InfoDealDataBlocBuilder extends StatelessWidget {
           error: (message) => appErrorMessage(
             message,
             () {
-              getIt<InfoDealViewCubit>().getInformationView(dealId);
+              getIt<DealViewCubit>().getDealView(dealId);
             },
           ),
           orElse: () => const SizedBox.shrink(),

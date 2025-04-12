@@ -1,5 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../../Attatchments/attachment-view/model/deal_attatchments_model.dart';
+import '../../../../notes/notes-view/model/deal_notes_model.dart';
+
 part 'deal_view_model.g.dart';
 
 @JsonSerializable()
@@ -7,6 +10,8 @@ class DealViewModel {
   String? status;
   String? message;
   Deal? deal;
+  List<DealAttatchmentsModel>? dealAttachments;
+  List<DealNotesModel>? dealNotes;
   List<Projects>? projects;
   Projects? dealProject;
   DealUnit? dealUnit;
@@ -17,6 +22,8 @@ class DealViewModel {
     this.status,
     this.message,
     this.deal,
+    this.dealAttachments,
+    this.dealNotes,
     this.projects,
     this.dealProject,
     this.dealUnit,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/deals/deal-view/Information/presentation/information_deal_screen.dart';
-import '../../../../../../../core/widgets/app_bar.dart';
+import '../../../../../../../../core/widgets/app_bar.dart';
 
 class DealView extends StatelessWidget {
   final int dealId;
@@ -64,31 +64,12 @@ class DealView extends StatelessWidget {
                 },
               ),
               appCardFeatView(
-                title: 'Email',
-                icon: 'Emails',
-                onTap: () {
-                  // Get.to(() => const EmailsScreen());
-                },
-              ),
-              appCardFeatView(
-                title: 'Open Activities',
-                icon: 'openActivities',
+                title: 'Campaigns',
+                icon: 'Campaigns',
                 onTap: () {
                   // Get.to(
                   //   () => OpenActivitiesScreen(
                   //     openActivityModel: openActivity ?? [],
-                  //     leadId: leadId,
-                  //   ),
-                  // );
-                },
-              ),
-              appCardFeatView(
-                title: 'Closed Activities',
-                icon: 'closedActivities',
-                onTap: () {
-                  // Get.to(
-                  //   () => ClosedActivitiesScreen(
-                  //     closedActivityModel: closedActivityModel ?? [],
                   //     leadId: leadId,
                   //   ),
                   // );

@@ -4,6 +4,7 @@ import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/deals/deal-view/Information/presentation/information_deal_screen.dart';
 import '../../../../../../../core/widgets/app_bar.dart';
 import '../../../Attatchments/attachment-view/presentation/attachment_deal_screen.dart';
+import '../../../Campaigns/presentation/campaign_deal_screen.dart';
 import '../../../Timeline/presentation/deal_timeline_sccreen.dart';
 import '../../../notes/notes-view/presentation/screen/notes_deal_screen.dart';
 
@@ -69,12 +70,9 @@ class DealView extends StatelessWidget {
                 title: 'Campaigns',
                 icon: 'Campaigns',
                 onTap: () {
-                  // Get.to(
-                  //   () => OpenActivitiesScreen(
-                  //     openActivityModel: openActivity ?? [],
-                  //     leadId: leadId,
-                  //   ),
-                  // );
+                  Get.to(
+                    () => CampaignDealScreen(dealId: dealId),
+                  );
                 },
               ),
             ],

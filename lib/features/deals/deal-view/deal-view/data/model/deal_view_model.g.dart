@@ -89,6 +89,10 @@ Deal _$DealFromJson(Map<String, dynamic> json) => Deal(
       owner: json['owner'] == null
           ? null
           : Owner.fromJson(json['owner'] as Map<String, dynamic>),
+      campaign: json['campaign'] == null
+          ? null
+          : CampaignDealViewModel.fromJson(
+              json['campaign'] as Map<String, dynamic>),
       broker: json['broker'] == null
           ? null
           : Broker.fromJson(json['broker'] as Map<String, dynamic>),
@@ -122,6 +126,7 @@ Map<String, dynamic> _$DealToJson(Deal instance) => <String, dynamic>{
       'updated_at': instance.updatedAt,
       'client': instance.client,
       'owner': instance.owner,
+      'campaign': instance.campaign,
       'broker': instance.broker,
       'payment_plan': instance.paymentPlan,
     };

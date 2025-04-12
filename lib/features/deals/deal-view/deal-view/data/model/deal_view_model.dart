@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../../Attatchments/attachment-view/model/deal_attatchments_model.dart';
+import '../../../Campaigns/data/model/campaign_deal_view_model.dart';
 import '../../../Timeline/data/model/deal_activity_log_model.dart';
 import '../../../notes/notes-view/model/deal_notes_model.dart';
 
@@ -81,7 +82,7 @@ class Deal {
   String? updatedAt;
   Client? client;
   Owner? owner;
-  // Null campaign;
+  CampaignDealViewModel? campaign;
   Broker? broker;
   @JsonKey(name: 'payment_plan')
   PaymentPlan? paymentPlan;
@@ -111,7 +112,7 @@ class Deal {
       this.updatedAt,
       this.client,
       this.owner,
-      // this.campaign,
+      this.campaign,
       this.broker,
       this.paymentPlan});
 

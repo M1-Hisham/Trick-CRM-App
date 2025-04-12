@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/deals/deal-view/Information/presentation/information_deal_screen.dart';
 import '../../../../../../../../core/widgets/app_bar.dart';
+import '../../../../Attatchments/attachment-view/presentation/attachment_deal_screen.dart';
+import '../../../../notes/notes-view/presentation/screen/notes_deal_screen.dart';
 
 class DealView extends StatelessWidget {
   final int dealId;
@@ -48,19 +50,18 @@ class DealView extends StatelessWidget {
                 title: 'Notes',
                 icon: 'notes',
                 onTap: () {
-                  // Get.to(
-                  //     () => NotesScreen(leadNotes: leadNotes ?? [], leadId: leadId));
+                  Get.to(
+                    () => NotesDealScreen(dealId: dealId),
+                  );
                 },
               ),
               appCardFeatView(
                 title: 'Attachments',
                 icon: 'attachments',
                 onTap: () {
-                  // Get.to(
-                  //   () => AttachmentScreen(
-                  //     leadAttatchment: leadAttatchments ?? [],
-                  //   ),
-                  // );
+                  Get.to(
+                    () => AttachmentDealScreen(dealId: dealId),
+                  );
                 },
               ),
               appCardFeatView(

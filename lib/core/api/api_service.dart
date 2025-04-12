@@ -336,7 +336,7 @@ abstract class ApiService {
   @POST("/calls/{id}/update")
   Future<FeatStatusModel> markCallAsComplete(
     @Path("id") int id,
-    );
+  );
 
   // =================== Deals ===================
 
@@ -353,6 +353,28 @@ abstract class ApiService {
   /// service for Deal View
   @GET("/deals/{id}/view")
   Future<DealViewModel> getDealView(@Path("id") int id);
+
+  /// service for Deal Create Note
+  @POST("/deals/{id}/create-note")
+  Future<FeatStatusModel> createDealNote(@Path("id") int id,
+      @Body() CreateAndEditNoteRequestBody createDealNoteRequestBody);
+
+  /// service for Deal Delete Note
+  @GET("/deals/{id}/{idNote}/delete-note")
+  Future<FeatStatusModel> deleteDealNote(
+      @Path("id") int id, @Path("idNote") int idNote);
+
+  /// service for Deal Edit Note
+  @POST("/deals/{id}/{idNote}/update-note")
+  Future<FeatStatusModel> editDealNote(
+      @Path("id") int id,
+      @Path("idNote") int idNote,
+      @Body() CreateAndEditNoteRequestBody editNoteRequestBody);
+
+  /// service for Deal Delete Attachment
+  @GET("/deals/{id}/{idAttachment}/delete-file")
+  Future<FeatStatusModel> deleteDealAttachment(
+      @Path("id") int id, @Path("idAttachment") int idAttachment);
 
   // =================== Brokers ===================
 

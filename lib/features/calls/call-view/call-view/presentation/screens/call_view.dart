@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/calls/call-view/Information/presentation/information_call_screen.dart';
 import '../../../../../../../core/widgets/app_bar.dart';
+import '../../../Attatchments/attachment-view/presentation/attachment_call_screen.dart';
+import '../../../notes/notes-view/presentation/screen/notes_call_screen.dart';
 
 class CallView extends StatelessWidget {
   final int callId;
@@ -36,62 +38,21 @@ class CallView extends StatelessWidget {
                 },
               ),
               appCardFeatView(
-                title: 'Timeline',
-                icon: 'timeline',
-                onTap: () {
-                  // Get.to(() => TimelineSccreen(
-                  //       activityLogs: activityLogs ?? [],
-                  //     ));
-                },
-              ),
-              appCardFeatView(
                 title: 'Notes',
                 icon: 'notes',
                 onTap: () {
-                  // Get.to(
-                  //     () => NotesScreen(leadNotes: leadNotes ?? [], leadId: leadId));
+                  Get.to(
+                    () => NotesCallScreen(callId: callId),
+                  );
                 },
               ),
               appCardFeatView(
                 title: 'Attachments',
                 icon: 'attachments',
                 onTap: () {
-                  // Get.to(
-                  //   () => AttachmentScreen(
-                  //     leadAttatchment: leadAttatchments ?? [],
-                  //   ),
-                  // );
-                },
-              ),
-              appCardFeatView(
-                title: 'Email',
-                icon: 'Emails',
-                onTap: () {
-                  // Get.to(() => const EmailsScreen());
-                },
-              ),
-              appCardFeatView(
-                title: 'Open Activities',
-                icon: 'openActivities',
-                onTap: () {
-                  // Get.to(
-                  //   () => OpenActivitiesScreen(
-                  //     openActivityModel: openActivity ?? [],
-                  //     leadId: leadId,
-                  //   ),
-                  // );
-                },
-              ),
-              appCardFeatView(
-                title: 'Closed Activities',
-                icon: 'closedActivities',
-                onTap: () {
-                  // Get.to(
-                  //   () => ClosedActivitiesScreen(
-                  //     closedActivityModel: closedActivityModel ?? [],
-                  //     leadId: leadId,
-                  //   ),
-                  // );
+                  Get.to(
+                    () => AttachmentCallScreen(callId: callId),
+                  );
                 },
               ),
             ],

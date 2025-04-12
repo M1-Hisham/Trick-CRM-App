@@ -1,0 +1,22 @@
+import 'package:trick_crm_app/core/api/api_service.dart';
+import 'package:trick_crm_app/core/cubits/base_cubit.dart';
+import 'package:trick_crm_app/core/models/feat_status_model.dart';
+import 'package:trick_crm_app/core/repo/base_repo.dart';
+
+import '../../../../../../../core/models/note/create_and_edit_note_request_body.dart';
+
+class CreateNoteCallCubit extends BaseCubit<FeatStatusModel> {
+  CreateNoteCallCubit(ApiService apiService)
+      : super(
+          BaseRepo(
+            sendData: (requestBody, {Map<String, dynamic>? params}) =>
+                apiService.createCallNote(params!['id'], requestBody),
+          ),
+        );
+  Future<void> createCallNote(
+    CreateAndEditNoteRequestBody createCallNoteModel,
+    int callId,
+  ) async {
+    await sendData(createCallNoteModel, params: {'id': callId});
+  }
+}

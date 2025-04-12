@@ -13,6 +13,13 @@ CallViewModel _$CallViewModelFromJson(Map<String, dynamic> json) =>
       call: json['call'] == null
           ? null
           : Call.fromJson(json['call'] as Map<String, dynamic>),
+      callNotes: (json['callNotes'] as List<dynamic>?)
+          ?.map((e) => CallNotesModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      callAttatchments: (json['callAttatchments'] as List<dynamic>?)
+          ?.map(
+              (e) => CallAttatchmentsModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$CallViewModelToJson(CallViewModel instance) =>
@@ -20,6 +27,8 @@ Map<String, dynamic> _$CallViewModelToJson(CallViewModel instance) =>
       'status': instance.status,
       'message': instance.message,
       'call': instance.call,
+      'callNotes': instance.callNotes,
+      'callAttatchments': instance.callAttatchments,
     };
 
 Call _$CallFromJson(Map<String, dynamic> json) => Call(

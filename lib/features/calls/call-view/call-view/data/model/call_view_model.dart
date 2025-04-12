@@ -1,5 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../Attatchments/attachment-view/model/call_attatchments_model.dart';
+import '../../../notes/notes-view/model/call_notes_model.dart';
+
 part 'call_view_model.g.dart';
 
 @JsonSerializable()
@@ -7,15 +10,15 @@ class CallViewModel {
   String? status;
   String? message;
   Call? call;
-  // List<Null>? callNotes;
-  // List<Null>? callAttatchments;
+  List<CallNotesModel>? callNotes;
+  List<CallAttatchmentsModel>? callAttatchments;
 
   CallViewModel({
     this.status,
     this.message,
     this.call,
-    // this.callNotes,
-    // this.callAttatchments,
+    this.callNotes,
+    this.callAttatchments,
   });
   factory CallViewModel.fromJson(Map<String, dynamic> json) =>
       _$CallViewModelFromJson(json);

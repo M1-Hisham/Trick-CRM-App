@@ -40,7 +40,9 @@ DealViewModel _$DealViewModelFromJson(Map<String, dynamic> json) =>
       brokers: (json['brokers'] as List<dynamic>?)
           ?.map((e) => Brokers.fromJson(e as Map<String, dynamic>))
           .toList(),
-    );
+    )..activityLog = (json['activity_log'] as List<dynamic>?)
+        ?.map((e) => DealActivityLogModel.fromJson(e as Map<String, dynamic>))
+        .toList();
 
 Map<String, dynamic> _$DealViewModelToJson(DealViewModel instance) =>
     <String, dynamic>{
@@ -49,6 +51,7 @@ Map<String, dynamic> _$DealViewModelToJson(DealViewModel instance) =>
       'deal': instance.deal,
       'dealAttachments': instance.dealAttachments,
       'dealNotes': instance.dealNotes,
+      'activity_log': instance.activityLog,
       'projects': instance.projects,
       'dealProject': instance.dealProject,
       'dealUnit': instance.dealUnit,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trick_crm_app/core/resources/resources.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
-import 'package:trick_crm_app/features/deals/deal-view/deal-view/deal-view/data/model/deal_view_model.dart';
+import 'package:trick_crm_app/features/deals/deal-view/deal-view/data/model/deal_view_model.dart';
 
 Widget informationDealDetails(DealViewModel dealViewModel) {
   final deal = dealViewModel.deal;

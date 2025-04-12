@@ -310,6 +310,34 @@ abstract class ApiService {
   @GET("/calls/{id}/view")
   Future<CallViewModel> getCallView(@Path("id") int id);
 
+  /// service for Call Create Note
+  @POST("/calls/{id}/create-note")
+  Future<FeatStatusModel> createCallNote(@Path("id") int id,
+      @Body() CreateAndEditNoteRequestBody createCallNoteRequestBody);
+
+  /// service for Call Delete Note
+  @GET("/calls/{id}/{idNote}/delete-note")
+  Future<FeatStatusModel> deleteCallNote(
+      @Path("id") int id, @Path("idNote") int idNote);
+
+  /// service for Call Edit Note
+  @POST("/calls/{id}/{idNote}/update-note")
+  Future<FeatStatusModel> editCallNote(
+      @Path("id") int id,
+      @Path("idNote") int idNote,
+      @Body() CreateAndEditNoteRequestBody editNoteRequestBody);
+
+  /// service for Call Delete Attachment
+  @GET("/calls/{id}/{idAttachment}/delete-file")
+  Future<FeatStatusModel> deleteCallAttachment(
+      @Path("id") int id, @Path("idAttachment") int idAttachment);
+
+  /// service for Call Mark as Complete
+  @POST("/calls/{id}/update")
+  Future<FeatStatusModel> markCallAsComplete(
+    @Path("id") int id,
+    );
+
   // =================== Deals ===================
 
   /// service for Deals

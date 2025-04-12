@@ -1,18 +1,18 @@
 import 'package:trick_crm_app/core/api/api_service.dart';
-import 'package:trick_crm_app/features/calls/call-view/call-view/data/model/call_view_model.dart';
 
 import '../../../../../../core/cubits/base_cubit.dart';
 import '../../../../../../core/repo/base_repo.dart';
+import '../../data/model/call_view_model.dart';
 
-class InfoCallViewCubit extends BaseCubit<CallViewModel> {
-  InfoCallViewCubit(ApiService apiService)
+class CallViewCubit extends BaseCubit<CallViewModel> {
+  CallViewCubit(ApiService apiService)
       : super(
           BaseRepo(
             fetchData: ({Map<String, dynamic>? params}) =>
                 apiService.getCallView(params!['id']),
           ),
         );
-  Future<void> getInformationView(int callId) async {
+  Future<void> getCallView(int callId) async {
     await getData(params: {'id': callId});
   }
 }

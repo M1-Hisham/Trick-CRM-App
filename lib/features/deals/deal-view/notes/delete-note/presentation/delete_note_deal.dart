@@ -4,7 +4,7 @@ import 'package:trick_crm_app/core/helpers/show_snack_bar.dart';
 
 import '../../../../../../core/di/setup-di/dependency_injection.dart';
 import '../../../../../../core/widgets/app_waiting_feature.dart';
-import '../../../deal-view/deal-view/logic/cubit/deal_view_cubit.dart';
+import '../../../deal-view/logic/cubit/deal_view_cubit.dart';
 import '../logic/cubit/delete_note_deal_cubit.dart';
 
 Future deleteNoteDeal(context, dealId, idNote) {

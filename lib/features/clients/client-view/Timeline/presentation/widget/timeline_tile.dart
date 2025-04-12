@@ -23,7 +23,7 @@ class TimelineTile extends StatelessWidget {
         .parseUTC(activityLog?.createdAt ?? "0000-00-00T00:00:21Z")
         .toLocal();
     String formattedDate =
-        DateFormat("dd-mm-yyyy, h:mm:ss a").format(dateValue);
+        DateFormat("yyyy-MM-dd, h:mm:ss a").format(dateValue);
     return formattedDate;
   }
 

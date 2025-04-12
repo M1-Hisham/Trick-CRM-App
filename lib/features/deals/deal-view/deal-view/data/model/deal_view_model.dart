@@ -1,7 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../../Attatchments/attachment-view/model/deal_attatchments_model.dart';
-import '../../../../notes/notes-view/model/deal_notes_model.dart';
+import '../../../Attatchments/attachment-view/model/deal_attatchments_model.dart';
+import '../../../Timeline/data/model/deal_activity_log_model.dart';
+import '../../../notes/notes-view/model/deal_notes_model.dart';
 
 part 'deal_view_model.g.dart';
 
@@ -12,6 +13,8 @@ class DealViewModel {
   Deal? deal;
   List<DealAttatchmentsModel>? dealAttachments;
   List<DealNotesModel>? dealNotes;
+  @JsonKey(name: 'activity_log')
+  List<DealActivityLogModel>? activityLog;
   List<Projects>? projects;
   Projects? dealProject;
   DealUnit? dealUnit;

@@ -5,9 +5,9 @@ import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
 import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
 import 'package:trick_crm_app/core/widgets/app_error_message.dart';
 import 'package:trick_crm_app/features/deals/deal-view/Information/presentation/widget/information_deal_details.dart';
-import 'package:trick_crm_app/features/deals/deal-view/deal-view/deal-view/data/model/deal_view_model.dart';
+import 'package:trick_crm_app/features/deals/deal-view/deal-view/data/model/deal_view_model.dart';
 
-import '../../../deal-view/deal-view/logic/cubit/deal_view_cubit.dart';
+import '../../../deal-view/logic/cubit/deal_view_cubit.dart';
 
 class InfoDealDataBlocBuilder extends StatelessWidget {
   final int dealId;

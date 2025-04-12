@@ -2,7 +2,7 @@ import 'package:trick_crm_app/core/api/api_service.dart';
 import 'package:trick_crm_app/features/deals/create-deal/logic/cubit/create_deal_cubit.dart';
 
 import '../../../features/deals/deal-view/Attatchments/delete_attachment/logic/cubit/delete_attachment_deal_cubit.dart';
-import '../../../features/deals/deal-view/deal-view/deal-view/logic/cubit/deal_view_cubit.dart';
+import '../../../features/deals/deal-view/deal-view/logic/cubit/deal_view_cubit.dart';
 import '../../../features/deals/deal-view/notes/create-note/logic/cubit/create_note_deal_cubit.dart';
 import '../../../features/deals/deal-view/notes/delete-note/logic/cubit/delete_note_deal_cubit.dart';
 import '../../../features/deals/deal-view/notes/edit-note/logic/cubit/edit_note_deal_cubit.dart';

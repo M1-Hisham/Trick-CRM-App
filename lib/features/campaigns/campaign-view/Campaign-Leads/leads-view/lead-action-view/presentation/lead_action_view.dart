@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trick_crm_app/features/campaigns/campaign-view/Campaign-Leads/leads-view/lead-action-view/delete-lead/presentation/delete_campaign_lead.dart';
 
 import '../../../../../../../core/resources/resources.dart';
 import '../../../../../../../core/widgets/app_bar.dart';
@@ -8,12 +9,14 @@ import '../edit-lead/presentation/edit_campaign_lead.dart';
 class LeadActionView extends StatelessWidget {
   final String leadName;
   final int leadId;
+  final int campaignId;
   final String leadstatus;
   const LeadActionView({
     super.key,
     required this.leadName,
     required this.leadId,
     required this.leadstatus,
+    required this.campaignId,
   });
 
   @override
@@ -37,7 +40,7 @@ class LeadActionView extends StatelessWidget {
                   showDialog(
                     context: context,
                     builder: (context) => EditCampaignLead(
-                      campaignId: leadId,
+                      campaignId: campaignId,
                       leadId: leadId,
                       leadName: leadName,
                       leadstatus: leadstatus,
@@ -49,11 +52,7 @@ class LeadActionView extends StatelessWidget {
               appCardFeatView(
                 title: 'Delete Lead',
                 buildIcon: const Icon(Icons.delete, color: Colors.red),
-                onTap: () {
-                  // Get.to(
-                  //   () =>
-                  // );
-                },
+                onTap: () => deleteCampaignLead(context, campaignId, leadId),
               ),
             ],
           ),

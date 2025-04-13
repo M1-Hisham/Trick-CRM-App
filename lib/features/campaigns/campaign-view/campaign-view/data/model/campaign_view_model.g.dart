@@ -13,6 +13,10 @@ CampaignViewModel _$CampaignViewModelFromJson(Map<String, dynamic> json) =>
       campaign: json['campaign'] == null
           ? null
           : Campaign.fromJson(json['campaign'] as Map<String, dynamic>),
+      activityLog: (json['activity_log'] as List<dynamic>?)
+          ?.map((e) =>
+              CampaignActivityLogModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$CampaignViewModelToJson(CampaignViewModel instance) =>
@@ -20,6 +24,7 @@ Map<String, dynamic> _$CampaignViewModelToJson(CampaignViewModel instance) =>
       'status': instance.status,
       'message': instance.message,
       'campaign': instance.campaign,
+      'activity_log': instance.activityLog,
     };
 
 Campaign _$CampaignFromJson(Map<String, dynamic> json) => Campaign(

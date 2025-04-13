@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/campaigns/campaign-view/Information/presentation/information_campaign_screen.dart';
 import '../../../../../../../core/widgets/app_bar.dart';
+import '../../../Timeline/presentation/campaign_timeline_sccreen.dart';
 
 class CampaignView extends StatelessWidget {
   final int campaignId;
@@ -39,9 +40,9 @@ class CampaignView extends StatelessWidget {
                 title: 'Timeline',
                 icon: 'timeline',
                 onTap: () {
-                  // Get.to(() => TimelineSccreen(
-                  //       activityLogs: activityLogs ?? [],
-                  //     ));
+                  Get.to(
+                    () => CampaignTimelineSccreen(campaignId: campaignId),
+                  );
                 },
               ),
               appCardFeatView(

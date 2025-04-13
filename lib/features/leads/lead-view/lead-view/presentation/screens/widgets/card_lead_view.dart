@@ -41,7 +41,7 @@ cardLeadView({
                   child: Padding(
                     padding: const EdgeInsets.all(14),
                     child: SvgPicture.asset(
-                      R.icons.iconsLeadView[icon] ?? '',
+                      R.icons.iconsFeatureView[icon] ?? '',
                       width: 42,
                       height: 42,
                     ),

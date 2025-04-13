@@ -4,9 +4,10 @@ import 'package:trick_crm_app/core/cubits/base_state.dart';
 import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
 import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
 import 'package:trick_crm_app/core/widgets/app_error_message.dart';
-import 'package:trick_crm_app/features/campaigns/campaign-view/Information/logic/cubit/info_campaign_view_cubit.dart';
 import 'package:trick_crm_app/features/campaigns/campaign-view/Information/presentation/widget/information_campaign_details.dart';
 import 'package:trick_crm_app/features/campaigns/campaign-view/campaign-view/data/model/campaign_view_model.dart';
+
+import '../../../campaign-view/logic/cubit/campaign_view_cubit.dart';
 
 class InfoCampaignDataBlocBuilder extends StatelessWidget {
   final int campaignId;
@@ -14,8 +15,8 @@ class InfoCampaignDataBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<InfoCampaignViewCubit, BaseState<CampaignViewModel>>(
-      bloc: getIt<InfoCampaignViewCubit>()..getInformationView(campaignId),
+    return BlocBuilder<CampaignViewCubit, BaseState<CampaignViewModel>>(
+      bloc: getIt<CampaignViewCubit>()..getCampaignView(campaignId),
       buildWhen: (previous, current) =>
           current is Success || current is Loading || current is Error,
       builder: (context, state) {
@@ -29,7 +30,7 @@ class InfoCampaignDataBlocBuilder extends StatelessWidget {
           error: (message) => appErrorMessage(
             message,
             () {
-              getIt<InfoCampaignViewCubit>().getInformationView(campaignId);
+              getIt<CampaignViewCubit>().getCampaignView(campaignId);
             },
           ),
           orElse: () => const SizedBox.shrink(),

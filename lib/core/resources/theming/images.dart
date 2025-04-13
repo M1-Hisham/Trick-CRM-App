@@ -46,12 +46,13 @@ class AppImages {
     "Settings": "assets/icons/iconsMenu/Setting.svg",
   };
 
-  Map<String, String> iconsLeadView = {
+  Map<String, String> iconsFeatureView = {
     "information": "assets/icons/icons-lead-view/information.svg",
     "timeline": "assets/icons/icons-lead-view/Timeline.svg",
     "notes": "assets/icons/icons-lead-view/Notes.svg",
     "attachments": "assets/icons/icons-lead-view/Attachments.svg",
     "Campaigns": "assets/icons/icons-lead-view/Campaians.svg",
+    "Leads": "assets/icons/iconsMenu/Leads.svg",
     "Emails": "assets/icons/icons-lead-view/Email.svg",
     "openActivities": "assets/icons/icons-lead-view/OpenActivities.svg",
     "closedActivities": "assets/icons/icons-lead-view/ClosedActivities.svg",

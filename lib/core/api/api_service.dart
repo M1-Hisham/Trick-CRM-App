@@ -277,6 +277,11 @@ abstract class ApiService {
       @Path("leadId") int leadId,
       @Body() Map<String, dynamic> editLeadCampaignRequestBody);
 
+  /// service for Campaign Delete Lead
+  @GET("/campaigns/{campaignId}/{leadId}/delete-campaign-lead")
+  Future<FeatStatusModel> deleteCampaignLead(
+      @Path("campaignId") int campaignId, @Path("leadId") int leadId);
+
   // =================== Tasks ===================
 
   /// service for Tasks

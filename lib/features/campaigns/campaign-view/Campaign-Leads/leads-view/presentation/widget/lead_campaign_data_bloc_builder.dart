@@ -98,6 +98,7 @@ class LeadCampaignDataBlocBuilder extends StatelessWidget {
                     final result = await Get.to(
                       () => LeadActionView(
                           leadName: leadName,
+                          campaignId: campaignId,
                           leadId: int.parse(id),
                           leadstatus: leads
                                   ?.where((e) => e.id == int.parse(id))

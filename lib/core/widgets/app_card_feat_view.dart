@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../../../core/helpers/spacing.dart';
@@ -45,8 +46,8 @@ appCardFeatView({
                     child: buildIcon ??
                         SvgPicture.asset(
                           R.icons.iconsFeatureView[icon] ?? '',
-                          width: 42,
-                          height: 42,
+                          width: 42.w,
+                          height: 42.h,
                         ),
                   ),
                 ),

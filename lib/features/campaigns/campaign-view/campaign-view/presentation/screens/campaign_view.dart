@@ -53,43 +53,19 @@ class CampaignView extends StatelessWidget {
                 },
               ),
               appCardFeatView(
+                title: 'Leads',
+                icon: 'Leads',
+                onTap: () {
+                  // Get.to(() => const EmailsScreen());
+                },
+              ),
+              appCardFeatView(
                 title: 'Attachments',
                 icon: 'attachments',
                 onTap: () {
                   // Get.to(
                   //   () => AttachmentScreen(
                   //     leadAttatchment: leadAttatchments ?? [],
-                  //   ),
-                  // );
-                },
-              ),
-              appCardFeatView(
-                title: 'Email',
-                icon: 'Emails',
-                onTap: () {
-                  // Get.to(() => const EmailsScreen());
-                },
-              ),
-              appCardFeatView(
-                title: 'Open Activities',
-                icon: 'openActivities',
-                onTap: () {
-                  // Get.to(
-                  //   () => OpenActivitiesScreen(
-                  //     openActivityModel: openActivity ?? [],
-                  //     leadId: leadId,
-                  //   ),
-                  // );
-                },
-              ),
-              appCardFeatView(
-                title: 'Closed Activities',
-                icon: 'closedActivities',
-                onTap: () {
-                  // Get.to(
-                  //   () => ClosedActivitiesScreen(
-                  //     closedActivityModel: closedActivityModel ?? [],
-                  //     leadId: leadId,
                   //   ),
                   // );
                 },

@@ -4,7 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../../../core/helpers/spacing.dart';
 import '../../../../../../../core/resources/resources.dart';
 
-/// Generate a card view for the leads view
+/// Generate a card view for the Feature section
+/// of the app with an icon and title.
 appCardFeatView({
   required String title,
   required String icon,
@@ -41,7 +42,7 @@ appCardFeatView({
                   child: Padding(
                     padding: const EdgeInsets.all(14),
                     child: SvgPicture.asset(
-                      R.icons.iconsLeadView[icon] ?? '',
+                      R.icons.iconsFeatureView[icon] ?? '',
                       width: 42,
                       height: 42,
                     ),

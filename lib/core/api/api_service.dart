@@ -265,6 +265,11 @@ abstract class ApiService {
   Future<FeatStatusModel> deleteCampaignAttachment(
       @Path("id") int id, @Path("idAttachment") int idAttachment);
 
+  /// service for Campaign Create Lead
+  @POST("/campaigns/{id}/create-lead")
+  Future<FeatStatusModel> createCampaignLead(@Path("id") int id,
+      @Body() Map<String, dynamic> createLeadCampaignRequestBody);
+
   // =================== Tasks ===================
 
   /// service for Tasks

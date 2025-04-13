@@ -16,6 +16,13 @@ CampaignViewModel _$CampaignViewModelFromJson(Map<String, dynamic> json) =>
       campaignNotes: (json['campaignNotes'] as List<dynamic>?)
           ?.map((e) => CampaignNotesModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      campaignLeads: (json['campaignLeads'] as List<dynamic>?)
+          ?.map(
+              (e) => LeadCampaignViewModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      leads: (json['leads'] as List<dynamic>?)
+          ?.map((e) => Lead.fromJson(e as Map<String, dynamic>))
+          .toList(),
       campaignAttachments: (json['campaignAttachments'] as List<dynamic>?)
           ?.map((e) =>
               CampaignAttatchmentsModel.fromJson(e as Map<String, dynamic>))
@@ -32,6 +39,8 @@ Map<String, dynamic> _$CampaignViewModelToJson(CampaignViewModel instance) =>
       'message': instance.message,
       'campaign': instance.campaign,
       'campaignNotes': instance.campaignNotes,
+      'campaignLeads': instance.campaignLeads,
+      'leads': instance.leads,
       'campaignAttachments': instance.campaignAttachments,
       'activity_log': instance.activityLog,
     };

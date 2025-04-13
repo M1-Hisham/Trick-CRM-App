@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/brokers/broker-view/Information/presentation/information_broker_screen.dart';
 import '../../../../../../../core/widgets/app_bar.dart';
+import '../../../../../../core/resources/resources.dart';
+import '../../../Timeline/presentation/broker_timeline_sccreen.dart';
 
 class BrokerView extends StatelessWidget {
   final int brokerId;
@@ -39,9 +43,9 @@ class BrokerView extends StatelessWidget {
                 title: 'Timeline',
                 icon: 'timeline',
                 onTap: () {
-                  // Get.to(() => TimelineSccreen(
-                  //       activityLogs: activityLogs ?? [],
-                  //     ));
+                  Get.to(
+                    () => BrokerTimelineSccreen(brokerId: brokerId),
+                  );
                 },
               ),
               appCardFeatView(
@@ -53,43 +57,34 @@ class BrokerView extends StatelessWidget {
                 },
               ),
               appCardFeatView(
+                title: 'Broker Clients',
+                buildIcon: SvgPicture.asset(
+                  R.icons.iconsMenu['Clients']!,
+                  width: 42.w,
+                  height: 42.h,
+                ),
+                onTap: () {
+                  // Get.to(() => const EmailsScreen());
+                },
+              ),
+              appCardFeatView(
+                title: 'Broker Deals',
+                buildIcon: SvgPicture.asset(
+                  R.icons.iconsMenu['Deals']!,
+                  width: 42.w,
+                  height: 42.h,
+                ),
+                onTap: () {
+                  // Get.to(() => const EmailsScreen());
+                },
+              ),
+              appCardFeatView(
                 title: 'Attachments',
                 icon: 'attachments',
                 onTap: () {
                   // Get.to(
                   //   () => AttachmentScreen(
                   //     leadAttatchment: leadAttatchments ?? [],
-                  //   ),
-                  // );
-                },
-              ),
-              appCardFeatView(
-                title: 'Email',
-                icon: 'Emails',
-                onTap: () {
-                  // Get.to(() => const EmailsScreen());
-                },
-              ),
-              appCardFeatView(
-                title: 'Open Activities',
-                icon: 'openActivities',
-                onTap: () {
-                  // Get.to(
-                  //   () => OpenActivitiesScreen(
-                  //     openActivityModel: openActivity ?? [],
-                  //     leadId: leadId,
-                  //   ),
-                  // );
-                },
-              ),
-              appCardFeatView(
-                title: 'Closed Activities',
-                icon: 'closedActivities',
-                onTap: () {
-                  // Get.to(
-                  //   () => ClosedActivitiesScreen(
-                  //     closedActivityModel: closedActivityModel ?? [],
-                  //     leadId: leadId,
                   //   ),
                   // );
                 },

@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../Timeline/data/model/broker_activity_log_model.dart';
+
 part 'broker_view_model.g.dart';
 
 @JsonSerializable()
@@ -7,6 +9,8 @@ class BrokerViewModel {
   String? status;
   String? message;
   Broker? broker;
+  @JsonKey(name: 'activity_log')
+  List<BrokerActivityLogModel>? activityLog;
   BrokerViewModel({this.status, this.message, this.broker});
   factory BrokerViewModel.fromJson(Map<String, dynamic> json) =>
       _$BrokerViewModelFromJson(json);

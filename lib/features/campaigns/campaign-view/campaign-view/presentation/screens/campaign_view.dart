@@ -4,7 +4,7 @@ import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/campaigns/campaign-view/Information/presentation/information_campaign_screen.dart';
 import '../../../../../../../core/widgets/app_bar.dart';
 import '../../../Attatchments/attachment-view/presentation/attachment_campaign_screen.dart';
-import '../../../Leads/lead-view/presentation/lead_campaign_screen.dart';
+import '../../../Campaign-Leads/leads-view/presentation/lead_campaign_screen.dart';
 import '../../../Timeline/presentation/campaign_timeline_sccreen.dart';
 import '../../../notes/notes-view/presentation/screen/notes_campaign_screen.dart';
 

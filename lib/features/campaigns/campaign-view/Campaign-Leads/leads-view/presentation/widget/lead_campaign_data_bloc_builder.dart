@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:trick_crm_app/core/cubits/base_state.dart';
 import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
 import 'package:trick_crm_app/core/widgets/app_button.dart';
@@ -14,6 +15,7 @@ import '../../../../campaign-view/data/model/campaign_view_model.dart';
 import '../../../../campaign-view/logic/cubit/campaign_view_cubit.dart';
 import '../../../create-lead/presentation/screen/create_campaign_lead.dart';
 import '../../data/model/lead_campaign_view_model.dart';
+import '../../lead-action-view/presentation/lead_action_view.dart';
 
 class LeadCampaignDataBlocBuilder extends StatelessWidget {
   final int campaignId;
@@ -90,6 +92,23 @@ class LeadCampaignDataBlocBuilder extends StatelessWidget {
                     (leads) => leads.lead?.leadStatus ?? '_',
                     (leads) => leads.status ?? '_',
                   ],
+                  dataIdExtractor: (leads) => (leads.id ?? 0).toString(),
+                  dataLeadNameExtractor: (leads) => leads.lead?.leadName ?? '',
+                  onViewDetails: (id, leadName) async {
+                    final result = await Get.to(
+                      () => LeadActionView(
+                          leadName: leadName,
+                          leadId: int.parse(id),
+                          leadstatus: leads
+                                  ?.where((e) => e.id == int.parse(id))
+                                  .first
+                                  .status ??
+                              ""),
+                    );
+                    if (result != null) {
+                      getIt<CampaignViewCubit>().getCampaignView(campaignId);
+                    }
+                  },
                 ),
               ],
             );

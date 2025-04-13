@@ -8,7 +8,8 @@ import '../../../../../../../core/resources/resources.dart';
 /// of the app with an icon and title.
 appCardFeatView({
   required String title,
-  required String icon,
+  String? icon,
+  Widget? buildIcon,
   required void Function() onTap,
 }) {
   return GestureDetector(
@@ -41,11 +42,12 @@ appCardFeatView({
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(14),
-                    child: SvgPicture.asset(
-                      R.icons.iconsFeatureView[icon] ?? '',
-                      width: 42,
-                      height: 42,
-                    ),
+                    child: buildIcon ??
+                        SvgPicture.asset(
+                          R.icons.iconsFeatureView[icon] ?? '',
+                          width: 42,
+                          height: 42,
+                        ),
                   ),
                 ),
                 spacingH(10),

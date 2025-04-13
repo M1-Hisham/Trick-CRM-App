@@ -10,7 +10,7 @@ import 'package:trick_crm_app/core/widgets/app_waiting_feature.dart';
 import '../../../../../../../core/helpers/spacing.dart';
 import '../../../../../../../core/resources/resources.dart';
 import '../../../../campaign-view/logic/cubit/campaign_view_cubit.dart';
-import '../../../lead-view/data/model/lead_campaign_view_model.dart';
+import '../../../leads-view/data/model/lead_campaign_view_model.dart';
 import '../../logic/cubit/create_campaign_lead_cubit.dart';
 
 class CreateCampaignLead extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:trick_crm_app/features/campaigns/campaign-view/Leads/lead-view/data/model/lead_campaign_view_model.dart';
+import 'package:trick_crm_app/features/campaigns/campaign-view/Campaign-Leads/leads-view/data/model/lead_campaign_view_model.dart';
 
 import '../../../Attatchments/attachment-view/model/campaign_attatchments_model.dart';
 import '../../../Timeline/data/model/campaign_activity_log_model.dart';

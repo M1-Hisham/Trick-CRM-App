@@ -270,6 +270,13 @@ abstract class ApiService {
   Future<FeatStatusModel> createCampaignLead(@Path("id") int id,
       @Body() Map<String, dynamic> createLeadCampaignRequestBody);
 
+  /// service for Campaign Edit Lead
+  @POST("/campaigns/{campaignId}/{leadId}/update-campaign-lead")
+  Future<FeatStatusModel> editCampaignLead(
+      @Path("campaignId") int campaignId,
+      @Path("leadId") int leadId,
+      @Body() Map<String, dynamic> editLeadCampaignRequestBody);
+
   // =================== Tasks ===================
 
   /// service for Tasks

@@ -243,6 +243,28 @@ abstract class ApiService {
   @GET("/campaigns/{id}/view")
   Future<CampaignViewModel> getCampaignView(@Path("id") int id);
 
+  /// service for Campaign Create Note
+  @POST("/campaigns/{id}/create-note")
+  Future<FeatStatusModel> createCampaignNote(@Path("id") int id,
+      @Body() CreateAndEditNoteRequestBody createCampaignNoteRequestBody);
+
+  /// service for Campaign Delete Note
+  @GET("/campaigns/{id}/{idNote}/delete-note")
+  Future<FeatStatusModel> deleteCampaignNote(
+      @Path("id") int id, @Path("idNote") int idNote);
+
+  /// service for Campaign Edit Note
+  @POST("/campaigns/{id}/{idNote}/update-note")
+  Future<FeatStatusModel> editCampaignNote(
+      @Path("id") int id,
+      @Path("idNote") int idNote,
+      @Body() CreateAndEditNoteRequestBody editNoteRequestBody);
+
+  /// service for Campaign Delete Attachment
+  @GET("/campaigns/{id}/{idAttachment}/delete-file")
+  Future<FeatStatusModel> deleteCampaignAttachment(
+      @Path("id") int id, @Path("idAttachment") int idAttachment);
+
   // =================== Tasks ===================
 
   /// service for Tasks

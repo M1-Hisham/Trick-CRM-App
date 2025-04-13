@@ -3,6 +3,9 @@ import 'package:get/get.dart';
 import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/campaigns/campaign-view/Information/presentation/information_campaign_screen.dart';
 import '../../../../../../../core/widgets/app_bar.dart';
+import '../../../Attatchments/attachment-view/presentation/attachment_campaign_screen.dart';
+import '../../../Timeline/presentation/campaign_timeline_sccreen.dart';
+import '../../../notes/notes-view/presentation/screen/notes_campaign_screen.dart';
 
 class CampaignView extends StatelessWidget {
   final int campaignId;
@@ -39,17 +42,18 @@ class CampaignView extends StatelessWidget {
                 title: 'Timeline',
                 icon: 'timeline',
                 onTap: () {
-                  // Get.to(() => TimelineSccreen(
-                  //       activityLogs: activityLogs ?? [],
-                  //     ));
+                  Get.to(
+                    () => CampaignTimelineSccreen(campaignId: campaignId),
+                  );
                 },
               ),
               appCardFeatView(
                 title: 'Notes',
                 icon: 'notes',
                 onTap: () {
-                  // Get.to(
-                  //     () => NotesScreen(leadNotes: leadNotes ?? [], leadId: leadId));
+                  Get.to(
+                    () => NotesCampaignScreen(campaignId: campaignId),
+                  );
                 },
               ),
               appCardFeatView(
@@ -63,11 +67,9 @@ class CampaignView extends StatelessWidget {
                 title: 'Attachments',
                 icon: 'attachments',
                 onTap: () {
-                  // Get.to(
-                  //   () => AttachmentScreen(
-                  //     leadAttatchment: leadAttatchments ?? [],
-                  //   ),
-                  // );
+                  Get.to(
+                    () => AttachmentCampaignScreen(campaignId: campaignId),
+                  );
                 },
               ),
             ],

@@ -1,5 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../Attatchments/attachment-view/model/campaign_attatchments_model.dart';
+import '../../../Timeline/data/model/campaign_activity_log_model.dart';
+import '../../../notes/notes-view/model/campaign_notes_model.dart';
+
 part 'campaign_view_model.g.dart';
 
 @JsonSerializable()
@@ -7,7 +11,19 @@ class CampaignViewModel {
   String? status;
   String? message;
   Campaign? campaign;
-  CampaignViewModel({this.status, this.message, this.campaign});
+  List<CampaignNotesModel>? campaignNotes;
+  List<CampaignAttatchmentsModel>? campaignAttachments;
+  @JsonKey(name: 'activity_log')
+  List<CampaignActivityLogModel>? activityLog;
+
+  CampaignViewModel({
+    this.status,
+    this.message,
+    this.campaign,
+    this.campaignNotes,
+    this.campaignAttachments,
+    this.activityLog,
+  });
 
   factory CampaignViewModel.fromJson(Map<String, dynamic> json) =>
       _$CampaignViewModelFromJson(json);

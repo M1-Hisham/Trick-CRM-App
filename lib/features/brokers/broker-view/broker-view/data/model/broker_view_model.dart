@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../Attatchments/attachment-view/model/broker_attatchments_model.dart';
 import '../../../Timeline/data/model/broker_activity_log_model.dart';
 import '../../../notes/notes-view/model/broker_notes_model.dart';
 
@@ -13,6 +14,7 @@ class BrokerViewModel {
   List<BrokerNotesModel>? brokerNotes;
   @JsonKey(name: 'activity_log')
   List<BrokerActivityLogModel>? activityLog;
+  List<BrokerAttatchmentsModel>? brokerAttachments;
   BrokerViewModel({
     this.status,
     this.message,

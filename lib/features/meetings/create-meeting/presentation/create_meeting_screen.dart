@@ -1,7 +1,10 @@
+import 'dart:convert';
 import 'dart:developer';
 
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/core/widgets/app_date_picker_field.dart';
@@ -10,14 +13,14 @@ import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
 
 import 'package:trick_crm_app/features/meetings/create-meeting/data/model/create_meeting_request_body.dart';
 import '../../../../core/cubits/user_cubit.dart';
-import '../../../../core/di/dependency_injection.dart';
+import '../../../../core/di/setup-di/dependency_injection.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/resources/resources.dart';
 import '../../../../core/widgets/app_button.dart';
 import '../../../../core/widgets/app_waiting_feature.dart';
 import '../../../auth/login/data/models/login_response.dart';
 import '../../../leads/create-lead/presentation/widgets/top_bar_dialog.dart';
-import '../../data/model/meetings_model.dart';
+import '../../meetings/data/model/meetings_model.dart';
 import '../logic/cubit/create_meeting_cubit.dart';
 
 class CreateMeetingScreen extends StatefulWidget {
@@ -39,6 +42,38 @@ class _CreateMeetingScreenState extends State<CreateMeetingScreen> {
   final Map<String, dynamic> _formData = {};
 
   bool isSelected = false;
+
+  List<Users> selectedParticipants = [];
+  late TextEditingController participantsController;
+
+  @override
+  void initState() {
+    super.initState();
+    participantsController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    participantsController.dispose();
+    super.dispose();
+  }
+
+  List<String> encodeParticipants(List<Users> users) {
+    return users.map((user) {
+      return jsonEncode({
+        'name': user.name,
+        'user_id': user.id,
+      });
+    }).toList();
+  }
+
+  void _updateParticipantsField() {
+    participantsController.text =
+        selectedParticipants.map((e) => e.name).join(", ");
+    _formData['participants'] = encodeParticipants(selectedParticipants);
+  }
+
+  List<String> selectedItems = [];
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +138,7 @@ class _CreateMeetingScreenState extends State<CreateMeetingScreen> {
                             },
                           ),
                           spacingV(10),
-                          _paymentPlanRow(
+                          _allDaySwitch(
                             isSelected: isSelected,
                             onChanged: (bool? value) {
                               setState(() {
@@ -244,20 +279,176 @@ class _CreateMeetingScreenState extends State<CreateMeetingScreen> {
                                 return null;
                               }),
                           spacingV(20),
-                          // //!Participants
-                          AppSelectionFormField(
-                            isRequired: true,
-                            labelText: "Participants",
-                            selections: const [],
-                            onSaved: (value) {
-                              _formData['participants'] = value;
-                            },
+                          FormField<List<Users>>(
                             validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                _scrollToTop();
-                                return "Please select participants";
+                              if (selectedParticipants.isEmpty) {
+                                return 'Please select participants';
                               }
                               return null;
+                            },
+                            builder: (FormFieldState<List<Users>> field) {
+                              return InputDecorator(
+                                decoration: InputDecoration(
+                                  errorText: field.errorText,
+                                  label: RichText(
+                                    text: const TextSpan(
+                                      text: "Participants",
+                                      style: TextStyle(color: Colors.black),
+                                      children: [
+                                        TextSpan(
+                                          text: ' *',
+                                          style: TextStyle(color: Colors.red),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  labelStyle:
+                                      const TextStyle(color: Colors.black),
+                                  isDense: true,
+                                  contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 20.w, vertical: 19.h),
+                                  hintStyle: R.textStyles.font15RegentGrayW500,
+                                  filled: true,
+                                  fillColor: R.colors.white,
+                                  alignLabelWithHint: true,
+                                  border: const OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color.fromARGB(255, 139, 139, 139),
+                                    ),
+                                  ),
+                                  focusedBorder: const OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(14)),
+                                    borderSide: BorderSide(
+                                      color: Color.fromARGB(255, 139, 139, 139),
+                                    ),
+                                  ),
+                                  enabledBorder: const OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8)),
+                                    borderSide: BorderSide(
+                                      color: Color(0xFFE8ECF4),
+                                    ),
+                                  ),
+                                ),
+                                child: DropdownButtonHideUnderline(
+                                  child: DropdownButton2<Users>(
+                                    dropdownStyleData: DropdownStyleData(
+                                      maxHeight: 250,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: R.colors.white,
+                                      ),
+                                    ),
+                                    isDense: true,
+                                    isExpanded: true,
+                                    hint: Text(
+                                      'Select an option',
+                                      style: TextStyle(
+                                        fontSize: 14.sp,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                    items: widget.meetingsModel.users
+                                            ?.map((item) {
+                                          return DropdownMenuItem<Users>(
+                                            value: item,
+                                            //disable default onTap to avoid closing menu when selecting an item
+                                            enabled: false,
+                                            child: StatefulBuilder(
+                                              builder: (context, menuSetState) {
+                                                final isSelected =
+                                                    selectedParticipants
+                                                        .contains(item);
+                                                return InkWell(
+                                                  onTap: () {
+                                                    final alreadySelected =
+                                                        selectedParticipants
+                                                            .any((u) =>
+                                                                u.id ==
+                                                                item.id);
+                                                    if (alreadySelected) {
+                                                      selectedParticipants
+                                                          .removeWhere((u) =>
+                                                              u.id == item.id);
+                                                      selectedItems
+                                                          .remove(item.name);
+                                                    } else {
+                                                      selectedParticipants
+                                                          .add(item);
+                                                      selectedItems
+                                                          .add(item.name ?? "");
+                                                    }
+                                                    _updateParticipantsField();
+                                                    setState(() {});
+                                                    menuSetState(() {});
+                                                  },
+                                                  child: Container(
+                                                    height: double.infinity,
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 16.0),
+                                                    child: Row(
+                                                      children: [
+                                                        if (isSelected)
+                                                          const Icon(Icons
+                                                              .check_box_outlined)
+                                                        else
+                                                          const Icon(Icons
+                                                              .check_box_outline_blank),
+                                                        const SizedBox(
+                                                            width: 16),
+                                                        Expanded(
+                                                          child: Text(
+                                                            item.name ?? "",
+                                                            style:
+                                                                const TextStyle(
+                                                              fontSize: 14,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ),
+                                          );
+                                        }).toList() ??
+                                        [],
+                                    //Use last selected item as the current value so if we've limited menu height, it scroll to last item.
+                                    value: selectedParticipants.isEmpty
+                                        ? null
+                                        : selectedParticipants.last,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _formData['participants'] = value;
+                                      });
+                                    },
+                                    selectedItemBuilder: (context) {
+                                      return widget.meetingsModel.users?.map(
+                                            (item) {
+                                              return Text(
+                                                selectedItems.join(', '),
+                                                style: const TextStyle(
+                                                  fontSize: 14,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                ),
+                                                maxLines: 1,
+                                              );
+                                            },
+                                          ).toList() ??
+                                          [];
+                                    },
+                                    buttonStyleData:
+                                        ButtonStyleData(height: 32.h),
+                                    menuItemStyleData: const MenuItemStyleData(
+                                      padding: EdgeInsets.zero,
+                                    ),
+                                  ),
+                                ),
+                              );
                             },
                           ),
                           spacingV(20),
@@ -458,7 +649,7 @@ class _CreateMeetingScreenState extends State<CreateMeetingScreen> {
     );
   }
 
-  Widget _paymentPlanRow({
+  Widget _allDaySwitch({
     required final bool isSelected,
     required final ValueChanged<bool?> onChanged,
   }) {
@@ -528,10 +719,7 @@ class _CreateMeetingScreenState extends State<CreateMeetingScreen> {
         title: _formData["title"],
         location: _formData["location"],
         hostId: int.parse(_formData["hostId"]),
-        participants: [
-          "{\"name\":\"sales manager\",\"user_id\":3}",
-          "{\"name\":\"developer\",\"user_id\":4}"
-        ],
+        participants: encodeParticipants(selectedParticipants),
         startTime: _formData["startDate"],
         startTimeHour: _formData["End Time Hour"],
         endTime: _formData["endDate"],

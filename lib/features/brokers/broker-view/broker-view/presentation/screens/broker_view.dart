@@ -6,6 +6,7 @@ import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/brokers/broker-view/Information/presentation/information_broker_screen.dart';
 import '../../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/resources/resources.dart';
+import '../../../Attatchments/attachment-view/presentation/attachment_broker_screen.dart';
 import '../../../Timeline/presentation/broker_timeline_sccreen.dart';
 import '../../../notes/notes-view/presentation/screen/notes_broker_screen.dart';
 
@@ -84,11 +85,9 @@ class BrokerView extends StatelessWidget {
                 title: 'Attachments',
                 icon: 'attachments',
                 onTap: () {
-                  // Get.to(
-                  //   () => AttachmentScreen(
-                  //     leadAttatchment: leadAttatchments ?? [],
-                  //   ),
-                  // );
+                  Get.to(
+                    () => AttachmentBrokerScreen(brokerId: brokerId),
+                  );
                 },
               ),
             ],

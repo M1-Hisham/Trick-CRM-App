@@ -7,6 +7,7 @@ import 'package:trick_crm_app/features/brokers/broker-view/Information/presentat
 import '../../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/resources/resources.dart';
 import '../../../Timeline/presentation/broker_timeline_sccreen.dart';
+import '../../../notes/notes-view/presentation/screen/notes_broker_screen.dart';
 
 class BrokerView extends StatelessWidget {
   final int brokerId;
@@ -52,8 +53,9 @@ class BrokerView extends StatelessWidget {
                 title: 'Notes',
                 icon: 'notes',
                 onTap: () {
-                  // Get.to(
-                  //     () => NotesScreen(leadNotes: leadNotes ?? [], leadId: leadId));
+                  Get.to(
+                    () => NotesBrokerScreen(brokerId: brokerId),
+                  );
                 },
               ),
               appCardFeatView(

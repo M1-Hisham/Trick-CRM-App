@@ -430,6 +430,28 @@ abstract class ApiService {
   @GET("/brokers/{id}/view")
   Future<BrokerViewModel> getBrokerView(@Path("id") int id);
 
+  /// service for Broker Create Note
+  @POST("/brokers/{id}/create-note")
+  Future<FeatStatusModel> createBrokerNote(@Path("id") int id,
+      @Body() CreateAndEditNoteRequestBody createBrokerNoteRequestBody);
+
+  /// service for Broker Delete Note
+  @GET("/brokers/{id}/{idNote}/delete-note")
+  Future<FeatStatusModel> deleteBrokerNote(
+      @Path("id") int id, @Path("idNote") int idNote);
+
+  /// service for Broker Edit Note
+  @POST("/brokers/{id}/{idNote}/update-note")
+  Future<FeatStatusModel> editBrokerNote(
+      @Path("id") int id,
+      @Path("idNote") int idNote,
+      @Body() CreateAndEditNoteRequestBody editNoteRequestBody);
+
+  /// service for Broker Delete Attachment
+  @GET("/brokers/{id}/{idAttachment}/delete-file")
+  Future<FeatStatusModel> deleteBrokerAttachment(
+      @Path("id") int id, @Path("idAttachment") int idAttachment);
+
   // =================== Projects ===================
 
   /// service for projects

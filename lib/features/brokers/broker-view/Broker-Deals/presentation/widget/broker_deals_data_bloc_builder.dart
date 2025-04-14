@@ -10,11 +10,11 @@ import '../../../../../../core/widgets/app_data_table.dart';
 import '../../../../../../core/widgets/app_error_message.dart';
 import '../../../broker-view/data/model/broker_view_model.dart';
 import '../../../broker-view/logic/cubit/broker_view_cubit.dart';
-import '../../data/model/broker_clients_model.dart';
+import '../../data/model/broker_deals_model.dart';
 
-class BrokerClientDataBlocBuilder extends StatelessWidget {
+class BrokerDealsDataBlocBuilder extends StatelessWidget {
   final int brokerId;
-  const BrokerClientDataBlocBuilder({super.key, required this.brokerId});
+  const BrokerDealsDataBlocBuilder({super.key, required this.brokerId});
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +29,11 @@ class BrokerClientDataBlocBuilder extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Broker Clients',
+                  'Broker deals',
                   style: R.textStyles.font17PrimaryW600,
                 ),
                 spacingV(20),
-                const AppDataTable<BrokerClientsModel>(
+                const AppDataTable<BrokerDealsModel>(
                   data: [],
                   headers: [],
                   dataExtractors: [],
@@ -42,31 +42,31 @@ class BrokerClientDataBlocBuilder extends StatelessWidget {
             ),
           ),
           success: (BrokerViewModel brokerViewModel) {
-            final clients = brokerViewModel.brokerClients;
+            final deals = brokerViewModel.brokerDeals;
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Broker Clients',
+                  'Broker Deals',
                   style: R.textStyles.font17PrimaryW600,
                 ),
                 spacingV(20),
-                AppDataTable<BrokerClientsModel>(
+                AppDataTable<BrokerDealsModel>(
                   dataMessage: "No Data",
-                  data: clients ?? [],
+                  data: deals ?? [],
                   headers: const [
                     "Name",
-                    "Company",
-                    "Email",
-                    "Client Owner",
-                    "City",
+                    "client name",
+                    "project name",
+                    "Unit code",
+                    "Deal Owner",
                   ],
                   dataExtractors: [
-                    (clients) => clients.clientName ?? '_',
-                    (clients) => clients.company ?? '_',
-                    (clients) => clients.email ?? '_',
-                    (clients) => clients.ownerName ?? '_',
-                    (clients) => clients.city ?? '_',
+                    (deals) => deals.dealName ?? '_',
+                    (deals) => deals.client?.clientName ?? '_',
+                    (deals) => deals.project?.name ?? '_',
+                    (deals) => deals.unit?.unitCode ?? '_',
+                    (deals) => deals.owner?.name ?? '_',
                   ],
                 ),
               ],

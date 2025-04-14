@@ -12,6 +12,19 @@ Widget informationBrokerDetails(BrokerViewModel brokerViewModel) {
     "Broker Status": broker?.isActive == 0 ? "Current" : "Ex",
   };
 
+  final campaingInformation = {
+    "Broker Owner": broker?.owner?.name ?? "-",
+    "broker Assigned To": broker?.assigned?.name ?? "-",
+    "broker person name": broker?.personName ?? "-",
+    "Mobile": broker?.mobile ?? "-",
+    "Mobile 2": broker?.mobile2 ?? "-",
+    "Email": broker?.email ?? "-",
+    "Address": broker?.address ?? "-",
+    "Commercial Registration": broker?.commercialRegister ?? "-",
+    "Tax Card": broker?.taxCard ?? "-",
+    "Status": broker?.isActive == 0 ? "Current" : "Ex",
+  };
+
   return Padding(
     padding: const EdgeInsets.all(16.0),
     child: ListView(
@@ -20,6 +33,8 @@ Widget informationBrokerDetails(BrokerViewModel brokerViewModel) {
       children: [
         sectionTitle("Brokers Info"),
         buildFields(userInfo),
+        sectionTitle("Campaign Information"),
+        buildFields(campaingInformation),
       ],
     ),
   );

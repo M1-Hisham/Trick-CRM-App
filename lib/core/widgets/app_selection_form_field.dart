@@ -116,9 +116,11 @@ class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
             border: InputBorder.none,
             isDense: true,
           ),
+          borderRadius: BorderRadius.circular(8),
           dropdownColor: R.colors.white,
           value: _currenciesFirst(),
           isDense: true,
+          isExpanded: true,
           hint: FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
@@ -155,8 +157,8 @@ class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
                   _isSpecialLabel(widget.labelText)
                       ? value['name'].toString()
                       : value,
-                  style: TextStyle(
-                    fontSize: 14.sp,
+                  style: const TextStyle(
+                    fontSize: 14,
                   ),
                 ),
               ),

@@ -81,7 +81,10 @@ dependencies:
   logger: ^2.5.0
   # for image picker
   image_picker: ^1.1.2
+  # A Flutter implementation of slidable list item with directional slide actions that can be dismissed.
   flutter_slidable: ^3.1.2
+  # for dropdown button as Multiselect Dropdown with Checkboxes
+  dropdown_button2: ^2.3.9
 
 
 

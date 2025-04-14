@@ -8,6 +8,7 @@ import '../../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/resources/resources.dart';
 import '../../../Attatchments/attachment-view/presentation/attachment_broker_screen.dart';
 import '../../../Broker-Clients/presentation/broker_clients_screen.dart';
+import '../../../Broker-Deals/presentation/broker_deals_screen.dart';
 import '../../../Timeline/presentation/broker_timeline_sccreen.dart';
 import '../../../notes/notes-view/presentation/screen/notes_broker_screen.dart';
 
@@ -68,7 +69,9 @@ class BrokerView extends StatelessWidget {
                   height: 42.h,
                 ),
                 onTap: () {
-                  Get.to(() => BrokerClientsScreen(brokerId: brokerId));
+                  Get.to(
+                    () => BrokerClientsScreen(brokerId: brokerId),
+                  );
                 },
               ),
               appCardFeatView(
@@ -79,7 +82,9 @@ class BrokerView extends StatelessWidget {
                   height: 42.h,
                 ),
                 onTap: () {
-                  // Get.to(() => const EmailsScreen());
+                  Get.to(
+                    () => BrokerDealsScreen(brokerId: brokerId),
+                  );
                 },
               ),
               appCardFeatView(

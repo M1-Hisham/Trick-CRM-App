@@ -27,6 +27,9 @@ BrokerViewModel _$BrokerViewModelFromJson(Map<String, dynamic> json) =>
       brokerClients: (json['brokerClients'] as List<dynamic>?)
           ?.map((e) => BrokerClientsModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      brokerDeals: (json['brokerDeals'] as List<dynamic>?)
+          ?.map((e) => BrokerDealsModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$BrokerViewModelToJson(BrokerViewModel instance) =>
@@ -38,6 +41,7 @@ Map<String, dynamic> _$BrokerViewModelToJson(BrokerViewModel instance) =>
       'activity_log': instance.activityLog,
       'brokerAttachments': instance.brokerAttachments,
       'brokerClients': instance.brokerClients,
+      'brokerDeals': instance.brokerDeals,
     };
 
 Broker _$BrokerFromJson(Map<String, dynamic> json) => Broker(

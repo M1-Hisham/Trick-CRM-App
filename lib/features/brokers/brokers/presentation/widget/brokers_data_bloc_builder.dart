@@ -22,7 +22,8 @@ class BrokersDataBlocBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BrokersCubit, BaseState<BrokersModel>>(
-      buildWhen: (previous, current) => current is Success || current is Error,
+      buildWhen: (previous, current) =>
+          current is Success || current is Loading || current is Error,
       builder: (context, state) {
         return state.maybeWhen(
             loading: () => brokersLoadingScreen(),

@@ -13,15 +13,21 @@ BrokerViewModel _$BrokerViewModelFromJson(Map<String, dynamic> json) =>
       broker: json['broker'] == null
           ? null
           : Broker.fromJson(json['broker'] as Map<String, dynamic>),
-    )..activityLog = (json['activity_log'] as List<dynamic>?)
-        ?.map((e) => BrokerActivityLogModel.fromJson(e as Map<String, dynamic>))
-        .toList();
+      brokerNotes: (json['brokerNotes'] as List<dynamic>?)
+          ?.map((e) => BrokerNotesModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      activityLog: (json['activity_log'] as List<dynamic>?)
+          ?.map(
+              (e) => BrokerActivityLogModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
 
 Map<String, dynamic> _$BrokerViewModelToJson(BrokerViewModel instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,
       'broker': instance.broker,
+      'brokerNotes': instance.brokerNotes,
       'activity_log': instance.activityLog,
     };
 

@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../../Timeline/data/model/broker_activity_log_model.dart';
+import '../../../notes/notes-view/model/broker_notes_model.dart';
 
 part 'broker_view_model.g.dart';
 
@@ -9,9 +10,16 @@ class BrokerViewModel {
   String? status;
   String? message;
   Broker? broker;
+  List<BrokerNotesModel>? brokerNotes;
   @JsonKey(name: 'activity_log')
   List<BrokerActivityLogModel>? activityLog;
-  BrokerViewModel({this.status, this.message, this.broker});
+  BrokerViewModel({
+    this.status,
+    this.message,
+    this.broker,
+    this.brokerNotes,
+    this.activityLog,
+  });
   factory BrokerViewModel.fromJson(Map<String, dynamic> json) =>
       _$BrokerViewModelFromJson(json);
 }

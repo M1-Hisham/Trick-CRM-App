@@ -13,6 +13,7 @@ class AppSelectionFormField extends StatefulWidget {
   final bool isRequired;
   final bool isChange;
   final Function(String?)? onChanged;
+  final dynamic initialValue;
   const AppSelectionFormField({
     super.key,
     required this.labelText,
@@ -22,6 +23,7 @@ class AppSelectionFormField extends StatefulWidget {
     this.isRequired = false,
     this.isChange = true,
     this.onChanged,
+    this.initialValue,
   });
 
   @override
@@ -31,6 +33,25 @@ class AppSelectionFormField extends StatefulWidget {
 class _AppSelectionFormFieldState extends State<AppSelectionFormField> {
   late final List<dynamic> _currencies = widget.selections;
   String? _selectedValue;
+  @override
+  void initState() {
+    super.initState();
+
+    final initialId = widget.initialValue is Map
+        ? widget.initialValue['id'].toString()
+        : widget.initialValue?.toString();
+
+    bool existsInList = widget.selections.any((item) {
+      final val =
+          _isSpecialLabel(widget.labelText) ? item['id'].toString() : item;
+      return val == initialId;
+    });
+
+    if (existsInList) {
+      _selectedValue = initialId;
+    }
+  }
+
   bool _isSpecialLabel(String? label) {
     return label == 'Lead Owner' ||
         label == 'Assign To' ||

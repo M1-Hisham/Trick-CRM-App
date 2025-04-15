@@ -71,10 +71,13 @@ class DealsDataBlocBuilder extends StatelessWidget {
                     dataIdExtractor: (deals) => (deals.id ?? 0).toString(),
                     dataLeadNameExtractor: (deals) => deals.dealName ?? '',
                     onViewDetails: (id, dealName) {
-                      Get.to(() => DealView(
-                            dealName: dealName,
-                            dealId: int.parse(id),
-                          ));
+                      Get.to(
+                        () => DealView(
+                          dealName: dealName,
+                          dealId: int.parse(id),
+                          dealsModel: dealsModel,
+                        ),
+                      );
                     },
                   ),
                 ],

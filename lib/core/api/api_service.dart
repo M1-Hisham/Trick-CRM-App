@@ -415,6 +415,15 @@ abstract class ApiService {
   Future<FeatStatusModel> deleteDealAttachment(
       @Path("id") int id, @Path("idAttachment") int idAttachment);
 
+  /// service for Deal Close
+  @GET("/deals/{id}/close-deal")
+  Future<FeatStatusModel> closeDeal(@Path("id") int id);
+
+  /// service for Edit Deal
+  @POST("/deals/{id}/update")
+  Future<FeatStatusModel> editDeal(
+      @Path("id") int id, @Body() CreateDealRequestBody editDealRequestBody);
+
   // =================== Brokers ===================
 
   /// service for Brokers

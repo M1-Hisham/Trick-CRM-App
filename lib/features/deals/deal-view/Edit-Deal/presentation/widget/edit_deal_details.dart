@@ -820,7 +820,7 @@ class EditDealDetails extends StatelessWidget {
         leadSource: _formData['leadSource'],
         downPaymentId: int.parse(_formData['unitPaymentPlan']),
         downPayment:
-            _formData['downPayment'] != '' && _formData['downPayment'] != "null"
+            _formData['downPayment'] != '' && _formData['downPayment'] != null
                 ? int.parse(_formData['downPayment'])
                 : null,
         years: int.parse(_formData['installmentYears']),

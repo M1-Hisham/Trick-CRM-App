@@ -46,12 +46,7 @@ import '../../features/leads/lead-view/Open-Activities/open-meetings/create-lead
 import '../../features/leads/lead-view/Open-Activities/open-meetings/create-lead-meeting/data/model/create_lead_meeting_request_body.dart';
 import '../../features/leads/lead-view/Open-Activities/open-tasks/create-lead-task/data/model/create_lead_task_model.dart';
 import '../../features/leads/lead-view/Open-Activities/open-tasks/create-lead-task/data/model/create_lead_task_request_body.dart';
-import '../../features/leads/lead-view/notes/create-note/data/model/create_lead_note_model.dart';
-import '../../features/leads/lead-view/notes/create-note/data/model/create_lead_note_reqest_body.dart';
-import '../../features/leads/lead-view/notes/delete-note/data/model/delete_note_model.dart';
 import '../../features/leads/lead-view/lead-view/data/model/leads_view_model.dart';
-import '../../features/leads/lead-view/notes/update-note/data/models/update_lead_note_model.dart';
-import '../../features/leads/lead-view/notes/update-note/data/models/update_lead_note_request_body.dart';
 import '../../features/meetings/create-meeting/data/model/create_meeting_model.dart';
 import '../../features/meetings/create-meeting/data/model/create_meeting_request_body.dart';
 import '../../features/meetings/meetings/data/model/meetings_model.dart';
@@ -105,19 +100,19 @@ abstract class ApiService {
 
   /// service for create Lead Note
   @POST("/leads/{id}/create-note")
-  Future<CreateLeadNoteModel> createLeadNote(@Path("id") int id,
-      @Body() CreateLeadNoteRequestBody createLeadNoteRequestBody);
+  Future<FeatStatusModel> createLeadNote(@Path("id") int id,
+      @Body() CreateAndEditNoteRequestBody createLeadNoteRequestBody);
 
   /// service for update Lead Note
-  @PUT("/leads/{id}/{idNote}/update-note")
-  Future<UpdateLeadNoteModel> updateLeadNote(
+  @POST("/leads/{id}/{idNote}/update-note")
+  Future<FeatStatusModel> editLeadNote(
       @Path("id") int id,
       @Path("idNote") int idNote,
-      @Body() UpdateLeadNoteRequestBody updateLeadNoteRequestBody);
+      @Body() CreateAndEditNoteRequestBody editNoteRequestBody);
 
   /// service for delete Lead Note
   @GET("/leads/{id}/{idNote}/delete-note")
-  Future<DeleteNoteModel> deleteLeadNote(
+  Future<FeatStatusModel> deleteLeadNote(
       @Path("id") int id, @Path("idNote") int idNote);
 
   /// service for create attachment

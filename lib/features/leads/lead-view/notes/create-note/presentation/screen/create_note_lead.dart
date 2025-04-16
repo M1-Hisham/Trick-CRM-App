@@ -8,15 +8,18 @@ import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
 import 'package:trick_crm_app/core/widgets/app_button.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
 import 'package:trick_crm_app/core/widgets/app_top_bar_dialog.dart';
+import 'package:trick_crm_app/core/widgets/app_waiting_feature.dart';
 
 import '../../../../../../../core/helpers/spacing.dart';
+import '../../../../../../../core/models/note/create_and_edit_note_request_body.dart';
 import '../../../../../../../core/resources/resources.dart';
-import '../../data/model/create_lead_note_reqest_body.dart';
-import '../../logic/cubit/create_note_cubit.dart';
+import '../../logic/cubit/create_note_lead_cubit.dart';
 
-class CreateNote extends StatelessWidget {
+class CreateNoteLead extends StatelessWidget {
   final int leadId;
-  CreateNote({super.key, required this.leadId});
+  final BuildContext contextNotes;
+  CreateNoteLead(
+      {super.key, required this.leadId, required this.contextNotes});
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   late final String? note;
@@ -24,8 +27,7 @@ class CreateNote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<CreateNoteCubit>(),
-      //getIt<CreateNoteCubit>(),
+      create: (context) => getIt<CreateNoteLeadCubit>(),
       child: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -70,7 +72,7 @@ class CreateNote extends StatelessWidget {
                       spacingV(20),
 
                       /// Submit and Cancel Button
-                      _submitAndCancel(),
+                      _submitAndCancel(contextNotes),
                     ],
                   ),
                 ),
@@ -82,7 +84,7 @@ class CreateNote extends StatelessWidget {
     );
   }
 
-  Widget _submitAndCancel() {
+  Widget _submitAndCancel(contextNotes) {
     return Row(
       children: [
         Expanded(
@@ -91,17 +93,17 @@ class CreateNote extends StatelessWidget {
               R.icons.add,
             ),
             text: 'Add Note',
-            onPressed: () {
+            onPressed: () async {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
                 log('Create Note: success');
-
-                getIt<CreateNoteCubit>().createLeadNote(
-                  CreateLeadNoteRequestBody(comment: note!),
+                appWaitingFeature(contextNotes);
+                await getIt<CreateNoteLeadCubit>().createLeadNote(
+                  CreateAndEditNoteRequestBody(comment: note!),
                   leadId,
                 );
                 Get.back();
-
+                Navigator.pop(contextNotes, true);
                 Get.showSnackbar(
                   GetSnackBar(
                     backgroundColor: R.colors.primaryColor,

@@ -5,6 +5,7 @@ import '../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/widgets/app_card_feat_view.dart';
 import '../../../Attatchments/attachment-view/presentation/attachment_lead_screen.dart';
 import '../../../Timeline/presentation/lead_timeline_screen.dart';
+import '../../../notes/notes-view/presentation/screen/notes_lead_screen.dart';
 
 class LeadView extends StatelessWidget {
   final int leadId;
@@ -42,8 +43,9 @@ class LeadView extends StatelessWidget {
                 title: 'Notes',
                 icon: 'notes',
                 onTap: () {
-                  // Get.to(() => NotesScreen(
-                  //     leadNotes: leadNotes ?? [], leadId: leadId));
+                  Get.to(
+                    () => NotesLeadScreen(leadId: leadId),
+                  );
                 },
               ),
               appCardFeatView(

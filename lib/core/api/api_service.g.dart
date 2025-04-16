@@ -225,16 +225,16 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<CreateLeadNoteModel> createLeadNote(
+  Future<FeatStatusModel> createLeadNote(
     int id,
-    CreateLeadNoteRequestBody createLeadNoteRequestBody,
+    CreateAndEditNoteRequestBody createLeadNoteRequestBody,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(createLeadNoteRequestBody.toJson());
-    final _options = _setStreamType<CreateLeadNoteModel>(Options(
+    final _options = _setStreamType<FeatStatusModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -251,9 +251,9 @@ class _ApiService implements ApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late CreateLeadNoteModel _value;
+    late FeatStatusModel _value;
     try {
-      _value = CreateLeadNoteModel.fromJson(_result.data!);
+      _value = FeatStatusModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -262,18 +262,18 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<UpdateLeadNoteModel> updateLeadNote(
+  Future<FeatStatusModel> editLeadNote(
     int id,
     int idNote,
-    UpdateLeadNoteRequestBody updateLeadNoteRequestBody,
+    CreateAndEditNoteRequestBody editNoteRequestBody,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(updateLeadNoteRequestBody.toJson());
-    final _options = _setStreamType<UpdateLeadNoteModel>(Options(
-      method: 'PUT',
+    _data.addAll(editNoteRequestBody.toJson());
+    final _options = _setStreamType<FeatStatusModel>(Options(
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
@@ -289,9 +289,9 @@ class _ApiService implements ApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late UpdateLeadNoteModel _value;
+    late FeatStatusModel _value;
     try {
-      _value = UpdateLeadNoteModel.fromJson(_result.data!);
+      _value = FeatStatusModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -300,7 +300,7 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<DeleteNoteModel> deleteLeadNote(
+  Future<FeatStatusModel> deleteLeadNote(
     int id,
     int idNote,
   ) async {
@@ -308,7 +308,7 @@ class _ApiService implements ApiService {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<DeleteNoteModel>(Options(
+    final _options = _setStreamType<FeatStatusModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -325,9 +325,9 @@ class _ApiService implements ApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late DeleteNoteModel _value;
+    late FeatStatusModel _value;
     try {
-      _value = DeleteNoteModel.fromJson(_result.data!);
+      _value = FeatStatusModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

@@ -1,12 +1,12 @@
 import 'package:trick_crm_app/core/api/api_service.dart';
 import 'package:trick_crm_app/core/cubits/base_cubit.dart';
+import 'package:trick_crm_app/core/models/feat_status_model.dart';
 import 'package:trick_crm_app/core/repo/base_repo.dart';
-import 'package:trick_crm_app/features/leads/lead-view/notes/create-note/data/model/create_lead_note_model.dart';
 
-import '../../data/model/create_lead_note_reqest_body.dart';
+import '../../../../../../../core/models/note/create_and_edit_note_request_body.dart';
 
-class CreateNoteCubit extends BaseCubit<CreateLeadNoteModel> {
-  CreateNoteCubit(ApiService apiService)
+class CreateNoteLeadCubit extends BaseCubit<FeatStatusModel> {
+  CreateNoteLeadCubit(ApiService apiService)
       : super(
           BaseRepo(
             sendData: (requestBody, {Map<String, dynamic>? params}) =>
@@ -14,7 +14,7 @@ class CreateNoteCubit extends BaseCubit<CreateLeadNoteModel> {
           ),
         );
   Future<void> createLeadNote(
-    CreateLeadNoteRequestBody createLeadNoteModel,
+    CreateAndEditNoteRequestBody createLeadNoteModel,
     int leadId,
   ) async {
     await sendData(createLeadNoteModel, params: {'id': leadId});

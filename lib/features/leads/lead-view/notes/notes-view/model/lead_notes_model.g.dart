@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'lead_note.dart';
+part of 'lead_notes_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-LeadNote _$LeadNoteFromJson(Map<String, dynamic> json) => LeadNote(
+LeadNotesModel _$LeadNotesModelFromJson(Map<String, dynamic> json) =>
+    LeadNotesModel(
       id: (json['id'] as num?)?.toInt(),
       leadId: (json['lead_id'] as num?)?.toInt(),
       userId: (json['user_id'] as num?)?.toInt(),
@@ -17,10 +18,11 @@ LeadNote _$LeadNoteFromJson(Map<String, dynamic> json) => LeadNote(
       updatedAt: json['updated_at'] as String?,
       userNote: json['user_note'] == null
           ? null
-          : UserNote.fromJson(json['user_note'] as Map<String, dynamic>),
+          : Assigned.fromJson(json['user_note'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$LeadNoteToJson(LeadNote instance) => <String, dynamic>{
+Map<String, dynamic> _$LeadNotesModelToJson(LeadNotesModel instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'lead_id': instance.leadId,
       'user_id': instance.userId,
@@ -32,7 +34,7 @@ Map<String, dynamic> _$LeadNoteToJson(LeadNote instance) => <String, dynamic>{
       'user_note': instance.userNote,
     };
 
-UserNote _$UserNoteFromJson(Map<String, dynamic> json) => UserNote(
+Assigned _$AssignedFromJson(Map<String, dynamic> json) => Assigned(
       id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
       email: json['email'] as String?,
@@ -46,10 +48,12 @@ UserNote _$UserNoteFromJson(Map<String, dynamic> json) => UserNote(
       isActive: (json['is_active'] as num?)?.toInt(),
       createdAt: json['created_at'] as String?,
       updatedAt: json['updated_at'] as String?,
-      department: json['department'],
+      department: json['department'] == null
+          ? null
+          : Department.fromJson(json['department'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$UserNoteToJson(UserNote instance) => <String, dynamic>{
+Map<String, dynamic> _$AssignedToJson(Assigned instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'email': instance.email,
@@ -64,4 +68,21 @@ Map<String, dynamic> _$UserNoteToJson(UserNote instance) => <String, dynamic>{
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
       'department': instance.department,
+    };
+
+Department _$DepartmentFromJson(Map<String, dynamic> json) => Department(
+      id: (json['id'] as num?)?.toInt(),
+      tenantId: json['tenant_id'] as String?,
+      name: json['name'] as String?,
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
+    );
+
+Map<String, dynamic> _$DepartmentToJson(Department instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'tenant_id': instance.tenantId,
+      'name': instance.name,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
     };

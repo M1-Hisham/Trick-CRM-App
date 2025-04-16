@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import '../../../../../../core/widgets/app_bar.dart';
-import 'widgets/lead_view_data_bloc_builder.dart';
+import '../../../../../../core/widgets/app_card_feat_view.dart';
+import '../../../Attatchments/attachment-view/presentation/attachment_lead_screen.dart';
+import '../../../Timeline/presentation/lead_timeline_screen.dart';
 
 class LeadView extends StatelessWidget {
   final int leadId;
@@ -10,16 +14,91 @@ class LeadView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(
-        'Lead $leadName',
-      ),
+      appBar: appBar(leadName),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Column(
             children: [
-              LeadViewDataBlocBuilder(leadId: leadId),
+              // Show Cards
+              appCardFeatView(
+                title: 'Information',
+                icon: 'information',
+                onTap: () {
+                  // Get.to(() => InformationScreen(leadId: leadId));
+                },
+              ),
+              appCardFeatView(
+                title: 'Timeline',
+                icon: 'timeline',
+                onTap: () {
+                  Get.to(
+                    () => LeadTimelineScreen(leadId: leadId),
+                  );
+                },
+              ),
+              appCardFeatView(
+                title: 'Notes',
+                icon: 'notes',
+                onTap: () {
+                  // Get.to(() => NotesScreen(
+                  //     leadNotes: leadNotes ?? [], leadId: leadId));
+                },
+              ),
+              appCardFeatView(
+                title: 'Attachments',
+                icon: 'attachments',
+                onTap: () {
+                  Get.to(
+                    () => AttachmentLeadScreen(leadId: leadId),
+                  );
+                },
+              ),
+              appCardFeatView(
+                title: 'Campaigns',
+                icon: 'Campaigns',
+                onTap: () {
+                  // Get.to(
+                  //   () => CampaignsScreen(
+                  //     campaignLeads: campaignLeads ?? [],
+                  //     campaignsModel: campaignsModel ?? [],
+                  //     leadId: leadId,
+                  //   ),
+                  // );
+                },
+              ),
+              appCardFeatView(
+                title: 'Email',
+                icon: 'Emails',
+                onTap: () {
+                  // Get.to(() => const EmailsScreen());
+                },
+              ),
+              appCardFeatView(
+                title: 'Open Activities',
+                icon: 'openActivities',
+                onTap: () {
+                  // Get.to(
+                  //   () => OpenActivitiesScreen(
+                  //     openActivityModel: openActivity ?? [],
+                  //     leadId: leadId,
+                  //   ),
+                  // );
+                },
+              ),
+              appCardFeatView(
+                title: 'Closed Activities',
+                icon: 'closedActivities',
+                onTap: () {
+                  // Get.to(
+                  //   () => ClosedActivitiesScreen(
+                  //     closedActivityModel: closedActivityModel ?? [],
+                  //     leadId: leadId,
+                  //   ),
+                  // );
+                },
+              ),
             ],
           ),
         ),

@@ -6,7 +6,7 @@ import '../../../Campaigns/campaigns-view/data/model/campaign_leads_model.dart';
 import '../../../Closed-Activities/closed-activities/data/model/closed_activity_model.dart';
 import '../../../Open-Activities/open-activities/data/model/open_activity_model.dart';
 import '../../../Timeline/data/model/activity_log_model.dart';
-import '../../../notes/notes-view/model/lead_note.dart';
+import '../../../notes/notes-view/model/lead_notes_model.dart';
 
 part 'leads_view_model.g.dart';
 
@@ -15,7 +15,7 @@ class LeadsViewModel {
   String? status;
   Lead? lead;
   List<Users>? users;
-  List<LeadNote>? leadNotes;
+  List<LeadNotesModel>? leadNotes;
   List<LeadAttatchment>? leadAttatchment;
   @JsonKey(name: 'activity_log')
   List<ActivityLog>? activityLog;

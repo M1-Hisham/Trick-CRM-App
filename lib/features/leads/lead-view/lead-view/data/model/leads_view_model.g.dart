@@ -16,7 +16,7 @@ LeadsViewModel _$LeadsViewModelFromJson(Map<String, dynamic> json) =>
           ?.map((e) => Users.fromJson(e as Map<String, dynamic>))
           .toList(),
       leadNotes: (json['leadNotes'] as List<dynamic>?)
-          ?.map((e) => LeadNote.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => LeadNotesModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       leadAttatchment: (json['leadAttatchment'] as List<dynamic>?)
           ?.map((e) => LeadAttatchment.fromJson(e as Map<String, dynamic>))

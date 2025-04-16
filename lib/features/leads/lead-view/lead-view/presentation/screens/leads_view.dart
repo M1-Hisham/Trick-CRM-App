@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/widgets/app_card_feat_view.dart';
 import '../../../Attatchments/attachment-view/presentation/attachment_lead_screen.dart';
+import '../../../Information/presentation/information_lead_screen.dart';
 import '../../../Timeline/presentation/lead_timeline_screen.dart';
 import '../../../notes/notes-view/presentation/screen/notes_lead_screen.dart';
 
@@ -27,7 +28,9 @@ class LeadView extends StatelessWidget {
                 title: 'Information',
                 icon: 'information',
                 onTap: () {
-                  // Get.to(() => InformationScreen(leadId: leadId));
+                  Get.to(
+                    () => InformationLeadScreen(leadId: leadId),
+                  );
                 },
               ),
               appCardFeatView(

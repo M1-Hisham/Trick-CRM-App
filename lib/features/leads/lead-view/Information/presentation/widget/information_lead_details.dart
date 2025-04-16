@@ -3,10 +3,10 @@ import 'package:intl/intl.dart';
 import 'package:trick_crm_app/core/resources/resources.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
 
-import '../../data/model/edit_lead_model.dart';
+import '../../../lead-view/data/model/leads_view_model.dart';
 
-Widget informationDetails(EditLeadModel editLeadModel) {
-  final lead = editLeadModel.lead;
+Widget informationLeadDetails(LeadsViewModel leadsViewModel) {
+  final lead = leadsViewModel.lead;
   final userInfo = {
     "Lead Owner": lead?.ownerName ?? "-",
     "Email": lead?.email ?? "-",
@@ -94,8 +94,12 @@ Widget readOnlyField(String label, String value) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 8.0),
     child: AppTextFormField(
-      hintText: '',
+      hintText: label,
       labelText: label,
+      style: R.textStyles.font15RegentGrayW500.copyWith(
+        color: R.colors.black,
+      ),
+      maxLines: label == "Description" ? 3 : null,
       isclickable: false,
       initialValue: value,
       fillColor: R.colors.white,

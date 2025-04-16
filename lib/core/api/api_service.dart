@@ -49,7 +49,6 @@ import '../../features/leads/lead-view/Open-Activities/open-tasks/create-lead-ta
 import '../../features/leads/lead-view/notes/create-note/data/model/create_lead_note_model.dart';
 import '../../features/leads/lead-view/notes/create-note/data/model/create_lead_note_reqest_body.dart';
 import '../../features/leads/lead-view/notes/delete-note/data/model/delete_note_model.dart';
-import '../../features/leads/lead-view/Attatchments/delete_attachment/data/model/delete_attachment_model.dart';
 import '../../features/leads/lead-view/lead-view/data/model/leads_view_model.dart';
 import '../../features/leads/lead-view/notes/update-note/data/models/update_lead_note_model.dart';
 import '../../features/leads/lead-view/notes/update-note/data/models/update_lead_note_request_body.dart';
@@ -128,9 +127,9 @@ abstract class ApiService {
     @Body() File attachment,
   );
 
-  /// service for delete attachment
-  @GET("/leads/{id}/{idAttachment}/delete-attachment")
-  Future<DeleteAttachmentModel> deleteAttachment(
+  /// service for Lead delete attachment
+  @GET("/leads/{id}/{idAttachment}/delete-file")
+  Future<FeatStatusModel> deleteLeadAttachment(
       @Path("id") int id, @Path("idAttachment") int idAttachment);
 
   /// service for create lead campaign

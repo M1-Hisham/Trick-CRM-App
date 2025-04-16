@@ -6,7 +6,7 @@ import '../../../../../../core/resources/resources.dart';
 import '../../data/model/activity_log_model.dart';
 
 class TimelineTile extends StatelessWidget {
-  final ActivityLog activityLog;
+  final ActivityLog? activityLog;
   final bool isLast;
   final bool isActive;
 
@@ -20,7 +20,7 @@ class TimelineTile extends StatelessWidget {
   /// Format the date
   String formattedDate() {
     var dateValue = DateFormat("yyyy-MM-ddTHH:mm:ssZ")
-        .parseUTC(activityLog.createdAt ?? "0000-00-00T00:00:21Z")
+        .parseUTC(activityLog?.createdAt ?? "0000-00-00T00:00:21Z")
         .toLocal();
     String formattedDate =
         DateFormat("yyyy-MM-dd, h:mm:ss a").format(dateValue);
@@ -64,7 +64,7 @@ class TimelineTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  activityLog.description ?? '',
+                  activityLog?.description ?? '',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -73,7 +73,7 @@ class TimelineTile extends StatelessWidget {
                 ),
                 spacingV(4),
                 Text(
-                  'by ${activityLog.causer?.name ?? ''} At: ${formattedDate()}',
+                  'by ${activityLog?.causer?.name ?? ''} At: ${formattedDate()}',
                   style: TextStyle(
                     fontSize: 14,
                     color: isActive ? R.colors.black : Colors.grey,

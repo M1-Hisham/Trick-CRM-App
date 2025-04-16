@@ -372,7 +372,7 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<DeleteAttachmentModel> deleteAttachment(
+  Future<FeatStatusModel> deleteLeadAttachment(
     int id,
     int idAttachment,
   ) async {
@@ -380,14 +380,14 @@ class _ApiService implements ApiService {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<DeleteAttachmentModel>(Options(
+    final _options = _setStreamType<FeatStatusModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          '/leads/${id}/${idAttachment}/delete-attachment',
+          '/leads/${id}/${idAttachment}/delete-file',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -397,9 +397,9 @@ class _ApiService implements ApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late DeleteAttachmentModel _value;
+    late FeatStatusModel _value;
     try {
-      _value = DeleteAttachmentModel.fromJson(_result.data!);
+      _value = FeatStatusModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

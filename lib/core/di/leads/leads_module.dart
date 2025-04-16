@@ -7,6 +7,7 @@ import 'package:trick_crm_app/features/leads/lead-view/notes/create-note/logic/c
 import 'package:trick_crm_app/features/leads/lead-view/notes/update-note/logic/cubit/update_note_cubit.dart';
 import 'package:trick_crm_app/features/leads/leads/logic/cubit/leads_cubit.dart';
 
+import '../../../features/leads/lead-view/Attatchments/delete_attachment/logic/cubit/delete_attachment_lead_cubit.dart';
 import '../setup-di/dependency_injection.dart';
 
 void setupLeadsModule() {
@@ -15,10 +16,10 @@ void setupLeadsModule() {
       .registerLazySingleton<LeadsCubit>(() => LeadsCubit(getIt<ApiService>()));
 
   // leads view cubit instance
-  getIt
-      .registerFactory<LeadViewCubit>(() => LeadViewCubit(getIt<ApiService>()));
+  getIt.registerLazySingleton<LeadViewCubit>(
+      () => LeadViewCubit(getIt<ApiService>()));
 
-  // leads information cubit instance
+  //! leads information cubit instance
   getIt.registerFactory<InformationCubit>(
       () => InformationCubit(getIt<ApiService>()));
 
@@ -37,4 +38,8 @@ void setupLeadsModule() {
   // Create Campaign Lead instance
   getIt.registerLazySingleton<CreateCampaignLeadCubit>(
       () => CreateCampaignLeadCubit(getIt<ApiService>()));
+
+  // Delete Attachment Lead instance
+  getIt.registerLazySingleton<DeleteAttachmentLeadCubit>(
+      () => DeleteAttachmentLeadCubit(getIt<ApiService>()));
 }

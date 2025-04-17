@@ -408,16 +408,16 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<CreateCampaignLeadsModel> createLeadCampaign(
+  Future<FeatStatusModel> createLeadCampaign(
     int leadId,
-    CampaignLeadsRequestBody campaignLeadsRequestBody,
+    Map<String, dynamic> createCampaignLeadRequestBody,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(campaignLeadsRequestBody.toJson());
-    final _options = _setStreamType<CreateCampaignLeadsModel>(Options(
+    _data.addAll(createCampaignLeadRequestBody);
+    final _options = _setStreamType<FeatStatusModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -434,9 +434,83 @@ class _ApiService implements ApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late CreateCampaignLeadsModel _value;
+    late FeatStatusModel _value;
     try {
-      _value = CreateCampaignLeadsModel.fromJson(_result.data!);
+      _value = FeatStatusModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<FeatStatusModel> editLeadCampaign(
+    int leadId,
+    int campaignId,
+    Map<String, dynamic> editLeadCampaignRequestBody,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(editLeadCampaignRequestBody);
+    final _options = _setStreamType<FeatStatusModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/leads/${leadId}/${campaignId}/update-lead-campaign',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late FeatStatusModel _value;
+    try {
+      _value = FeatStatusModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<FeatStatusModel> deleteLeadCampaign(
+    int leadId,
+    int campaignId,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<FeatStatusModel>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/leads/${leadId}/${campaignId}/delete-lead-campaign',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late FeatStatusModel _value;
+    try {
+      _value = FeatStatusModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

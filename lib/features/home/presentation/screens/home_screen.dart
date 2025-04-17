@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:trick_crm_app/core/cubits/menu_cubit.dart';
 import 'package:trick_crm_app/core/helpers/spacing.dart';
 
-import '../widgets/employees_chart_card.dart';
 import '../widgets/home_bar.dart';
 import '../widgets/card_bloc_builder.dart';
 import '../widgets/deals_card.dart';
@@ -34,8 +33,8 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     const CardBlocBuilder(),
-                    spacingV(22),
-                    const EmployeesChartCard(),
+                    // spacingV(22),
+                    // const EmployeesChartCard(),
                     spacingV(16),
                     const DealsCard(),
                     spacingV(16),

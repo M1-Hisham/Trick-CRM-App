@@ -16,7 +16,6 @@ import 'package:trick_crm_app/features/clients/client-view/client-view/data/mode
 import 'package:trick_crm_app/features/deals/deal-view/deal-view/data/model/deal_view_model.dart';
 import 'package:trick_crm_app/features/deals/deals/data/model/deals_model.dart';
 import 'package:trick_crm_app/features/leads/create-lead/data/models/create_lead_model.dart';
-import 'package:trick_crm_app/features/leads/lead-view/Campaigns/create-campaigns/data/model/campaign_leads_request_body.dart';
 import 'package:trick_crm_app/features/leads/leads/data/models/leads_model.dart';
 import 'package:trick_crm_app/features/meetings/meeting-view/meeting-view/data/model/meeting_view_model.dart';
 import 'package:trick_crm_app/features/projects/payment-plans/payment-plans-view/data/model/payment_plans_model.dart';
@@ -40,7 +39,6 @@ import '../../features/deals/create-deal/data/model/create_deal_request_body.dar
 import '../../features/home/data/models/dashboard_response.dart';
 import '../../features/leads/create-lead/data/models/create_lead_request_body.dart';
 import '../../features/leads/lead-view/Attatchments/create-attachment/data/model/create_attachment_model.dart';
-import '../../features/leads/lead-view/Campaigns/create-campaigns/data/model/create_campaign_leads_model.dart';
 import '../../features/leads/lead-view/Edit-lead/data/model/edit_lead_model.dart';
 import '../../features/leads/lead-view/Open-Activities/open-meetings/create-lead-meeting/data/model/create_lead_meeting_model.dart';
 import '../../features/leads/lead-view/Open-Activities/open-meetings/create-lead-meeting/data/model/create_lead_meeting_request_body.dart';
@@ -129,9 +127,24 @@ abstract class ApiService {
 
   /// service for create lead campaign
   @POST("/leads/{id}/create-campaign")
-  Future<CreateCampaignLeadsModel> createLeadCampaign(
+  Future<FeatStatusModel> createLeadCampaign(
     @Path("id") int leadId,
-    @Body() CampaignLeadsRequestBody campaignLeadsRequestBody,
+    @Body() Map<String, dynamic> createCampaignLeadRequestBody,
+  );
+
+  /// service for edit lead campaign
+  @POST("/leads/{leadId}/{campaignId}/update-lead-campaign")
+  Future<FeatStatusModel> editLeadCampaign(
+    @Path("leadId") int leadId,
+    @Path("campaignId") int campaignId,
+    @Body() Map<String, dynamic> editLeadCampaignRequestBody,
+  );
+
+  /// service for delete lead campaign
+  @GET("/leads/{leadId}/{campaignId}/delete-lead-campaign")
+  Future<FeatStatusModel> deleteLeadCampaign(
+    @Path("leadId") int leadId,
+    @Path("campaignId") int campaignId,
   );
 
   /// service for create lead task

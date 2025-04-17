@@ -28,6 +28,7 @@ class _BaseViewScreenState extends State<BaseViewScreen> {
   Widget build(BuildContext context) {
     final cubit = MenuCubit.get(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SliderDrawer(
         isDraggable: false,
         animationDuration: 110,

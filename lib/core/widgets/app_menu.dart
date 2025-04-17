@@ -128,7 +128,7 @@ class AppMenu extends StatelessWidget {
     for (MapEntry menus in R.icons.iconsMenu.entries) {
       String? routeName = menuRoutes[menus.key];
       menuItems.add(
-        Flexible(
+        Expanded(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 12.w),
             child: GestureDetector(
@@ -142,11 +142,12 @@ class AppMenu extends StatelessWidget {
                 children: [
                   SvgPicture.asset(
                     menus.value,
-                    width: 24.w,
-                    height: 24.h,
+                    width: 27.w,
+                    height: 27.h,
                   ),
                   spacingH(16),
                   FittedBox(
+                    fit: BoxFit.scaleDown,
                     child: Text(
                       menus.key,
                       style: R.textStyles.font20ShadowGray29W500,
@@ -158,7 +159,7 @@ class AppMenu extends StatelessWidget {
           ),
         ),
       );
-      menuItems.add(spacingV(22));
+      menuItems.add(spacingV(18));
     }
     return menuItems;
   }

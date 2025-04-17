@@ -43,7 +43,7 @@ class AppImages {
     "Brokers": "assets/icons/iconsMenu/Brokers.svg",
     "Projects": "assets/icons/iconsMenu/Projects.svg",
     "Reports": "assets/icons/iconsMenu/Reports.svg",
-    "Settings": "assets/icons/iconsMenu/Setting.svg",
+    // "Settings": "assets/icons/iconsMenu/Setting.svg",
   };
 
   Map<String, String> iconsFeatureView = {

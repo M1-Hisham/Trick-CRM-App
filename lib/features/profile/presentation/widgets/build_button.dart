@@ -28,8 +28,8 @@ Widget buildButton(String title, String iconNamed, Function()? onTap) {
           spacingH(20),
           Text(
             title,
-            style: const TextStyle(
-              fontSize: 18,
+            style: TextStyle(
+              fontSize: 18.sp,
               fontWeight: FontWeight.w500,
             ),
           ),

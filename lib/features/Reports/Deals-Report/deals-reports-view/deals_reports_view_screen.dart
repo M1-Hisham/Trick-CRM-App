@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:trick_crm_app/features/Reports/Deals-Report/deals-closing-this-month/presentation/deals_closing_this_month_screen.dart';
 import 'package:trick_crm_app/features/Reports/Deals-Report/logic/cubit/get_deals_reports_cubit.dart';
 import 'package:trick_crm_app/features/Reports/Deals-Report/sales-by-person/data/model/sales_by_person_model.dart';
 import 'package:trick_crm_app/features/Reports/Deals-Report/sales-by-person/presentation/sales_by_person_screen.dart';
@@ -14,6 +15,7 @@ import '../../../../core/di/setup-di/dependency_injection.dart';
 import '../../../../core/helpers/show_snack_bar.dart';
 import '../../../../core/widgets/app_bar.dart';
 import '../../../../core/widgets/app_card_feat_view.dart';
+import '../deals-closing-this-month/data/model/deals_closing_this_month_model.dart';
 
 class DealsReportsViewScreen extends StatelessWidget {
   const DealsReportsViewScreen({super.key});
@@ -83,7 +85,16 @@ class DealsReportsViewScreen extends StatelessWidget {
               appCardFeatView(
                 title: 'Deals Closing This Month',
                 onTap: () {
-                  showSnackBar(context, "Coming Soon");
+                  Get.to(
+                    () => BlocProvider(
+                      create: (context) =>
+                          GetDealsReportsCubit<DealsClosingThisMonthModel>(
+                        apiService: getIt<ApiService>(),
+                        fromJson: DealsClosingThisMonthModel.fromJson,
+                      )..getDealReport("DealsClosingThisMonth"),
+                      child: const DealsClosingThisMonthScreen(),
+                    ),
+                  );
                 },
               ),
               appCardFeatView(

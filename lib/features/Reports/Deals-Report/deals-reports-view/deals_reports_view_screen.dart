@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:trick_crm_app/features/Reports/Deals-Report/closed-deals/data/model/closed_deals_model.dart';
+import 'package:trick_crm_app/features/Reports/Deals-Report/closed-deals/presentation/closed_deals_screen.dart';
 import 'package:trick_crm_app/features/Reports/Deals-Report/deals-closing-this-month/presentation/deals_closing_this_month_screen.dart';
 import 'package:trick_crm_app/features/Reports/Deals-Report/logic/cubit/get_deals_reports_cubit.dart';
 import 'package:trick_crm_app/features/Reports/Deals-Report/sales-by-person/data/model/sales_by_person_model.dart';
@@ -106,7 +108,16 @@ class DealsReportsViewScreen extends StatelessWidget {
               appCardFeatView(
                 title: 'Closed Deals',
                 onTap: () {
-                  showSnackBar(context, "Coming Soon");
+                  Get.to(
+                    () => BlocProvider(
+                      create: (context) =>
+                          GetDealsReportsCubit<ClosedDealsModels>(
+                        apiService: getIt<ApiService>(),
+                        fromJson: ClosedDealsModels.fromJson,
+                      )..getDealReport("ClosedDeals"),
+                      child: const ClosedDealsScreen(),
+                    ),
+                  );
                 },
               ),
               appCardFeatView(

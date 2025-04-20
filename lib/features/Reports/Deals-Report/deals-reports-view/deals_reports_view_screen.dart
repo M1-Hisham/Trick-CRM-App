@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/features/Reports/Deals-Report/logic/cubit/get_deals_reports_cubit.dart';
+import 'package:trick_crm_app/features/Reports/Deals-Report/sales-by-person/data/model/sales_by_person_model.dart';
+import 'package:trick_crm_app/features/Reports/Deals-Report/sales-by-person/presentation/sales_by_person_screen.dart';
 import 'package:trick_crm_app/features/Reports/Deals-Report/this-month-sales/data/model/this_month_sales_model.dart';
 import 'package:trick_crm_app/features/Reports/Deals-Report/this-month-sales/presentation/this_month_sales_screen.dart';
 import 'package:trick_crm_app/features/Reports/Deals-Report/this-quarter-sales/data/model/this_quarter_sales_model.dart';
@@ -66,7 +68,16 @@ class DealsReportsViewScreen extends StatelessWidget {
               appCardFeatView(
                 title: 'Sales By Person',
                 onTap: () {
-                  showSnackBar(context, "Coming Soon");
+                  Get.to(
+                    () => BlocProvider(
+                      create: (context) =>
+                          GetDealsReportsCubit<SalesByPersonModel>(
+                        apiService: getIt<ApiService>(),
+                        fromJson: SalesByPersonModel.fromJson,
+                      )..getDealReport("salesByPerson"),
+                      child: const SalesByPersonScreen(),
+                    ),
+                  );
                 },
               ),
               appCardFeatView(

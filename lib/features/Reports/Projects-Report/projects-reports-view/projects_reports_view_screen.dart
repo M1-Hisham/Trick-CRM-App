@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/core/api/api_service.dart';
 import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
+import 'package:trick_crm_app/core/helpers/show_snack_bar.dart';
 import 'package:trick_crm_app/features/Reports/Projects-Report/project-pending-units/data/model/project_pending_units_model.dart';
 import 'package:trick_crm_app/features/Reports/Projects-Report/logic/cubit/get_projects_reports_cubit.dart';
 
@@ -16,7 +17,7 @@ class ProjectsReportsViewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar("Reports"),
+      appBar: appBar("Projects Reports"),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Padding(
@@ -26,7 +27,9 @@ class ProjectsReportsViewScreen extends StatelessWidget {
               // Show Cards
               appCardFeatView(
                 title: 'Project Available Units',
-                onTap: () {},
+                onTap: () {
+                  showSnackBar(context, "Coming Soon");
+                },
               ),
               appCardFeatView(
                 title: 'Project Pending Units',
@@ -45,15 +48,21 @@ class ProjectsReportsViewScreen extends StatelessWidget {
               ),
               appCardFeatView(
                 title: 'Project Not Available Units',
-                onTap: () {},
+                onTap: () {
+                  showSnackBar(context, "Coming Soon");
+                },
               ),
               appCardFeatView(
                 title: 'Project Sold Units Income',
-                onTap: () {},
+                onTap: () {
+                  showSnackBar(context, "Coming Soon");
+                },
               ),
               appCardFeatView(
                 title: 'Units Sales By Person',
-                onTap: () {},
+                onTap: () {
+                  showSnackBar(context, "Coming Soon");
+                },
               ),
             ],
           ),

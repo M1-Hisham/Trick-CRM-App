@@ -1,15 +1,13 @@
-import 'dart:convert';
-
-import 'package:trick_crm_app/core/helpers/api_helper.dart';
-
 import '../../../../../core/api/api_service.dart';
 import '../../../../../core/cubits/base_cubit.dart';
+import '../../../../../core/helpers/api_helper.dart';
 import '../../../../../core/repo/base_repo.dart';
+import 'dart:convert';
 
-class GetProjectsReportsCubit<T> extends BaseCubit<T> {
+class GetDealsReportsCubit<T> extends BaseCubit<T> {
   final T Function(Map<String, dynamic>) fromJson;
 
-  GetProjectsReportsCubit({
+  GetDealsReportsCubit({
     required ApiService apiService,
     required this.fromJson,
   }) : super(
@@ -18,7 +16,7 @@ class GetProjectsReportsCubit<T> extends BaseCubit<T> {
               apiService,
               json.decode(
                 await apiService
-                    .getProjectReportRaw(params!['reportName'])
+                    .getDealReportRaw(params!['reportName'])
                     .then((response) => response.data),
               ),
             ).getFeatReport<T>(
@@ -28,7 +26,7 @@ class GetProjectsReportsCubit<T> extends BaseCubit<T> {
           ),
         );
 
-  Future<void> getProjectReport(String reportName) async {
+  Future<void> getDealReport(String reportName) async {
     await getData(params: {'reportName': reportName});
   }
 }

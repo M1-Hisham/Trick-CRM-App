@@ -496,4 +496,9 @@ abstract class ApiService {
   @GET("/projectsreports/{reportName}/view")
   Future<HttpResponse<String>> getProjectReportRaw(
       @Path("reportName") String reportName);
+
+  /// service for Deals Reports
+  @GET("/dealsreports/{reportName}/view")
+  Future<HttpResponse<String>> getDealReportRaw(
+      @Path("reportName") String reportName);
 }

@@ -5,6 +5,7 @@ import 'package:trick_crm_app/features/deals/deals/logic/cubit/deals_cubit.dart'
 import 'package:trick_crm_app/features/deals/deals/presentation/deals_screen.dart';
 
 import '../../features/Base-view/base_view_screen.dart';
+import '../../features/Reports/reports-view/presentation/reports_view_screen.dart';
 import '../../features/auth/login/logic/cubit/login_cubit.dart';
 import '../../features/auth/login/presentation/screens/login_screen.dart';
 import '../../features/brokers/brokers/logic/cubit/brokers_cubit.dart';
@@ -148,6 +149,10 @@ abstract class AppRouter {
         create: (context) => BrokersCubit(getIt<ApiService>())..getData(),
         child: const BrokersScreen(),
       ),
+    ),
+    GetPage(
+      name: RoutesNames.reports,
+      page: () => const ReportsViewScreen(),
     ),
   ];
 }

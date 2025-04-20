@@ -489,4 +489,11 @@ abstract class ApiService {
   @POST(ApiConstants.createPaymentPlans)
   Future<CreatePaymentPlansModel> createPaymentPlans(
       @Body() CreatePaymentPlansRequestBody createPaymentPlansRequestBody);
+
+  // =================== Reports ===================
+
+  /// service for Projects Reports
+  @GET("/projectsreports/{reportName}/view")
+  Future<HttpResponse<String>> getProjectReportRaw(
+      @Path("reportName") String reportName);
 }

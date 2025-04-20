@@ -2779,6 +2779,40 @@ class _ApiService implements ApiService {
     return _value;
   }
 
+  @override
+  Future<HttpResponse<String>> getProjectReportRaw(String reportName) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<HttpResponse<String>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/projectsreports/${reportName}/view',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<String>(_options);
+    late String _value;
+    try {
+      _value = _result.data!;
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

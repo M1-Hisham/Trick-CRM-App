@@ -19,4 +19,5 @@ class RoutesNames {
   static const String deals = '/deals';
   static const String project = '/project';
   static const String brokers = '/brokers';
+  static const String reports = '/reports';
 }

@@ -4,9 +4,6 @@ import 'package:trick_crm_app/core/resources/resources.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
 import 'package:trick_crm_app/features/calls/call-view/call-view/data/model/call_view_model.dart';
 
-import '../../../../../../core/widgets/app_button.dart';
-import '../../../mark-call-compeleted/presentation/mark_call_compeleted.dart';
-
 Widget informationCallDetails(CallViewModel callViewModel, context) {
   final call = callViewModel.call;
   final userInfo = {
@@ -34,13 +31,13 @@ Widget informationCallDetails(CallViewModel callViewModel, context) {
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
       children: [
-        AppButton(
-          text: "Mark As Compeleted",
-          onPressed: () => markCallCompeleted(
-            context,
-            call!.id!,
-          ),
-        ),
+        // AppButton(
+        //   text: "Mark As Compeleted",
+        //   onPressed: () => markCallCompeleted(
+        //     context,
+        //     call!.id!,
+        //   ),
+        // ),
         // spacingV(10),
         // Row(
         //   children: [

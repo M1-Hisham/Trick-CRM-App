@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
-import 'package:trick_crm_app/core/helpers/spacing.dart';
 import 'package:trick_crm_app/core/resources/resources.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
-import 'package:trick_crm_app/features/deals/deal-view/Close-Deal/presentation/close_deal.dart';
 import 'package:trick_crm_app/features/deals/deal-view/deal-view/data/model/deal_view_model.dart';
 
-import '../../../../../../core/widgets/app_button.dart';
-import '../../../../../../core/widgets/app_show_modal_bottom_sheet.dart';
 import '../../../../deals/data/model/deals_model.dart';
-import '../../../Edit-Deal/presentation/widget/edit_deal_details.dart';
-import '../../../deal-view/logic/cubit/deal_view_cubit.dart';
+
 
 Widget informationDealDetails(
     context, DealsModel dealsModel, DealViewModel dealViewModel) {
@@ -53,42 +47,42 @@ Widget informationDealDetails(
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
       children: [
-        spacingV(10),
-        Row(
-          children: [
-            Expanded(
-              child: AppButton(
-                text: "Edit Deal",
-                onPressed: () async {
-                  final result = await appShowModalBottomSheet(
-                    context: context,
-                    builder: (context) => EditDealDetails(
-                      dealsModel: dealsModel,
-                      dealViewModel: dealViewModel,
-                      dealId: deal?.id ?? 0,
-                    ),
-                  );
-                  if (result == true) {
-                    getIt<DealViewCubit>().getDealView(deal?.id ?? 0);
-                  }
-                },
-              ),
-            ),
-            spacingH(20),
-            Expanded(
-              child: AppButton(
-                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                borderColor: Colors.red,
-                text: "Close Deal",
-                textStyle: TextStyle(
-                  color: R.colors.red,
-                ),
-                onPressed: () => closeDeal(context, deal?.id ?? 0),
-              ),
-            ),
-          ],
-        ),
-        spacingV(20),
+        // spacingV(10),
+        // Row(
+        //   children: [
+        //     Expanded(
+        //       child: AppButton(
+        //         text: "Edit Deal",
+        //         onPressed: () async {
+        //           final result = await appShowModalBottomSheet(
+        //             context: context,
+        //             builder: (context) => EditDealDetails(
+        //               dealsModel: dealsModel,
+        //               dealViewModel: dealViewModel,
+        //               dealId: deal?.id ?? 0,
+        //             ),
+        //           );
+        //           if (result == true) {
+        //             getIt<DealViewCubit>().getDealView(deal?.id ?? 0);
+        //           }
+        //         },
+        //       ),
+        //     ),
+        //     spacingH(20),
+        //     Expanded(
+        //       child: AppButton(
+        //         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        //         borderColor: Colors.red,
+        //         text: "Close Deal",
+        //         textStyle: TextStyle(
+        //           color: R.colors.red,
+        //         ),
+        //         onPressed: () => closeDeal(context, deal?.id ?? 0),
+        //       ),
+        //     ),
+        //   ],
+        // ),
+        // spacingV(20),
         sectionTitle("User Info"),
         buildFields(userInfo),
         sectionTitle("Deal Information"),

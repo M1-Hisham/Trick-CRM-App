@@ -7,6 +7,7 @@ import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
 import 'package:trick_crm_app/features/leads/lead-view/lead-view/presentation/screens/leads_view.dart';
 import 'package:trick_crm_app/features/leads/leads/logic/cubit/leads_cubit.dart';
 
+import '../../../../../core/helpers/show_snack_bar.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/resources/resources.dart';
 import '../../../../../core/widgets/app_button.dart';
@@ -107,7 +108,9 @@ class LeadsDataBlocBuilder extends StatelessWidget {
                         child: AppButton(
                           icon: SvgPicture.asset(R.icons.exportOptions),
                           text: 'Export Options',
-                          onPressed: () {},
+                          onPressed: () {
+                            showSnackBar(context, "Coming soon!");
+                          },
                         ),
                       ),
                     ],
@@ -119,7 +122,9 @@ class LeadsDataBlocBuilder extends StatelessWidget {
                         child: AppButton(
                           icon: SvgPicture.asset(R.icons.integrateFacebook),
                           text: 'Integrate Facebook',
-                          onPressed: () {},
+                          onPressed: () {
+                            showSnackBar(context, "Coming soon!");
+                          },
                         ),
                       ),
                       spacingH(8),
@@ -127,7 +132,9 @@ class LeadsDataBlocBuilder extends StatelessWidget {
                         child: AppButton(
                           icon: SvgPicture.asset(R.icons.importOptions),
                           text: 'Import Options',
-                          onPressed: () {},
+                          onPressed: () {
+                            showSnackBar(context, "Coming soon!");
+                          },
                         ),
                       ),
                     ],

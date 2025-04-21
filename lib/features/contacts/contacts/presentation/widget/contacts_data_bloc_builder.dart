@@ -9,6 +9,7 @@ import 'package:trick_crm_app/features/contacts/contact-view/contact-view/presen
 import 'package:trick_crm_app/features/contacts/contacts/logic/cubit/contacts_cubit.dart';
 
 import '../../../../../core/cubits/base_state.dart';
+import '../../../../../core/helpers/show_snack_bar.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/resources/resources.dart';
 import '../../../../../core/widgets/app_button.dart';
@@ -56,7 +57,9 @@ class ContactsDataBlocBuilder extends StatelessWidget {
                         child: AppButton(
                           icon: SvgPicture.asset(R.icons.importOptions),
                           text: 'Import Options',
-                          onPressed: () {},
+                          onPressed: () {
+                            showSnackBar(context, "Coming soon!");
+                          },
                         ),
                       ),
                       spacingH(8),
@@ -64,7 +67,9 @@ class ContactsDataBlocBuilder extends StatelessWidget {
                         child: AppButton(
                           icon: SvgPicture.asset(R.icons.exportOptions),
                           text: 'Export Options',
-                          onPressed: () {},
+                          onPressed: () {
+                            showSnackBar(context, "Coming soon!");
+                          },
                         ),
                       ),
                     ],

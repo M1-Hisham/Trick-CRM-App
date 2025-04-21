@@ -36,7 +36,7 @@ class DealsReportsViewScreen extends StatelessWidget {
               appCardFeatView(
                 title: 'Today Sales',
                 onTap: () {
-                  showSnackBar(context, "Coming Soon");
+                  showSnackBar(context, "Coming soon!");
                 },
               ),
               appCardFeatView(
@@ -102,7 +102,7 @@ class DealsReportsViewScreen extends StatelessWidget {
               appCardFeatView(
                 title: 'Open Deals',
                 onTap: () {
-                  showSnackBar(context, "Coming Soon");
+                  showSnackBar(context, "Coming soon!");
                 },
               ),
               appCardFeatView(
@@ -123,7 +123,7 @@ class DealsReportsViewScreen extends StatelessWidget {
               appCardFeatView(
                 title: 'Salse By Lead Source',
                 onTap: () {
-                  showSnackBar(context, "Coming Soon");
+                  showSnackBar(context, "Coming soon!");
                 },
               ),
             ],

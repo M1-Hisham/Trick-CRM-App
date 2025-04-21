@@ -35,7 +35,14 @@ class _BaseViewScreenState extends State<BaseViewScreen> {
         sliderOpenSize: 290,
         key: cubit.key,
         appBar: null,
-        slider: const AppMenu(),
+        slider: AppMenu(
+          onTapProfile: () {
+            cubit.toggleMenu();
+            setState(() {
+              _selectedIndex = 2;
+            });
+          },
+        ),
         child: IndexedStack(
           index: _selectedIndex,
           children: const [

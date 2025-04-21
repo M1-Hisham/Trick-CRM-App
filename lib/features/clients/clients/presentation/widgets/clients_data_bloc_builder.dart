@@ -11,6 +11,7 @@ import '../../../../../core/resources/resources.dart';
 import '../../../../../core/widgets/app_button.dart';
 import '../../../../../core/widgets/app_data_table.dart';
 import '../../../../../core/widgets/app_show_modal_bottom_sheet.dart';
+import '../../../../../core/widgets/import_and_export_button.dart';
 import '../../../create-client/presentation/create_client_screen.dart';
 import '../../data/model/clients_model.dart';
 import '../../logic/cubit/clients_cubit.dart';
@@ -49,25 +50,7 @@ class ClientsDataBlocBuilder extends StatelessWidget {
                     },
                   ),
                   spacingV(13),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: AppButton(
-                          icon: SvgPicture.asset(R.icons.importOptions),
-                          text: 'Import Options',
-                          onPressed: () {},
-                        ),
-                      ),
-                      spacingH(8),
-                      Expanded(
-                        child: AppButton(
-                          icon: SvgPicture.asset(R.icons.exportOptions),
-                          text: 'Export Options',
-                          onPressed: () {},
-                        ),
-                      ),
-                    ],
-                  ),
+                  const ImportAndExportButton(),
                   spacingV(20),
                   AppDataTable<Clients>(
                     dataMessage: clientsMessage,

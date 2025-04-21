@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../../../core/helpers/show_snack_bar.dart';
 import '../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/widgets/app_card_feat_view.dart';
 import '../../../Attatchments/attachment-view/presentation/attachment_lead_screen.dart';
@@ -74,31 +75,21 @@ class LeadView extends StatelessWidget {
                 title: 'Email',
                 icon: 'Emails',
                 onTap: () {
-                  // Get.to(() => const EmailsScreen());
+                  showSnackBar(context, "Coming soon!");
                 },
               ),
               appCardFeatView(
                 title: 'Open Activities',
                 icon: 'openActivities',
                 onTap: () {
-                  // Get.to(
-                  //   () => OpenActivitiesScreen(
-                  //     openActivityModel: openActivity ?? [],
-                  //     leadId: leadId,
-                  //   ),
-                  // );
+                  showSnackBar(context, "Coming soon!");
                 },
               ),
               appCardFeatView(
                 title: 'Closed Activities',
                 icon: 'closedActivities',
                 onTap: () {
-                  // Get.to(
-                  //   () => ClosedActivitiesScreen(
-                  //     closedActivityModel: closedActivityModel ?? [],
-                  //     leadId: leadId,
-                  //   ),
-                  // );
+                  showSnackBar(context, "Coming soon!");
                 },
               ),
             ],

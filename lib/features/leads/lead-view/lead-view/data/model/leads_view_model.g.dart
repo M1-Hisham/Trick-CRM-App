@@ -8,7 +8,6 @@ part of 'leads_view_model.dart';
 
 LeadsViewModel _$LeadsViewModelFromJson(Map<String, dynamic> json) =>
     LeadsViewModel(
-      status: json['status'] as String?,
       lead: json['lead'] == null
           ? null
           : Lead.fromJson(json['lead'] as Map<String, dynamic>),
@@ -52,7 +51,6 @@ LeadsViewModel _$LeadsViewModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$LeadsViewModelToJson(LeadsViewModel instance) =>
     <String, dynamic>{
-      'status': instance.status,
       'lead': instance.lead,
       'users': instance.users,
       'leadNotes': instance.leadNotes,
@@ -265,12 +263,12 @@ Calls _$CallsFromJson(Map<String, dynamic> json) => Calls(
       tenantId: json['tenant_id'] as String?,
       callTo: json['call_to'] as String?,
       leadId: (json['lead_id'] as num?)?.toInt(),
-      contactId: json['contact_id'] as String?,
+      contactId: (json['contact_id'] as num?)?.toInt(),
       relatedTo: json['related_to'] as String?,
       relatedToClient: json['related_to_client'] as String?,
       clientId: (json['client_id'] as num?)?.toInt(),
-      dealId: json['deal_id'] as String?,
-      campaignId: json['campaign_id'] as String?,
+      dealId: (json['deal_id'] as num?)?.toInt(),
+      campaignId: (json['campaign_id'] as num?)?.toInt(),
       callType: json['call_type'] as String?,
       callStatus: json['call_status'] as String?,
       startTime: json['start_time'] as String?,
@@ -756,7 +754,9 @@ HostUsers _$HostUsersFromJson(Map<String, dynamic> json) => HostUsers(
       isActive: (json['is_active'] as num?)?.toInt(),
       createdAt: json['created_at'] as String?,
       updatedAt: json['updated_at'] as String?,
-      department: json['department'],
+      department: json['department'] == null
+          ? null
+          : Department.fromJson(json['department'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$HostUsersToJson(HostUsers instance) => <String, dynamic>{

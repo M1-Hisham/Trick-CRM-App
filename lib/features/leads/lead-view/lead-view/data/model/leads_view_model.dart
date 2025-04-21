@@ -12,7 +12,6 @@ part 'leads_view_model.g.dart';
 
 @JsonSerializable()
 class LeadsViewModel {
-  String? status;
   Lead? lead;
   List<Users>? users;
   List<LeadNotesModel>? leadNotes;
@@ -31,7 +30,6 @@ class LeadsViewModel {
   List<HostUsers>? hostUsers;
 
   LeadsViewModel({
-    this.status,
     this.lead,
     this.users,
     this.leadNotes,
@@ -301,7 +299,7 @@ class Calls {
   @JsonKey(name: 'lead_id')
   int? leadId;
   @JsonKey(name: 'contact_id')
-  String? contactId;
+  int? contactId;
   @JsonKey(name: 'related_to')
   String? relatedTo;
   @JsonKey(name: 'related_to_client')
@@ -309,9 +307,9 @@ class Calls {
   @JsonKey(name: 'client_id')
   int? clientId;
   @JsonKey(name: 'deal_id')
-  String? dealId;
+  int? dealId;
   @JsonKey(name: 'campaign_id')
-  String? campaignId;
+  int? campaignId;
   @JsonKey(name: 'call_type')
   String? callType;
   @JsonKey(name: 'call_status')
@@ -937,7 +935,7 @@ class HostUsers {
   String? createdAt;
   @JsonKey(name: 'updated_at')
   String? updatedAt;
-  dynamic department;
+  Department? department;
 
   HostUsers({
     this.id,

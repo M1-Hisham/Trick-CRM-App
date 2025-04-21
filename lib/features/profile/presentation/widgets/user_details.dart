@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../auth/login/data/models/login_response.dart';
 import '../../../../core/helpers/shaerd_pref_helper.dart';
-import '../../../../core/helpers/spacing.dart';
 import '../../../../core/resources/resources.dart';
 
 FutureBuilder userDetails(
@@ -30,7 +29,6 @@ FutureBuilder userDetails(
                     Image.asset(R.icons.imageUserError);
                   }),
             ),
-            spacingH(14),
             Text(
               userData.name ?? "",
               style: R.textStyles.font20ShadowGray29W500,

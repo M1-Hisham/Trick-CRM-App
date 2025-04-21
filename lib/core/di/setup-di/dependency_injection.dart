@@ -17,6 +17,7 @@ import '../deals/deals_module.dart';
 import '../leads/leads_module.dart';
 import '../meetings/meetings_module.dart';
 import '../payment-plans/payment_plans_module.dart';
+import '../profile/profile_module.dart';
 import '../projects/projects_module.dart';
 import '../tasks/tasks_module.dart';
 
@@ -77,4 +78,7 @@ Future<void> setupGetIt() async {
 
   // Broker module instance
   setupBrokersModule();
+
+  // Profile module instance
+  setupProfileModule();
 }

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:trick_crm_app/features/home/logic/cubit/dashboard_cubit.dart';
-import 'package:trick_crm_app/features/home/logic/cubit/dashboard_state.dart';
+import 'package:trick_crm_app/core/cubits/menu_cubit.dart';
 
 import '../../../../core/helpers/shaerd_pref_helper.dart';
 import '../../../../core/helpers/spacing.dart';
@@ -35,9 +34,9 @@ class HomeBar extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 22.w, vertical: 10.h),
           child: SafeArea(
-            child: BlocBuilder<DashboardCubit, DashboardState>(
+            child: BlocBuilder<MenuCubit, bool>(
               builder: (context, state) {
-                final cubit = DashboardCubit.get(context);
+                final cubit = MenuCubit.get(context);
 
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

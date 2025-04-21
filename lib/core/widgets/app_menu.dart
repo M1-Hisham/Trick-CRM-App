@@ -3,9 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:trick_crm_app/features/home/logic/cubit/dashboard_cubit.dart';
-import 'package:trick_crm_app/features/home/logic/cubit/dashboard_state.dart';
-
+import 'package:trick_crm_app/core/cubits/menu_cubit.dart';
 import '../../features/auth/login/data/models/login_response.dart';
 import '../helpers/shaerd_pref_helper.dart';
 import '../helpers/spacing.dart';
@@ -26,9 +24,9 @@ class AppMenu extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  BlocBuilder<DashboardCubit, DashboardState>(
+                  BlocBuilder<MenuCubit, bool>(
                     builder: (context, state) {
-                      final cubit = DashboardCubit.get(context);
+                      final cubit = MenuCubit.get(context);
 
                       return GestureDetector(
                         onTap: () {
@@ -114,15 +112,24 @@ class AppMenu extends StatelessWidget {
   List<Widget> _menuList() {
     List<Widget> menuItems = [];
     Map<String, String> menuRoutes = {
-      'Dashboard': RoutesNames.home,
+      // 'Dashboard': RoutesNames.home,
+      'Contacts': RoutesNames.contacts,
       'Leads': RoutesNames.leads,
       'Clients': RoutesNames.clients,
+      'Campaigns': RoutesNames.campaigns,
+      'Tasks': RoutesNames.tasks,
+      'Meetings': RoutesNames.meetings,
+      'Calls': RoutesNames.calls,
+      'Deals': RoutesNames.deals,
+      'Projects': RoutesNames.project,
+      'Brokers': RoutesNames.brokers,
+      'Reports': RoutesNames.reports,
       //? more routes here
     };
     for (MapEntry menus in R.icons.iconsMenu.entries) {
       String? routeName = menuRoutes[menus.key];
       menuItems.add(
-        Flexible(
+        Expanded(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 12.w),
             child: GestureDetector(
@@ -136,11 +143,12 @@ class AppMenu extends StatelessWidget {
                 children: [
                   SvgPicture.asset(
                     menus.value,
-                    width: 24.w,
-                    height: 24.h,
+                    width: 27.w,
+                    height: 27.h,
                   ),
                   spacingH(16),
                   FittedBox(
+                    fit: BoxFit.scaleDown,
                     child: Text(
                       menus.key,
                       style: R.textStyles.font20ShadowGray29W500,
@@ -152,7 +160,7 @@ class AppMenu extends StatelessWidget {
           ),
         ),
       );
-      menuItems.add(spacingV(22));
+      menuItems.add(spacingV(18));
     }
     return menuItems;
   }

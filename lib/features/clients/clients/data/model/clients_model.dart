@@ -8,7 +8,7 @@ class ClientsModel {
   String? message;
   List<Users>? users;
   List<Clients>? clients;
-  List<dynamic>? brokers;
+  List<Brokers>? brokers;
 
   ClientsModel(
       {this.status, this.message, this.users, this.clients, this.brokers});
@@ -246,4 +246,54 @@ class Assigned {
 
   factory Assigned.fromJson(Map<String, dynamic> json) =>
       _$AssignedFromJson(json);
+}
+
+@JsonSerializable()
+class Brokers {
+  int? id;
+  @JsonKey(name: 'tenant_id')
+  String? tenantId;
+  @JsonKey(name: 'owner_id')
+  int? ownerId;
+  String? email;
+  @JsonKey(name: 'company_name')
+  String? companyName;
+  @JsonKey(name: 'commercial_register')
+  String? commercialRegister;
+  @JsonKey(name: 'tax_card')
+  String? taxCard;
+  String? address;
+  @JsonKey(name: 'person_name')
+  String? personName;
+  String? mobile;
+  @JsonKey(name: 'mobile_2')
+  String? mobile2;
+  @JsonKey(name: 'assigned_to_id')
+  int? assignedToId;
+  @JsonKey(name: 'is_active')
+  int? isActive;
+  @JsonKey(name: 'created_at')
+  String? createdAt;
+  @JsonKey(name: 'updated_at')
+  String? updatedAt;
+
+  Brokers(
+      {this.id,
+      this.tenantId,
+      this.ownerId,
+      this.email,
+      this.companyName,
+      this.commercialRegister,
+      this.taxCard,
+      this.address,
+      this.personName,
+      this.mobile,
+      this.mobile2,
+      this.assignedToId,
+      this.isActive,
+      this.createdAt,
+      this.updatedAt});
+
+  factory Brokers.fromJson(Map<String, dynamic> json) =>
+      _$BrokersFromJson(json);
 }

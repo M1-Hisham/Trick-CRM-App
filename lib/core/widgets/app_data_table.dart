@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:trick_crm_app/core/helpers/spacing.dart';
 
@@ -12,7 +13,8 @@ class AppDataTable<T> extends StatefulWidget {
   final List<String> headers;
   final List<String Function(T)> dataExtractors;
   final String Function(T)? dataIdExtractor;
-  final void Function(String)? onViewDetails;
+  final String Function(T)? dataLeadNameExtractor;
+  final void Function(String, String)? onViewDetails;
   final String? dataMessage;
 
   const AppDataTable({
@@ -21,6 +23,7 @@ class AppDataTable<T> extends StatefulWidget {
     required this.headers,
     required this.dataExtractors,
     this.dataIdExtractor,
+    this.dataLeadNameExtractor,
     this.onViewDetails,
     this.dataMessage,
   });
@@ -186,16 +189,28 @@ class _AppDataTableState<T> extends State<AppDataTable<T>> {
                   .map((extractor) => extractor(data))
                   .toList();
 
-              int? indexCreatedAt = widget.headers.indexOf('Created At');
-              var dateValue = DateFormat("yyyy-MM-ddTHH:mm:ssZ")
-                  .parseUTC(indexCreatedAt != -1
-                      ? dataBody[indexCreatedAt] ?? "0000-00-00T00:00:21Z"
-                      : "0000-00-00T00:00:21Z")
-                  .toLocal();
-              String formattedDate = DateFormat("yyyy-MM-dd").format(dateValue);
-              indexCreatedAt != -1
-                  ? dataBody[indexCreatedAt] = formattedDate
-                  : null;
+              List<int> indices = widget.headers
+                  .asMap()
+                  .entries
+                  .where(
+                    (entry) =>
+                        entry.value == 'Created At' ||
+                        entry.value == 'End date' ||
+                        entry.value == 'Start date' ||
+                        entry.value == 'From' ||
+                        entry.value == 'To' ||
+                        entry.value == 'Due Date',
+                  )
+                  .map((entry) => entry.key)
+                  .toList();
+
+              if (indices.isNotEmpty) {
+                for (int index in indices) {
+                  var dateStr = dataBody[index];
+                  String formattedDate = _parseDate(dateStr);
+                  dataBody[index] = formattedDate;
+                }
+              }
 
               return Container(
                 padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
@@ -211,14 +226,20 @@ class _AppDataTableState<T> extends State<AppDataTable<T>> {
                     _buildBody(dataBody[_switchHeaders] ?? 'empty'),
                     _buildBody(dataBody[_switchHeaders + 1] ?? 'empty'),
                     if (widget.onViewDetails != null &&
-                        widget.dataIdExtractor != null)
+                        widget.dataIdExtractor != null &&
+                        widget.dataLeadNameExtractor != null)
                       GestureDetector(
                         onTap: () {
                           widget.onViewDetails?.call(
                             widget.dataIdExtractor!(data),
+                            widget.dataLeadNameExtractor!(data),
                           );
                         },
-                        child: Icon(Icons.visibility, size: 20.sp),
+                        child: SvgPicture.asset(
+                          R.icons.eyeView,
+                          height: 23.h,
+                          width: 23.w,
+                        ),
                       ),
                   ],
                 ),
@@ -226,6 +247,27 @@ class _AppDataTableState<T> extends State<AppDataTable<T>> {
             }).toList()
           : [],
     );
+  }
+
+  String _parseDate(String? dateStr) {
+    if (dateStr == null || dateStr.isEmpty) {
+      return "0000-00-00";
+    }
+
+    List<String> formats = [
+      "yyyy-MM-dd HH:mm:ss",
+      "yyyy-MM-ddTHH:mm:ss.SSSSSSZ",
+      "yyyy-MM-ddTHH:mm:ssZ",
+    ];
+
+    for (String format in formats) {
+      try {
+        var dateValue = DateFormat(format).parseUTC(dateStr).toLocal();
+        return DateFormat("yyyy-MM-dd").format(dateValue);
+      } catch (_) {}
+    }
+
+    return "0000-00-00";
   }
 
   void _filterData() {

@@ -7,15 +7,12 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 
 import '../resources/resources.dart';
 
-class AppBottomNavBar extends StatefulWidget {
-  const AppBottomNavBar({super.key});
+class AppBottomNavBar extends StatelessWidget {
+  final int selectedIndex;
+  final Function(int) onTabChange;
+  const AppBottomNavBar(
+      {super.key, required this.selectedIndex, required this.onTabChange});
 
-  @override
-  State<AppBottomNavBar> createState() => _AppBottomNavBarState();
-}
-
-class _AppBottomNavBarState extends State<AppBottomNavBar> {
-  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +26,7 @@ class _AppBottomNavBarState extends State<AppBottomNavBar> {
         ],
       ),
       child: SafeArea(
-        minimum: EdgeInsets.symmetric(horizontal: 10.w, vertical: 11.h),
+        minimum: EdgeInsets.symmetric(horizontal: 35.w, vertical: 11.h),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 8.h),
           child: GNav(
@@ -45,7 +42,7 @@ class _AppBottomNavBarState extends State<AppBottomNavBar> {
               GButton(
                 leading: SvgPicture.asset(
                   R.icons.home,
-                  color: _selectedIndex == 0
+                  color: selectedIndex == 0
                       ? R.colors.iconColor
                       : const Color(0XFF9DB2CE),
                   width: 28.w,
@@ -56,7 +53,7 @@ class _AppBottomNavBarState extends State<AppBottomNavBar> {
               GButton(
                 leading: SvgPicture.asset(
                   R.icons.wallet,
-                  color: _selectedIndex == 1 ? R.colors.iconColor : null,
+                  color: selectedIndex == 1 ? R.colors.iconColor : null,
                   width: 28.w,
                   height: 28.h,
                 ),
@@ -64,30 +61,16 @@ class _AppBottomNavBarState extends State<AppBottomNavBar> {
               ),
               GButton(
                 leading: SvgPicture.asset(
-                  R.icons.graph,
-                  color: _selectedIndex == 2 ? R.colors.iconColor : null,
-                  width: 28.w,
-                  height: 28.h,
-                ),
-                text: 'graph',
-              ),
-              GButton(
-                leading: SvgPicture.asset(
                   R.icons.user,
-                  color: _selectedIndex == 3 ? R.colors.iconColor : null,
+                  color: selectedIndex == 2 ? R.colors.iconColor : null,
                   width: 28.w,
                   height: 28.h,
                 ),
                 text: 'Profile',
               ),
             ],
-            selectedIndex: _selectedIndex,
-            onTabChange: (index) {
-              setState(() {
-                _selectedIndex = index;
-              });
-              // Todo add your logic here for each tab
-            },
+            selectedIndex: selectedIndex,
+            onTabChange: onTabChange,
           ),
         ),
       ),

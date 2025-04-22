@@ -6,23 +6,24 @@ import '../../../../../../core/resources/resources.dart';
 import '../../../../../../core/widgets/app_button.dart';
 import '../../../../../../core/widgets/app_text_form_field.dart';
 
-loadingCompanyScreen() {
+Widget loadingGeneralInfoScreen() {
   return Column(
     children: [
-      spacingV(20),
+      spacingV(10),
       Center(
         child: CircleAvatar(
           radius: 110.dg,
           backgroundColor: R.colors.secGray,
         ),
       ),
+      spacingV(20),
       Text(
-        'Company Name',
+        'Name',
         style: R.textStyles.font20ShadowGray29W500,
       ),
       spacingV(40),
       AppTextFormField(
-        hintText: 'Company Name',
+        hintText: 'Full Name',
         fillColor: R.colors.gray,
       ),
       spacingV(20),
@@ -37,12 +38,12 @@ loadingCompanyScreen() {
       ),
       spacingV(20),
       AppTextFormField(
-        hintText: 'Website',
+        hintText: 'Job Title',
         fillColor: R.colors.gray,
       ),
       spacingV(20),
       AppTextFormField(
-        hintText: 'Industry',
+        hintText: 'Country/Region',
         fillColor: R.colors.gray,
       ),
       spacingV(20),

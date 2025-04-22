@@ -19,6 +19,7 @@ import 'package:trick_crm_app/features/leads/create-lead/data/models/create_lead
 import 'package:trick_crm_app/features/leads/leads/data/models/leads_model.dart';
 import 'package:trick_crm_app/features/meetings/meeting-view/meeting-view/data/model/meeting_view_model.dart';
 import 'package:trick_crm_app/features/profile/Company/update-company/data/model/update_company_request_body.dart';
+import 'package:trick_crm_app/features/profile/General-Info/general-info-view/data/model/general_info_model.dart';
 import 'package:trick_crm_app/features/projects/payment-plans/payment-plans-view/data/model/payment_plans_model.dart';
 import 'package:trick_crm_app/features/tasks/task-view/task-view/data/model/task_view_model.dart';
 import 'package:trick_crm_app/features/tasks/tasks/data/model/tasks_model.dart';
@@ -50,6 +51,7 @@ import '../../features/meetings/create-meeting/data/model/create_meeting_model.d
 import '../../features/meetings/create-meeting/data/model/create_meeting_request_body.dart';
 import '../../features/meetings/meetings/data/model/meetings_model.dart';
 import '../../features/profile/Company/company-view/data/model/company_model.dart';
+import '../../features/profile/General-Info/update-general-info/data/model/update_general_info_req_body.dart';
 import '../../features/profile/Subscription/data/model/subscription_model.dart';
 import '../../features/projects/payment-plans/create-payment-plans/data/model/create_payment_plans_model.dart';
 import '../../features/projects/payment-plans/create-payment-plans/data/model/create_payment_plans_request_body.dart';
@@ -516,4 +518,11 @@ abstract class ApiService {
 
   @GET(ApiConstants.subscription)
   Future<SubscriptionModel> getSubscription();
+
+  @GET("/user/{id}/view-profile")
+  Future<GeneralInfoModel> getUserProfile(@Path("id") int id);
+
+  @POST("/userinfo/update")
+  Future<FeatStatusModel> updateUserInfo(
+      @Body() UpdateGeneralInfoReqBody updateGeneralInfoRequestBody);
 }

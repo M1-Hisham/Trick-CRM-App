@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/core/cubits/menu_cubit.dart';
+import 'package:trick_crm_app/core/cubits/user_cubit.dart';
 import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
 import 'package:trick_crm_app/core/helpers/show_snack_bar.dart';
 import 'package:trick_crm_app/features/profile/Subscription/logic/cubit/subscription_cubit.dart';
@@ -14,6 +15,8 @@ import '../../../core/resources/resources.dart';
 import '../../auth/logout/logout.dart';
 import '../Company/company-view/logic/cubit/company_cubit.dart';
 import '../Company/company-view/presentation/company_screen.dart';
+import '../General-Info/general-info-view/logic/cubit/general_info_cubit.dart';
+import '../General-Info/general-info-view/presentation/general_info_screen.dart';
 import '../Subscription/presentation/subscription_screen.dart';
 import 'widgets/build_button.dart';
 import 'widgets/profile_bar.dart';
@@ -23,6 +26,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = context.read<UserCubit>().state;
     final cubit = MenuCubit.get(context);
 
     return GestureDetector(
@@ -60,7 +64,14 @@ class ProfileScreen extends StatelessWidget {
                       'General Info',
                       R.icons.generalInfo,
                       () {
-                        showSnackBar(context, 'Coming! Soon');
+                        Get.to(
+                          () => BlocProvider(
+                            create: (context) =>
+                                GeneralInfoCubit(getIt<ApiService>())
+                                  ..getUserProfile(2),
+                            child: GeneralInfoScreen(userId: user?.id ?? 0),
+                          ),
+                        );
                       },
                     ),
                     buildButton(

@@ -12,6 +12,10 @@ class UserCubit extends Cubit<UserData?> {
     emit(userData);
   }
 
+  void setUser(UserData user) {
+    emit(user);
+  }
+
   /// Clear user data from shared preferences
   void clearUserData() {
     emit(null);

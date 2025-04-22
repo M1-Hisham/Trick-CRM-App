@@ -50,6 +50,7 @@ import '../../features/meetings/create-meeting/data/model/create_meeting_model.d
 import '../../features/meetings/create-meeting/data/model/create_meeting_request_body.dart';
 import '../../features/meetings/meetings/data/model/meetings_model.dart';
 import '../../features/profile/Company/company-view/data/model/company_model.dart';
+import '../../features/profile/Subscription/data/model/subscription_model.dart';
 import '../../features/projects/payment-plans/create-payment-plans/data/model/create_payment_plans_model.dart';
 import '../../features/projects/payment-plans/create-payment-plans/data/model/create_payment_plans_request_body.dart';
 import '../../features/projects/projects/create-project/data/model/create_project_model.dart';
@@ -512,4 +513,7 @@ abstract class ApiService {
   @POST(ApiConstants.updateCompany)
   Future<FeatStatusModel> updateCompany(
       @Body() UpdateCompanyRequestBody updateCompanyRequestBody);
+
+  @GET(ApiConstants.subscription)
+  Future<SubscriptionModel> getSubscription();
 }

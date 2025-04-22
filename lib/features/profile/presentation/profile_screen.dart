@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:trick_crm_app/core/cubits/menu_cubit.dart';
 import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
 import 'package:trick_crm_app/core/helpers/show_snack_bar.dart';
+import 'package:trick_crm_app/features/profile/Subscription/logic/cubit/subscription_cubit.dart';
 import 'package:trick_crm_app/features/profile/presentation/widgets/user_details.dart';
 
 import '../../../core/api/api_service.dart';
@@ -13,6 +14,7 @@ import '../../../core/resources/resources.dart';
 import '../../auth/logout/logout.dart';
 import '../Company/company-view/logic/cubit/company_cubit.dart';
 import '../Company/company-view/presentation/company_screen.dart';
+import '../Subscription/presentation/subscription_screen.dart';
 import 'widgets/build_button.dart';
 import 'widgets/profile_bar.dart';
 
@@ -85,7 +87,14 @@ class ProfileScreen extends StatelessWidget {
                       'Subscription',
                       R.icons.subscription,
                       () {
-                        showSnackBar(context, 'Coming! Soon');
+                        Get.to(
+                          () => BlocProvider(
+                            create: (context) =>
+                                SubscriptionCubit(getIt<ApiService>())
+                                  ..getData(),
+                            child: const SubscriptionScreen(),
+                          ),
+                        );
                       },
                     ),
                     buildButton(

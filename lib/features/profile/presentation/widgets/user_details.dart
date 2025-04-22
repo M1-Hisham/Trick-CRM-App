@@ -10,6 +10,9 @@ FutureBuilder userDetails(
   return FutureBuilder(
     future: SharedPrefHelper.getUser(),
     builder: (context, snapshot) {
+      // if (snapshot.connectionState == ConnectionState.waiting) {
+      //   return const Center(child: CircularProgressIndicator());
+      // }
       if (snapshot.hasData) {
         final UserData userData = snapshot.data!;
         return Column(

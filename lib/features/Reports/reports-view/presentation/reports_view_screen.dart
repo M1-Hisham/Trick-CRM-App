@@ -39,14 +39,14 @@ class ReportsViewScreen extends StatelessWidget {
                 title: 'Leads Report',
                 icon: 'Leads',
                 onTap: () {
-                  showSnackBar(context, "Coming Soon");
+                  showSnackBar(context, "Coming soon!");
                 },
               ),
               appCardFeatView(
                 title: 'Campaigns Report',
                 icon: 'Campaigns',
                 onTap: () {
-                  showSnackBar(context, "Coming Soon");
+                  showSnackBar(context, "Coming soon!");
                 },
               ),
               appCardFeatView(
@@ -57,7 +57,7 @@ class ReportsViewScreen extends StatelessWidget {
                   height: 42.h,
                 ),
                 onTap: () {
-                  showSnackBar(context, "Coming Soon");
+                  showSnackBar(context, "Coming soon!");
                 },
               ),
               appCardFeatView(

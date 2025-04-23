@@ -13,6 +13,7 @@ import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/resources/resources.dart';
 import '../../../../../core/widgets/app_button.dart';
 import '../../../../../core/widgets/app_data_table.dart';
+import '../../../../../core/widgets/import_and_export_button.dart';
 import '../../../create-task/presentation/create_task_screen.dart';
 import 'tasks_loading_screen.dart';
 
@@ -54,25 +55,7 @@ class _TasksDataBlocBuilderState extends State<TasksDataBlocBuilder> {
                     },
                   ),
                   spacingV(15),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: AppButton(
-                          icon: SvgPicture.asset(R.icons.importOptions),
-                          text: 'Import Options',
-                          onPressed: () {},
-                        ),
-                      ),
-                      spacingH(8),
-                      Expanded(
-                        child: AppButton(
-                          icon: SvgPicture.asset(R.icons.exportOptions),
-                          text: 'Export Options',
-                          onPressed: () {},
-                        ),
-                      ),
-                    ],
-                  ),
+                  const ImportAndExportButton(),
                   spacingV(20),
                   AppDataTable<Tasks>(
                     dataMessage: tasksMessage,

@@ -11,7 +11,8 @@ import '../resources/resources.dart';
 import '../routes/routes.dart';
 
 class AppMenu extends StatelessWidget {
-  const AppMenu({super.key});
+  final Function? onTapProfile;
+  const AppMenu({super.key, this.onTapProfile});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,7 +51,7 @@ class AppMenu extends StatelessWidget {
                 ],
               ),
               spacingV(25),
-              _userMenu(),
+              _userMenu(onTapProfile),
               spacingV(35),
               ..._menuList(),
             ],
@@ -60,7 +61,7 @@ class AppMenu extends StatelessWidget {
     );
   }
 
-  FutureBuilder _userMenu() {
+  FutureBuilder _userMenu(onTap) {
     return FutureBuilder(
       future: SharedPrefHelper.getUser(),
       builder: (context, snapshot) {
@@ -91,11 +92,14 @@ class AppMenu extends StatelessWidget {
                     ),
                   ),
                   spacingV(1.5),
-                  Text(
-                    "View Profile",
-                    style: R.textStyles.font12PrimaryColorW500.copyWith(
-                      decoration: TextDecoration.underline,
-                      decorationColor: R.colors.primaryColor,
+                  GestureDetector(
+                    onTap: onTap,
+                    child: Text(
+                      "View Profile",
+                      style: R.textStyles.font12PrimaryColorW500.copyWith(
+                        decoration: TextDecoration.underline,
+                        decorationColor: R.colors.primaryColor,
+                      ),
                     ),
                   ),
                 ],

@@ -28,7 +28,7 @@ class ProjectsReportsViewScreen extends StatelessWidget {
               appCardFeatView(
                 title: 'Project Available Units',
                 onTap: () {
-                  showSnackBar(context, "Coming Soon");
+                  showSnackBar(context, "Coming soon!");
                 },
               ),
               appCardFeatView(
@@ -49,19 +49,19 @@ class ProjectsReportsViewScreen extends StatelessWidget {
               appCardFeatView(
                 title: 'Project Not Available Units',
                 onTap: () {
-                  showSnackBar(context, "Coming Soon");
+                  showSnackBar(context, "Coming soon!");
                 },
               ),
               appCardFeatView(
                 title: 'Project Sold Units Income',
                 onTap: () {
-                  showSnackBar(context, "Coming Soon");
+                  showSnackBar(context, "Coming soon!");
                 },
               ),
               appCardFeatView(
                 title: 'Units Sales By Person',
                 onTap: () {
-                  showSnackBar(context, "Coming Soon");
+                  showSnackBar(context, "Coming soon!");
                 },
               ),
             ],

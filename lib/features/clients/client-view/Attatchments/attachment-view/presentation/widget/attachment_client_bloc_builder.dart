@@ -34,21 +34,21 @@ class AttachmentClientBlocBuilder extends StatelessWidget {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppButton(
-                  icon: SvgPicture.asset(
-                    R.icons.add,
-                  ),
-                  text: 'Add Attachment',
-                  onPressed: () {
-                    // Show Add Attachment Dialog
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return const AddAttachmentScreen();
-                      },
-                    );
-                  },
-                ),
+                // AppButton(
+                //   icon: SvgPicture.asset(
+                //     R.icons.add,
+                //   ),
+                //   text: 'Add Attachment',
+                //   onPressed: () {
+                //     // Show Add Attachment Dialog
+                //     showDialog(
+                //       context: context,
+                //       builder: (context) {
+                //         return const AddAttachmentScreen();
+                //       },
+                //     );
+                //   },
+                // ),
                 spacingV(20),
                 Text(
                   'Attachments',

@@ -533,4 +533,8 @@ abstract class ApiService {
   @POST("/{recycleName}/{id}/restore")
   Future<FeatStatusModel> restoreRecycleBin(
       @Path("recycleName") String recycleName, @Path("id") int id);
+
+  @POST(ApiConstants.updatePassword)
+  Future<FeatStatusModel> updatePassword(
+      @Body() Map<String, dynamic> updatePasswordRequestBody);
 }

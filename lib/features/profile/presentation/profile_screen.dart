@@ -17,6 +17,8 @@ import '../Company/company-view/logic/cubit/company_cubit.dart';
 import '../Company/company-view/presentation/company_screen.dart';
 import '../General-Info/general-info-view/logic/cubit/general_info_cubit.dart';
 import '../General-Info/general-info-view/presentation/general_info_screen.dart';
+import '../Recycle-Bin/recycle-bin-view/logic/cubit/recycle_bin_cubit.dart';
+import '../Recycle-Bin/recycle-bin-view/presentation/recycle_bin_screen.dart';
 import '../Subscription/presentation/subscription_screen.dart';
 import 'widgets/build_button.dart';
 import 'widgets/profile_bar.dart';
@@ -68,7 +70,7 @@ class ProfileScreen extends StatelessWidget {
                           () => BlocProvider(
                             create: (context) =>
                                 GeneralInfoCubit(getIt<ApiService>())
-                                  ..getUserProfile(2),
+                                  ..getUserProfile(user?.id ?? 0),
                             child: GeneralInfoScreen(userId: user?.id ?? 0),
                           ),
                         );
@@ -112,7 +114,13 @@ class ProfileScreen extends StatelessWidget {
                       'Recycle Bin',
                       R.icons.recycleBin,
                       () {
-                        showSnackBar(context, 'Coming! Soon');
+                        Get.to(
+                          () => BlocProvider(
+                            create: (context) =>
+                                RecycleBinCubit(getIt<ApiService>())..getData(),
+                            child: const RecycleBinScreen(),
+                          ),
+                        );
                       },
                     ),
                     buildButton(

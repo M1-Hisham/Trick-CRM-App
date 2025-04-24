@@ -52,6 +52,7 @@ import '../../features/meetings/create-meeting/data/model/create_meeting_request
 import '../../features/meetings/meetings/data/model/meetings_model.dart';
 import '../../features/profile/Company/company-view/data/model/company_model.dart';
 import '../../features/profile/General-Info/update-general-info/data/model/update_general_info_req_body.dart';
+import '../../features/profile/Recycle-Bin/recycle-bin-view/data/model/recycle_bin_model.dart';
 import '../../features/profile/Subscription/data/model/subscription_model.dart';
 import '../../features/projects/payment-plans/create-payment-plans/data/model/create_payment_plans_model.dart';
 import '../../features/projects/payment-plans/create-payment-plans/data/model/create_payment_plans_request_body.dart';
@@ -525,4 +526,11 @@ abstract class ApiService {
   @POST("/userinfo/update")
   Future<FeatStatusModel> updateUserInfo(
       @Body() UpdateGeneralInfoReqBody updateGeneralInfoRequestBody);
+
+  @GET(ApiConstants.recycleBin)
+  Future<RecycleBinModel> getRecycleBin();
+
+  @POST("/{recycleName}/{id}/restore")
+  Future<FeatStatusModel> restoreRecycleBin(
+      @Path("recycleName") String recycleName, @Path("id") int id);
 }

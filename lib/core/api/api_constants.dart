@@ -32,4 +32,5 @@ class ApiConstants {
   static const String updateCompany = "/company/update";
   static const String subscription = "/subscription";
   static const String recycleBin = "/recyclebin";
+  static const String updatePassword = "/update-password";
 }

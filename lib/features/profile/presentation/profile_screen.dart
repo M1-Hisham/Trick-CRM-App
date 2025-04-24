@@ -17,6 +17,7 @@ import '../Company/company-view/logic/cubit/company_cubit.dart';
 import '../Company/company-view/presentation/company_screen.dart';
 import '../General-Info/general-info-view/logic/cubit/general_info_cubit.dart';
 import '../General-Info/general-info-view/presentation/general_info_screen.dart';
+import '../Password&Security/presentation/password_screen.dart';
 import '../Recycle-Bin/recycle-bin-view/logic/cubit/recycle_bin_cubit.dart';
 import '../Recycle-Bin/recycle-bin-view/presentation/recycle_bin_screen.dart';
 import '../Subscription/presentation/subscription_screen.dart';
@@ -80,7 +81,9 @@ class ProfileScreen extends StatelessWidget {
                       'Password & Security',
                       R.icons.lock,
                       () {
-                        showSnackBar(context, 'Coming! Soon');
+                        Get.to(
+                          () => const PasswordScreen(),
+                        );
                       },
                     ),
                     buildButton(

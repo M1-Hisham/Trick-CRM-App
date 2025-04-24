@@ -29,7 +29,8 @@ class AppImages {
   String recycleBin = "assets/icons/icons-profile/RecycleBin.svg";
   String support = "assets/icons/icons-profile/Support.svg";
   String administration = "assets/icons/icons-profile/Administration.svg";
-
+  String roles = "assets/icons/icons-profile/Roles.svg";
+  String userDepartment = "assets/icons/User&department.svg";
   Map<String, String> iconsMenu = {
     // "Dashboard": "assets/icons/iconsMenu/Dashboard.svg",
     "Contacts": "assets/icons/iconsMenu/Contacts.svg",

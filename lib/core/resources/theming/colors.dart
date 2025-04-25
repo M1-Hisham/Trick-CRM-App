@@ -6,7 +6,7 @@ class AppColors {
   Color iconColor = const Color(0xFF26AEBE);
   Color baseColorShimmer = const Color(0xFFE0E0E0);
   Color highlightColorShimmer = const Color(0xFFF5F5F5);
-  Color red = const Color(0xFFC00202);
+  Color red = const Color.fromARGB(255, 222, 16, 16);
   Color gray = const Color(0xFFF7F8F9);
   Color secGray = const Color(0xFFD9D9D9);
   Color shadowGray = const Color(0xFF4A4A4A);

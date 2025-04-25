@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../helpers/show_snack_bar.dart';
 import '../resources/resources.dart';
 
 AppBar appBar(String title) {
@@ -33,9 +32,7 @@ AppBar appBar(String title) {
       Padding(
         padding: EdgeInsets.only(right: 16.w, bottom: 6.h),
         child: IconButton(
-          onPressed: () {
-            showSnackBar(BuildContext, "Coming soon!");
-          },
+          onPressed: () {},
           icon: SvgPicture.asset(
             R.icons.notification,
             width: 32.w,

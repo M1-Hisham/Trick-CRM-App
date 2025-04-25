@@ -22,10 +22,12 @@ class InfoContactDataBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         return state.maybeWhen(
           loading: () => loadingShimmer(
-            child: informationContactDetails(ContactsViewModel()),
+            child: informationContactDetails(
+                contactId, ContactsViewModel(), context),
           ),
           success: (ContactsViewModel contactsViewModel) {
-            return informationContactDetails(contactsViewModel);
+            return informationContactDetails(
+                contactId, contactsViewModel, context);
           },
           error: (message) => appErrorMessage(
             message,

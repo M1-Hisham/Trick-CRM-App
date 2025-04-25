@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
+import 'package:trick_crm_app/core/helpers/show_snack_bar.dart';
+import 'package:trick_crm_app/core/helpers/spacing.dart';
 import 'package:trick_crm_app/core/resources/resources.dart';
+import 'package:trick_crm_app/core/widgets/app_button.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
+import 'package:trick_crm_app/core/widgets/app_waiting_feature.dart';
 import 'package:trick_crm_app/features/contacts/contact-view/contact-view/data/model/contacts_view_model.dart';
+import 'package:trick_crm_app/features/contacts/contact-view/delete-contact/logic/cubit/delete_contact_cubit.dart';
 
-Widget informationContactDetails(ContactsViewModel contactsViewModel) {
+import '../../../convert-to-client/logic/cubit/convert_to_client_cubit.dart';
+
+Widget informationContactDetails(
+    int contactId, ContactsViewModel contactsViewModel, BuildContext context) {
   final contact = contactsViewModel.contact;
   final userInfo = {
     "Contact Owner": contact?.ownerName ?? "-",
@@ -44,6 +54,50 @@ Widget informationContactDetails(ContactsViewModel contactsViewModel) {
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
       children: [
+        AppButton(
+          text: "Convert",
+          onPressed: () async {
+            appWaitingFeature(context);
+            await getIt<ConvertToClientCubit>()
+                .convertContactToClient(contactId);
+            Get.back();
+            Get.back();
+            Get.back();
+            Get.back();
+            // ignore: use_build_context_synchronously
+            showSnackBar(context, 'Contact Converted To Client Successfully');
+          },
+        ),
+        spacingV(12),
+        Row(
+          children: [
+            Expanded(
+              child: AppButton(
+                text: "Edit",
+                onPressed: () {
+                  showSnackBar(context, "Comming Soon!");
+                },
+              ),
+            ),
+            spacingH(8),
+            Expanded(
+              child: AppButton(
+                text: "Delete",
+                backgroundColor: R.colors.red,
+                onPressed: () async {
+                  appWaitingFeature(context);
+                  await getIt<DeleteContactCubit>().deleteContact(contactId);
+                  Get.back();
+                  Get.back();
+                  Get.back();
+                  Get.back();
+                  // ignore: use_build_context_synchronously
+                  showSnackBar(context, 'Contact Deleted Successfully');
+                },
+              ),
+            ),
+          ],
+        ),
         sectionTitle("User Info"),
         buildFields(userInfo),
         sectionTitle("Contact Information"),

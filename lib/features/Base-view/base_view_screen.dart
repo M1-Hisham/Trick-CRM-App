@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import 'package:trick_crm_app/core/widgets/app_bottom_nav_bar.dart';
 
@@ -32,7 +33,7 @@ class _BaseViewScreenState extends State<BaseViewScreen> {
       body: SliderDrawer(
         isDraggable: false,
         animationDuration: 110,
-        sliderOpenSize: 290,
+        sliderOpenSize: 290.dg,
         key: cubit.key,
         appBar: null,
         slider: AppMenu(

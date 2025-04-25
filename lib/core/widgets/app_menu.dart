@@ -45,7 +45,7 @@ class AppMenu extends StatelessWidget {
                   Image.asset(
                     R.icons.logoMenu,
                     color: R.colors.primaryColor,
-                    width: 122.w,
+                    // width: 122.w,
                     height: 49.h,
                   ),
                 ],
@@ -70,7 +70,7 @@ class AppMenu extends StatelessWidget {
           return Row(
             children: [
               CircleAvatar(
-                  radius: 35.dg,
+                  radius: 35.r,
                   backgroundColor: R.colors.transparent,
                   backgroundImage: NetworkImage(
                     userData.avatar ?? '',
@@ -81,7 +81,7 @@ class AppMenu extends StatelessWidget {
                     }
                     Image.asset(R.icons.imageUserError);
                   }),
-              spacingH(14),
+              spacingH(10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -94,11 +94,15 @@ class AppMenu extends StatelessWidget {
                   spacingV(1.5),
                   GestureDetector(
                     onTap: onTap,
-                    child: Text(
-                      "View Profile",
-                      style: R.textStyles.font12PrimaryColorW500.copyWith(
-                        decoration: TextDecoration.underline,
-                        decorationColor: R.colors.primaryColor,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        "View Profile",
+                        style: R.textStyles.font12PrimaryColorW500.copyWith(
+                          decoration: TextDecoration.underline,
+                          decorationColor: R.colors.primaryColor,
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ),
@@ -151,11 +155,13 @@ class AppMenu extends StatelessWidget {
                     height: 27.h,
                   ),
                   spacingH(16),
-                  FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      menus.key,
-                      style: R.textStyles.font20ShadowGray29W500,
+                  Flexible(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        menus.key,
+                        style: R.textStyles.font20ShadowGray29W500,
+                      ),
                     ),
                   ),
                 ],

@@ -20,7 +20,7 @@ FutureBuilder userDetails(
           children: [
             Center(
               child: CircleAvatar(
-                  radius: radius.dg,
+                  radius: radius.r,
                   backgroundColor: R.colors.transparent,
                   backgroundImage: NetworkImage(
                     userData.avatar ?? '',

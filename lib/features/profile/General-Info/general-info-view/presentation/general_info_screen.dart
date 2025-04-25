@@ -52,7 +52,7 @@ class GeneralInfoScreen extends StatelessWidget {
                           spacingV(10),
                           Center(
                             child: CircleAvatar(
-                              radius: 110.dg,
+                              radius: 110.r,
                               backgroundColor: Colors.transparent,
                               backgroundImage: NetworkImage(
                                 userInfo?.avatar ?? '',

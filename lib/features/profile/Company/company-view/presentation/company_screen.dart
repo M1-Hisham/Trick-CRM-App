@@ -51,7 +51,7 @@ class CompanyScreen extends StatelessWidget {
                           spacingV(20),
                           Center(
                             child: CircleAvatar(
-                              radius: 110.dg,
+                              radius: 110.r,
                               backgroundColor: R.colors.secGray,
                               backgroundImage: NetworkImage(
                                 '${ApiConstants.baseUrl}${companyData?.logo ?? ''}',

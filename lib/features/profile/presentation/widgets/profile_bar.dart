@@ -63,7 +63,7 @@ class ProfileBar extends StatelessWidget {
                           spacingH(16),
                           Image.asset(
                             R.icons.logoMenu,
-                            width: 122.w,
+                            // width: 122.w,
                             height: 49.h,
                           ),
                           const Spacer(),

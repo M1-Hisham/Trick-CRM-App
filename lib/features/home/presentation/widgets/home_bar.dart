@@ -67,7 +67,7 @@ class HomeBar extends StatelessWidget {
                             tag: 'logo',
                             child: Image.asset(
                               R.icons.logoMenu,
-                              width: 122.w,
+                              // width: 122.w,
                               height: 49.h,
                             ),
                           ),
@@ -107,7 +107,7 @@ class HomeBar extends StatelessWidget {
           return Row(
             children: [
               CircleAvatar(
-                  radius: 35.dg,
+                  radius: 35.r,
                   backgroundColor: R.colors.transparent,
                   backgroundImage: NetworkImage(
                     userData.avatar ?? '',

@@ -13,6 +13,7 @@ import '../../../core/api/api_service.dart';
 import '../../../core/helpers/spacing.dart';
 import '../../../core/resources/resources.dart';
 import '../../auth/logout/logout.dart';
+import '../Administration/administration-view/presentation/administration_screen.dart';
 import '../Company/company-view/logic/cubit/company_cubit.dart';
 import '../Company/company-view/presentation/company_screen.dart';
 import '../General-Info/general-info-view/logic/cubit/general_info_cubit.dart';
@@ -137,7 +138,9 @@ class ProfileScreen extends StatelessWidget {
                       'Administration',
                       R.icons.administration,
                       () {
-                        showSnackBar(context, 'Coming! Soon');
+                        Get.to(
+                          () => const AdministrationScreen(),
+                        );
                       },
                     ),
                     spacingV(16),

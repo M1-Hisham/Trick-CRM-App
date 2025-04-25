@@ -241,6 +241,14 @@ abstract class ApiService {
   Future<FeatStatusModel> deleteContactAttachment(
       @Path("id") int id, @Path("idAttachment") int idAttachment);
 
+  /// service for Contact Convert to Client
+  @POST("/contacts/{id}/convert")
+  Future<FeatStatusModel> convertContactToClient(@Path("id") int id);
+
+  /// service for Contact Delete
+  @GET("/contacts/{id}/delete")
+  Future<FeatStatusModel> deleteContact(@Path("id") int id);
+
   // =================== Campaigns ===================
 
   /// service for Campaigns

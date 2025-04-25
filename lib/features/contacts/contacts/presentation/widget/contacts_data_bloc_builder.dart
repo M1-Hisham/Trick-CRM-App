@@ -29,7 +29,6 @@ class ContactsDataBlocBuilder extends StatelessWidget {
         return state.maybeWhen(
             loading: () => contactsLoadingScreen(),
             success: (ContactsModel contactsModel) {
-              final String? contactsMessage = contactsModel.message;
               final contacts = contactsModel.contacts;
               return Column(
                 children: [
@@ -76,7 +75,7 @@ class ContactsDataBlocBuilder extends StatelessWidget {
                   ),
                   spacingV(20),
                   AppDataTable<Contacts>(
-                    dataMessage: contactsMessage,
+                    dataMessage: "No Data",
                     data: contacts ?? [],
                     headers: const [
                       "Contact Name",

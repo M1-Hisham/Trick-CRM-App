@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 
 import '../resources/resources.dart';
 
-void showSnackBar(context, String message) {
+void showSnackBar(BuildContext context, String message) {
+  Get.closeCurrentSnackbar();
+
   Get.showSnackbar(
     GetSnackBar(
       backgroundColor: R.colors.primaryColor,

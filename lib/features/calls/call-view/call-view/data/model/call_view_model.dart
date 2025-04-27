@@ -281,7 +281,7 @@ class Lead {
   @JsonKey(name: 'tenant_id')
   String? tenantId;
   @JsonKey(name: 'compaing_id')
-  String? compaingId;
+  int? compaingId;
   String? saluation;
   @JsonKey(name: 'owner_name')
   String? ownerName;

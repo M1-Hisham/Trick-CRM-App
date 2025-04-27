@@ -223,7 +223,7 @@ Lead _$LeadFromJson(Map<String, dynamic> json) => Lead(
       userId: (json['user_id'] as num?)?.toInt(),
       assignedToId: (json['assigned_to_id'] as num?)?.toInt(),
       tenantId: json['tenant_id'] as String?,
-      compaingId: json['compaing_id'] as String?,
+      compaingId: (json['compaing_id'] as num?)?.toInt(),
       saluation: json['saluation'] as String?,
       ownerName: json['owner_name'] as String?,
       firstName: json['first_name'] as String?,

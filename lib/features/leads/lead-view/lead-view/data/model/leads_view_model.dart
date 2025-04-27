@@ -4,7 +4,7 @@ import '../../../Attatchments/attachment-view/model/attachments_model.dart';
 import '../../../Closed-Activities/closed-activities/data/model/closed_activity_model.dart';
 import '../../../Lead-Campaigns/campaign-view/data/model/campaign_leads_model.dart';
 import '../../../Lead-Campaigns/campaign-view/data/model/campaigns_model.dart';
-import '../../../Open-Activities/open-activities/data/model/open_activity_model.dart';
+import '../../../Open-Activities/open-activities-view/data/model/open_activity_model.dart';
 import '../../../Timeline/data/model/activity_log_model.dart';
 import '../../../notes/notes-view/model/lead_notes_model.dart';
 
@@ -61,7 +61,7 @@ class Lead {
   @JsonKey(name: 'tenant_id')
   String? tenantId;
   @JsonKey(name: 'compaing_id')
-  String? compaingId;
+  int? compaingId;
   String? saluation;
   @JsonKey(name: 'owner_name')
   String? ownerName;
@@ -93,15 +93,15 @@ class Lead {
   String? state;
   String? description;
   @JsonKey(name: 'fb_lead_id')
-  String? fbLeadId;
+  dynamic fbLeadId;
   @JsonKey(name: 'fb_ad_name')
   String? fbAdName;
   @JsonKey(name: 'fb_campaign_name')
   String? fbCampaignName;
   @JsonKey(name: 'converted_deal_id')
-  String? convertedDealId;
+  int? convertedDealId;
   @JsonKey(name: 'converted_client_id')
-  String? convertedClientId;
+  int? convertedClientId;
   @JsonKey(name: 'is_converted')
   int? isConverted;
   @JsonKey(name: 'end_time')
@@ -109,7 +109,7 @@ class Lead {
   @JsonKey(name: 'end_time_hour')
   String? endTimeHour;
   @JsonKey(name: 'deleted_at')
-  dynamic deletedAt;
+  String? deletedAt;
   @JsonKey(name: 'created_at')
   String? createdAt;
   @JsonKey(name: 'updated_at')

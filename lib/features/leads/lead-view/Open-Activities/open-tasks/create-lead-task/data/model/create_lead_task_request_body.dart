@@ -6,19 +6,22 @@ part 'create_lead_task_request_body.g.dart';
 class CreateLeadTaskRequestBody {
   String subject;
   String? description;
+  @JsonKey(name: 'due_date')
   String? dueDate;
-  int assignedTo;
+  @JsonKey(name: 'assigned_to_id')
+  int assignedToId;
   String priority;
-  String lead;
+  @JsonKey(name: 'lead_id')
+  int? leadId;
   String status;
 
   CreateLeadTaskRequestBody({
     required this.subject,
     this.description,
     this.dueDate,
-    required this.assignedTo,
+    required this.assignedToId,
     required this.priority,
-    required this.lead,
+    required this.leadId,
     required this.status,
   });
 

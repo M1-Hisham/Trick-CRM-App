@@ -89,12 +89,12 @@ class Lead {
   @JsonKey(name: 'user_id')
   int? userId;
   @JsonKey(name: 'assigned_to_id')
-  dynamic assignedToId;
+  int? assignedToId;
   @JsonKey(name: 'tenant_id')
   String? tenantId;
   @JsonKey(name: 'compaing_id')
-  dynamic compaingId;
-  dynamic saluation;
+  int? compaingId;
+  String? saluation;
   @JsonKey(name: 'owner_name')
   String? ownerName;
   @JsonKey(name: 'first_name')
@@ -133,15 +133,15 @@ class Lead {
   @JsonKey(name: 'converted_deal_id')
   dynamic convertedDealId;
   @JsonKey(name: 'converted_client_id')
-  dynamic convertedClientId;
+  int? convertedClientId;
   @JsonKey(name: 'is_converted')
   int? isConverted;
   @JsonKey(name: 'end_time')
-  dynamic endTime;
+  String? endTime;
   @JsonKey(name: 'end_time_hour')
-  dynamic endTimeHour;
+  String? endTimeHour;
   @JsonKey(name: 'deleted_at')
-  dynamic deletedAt;
+  String? deletedAt;
   @JsonKey(name: 'created_at')
   String? createdAt;
   @JsonKey(name: 'updated_at')

@@ -7,6 +7,7 @@ import '../../../../../../core/widgets/app_card_feat_view.dart';
 import '../../../Attatchments/attachment-view/presentation/attachment_lead_screen.dart';
 import '../../../Information/presentation/information_lead_screen.dart';
 import '../../../Lead-Campaigns/campaign-view/presentation/campaign_lead_screen.dart';
+import '../../../Open-Activities/open-activities-view/presentation/open_activities_screen.dart';
 import '../../../Timeline/presentation/lead_timeline_screen.dart';
 import '../../../notes/notes-view/presentation/screen/notes_lead_screen.dart';
 
@@ -82,7 +83,10 @@ class LeadView extends StatelessWidget {
                 title: 'Open Activities',
                 icon: 'openActivities',
                 onTap: () {
-                  showSnackBar(context, "Coming soon!");
+                  Get.to(
+                    () => OpenActivitiesScreen(
+                        leadId: leadId, leadName: leadName),
+                  );
                 },
               ),
               appCardFeatView(

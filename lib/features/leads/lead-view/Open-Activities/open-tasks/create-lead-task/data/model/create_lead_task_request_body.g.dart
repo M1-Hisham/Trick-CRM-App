@@ -11,10 +11,10 @@ CreateLeadTaskRequestBody _$CreateLeadTaskRequestBodyFromJson(
     CreateLeadTaskRequestBody(
       subject: json['subject'] as String,
       description: json['description'] as String?,
-      dueDate: json['dueDate'] as String?,
-      assignedTo: (json['assignedTo'] as num).toInt(),
+      dueDate: json['due_date'] as String?,
+      assignedToId: (json['assigned_to_id'] as num).toInt(),
       priority: json['priority'] as String,
-      lead: json['lead'] as String,
+      leadId: (json['lead_id'] as num?)?.toInt(),
       status: json['status'] as String,
     );
 
@@ -23,9 +23,9 @@ Map<String, dynamic> _$CreateLeadTaskRequestBodyToJson(
     <String, dynamic>{
       'subject': instance.subject,
       'description': instance.description,
-      'dueDate': instance.dueDate,
-      'assignedTo': instance.assignedTo,
+      'due_date': instance.dueDate,
+      'assigned_to_id': instance.assignedToId,
       'priority': instance.priority,
-      'lead': instance.lead,
+      'lead_id': instance.leadId,
       'status': instance.status,
     };

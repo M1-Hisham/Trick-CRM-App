@@ -82,13 +82,17 @@ class _TasksDataBlocBuilderState extends State<TasksDataBlocBuilder> {
                     ],
                     dataIdExtractor: (tasks) => (tasks.id ?? 0).toString(),
                     dataLeadNameExtractor: (tasks) => tasks.subject ?? '_',
-                    onViewDetails: (id, taskName) {
-                      Get.to(
+                    onViewDetails: (id, taskName) async {
+                      final result = await Get.to(
                         () => TaskView(
                           taskName: taskName,
                           taskId: int.parse(id),
                         ),
                       );
+                      if (result == true) {
+                        // ignore: use_build_context_synchronously
+                        context.read<TasksCubit>().getData();
+                      }
                     },
                   ),
                 ],

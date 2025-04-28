@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:trick_crm_app/core/resources/resources.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
+import 'package:trick_crm_app/features/tasks/delete-task/logic/cubit/delete_task_cubit.dart';
 import 'package:trick_crm_app/features/tasks/task-view/task-view/data/model/task_view_model.dart';
 
-Widget informationTaskDetails(TaskViewModel taskViewModel) {
+import '../../../../../../core/di/setup-di/dependency_injection.dart';
+import '../../../../../../core/helpers/show_snack_bar.dart';
+import '../../../../../../core/helpers/spacing.dart';
+import '../../../../../../core/widgets/app_button.dart';
+import '../../../../../../core/widgets/app_waiting_feature.dart';
+
+Widget informationTaskDetails(
+    int leadId, TaskViewModel taskViewModel, context) {
   final task = taskViewModel.task;
   final userInfo = {
     "Priority": task?.priority ?? "-",
@@ -30,6 +39,42 @@ Widget informationTaskDetails(TaskViewModel taskViewModel) {
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
       children: [
+        AppButton(
+          text: "Mark As Completed",
+          onPressed: () async {
+            showSnackBar(context, "Comming Soon!");
+          },
+        ),
+        spacingV(12),
+        Row(
+          children: [
+            Expanded(
+              child: AppButton(
+                text: "Edit",
+                onPressed: () {
+                  showSnackBar(context, "Comming Soon!");
+                },
+              ),
+            ),
+            spacingH(8),
+            Expanded(
+              child: AppButton(
+                text: "Delete",
+                backgroundColor: R.colors.red,
+                onPressed: () async {
+                  appWaitingFeature(context);
+                  await getIt<DeleteTaskCubit>().deleteTask(leadId);
+                  Get.back();
+                  Get.back();
+                  Navigator.pop(context, true);
+                  // ignore: use_build_context_synchronously
+                  showSnackBar(context, 'Task Deleted Successfully');
+                },
+              ),
+            ),
+          ],
+        ),
+        spacingV(12),
         buildFields(userInfo),
         sectionTitle("Task Information"),
         buildFields(taskInfo),

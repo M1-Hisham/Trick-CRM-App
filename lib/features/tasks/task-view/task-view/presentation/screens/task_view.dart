@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trick_crm_app/core/helpers/spacing.dart';
 import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/tasks/task-view/Information/presentation/information_task_screen.dart';
 
@@ -27,11 +26,6 @@ class TaskView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Column(
             children: [
-              // AppButton(
-              //   text: "Mark as completed",
-              //   onPressed: () {},
-              // ),
-              spacingV(20),
               // Show Cards
               appCardFeatView(
                 title: 'Information',

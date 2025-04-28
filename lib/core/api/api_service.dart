@@ -325,6 +325,10 @@ abstract class ApiService {
   @GET("/tasks/{id}/view")
   Future<TaskViewModel> getTaskView(@Path("id") int id);
 
+  /// service for Delete Task
+  @GET("/tasks/{id}/delete")
+  Future<FeatStatusModel> deleteTask(@Path("id") int id);
+
   // =================== Meetings ===================
 
   /// service for Meetings

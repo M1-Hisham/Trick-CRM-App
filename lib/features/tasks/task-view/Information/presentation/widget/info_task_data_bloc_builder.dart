@@ -21,10 +21,10 @@ class InfoTaskDataBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         return state.maybeWhen(
           loading: () => loadingShimmer(
-            child: informationTaskDetails(TaskViewModel()),
+            child: informationTaskDetails(taskId, TaskViewModel(), context),
           ),
           success: (TaskViewModel taskViewModel) {
-            return informationTaskDetails(taskViewModel);
+            return informationTaskDetails(taskId, taskViewModel, context);
           },
           error: (message) => appErrorMessage(
             message,

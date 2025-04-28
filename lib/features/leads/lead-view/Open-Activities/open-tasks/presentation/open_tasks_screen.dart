@@ -16,9 +16,9 @@ import 'package:trick_crm_app/features/leads/lead-view/lead-view/logic/cubit/lea
 import '../../../../../../core/di/setup-di/dependency_injection.dart';
 import '../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/widgets/app_error_message.dart';
-import '../../../../../tasks/task-view/task-view/presentation/screens/task_view.dart';
 import '../../../lead-view/data/model/leads_view_model.dart';
 import '../data/model/open_task_model.dart';
+import '../lead-task-view/presentation/screens/lead_task_view.dart';
 
 class OpenTasksScreen extends StatelessWidget {
   final int leadId;
@@ -63,7 +63,7 @@ class OpenTasksScreen extends StatelessWidget {
                               users: leadsViewModel.users ?? [],
                             ),
                           );
-                          if (result != null) {
+                          if (result == true) {
                             // ignore: use_build_context_synchronously
                             context.read<LeadViewCubit>().getLeadsView(leadId);
                           }
@@ -94,13 +94,18 @@ class OpenTasksScreen extends StatelessWidget {
                         ],
                         dataIdExtractor: (task) => (task.id ?? 0).toString(),
                         dataLeadNameExtractor: (tasks) => tasks.subject ?? '_',
-                        onViewDetails: (id, taskName) {
-                          Get.to(
-                            () => TaskView(
+                        onViewDetails: (id, taskName) async {
+                          final result = await Get.to(
+                            () => LeadTaskView(
                               taskName: taskName,
+                              leadId: leadId,
                               taskId: int.parse(id),
                             ),
                           );
+                          if (result == true) {
+                            // ignore: use_build_context_synchronously
+                            context.read<LeadViewCubit>().getLeadsView(leadId);
+                          }
                         },
                       ),
                     ],

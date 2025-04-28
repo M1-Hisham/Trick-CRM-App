@@ -167,6 +167,13 @@ abstract class ApiService {
     @Body() CreateLeadMeetingRequestBody createLeadMeetingRequestBody,
   );
 
+  /// service for mark lead task as completed
+  @POST("/leads/{id}/{idTask}/update-task")
+  Future<FeatStatusModel> markLeadTaskAsCompleted(
+    @Path("id") int leadId,
+    @Path("idTask") int idTask,
+  );
+
   // =================== Clients ===================
 
   /// service for Clients

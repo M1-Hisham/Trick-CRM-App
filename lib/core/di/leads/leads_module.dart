@@ -1,6 +1,7 @@
 import 'package:trick_crm_app/core/api/api_service.dart';
 import 'package:trick_crm_app/features/leads/create-lead/logic/cubit/create_lead_cubit.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Edit-lead/logic/cubit/information_cubit.dart';
+import 'package:trick_crm_app/features/leads/lead-view/Open-Activities/open-tasks/mark-task/logic/cubit/lead_mark_task_cubit.dart';
 import 'package:trick_crm_app/features/leads/lead-view/lead-view/logic/cubit/lead_view_cubit.dart';
 import 'package:trick_crm_app/features/leads/leads/logic/cubit/leads_cubit.dart';
 
@@ -62,4 +63,8 @@ void setupLeadsModule() {
   // Create Lead Task instance
   getIt.registerLazySingleton<CreateLeadTaskCubit>(
       () => CreateLeadTaskCubit(getIt<ApiService>()));
+
+  // Mark Task Lead instance
+  getIt.registerLazySingleton<LeadMarkTaskCubit>(
+      () => LeadMarkTaskCubit(getIt<ApiService>()));
 }

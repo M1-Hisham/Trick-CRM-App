@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:trick_crm_app/features/contacts/contact-view/Emails/data/model/contact_mails_model.dart';
 
 import '../../../Timeline/data/model/contact_activity_log_model.dart';
 import '../../../notes/notes-view/model/contact_notes_model.dart';
@@ -18,7 +19,7 @@ class ContactsViewModel {
   List<ContactActivityLogModel>? activityLog;
   // List<OpenActivity>? openActivity;
   // List<ClosedActivity>? closedActivity;
-  // // List<dynamic>? contactMails;
+  List<ContactMailsModel>? contactMails;
   // dynamic ziggy;
   // // List<dynamic>? hostUsers;
 
@@ -32,7 +33,7 @@ class ContactsViewModel {
     this.activityLog,
     // this.openActivity,
     // this.closedActivity,
-    // // this.contactMails,
+    this.contactMails,
     // this.ziggy,
     // this.hostUsers,
   });

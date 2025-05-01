@@ -5,6 +5,7 @@ import '../../../../../../core/helpers/show_snack_bar.dart';
 import '../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/widgets/app_card_feat_view.dart';
 import '../../../Attatchments/attachment-view/presentation/attachment_lead_screen.dart';
+import '../../../Emails/presentation/email_lead_screen.dart';
 import '../../../Information/presentation/information_lead_screen.dart';
 import '../../../Lead-Campaigns/campaign-view/presentation/campaign_lead_screen.dart';
 import '../../../Open-Activities/open-activities-view/presentation/open_activities_screen.dart';
@@ -76,7 +77,9 @@ class LeadView extends StatelessWidget {
                 title: 'Email',
                 icon: 'Emails',
                 onTap: () {
-                  showSnackBar(context, "Coming soon!");
+                  Get.to(
+                    () => EmailLeadScreen(leadId: leadId),
+                  );
                 },
               ),
               appCardFeatView(

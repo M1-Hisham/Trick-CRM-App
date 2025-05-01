@@ -23,6 +23,9 @@ ClientsViewModel _$ClientsViewModelFromJson(Map<String, dynamic> json) =>
           ?.map(
               (e) => ClientActivityLogModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      clientMails: (json['clientMails'] as List<dynamic>?)
+          ?.map((e) => ClientMailsModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ClientsViewModelToJson(ClientsViewModel instance) =>
@@ -33,6 +36,7 @@ Map<String, dynamic> _$ClientsViewModelToJson(ClientsViewModel instance) =>
       'clientNotes': instance.clientNotes,
       'clientAttatchment': instance.clientAttatchment,
       'activity_log': instance.activityLog,
+      'clientMails': instance.clientMails,
     };
 
 Client _$ClientFromJson(Map<String, dynamic> json) => Client(

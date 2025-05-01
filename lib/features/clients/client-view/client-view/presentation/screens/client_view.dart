@@ -6,6 +6,7 @@ import 'package:trick_crm_app/features/clients/client-view/Information/presentat
 import '../../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/helpers/show_snack_bar.dart';
 import '../../../Attatchments/attachment-view/presentation/attachment_client_screen.dart';
+import '../../../Emails/presentation/email_client_screen.dart';
 import '../../../Timeline/presentation/client_timeline_sccreen.dart';
 import '../../../notes/notes-view/presentation/screen/notes_client_screen.dart';
 
@@ -69,7 +70,9 @@ class ClientView extends StatelessWidget {
                 title: 'Email',
                 icon: 'Emails',
                 onTap: () {
-                  showSnackBar(context, "Coming soon!");
+                  Get.to(
+                    () => EmailClientScreen(clientId: clientId),
+                  );
                 },
               ),
               appCardFeatView(

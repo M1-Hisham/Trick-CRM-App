@@ -2,6 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import '../../../Attatchments/attachment-view/model/attachments_model.dart';
 import '../../../Closed-Activities/closed-activities/data/model/closed_activity_model.dart';
+import '../../../Emails/data/model/lead_meails_model.dart';
 import '../../../Lead-Campaigns/campaign-view/data/model/campaign_leads_model.dart';
 import '../../../Lead-Campaigns/campaign-view/data/model/campaigns_model.dart';
 import '../../../Open-Activities/open-activities-view/data/model/open_activity_model.dart';
@@ -22,7 +23,7 @@ class LeadsViewModel {
   List<ClosedActivityModel>? closedActivity;
   List<CampaignLeadsModel>? campaignLeads;
   List<CampaignsModel>? campaigns;
-  // List<dynamic>? leadMails;
+  List<LeadMailsModel>? leadMails;
   List<Calls>? calls;
   // List<dynamic>? contacts;
   List<Clients>? clients;
@@ -39,7 +40,7 @@ class LeadsViewModel {
     this.closedActivity,
     this.campaignLeads,
     this.campaigns,
-    // this.leadMails,
+    this.leadMails,
     this.calls,
     // this.contacts,
     this.clients,

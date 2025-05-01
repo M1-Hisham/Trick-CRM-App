@@ -5,6 +5,7 @@ import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
 
 import '../../../../../../core/widgets/app_bar.dart';
 import '../../../lead-view/logic/cubit/lead_view_cubit.dart';
+import '../../open-calls/presentation/open_calls_screen.dart';
 import '../../open-meetings/presentation/open_meetings_screen.dart';
 import '../../open-tasks/presentation/open_tasks_screen.dart';
 import 'widget/card_lead_view.dart';
@@ -52,14 +53,12 @@ class OpenActivitiesScreen extends StatelessWidget {
               title: 'Open Calls',
               icon: 'OpenCalls',
               onTap: () {
-                // Get.to(() => OpenCallsScreen(
-                //   callsModel: openActivityModel
-                //           .map((openActivityModel) => openActivityModel.call)
-                //           .where((call) => call != null)
-                //           .cast<OpenCallModel>()
-                //           .toList(),
-                //       leadId: leadId,
-                // ));
+                Get.to(
+                  () => BlocProvider<LeadViewCubit>.value(
+                    value: getIt<LeadViewCubit>()..getLeadsView(leadId),
+                    child: OpenCallsScreen(leadId: leadId, leadName: leadName),
+                  ),
+                );
               },
             ),
           ],

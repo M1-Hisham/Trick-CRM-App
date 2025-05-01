@@ -17,7 +17,7 @@ class OpenMeetingModel {
   @JsonKey(name: "start_time")
   String? startTime;
   @JsonKey(name: "start_time_hour")
-  dynamic startTimeHour;
+  String? startTimeHour;
   @JsonKey(name: "end_time")
   String? endTime;
   @JsonKey(name: "end_time_hour")
@@ -28,7 +28,7 @@ class OpenMeetingModel {
   @JsonKey(name: "related_to")
   String? relatedTo;
   @JsonKey(name: "related_to_client")
-  dynamic relatedToClient;
+  String? relatedToClient;
   @JsonKey(name: "lead_id")
   int? leadId;
   @JsonKey(name: "contact_id")

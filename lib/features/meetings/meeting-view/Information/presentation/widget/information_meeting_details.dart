@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:trick_crm_app/core/resources/resources.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
 import 'package:trick_crm_app/features/meetings/meeting-view/meeting-view/data/model/meeting_view_model.dart';
 
-Widget informationMeetingDetails(MeetingViewModel meetingViewModel) {
+import '../../../../../../core/di/setup-di/dependency_injection.dart';
+import '../../../../../../core/helpers/show_snack_bar.dart';
+import '../../../../../../core/helpers/spacing.dart';
+import '../../../../../../core/widgets/app_button.dart';
+import '../../../../../../core/widgets/app_waiting_feature.dart';
+import '../../../../delete-meeting/logic/cubit/delete_meeting_cubit.dart';
+
+Widget informationMeetingDetails(
+    context, MeetingViewModel meetingViewModel, meetingId) {
   final meeting = meetingViewModel.meeting;
 
   final meetingInfo = {
@@ -24,6 +33,35 @@ Widget informationMeetingDetails(MeetingViewModel meetingViewModel) {
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
       children: [
+        Row(
+          children: [
+            Expanded(
+              child: AppButton(
+                text: "Edit",
+                onPressed: () {
+                  showSnackBar(context, "Comming Soon!");
+                },
+              ),
+            ),
+            spacingH(8),
+            Expanded(
+              child: AppButton(
+                text: "Delete",
+                backgroundColor: R.colors.red,
+                onPressed: () async {
+                  appWaitingFeature(context);
+                  await getIt<DeleteMeetingCubit>().deleteMeeting(meetingId);
+                  Get.back();
+                  Get.back();
+                  Navigator.pop(context, true);
+                  // ignore: use_build_context_synchronously
+                  showSnackBar(context, 'Meeting Deleted Successfully');
+                },
+              ),
+            ),
+          ],
+        ),
+        spacingV(12),
         sectionTitle("meeting Information"),
         buildFields(meetingInfo),
         sectionTitle("Description"),

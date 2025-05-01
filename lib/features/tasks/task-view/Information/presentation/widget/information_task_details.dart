@@ -39,13 +39,6 @@ Widget informationTaskDetails(
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
       children: [
-        AppButton(
-          text: "Mark As Completed",
-          onPressed: () async {
-            showSnackBar(context, "Comming Soon!");
-          },
-        ),
-        spacingV(12),
         Row(
           children: [
             Expanded(

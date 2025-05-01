@@ -22,10 +22,12 @@ class InfoMeetingDataBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         return state.maybeWhen(
           loading: () => loadingShimmer(
-            child: informationMeetingDetails(MeetingViewModel()),
+            child: informationMeetingDetails(
+                context, MeetingViewModel(), meetingId),
           ),
           success: (MeetingViewModel meetingViewModel) {
-            return informationMeetingDetails(meetingViewModel);
+            return informationMeetingDetails(
+                context, meetingViewModel, meetingId);
           },
           error: (message) => appErrorMessage(
             message,

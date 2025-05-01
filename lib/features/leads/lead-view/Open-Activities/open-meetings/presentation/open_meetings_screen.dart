@@ -14,10 +14,10 @@ import '../../../../../../core/di/setup-di/dependency_injection.dart';
 import '../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/widgets/app_error_message.dart';
 import '../../../../../../core/widgets/app_show_modal_bottom_sheet.dart';
+import '../../../../../meetings/meeting-view/meeting-view/presentation/screens/meeting_view.dart';
 import '../../../lead-view/data/model/leads_view_model.dart';
 import '../create-lead-meeting/presentation/screen/create_lead_meeting.dart';
 import '../data/model/open_meeting_model.dart';
-import '../lead-meeting-view/presentation/screens/lead_meeting_view.dart';
 import 'widget/loading_meeting_tasks_screen.dart';
 
 class OpenMeetingsScreen extends StatelessWidget {
@@ -103,9 +103,8 @@ class OpenMeetingsScreen extends StatelessWidget {
                             meetings.title ?? '_',
                         onViewDetails: (id, meetingName) async {
                           final result = await Get.to(
-                            () => LeadMeetingView(
+                            () => MeetingView(
                               meetingName: meetingName,
-                              leadId: leadId,
                               meetingId: int.parse(id),
                             ),
                           );

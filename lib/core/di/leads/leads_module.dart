@@ -9,6 +9,7 @@ import '../../../features/leads/lead-view/Attatchments/delete_attachment/logic/c
 import '../../../features/leads/lead-view/Lead-Campaigns/campaign-view/campaign-action-view/delete-lead/logic/cubit/delete_lead_campaign_cubit.dart';
 import '../../../features/leads/lead-view/Lead-Campaigns/campaign-view/campaign-action-view/edit-lead/logic/cubit/edit_lead_campaign_cubit.dart';
 import '../../../features/leads/lead-view/Lead-Campaigns/create-campaign/logic/cubit/create_lead_campaign_cubit.dart';
+import '../../../features/leads/lead-view/Open-Activities/open-meetings/create-lead-meeting/logic/cubit/create_lead_meeting_cubit.dart';
 import '../../../features/leads/lead-view/Open-Activities/open-tasks/create-lead-task/logic/cubit/create_lead_task_cubit.dart';
 import '../../../features/leads/lead-view/notes/create-note/logic/cubit/create_note_lead_cubit.dart';
 import '../../../features/leads/lead-view/notes/delete-note/logic/cubit/delete_note_lead_cubit.dart';
@@ -67,4 +68,8 @@ void setupLeadsModule() {
   // Mark Task Lead instance
   getIt.registerLazySingleton<LeadMarkTaskCubit>(
       () => LeadMarkTaskCubit(getIt<ApiService>()));
+
+  // Create Lead Meeting instance
+  getIt.registerLazySingleton<CreateLeadMeetingCubit>(
+      () => CreateLeadMeetingCubit(getIt<ApiService>()));
 }

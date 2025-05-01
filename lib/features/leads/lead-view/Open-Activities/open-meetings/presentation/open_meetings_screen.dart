@@ -13,7 +13,9 @@ import 'package:trick_crm_app/features/leads/lead-view/lead-view/logic/cubit/lea
 import '../../../../../../core/di/setup-di/dependency_injection.dart';
 import '../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/widgets/app_error_message.dart';
+import '../../../../../../core/widgets/app_show_modal_bottom_sheet.dart';
 import '../../../lead-view/data/model/leads_view_model.dart';
+import '../create-lead-meeting/presentation/screen/create_lead_meeting.dart';
 import '../data/model/open_meeting_model.dart';
 import '../lead-meeting-view/presentation/screens/lead_meeting_view.dart';
 import 'widget/loading_meeting_tasks_screen.dart';
@@ -46,6 +48,8 @@ class OpenMeetingsScreen extends StatelessWidget {
                       .where((meeting) => meeting != null)
                       .cast<OpenMeetingModel>()
                       .toList();
+                  final List<HostUsers> hostUsers =
+                      leadsViewModel.hostUsers ?? [];
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -53,18 +57,19 @@ class OpenMeetingsScreen extends StatelessWidget {
                         icon: SvgPicture.asset(R.icons.add),
                         text: 'Create a New meeting',
                         onPressed: () async {
-                          // final result = await appShowModalBottomSheet(
-                          //   context: context,
-                          //   builder: (context) => CreateLeadMeeting(
-                          //     leadId: leadId,
-                          //     leadName: leadName,
-                          //     users: leadsViewModel.users ?? [],
-                          //   ),
-                          // );
-                          // if (result == true) {
-                          //   // ignore: use_build_context_synchronously
-                          //   context.read<LeadViewCubit>().getLeadsView(leadId);
-                          // }
+                          final result = await appShowModalBottomSheet(
+                            context: context,
+                            builder: (context) => CreateLeadMeeting(
+                              leadId: leadId,
+                              leadName: leadName,
+                              users: leadsViewModel.users ?? [],
+                              hostUsers: hostUsers,
+                            ),
+                          );
+                          if (result == true) {
+                            // ignore: use_build_context_synchronously
+                            context.read<LeadViewCubit>().getLeadsView(leadId);
+                          }
                         },
                       ),
                       spacingV(20),

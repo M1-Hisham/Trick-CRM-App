@@ -405,11 +405,16 @@ abstract class ApiService {
   Future<FeatStatusModel> deleteCallAttachment(
       @Path("id") int id, @Path("idAttachment") int idAttachment);
 
-  /// service for Call Mark as Complete
+  ////! service for Call Mark as Complete
   @POST("/calls/{id}/update")
   Future<FeatStatusModel> markCallAsComplete(
     @Path("id") int id,
   );
+
+  /// service for Delete Task
+  @GET("/calls/{id}/delete")
+  Future<FeatStatusModel> callDelete(@Path("id") int id);
+
 
   // =================== Deals ===================
 

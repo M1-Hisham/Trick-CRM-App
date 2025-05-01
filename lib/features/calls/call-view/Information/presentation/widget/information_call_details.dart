@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:trick_crm_app/core/helpers/spacing.dart';
 import 'package:trick_crm_app/core/resources/resources.dart';
 import 'package:trick_crm_app/core/widgets/app_text_form_field.dart';
 import 'package:trick_crm_app/features/calls/call-view/call-view/data/model/call_view_model.dart';
+
+import '../../../../../../core/di/setup-di/dependency_injection.dart';
+import '../../../../../../core/helpers/show_snack_bar.dart';
+import '../../../../../../core/widgets/app_button.dart';
+import '../../../../../../core/widgets/app_waiting_feature.dart';
+import '../../../delete-call/logic/cubit/delete_call_cubit.dart';
 
 Widget informationCallDetails(CallViewModel callViewModel, context) {
   final call = callViewModel.call;
@@ -39,30 +46,36 @@ Widget informationCallDetails(CallViewModel callViewModel, context) {
         //   ),
         // ),
         // spacingV(10),
-        // Row(
-        //   children: [
-        //     Expanded(
-        //       child: AppButton(
-        //         icon: Icon(Icons.edit, color: R.colors.white, size: 20),
-        //         text: "Edit",
-        //         onPressed: () {},
-        //       ),
-        //     ),
-        //     spacingH(10),
-        //     Expanded(
-        //       child: AppButton(
-        //         borderColor: R.colors.red,
-        //         // overlayColor: R.colors.red,
-        //         backgroundColor: R.colors.red,
-        //         // backgroundColor: ThemeData.light().scaffoldBackgroundColor,
-        //         icon: Icon(Icons.delete, color: R.colors.white, size: 20),
-        //         text: "Delete",
-        //         onPressed: () {},
-        //       ),
-        //     ),
-        //   ],
-        // ),
-        spacingV(20),
+
+        Row(
+          children: [
+            Expanded(
+              child: AppButton(
+                text: "Edit",
+                onPressed: () {
+                  showSnackBar(context, "Comming Soon!");
+                },
+              ),
+            ),
+            spacingH(8),
+            Expanded(
+              child: AppButton(
+                text: "Delete",
+                backgroundColor: R.colors.red,
+                onPressed: () async {
+                  appWaitingFeature(context);
+                  await getIt<DeleteCallCubit>().deletecall(call?.id ?? 0);
+                  Get.back();
+                  Get.back();
+                  Navigator.pop(context, true);
+                  // ignore: use_build_context_synchronously
+                  showSnackBar(context, 'Call Deleted Successfully');
+                },
+              ),
+            ),
+          ],
+        ),
+        spacingV(12),
         buildFields(userInfo),
         sectionTitle("Call Information"),
         buildFields(callInfo),

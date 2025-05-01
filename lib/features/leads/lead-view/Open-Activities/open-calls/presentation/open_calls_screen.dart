@@ -13,8 +13,10 @@ import 'package:trick_crm_app/features/leads/lead-view/lead-view/logic/cubit/lea
 import '../../../../../../core/di/setup-di/dependency_injection.dart';
 import '../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/widgets/app_error_message.dart';
+import '../../../../../../core/widgets/app_show_modal_bottom_sheet.dart';
 import '../../../../../calls/call-view/call-view/presentation/screens/call_view.dart';
 import '../../../lead-view/data/model/leads_view_model.dart';
+import '../create-call/presentation/create_lead_call_screen.dart';
 import '../data/model/open_call_model.dart';
 import 'widget/loading_open_calls_screen.dart';
 
@@ -46,6 +48,8 @@ class OpenCallsScreen extends StatelessWidget {
                       .where((call) => call != null)
                       .cast<OpenCallModel>()
                       .toList();
+                  final List<Users>? users = leadsViewModel.users;
+
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -53,18 +57,17 @@ class OpenCallsScreen extends StatelessWidget {
                         icon: SvgPicture.asset(R.icons.add),
                         text: 'Create a New call',
                         onPressed: () async {
-                          // final result = await appShowModalBottomSheet(
-                          //   context: context,
-                          //   builder: (context) => CreateLeadCall(
-                          //     leadId: leadId,
-                          //     leadName: leadName,
-                          //     users: leadsViewModel.users ?? [],
-                          //   ),
-                          // );
-                          // if (result == true) {
-                          //   // ignore: use_build_context_synchronously
-                          //   context.read<LeadViewCubit>().getLeadsView(leadId);
-                          // }
+                          final result = await appShowModalBottomSheet(
+                            context: context,
+                            builder: (context) => CreateLeadCallScreen(
+                              ownerList: users ?? [],
+                              leadId: leadId,
+                            ),
+                          );
+                          if (result == true) {
+                            // ignore: use_build_context_synchronously
+                            context.read<LeadViewCubit>().getLeadsView(leadId);
+                          }
                         },
                       ),
                       spacingV(20),

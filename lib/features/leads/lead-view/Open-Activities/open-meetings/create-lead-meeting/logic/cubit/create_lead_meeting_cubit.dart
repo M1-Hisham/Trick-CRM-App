@@ -1,10 +1,11 @@
 import 'package:trick_crm_app/core/api/api_service.dart';
 import 'package:trick_crm_app/core/cubits/base_cubit.dart';
+import 'package:trick_crm_app/core/models/feat_status_model.dart';
 import 'package:trick_crm_app/core/repo/base_repo.dart';
-import 'package:trick_crm_app/features/leads/lead-view/Open-Activities/open-meetings/create-lead-meeting/data/model/create_lead_meeting_model.dart';
-import 'package:trick_crm_app/features/leads/lead-view/Open-Activities/open-meetings/create-lead-meeting/data/model/create_lead_meeting_request_body.dart';
 
-class CreateLeadMeetingCubit extends BaseCubit<CreateLeadMeetingModel> {
+import '../../../../../../../meetings/create-meeting/data/model/create_meeting_request_body.dart';
+
+class CreateLeadMeetingCubit extends BaseCubit<FeatStatusModel> {
   CreateLeadMeetingCubit(ApiService apiService)
       : super(
           BaseRepo(
@@ -16,7 +17,7 @@ class CreateLeadMeetingCubit extends BaseCubit<CreateLeadMeetingModel> {
           ),
         );
   Future<void> createLeadMeeting(
-    CreateLeadMeetingRequestBody requestBody,
+    CreateMeetingRequestBody requestBody,
     int leadId,
   ) async {
     await sendData(requestBody, params: {'id': leadId});

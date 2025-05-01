@@ -42,8 +42,6 @@ import '../../features/home/data/models/dashboard_response.dart';
 import '../../features/leads/create-lead/data/models/create_lead_request_body.dart';
 import '../../features/leads/lead-view/Attatchments/create-attachment/data/model/create_attachment_model.dart';
 import '../../features/leads/lead-view/Edit-lead/data/model/edit_lead_model.dart';
-import '../../features/leads/lead-view/Open-Activities/open-meetings/create-lead-meeting/data/model/create_lead_meeting_model.dart';
-import '../../features/leads/lead-view/Open-Activities/open-meetings/create-lead-meeting/data/model/create_lead_meeting_request_body.dart';
 import '../../features/leads/lead-view/Open-Activities/open-tasks/create-lead-task/data/model/create_lead_task_model.dart';
 import '../../features/leads/lead-view/Open-Activities/open-tasks/create-lead-task/data/model/create_lead_task_request_body.dart';
 import '../../features/leads/lead-view/lead-view/data/model/leads_view_model.dart';
@@ -162,9 +160,9 @@ abstract class ApiService {
 
   /// service for create lead meeting
   @POST("/leads/{id}/create-meeting")
-  Future<CreateLeadMeetingModel> createLeadMeeting(
+  Future<FeatStatusModel> createLeadMeeting(
     @Path("id") int leadId,
-    @Body() CreateLeadMeetingRequestBody createLeadMeetingRequestBody,
+    @Body() CreateMeetingRequestBody createLeadMeetingRequestBody,
   );
 
   /// service for mark lead task as completed

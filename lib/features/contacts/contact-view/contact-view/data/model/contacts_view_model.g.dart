@@ -26,6 +26,9 @@ ContactsViewModel _$ContactsViewModelFromJson(Map<String, dynamic> json) =>
           ?.map((e) =>
               ContactActivityLogModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      contactMails: (json['contactMails'] as List<dynamic>?)
+          ?.map((e) => ContactMailsModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ContactsViewModelToJson(ContactsViewModel instance) =>
@@ -37,6 +40,7 @@ Map<String, dynamic> _$ContactsViewModelToJson(ContactsViewModel instance) =>
       'contactNotes': instance.contactNotes,
       'contactAttatchment': instance.contactAttatchment,
       'activity_log': instance.activityLog,
+      'contactMails': instance.contactMails,
     };
 
 Contact _$ContactFromJson(Map<String, dynamic> json) => Contact(

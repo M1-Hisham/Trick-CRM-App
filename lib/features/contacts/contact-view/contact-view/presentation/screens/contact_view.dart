@@ -6,6 +6,7 @@ import 'package:trick_crm_app/features/contacts/contact-view/notes/notes-view/pr
 import '../../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/helpers/show_snack_bar.dart';
 import '../../../Attatchments/attachment-view/presentation/attachment_contact_screen.dart';
+import '../../../Emails/presentation/email_contact_screen.dart';
 import '../../../Timeline/presentation/contact_timeline_sccreen.dart';
 
 class ContactView extends StatelessWidget {
@@ -70,7 +71,9 @@ class ContactView extends StatelessWidget {
                 title: 'Email',
                 icon: 'Emails',
                 onTap: () {
-                  showSnackBar(context, "Coming soon!");
+                  Get.to(
+                    () => EmailContactScreen(contactId: contactId),
+                  );
                 },
               ),
               appCardFeatView(

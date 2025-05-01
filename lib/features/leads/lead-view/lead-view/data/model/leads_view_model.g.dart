@@ -35,6 +35,9 @@ LeadsViewModel _$LeadsViewModelFromJson(Map<String, dynamic> json) =>
       campaigns: (json['campaigns'] as List<dynamic>?)
           ?.map((e) => CampaignsModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      leadMails: (json['leadMails'] as List<dynamic>?)
+          ?.map((e) => LeadMailsModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       calls: (json['calls'] as List<dynamic>?)
           ?.map((e) => Calls.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -60,6 +63,7 @@ Map<String, dynamic> _$LeadsViewModelToJson(LeadsViewModel instance) =>
       'closedActivity': instance.closedActivity,
       'campaignLeads': instance.campaignLeads,
       'campaigns': instance.campaigns,
+      'leadMails': instance.leadMails,
       'calls': instance.calls,
       'clients': instance.clients,
       'deals': instance.deals,

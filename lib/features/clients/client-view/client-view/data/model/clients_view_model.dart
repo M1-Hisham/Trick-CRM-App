@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:trick_crm_app/features/clients/client-view/Emails/data/model/client_mails_model.dart';
 
 import '../../../Timeline/data/model/client_activity_log_model.dart';
 import '../../../notes/notes-view/model/client_notes_model.dart';
@@ -21,7 +22,7 @@ class ClientsViewModel {
   // List<CampaignClients>? campaignClients;
   // List<Null>? clientDeals;
   // List<Campaigns>? campaigns;
-  // List<Null>? clientMails;
+  List<ClientMailsModel>? clientMails;
   // Null ziggy;
   // List<Null>? calls;
   // List<Null>? contracts;
@@ -45,7 +46,7 @@ class ClientsViewModel {
     // this.campaignClients,
     // this.clientDeals,
     // this.campaigns,
-    // this.clientMails,
+    this.clientMails,
     // this.ziggy,
     // this.calls,
     // this.contracts,

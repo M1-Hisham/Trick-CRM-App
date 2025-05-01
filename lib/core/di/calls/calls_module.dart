@@ -3,6 +3,7 @@ import 'package:trick_crm_app/features/calls/create-call/logic/cubit/create_call
 
 import '../../../features/calls/call-view/Attatchments/delete_attachment/logic/cubit/delete_attachment_call_cubit.dart';
 import '../../../features/calls/call-view/call-view/logic/cubit/call_view_cubit.dart';
+import '../../../features/calls/call-view/delete-call/logic/cubit/delete_call_cubit.dart';
 import '../../../features/calls/call-view/mark-call-compeleted/logic/cubit/mark_call_completed_cubit.dart';
 import '../../../features/calls/call-view/notes/create-note/logic/cubit/create_note_call_cubit.dart';
 import '../../../features/calls/call-view/notes/delete-note/logic/cubit/delete_note_call_cubit.dart';
@@ -37,4 +38,8 @@ void setupCallsModule() {
   // Mark Call Completed instance
   getIt.registerLazySingleton<MarkCallCompletedCubit>(
       () => MarkCallCompletedCubit(getIt<ApiService>()));
+
+  // Delete Call instance
+  getIt.registerLazySingleton<DeleteCallCubit>(
+      () => DeleteCallCubit(getIt<ApiService>()));
 }

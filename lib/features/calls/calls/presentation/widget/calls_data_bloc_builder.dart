@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:trick_crm_app/core/widgets/app_error_message.dart';
 import 'package:trick_crm_app/features/calls/call-view/call-view/presentation/screens/call_view.dart';
 import 'package:trick_crm_app/features/calls/calls/data/model/calls_model.dart';
 import 'package:trick_crm_app/features/calls/calls/logic/cubit/calls_cubit.dart';
@@ -83,45 +84,26 @@ class _CallsDataBlocBuilderState extends State<CallsDataBlocBuilder> {
                     ],
                     dataIdExtractor: (calls) => (calls.id ?? 0).toString(),
                     dataLeadNameExtractor: (calls) => calls.subject ?? '',
-                    onViewDetails: (id, callName) {
-                      Get.to(
+                    onViewDetails: (id, callName) async {
+                      final result = await Get.to(
                         () => CallView(
                           callName: callName,
                           callId: int.parse(id),
                         ),
                       );
+                      if (result == true) {
+                        // Refresh the data after creating a new call
+                        // ignore: use_build_context_synchronously
+                        context.read<CallsCubit>().getData();
+                      }
                     },
                   ),
                 ],
               );
             },
-            error: (message) => Center(
-                  child: Column(
-                    children: [
-                      const Text('An error occurred, Try again'),
-                      spacingV(10),
-                      const Icon(
-                        Icons.error,
-                        color: Colors.red,
-                      ),
-                      spacingV(10),
-                      const Text('Please check your internet connection'),
-                      spacingV(10),
-                      const Text('Or try again later'),
-                      spacingV(10),
-                      const Text('If the problem persists, contact support'),
-                      spacingV(10),
-                      Text('Error: $message'),
-                      spacingV(10),
-                      AppButton(
-                        text: 'Retry',
-                        onPressed: () {
-                          context.read<CallsCubit>().getData();
-                        },
-                      ),
-                    ],
-                  ),
-                ),
+            error: (message) => appErrorMessage(message, () {
+                  context.read<CallsCubit>().getData();
+                }),
             orElse: () {
               return const SizedBox.shrink();
             });

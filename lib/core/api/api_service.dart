@@ -366,6 +366,10 @@ abstract class ApiService {
   Future<FeatStatusModel> deleteMeetingAttachment(
       @Path("id") int id, @Path("idAttachment") int idAttachment);
 
+  /// service for Delete Task
+  @GET("/meetings/{id}/delete")
+  Future<FeatStatusModel> deleteMeeting(@Path("id") int id);
+
   // =================== Calls ===================
 
   /// service for Calls

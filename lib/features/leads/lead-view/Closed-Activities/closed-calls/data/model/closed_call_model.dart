@@ -12,22 +12,22 @@ class ClosedCallModel {
   int? leadId;
 
   @JsonKey(name: 'contact_id')
-  dynamic contactId;
+  int? contactId;
 
   @JsonKey(name: 'related_to')
-  dynamic relatedTo;
+  String? relatedTo;
 
   @JsonKey(name: 'related_to_client')
-  dynamic relatedToClient;
+  String? relatedToClient;
 
   @JsonKey(name: 'client_id')
-  dynamic clientId;
+  int? clientId;
 
   @JsonKey(name: 'deal_id')
-  dynamic dealId;
+  int? dealId;
 
   @JsonKey(name: 'campaign_id')
-  dynamic campaignId;
+  int? campaignId;
 
   @JsonKey(name: 'call_type')
   String? callType;

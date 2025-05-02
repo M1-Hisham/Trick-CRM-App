@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../core/helpers/show_snack_bar.dart';
 import '../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/widgets/app_card_feat_view.dart';
 import '../../../Attatchments/attachment-view/presentation/attachment_lead_screen.dart';
+import '../../../Closed-Activities/closed-activities-view/presentation/closed_activities_screen.dart';
 import '../../../Emails/presentation/email_lead_screen.dart';
 import '../../../Information/presentation/information_lead_screen.dart';
 import '../../../Lead-Campaigns/campaign-view/presentation/campaign_lead_screen.dart';
@@ -96,7 +96,10 @@ class LeadView extends StatelessWidget {
                 title: 'Closed Activities',
                 icon: 'closedActivities',
                 onTap: () {
-                  showSnackBar(context, "Coming soon!");
+                  Get.to(
+                    () => ClosedActivitiesScreen(
+                        leadId: leadId, leadName: leadName),
+                  );
                 },
               ),
             ],

@@ -24,6 +24,7 @@ class ClosedTaskModel {
   String? status;
   String? priority;
   String? description;
+  @JsonKey(name: 'due_date')
   String? dueDate;
   @JsonKey(name: 'is_deleted')
   int? isDeleted;

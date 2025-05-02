@@ -34,6 +34,7 @@ Future deleteNoteCall(context, callId, idNote) {
               Get.back();
               Get.back();
               getIt<CallViewCubit>().getCallView(callId);
+              // ignore: use_build_context_synchronously
               showSnackBar(context, "Note deleted successfully");
             },
             child: const Text(

@@ -34,6 +34,7 @@ Future deleteNoteBroker(context, brokerId, idNote) {
               Get.back();
               Get.back();
               getIt<BrokerViewCubit>().getBrokerView(brokerId);
+              // ignore: use_build_context_synchronously
               showSnackBar(context, "Note deleted successfully");
             },
             child: const Text(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:trick_crm_app/core/cubits/base_state.dart';
 import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
 import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
@@ -10,9 +9,7 @@ import 'package:trick_crm_app/features/contacts/contact-view/contact-view/logic/
 
 import '../../../../../../../core/helpers/spacing.dart';
 import '../../../../../../../core/resources/resources.dart';
-import '../../../../../../../core/widgets/app_button.dart';
 import '../../../../../../../core/widgets/app_error_message.dart';
-import '../../../create-attachment/presentation/add_attachment_screen.dart';
 import 'loading_attachment_screen.dart';
 
 class AttachmentContactBlocBuilder extends StatelessWidget {

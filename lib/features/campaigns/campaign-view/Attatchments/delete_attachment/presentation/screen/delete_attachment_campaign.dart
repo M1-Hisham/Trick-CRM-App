@@ -32,6 +32,7 @@ Future deleteAttachmentCampaign(context, campaignId, idAttachment) {
               Get.back();
               Get.back();
               getIt<CampaignViewCubit>().getCampaignView(campaignId);
+              // ignore: use_build_context_synchronously
               showSnackBar(context, "Attachment Deleted Successfully");
             },
             child: const Text(

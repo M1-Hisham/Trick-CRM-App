@@ -32,6 +32,7 @@ Future deleteAttachmentCall(context, callId, idAttachment) {
               Get.back();
               Get.back();
               getIt<CallViewCubit>().getCallView(callId);
+              // ignore: use_build_context_synchronously
               showSnackBar(context, "Attachment Deleted Successfully");
             },
             child: const Text(

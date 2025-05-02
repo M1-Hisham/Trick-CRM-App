@@ -32,6 +32,7 @@ Future deleteAttachmentBroker(context, brokerId, idAttachment) {
               Get.back();
               Get.back();
               getIt<BrokerViewCubit>().getBrokerView(brokerId);
+              // ignore: use_build_context_synchronously
               showSnackBar(context, "Attachment Deleted Successfully");
             },
             child: const Text(

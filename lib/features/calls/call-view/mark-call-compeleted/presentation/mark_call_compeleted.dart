@@ -39,6 +39,7 @@ Future markCallCompeleted(context, callId) {
                     Get.back();
                     Get.back();
                     getIt<CallViewCubit>().getCallView(callId);
+                    // ignore: use_build_context_synchronously
                     showSnackBar(context, "Mark as completed successfully");
                   },
                 ),

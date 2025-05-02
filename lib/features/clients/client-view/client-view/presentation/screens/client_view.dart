@@ -4,7 +4,6 @@ import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/clients/client-view/Information/presentation/information_client_screen.dart';
 
 import '../../../../../../../core/widgets/app_bar.dart';
-import '../../../../../../core/helpers/show_snack_bar.dart';
 import '../../../Attatchments/attachment-view/presentation/attachment_client_screen.dart';
 import '../../../Emails/presentation/email_client_screen.dart';
 import '../../../Timeline/presentation/client_timeline_sccreen.dart';
@@ -75,20 +74,20 @@ class ClientView extends StatelessWidget {
                   );
                 },
               ),
-              appCardFeatView(
-                title: 'Open Activities',
-                icon: 'openActivities',
-                onTap: () {
-                  showSnackBar(context, "Coming soon!");
-                },
-              ),
-              appCardFeatView(
-                title: 'Closed Activities',
-                icon: 'closedActivities',
-                onTap: () {
-                  showSnackBar(context, "Coming soon!");
-                },
-              ),
+              // appCardFeatView(
+              //   title: 'Open Activities',
+              //   icon: 'openActivities',
+              //   onTap: () {
+              //     showSnackBar(context, "Coming soon!");
+              //   },
+              // ),
+              // appCardFeatView(
+              //   title: 'Closed Activities',
+              //   icon: 'closedActivities',
+              //   onTap: () {
+              //     showSnackBar(context, "Coming soon!");
+              //   },
+              // ),
             ],
           ),
         ),

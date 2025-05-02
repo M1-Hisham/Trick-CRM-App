@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:trick_crm_app/core/cubits/base_state.dart';
 import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
 import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
 
 import '../../../../../../../core/helpers/spacing.dart';
 import '../../../../../../../core/resources/resources.dart';
-import '../../../../../../../core/widgets/app_button.dart';
 import '../../../../../../../core/widgets/app_error_message.dart';
 import '../../../../campaign-view/data/model/campaign_view_model.dart';
 import '../../../../campaign-view/logic/cubit/campaign_view_cubit.dart';
-import '../../../create-attachment/presentation/add_attachment_screen.dart';
 import '../../../delete_attachment/presentation/screen/delete_attachment_campaign.dart';
 import 'loading_attachment_screen.dart';
 

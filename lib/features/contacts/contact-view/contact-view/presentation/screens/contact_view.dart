@@ -4,7 +4,6 @@ import 'package:trick_crm_app/core/widgets/app_card_feat_view.dart';
 import 'package:trick_crm_app/features/contacts/contact-view/Information/presentation/information_contact_screen.dart';
 import 'package:trick_crm_app/features/contacts/contact-view/notes/notes-view/presentation/screen/notes_contact_screen.dart';
 import '../../../../../../../core/widgets/app_bar.dart';
-import '../../../../../../core/helpers/show_snack_bar.dart';
 import '../../../Attatchments/attachment-view/presentation/attachment_contact_screen.dart';
 import '../../../Emails/presentation/email_contact_screen.dart';
 import '../../../Timeline/presentation/contact_timeline_sccreen.dart';
@@ -76,20 +75,20 @@ class ContactView extends StatelessWidget {
                   );
                 },
               ),
-              appCardFeatView(
-                title: 'Open Activities',
-                icon: 'openActivities',
-                onTap: () {
-                  showSnackBar(context, "Coming soon!");
-                },
-              ),
-              appCardFeatView(
-                title: 'Closed Activities',
-                icon: 'closedActivities',
-                onTap: () {
-                  showSnackBar(context, "Coming soon!");
-                },
-              ),
+              // appCardFeatView(
+              //   title: 'Open Activities',
+              //   icon: 'openActivities',
+              //   onTap: () {
+              //     showSnackBar(context, "Coming soon!");
+              //   },
+              // ),
+              // appCardFeatView(
+              //   title: 'Closed Activities',
+              //   icon: 'closedActivities',
+              //   onTap: () {
+              //     showSnackBar(context, "Coming soon!");
+              //   },
+              // ),
             ],
           ),
         ),

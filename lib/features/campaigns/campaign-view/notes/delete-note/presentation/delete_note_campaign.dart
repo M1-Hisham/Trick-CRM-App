@@ -34,6 +34,7 @@ Future deleteNoteCampaign(context, campaignId, idNote) {
               Get.back();
               Get.back();
               getIt<CampaignViewCubit>().getCampaignView(campaignId);
+              // ignore: use_build_context_synchronously
               showSnackBar(context, "Note deleted successfully");
             },
             child: const Text(

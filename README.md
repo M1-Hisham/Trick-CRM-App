@@ -1,3 +1,2 @@
 # Trick CRM App 📊
 
-

@@ -5,6 +5,7 @@ import 'package:trick_crm_app/core/widgets/app_bar.dart';
 
 import '../../../../../../core/di/setup-di/dependency_injection.dart';
 import '../../../lead-view/logic/cubit/lead_view_cubit.dart';
+import '../../closed-calls/presentation/closed_calls_screen.dart';
 import '../../closed-tasks/presentation/closed_tasks_screen.dart';
 import 'widget/card_lead_view.dart';
 
@@ -35,29 +36,30 @@ class ClosedActivitiesScreen extends StatelessWidget {
                 );
               },
             ),
-            cardActivitesView(
-              title: 'Closed Meetings',
-              icon: 'ClosedMeetings',
-              onTap: () {
-                // Get.to(
-                //   () => BlocProvider<LeadViewCubit>.value(
-                //     value: getIt<LeadViewCubit>()..getLeadsView(leadId),
-                //     child:
-                //         ClosedMeetingsScreen(leadId: leadId, leadName: leadName),
-                //   ),
-                // );
-              },
-            ),
+            // cardActivitesView(
+            //   title: 'Closed Meetings',
+            //   icon: 'ClosedMeetings',
+            //   onTap: () {
+            //     // Get.to(
+            //     //   () => BlocProvider<LeadViewCubit>.value(
+            //     //     value: getIt<LeadViewCubit>()..getLeadsView(leadId),
+            //     //     child:
+            //     //         ClosedMeetingsScreen(leadId: leadId, leadName: leadName),
+            //     //   ),
+            //     // );
+            //   },
+            // ),
             cardActivitesView(
               title: 'Closed Calls',
               icon: 'ClosedCalls',
               onTap: () {
-                // Get.to(
-                //   () => BlocProvider<LeadViewCubit>.value(
-                //     value: getIt<LeadViewCubit>()..getLeadsView(leadId),
-                //     child: ClosedCallsScreen(leadId: leadId, leadName: leadName),
-                //   ),
-                // );
+                Get.to(
+                  () => BlocProvider<LeadViewCubit>.value(
+                    value: getIt<LeadViewCubit>()..getLeadsView(leadId),
+                    child:
+                        ClosedCallsScreen(leadId: leadId, leadName: leadName),
+                  ),
+                );
               },
             ),
           ],

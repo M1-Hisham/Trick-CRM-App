@@ -15,6 +15,9 @@ class TrickApp extends StatelessWidget {
         designSize: const Size(437, 1003),
         minTextAdapt: true,
         splitScreenMode: true,
+        useInheritedMediaQuery: true,
+        ensureScreenSize: true,
+        enableScaleText: () => true,
         builder: (_, child) {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,

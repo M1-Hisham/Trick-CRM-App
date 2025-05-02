@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/resources/resources.dart';
 
-Container appTopBarDialog(String title, String subTitle) {
+/// Global app top bar dialog
+Container appTopBarDialog(String title) {
   return Container(
     decoration: BoxDecoration(
       color: R.colors.primaryColor,
@@ -21,31 +21,18 @@ Container appTopBarDialog(String title, String subTitle) {
           child: Align(
             alignment: Alignment.topRight,
             child: GestureDetector(
-                onTap: () => Get.back(),
-                child: SvgPicture.asset(R.icons.closeIcon)),
+              onTap: () => Get.back(),
+              child: SvgPicture.asset(R.icons.closeIcon),
+            ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 20, bottom: 20),
-          child: Row(
+          padding: const EdgeInsets.only(bottom: 15),
+          child: Column(
             children: [
-              SvgPicture.asset(R.icons.subtract),
-              spacingH(10),
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: R.textStyles.font17whiteW600,
-                    ),
-                    Text(
-                      subTitle,
-                      style: R.textStyles.font14WhiteW500,
-                    ),
-                  ],
-                ),
+              Text(
+                title,
+                style: R.textStyles.font17whiteW600,
               ),
             ],
           ),

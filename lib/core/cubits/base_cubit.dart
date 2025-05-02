@@ -10,17 +10,22 @@ class BaseCubit<T> extends Cubit<BaseState<T>> {
 
   /// Fetch data from API Service
   Future<void> getData({Map<String, dynamic>? params}) async {
+    if (state is Loading) return;
     emit(const BaseState.loading());
     log("BaseCubit: getData called");
     final response = await _repo.getData(params: params);
     response.when(
       success: (data) {
         log("Data cubit: success");
-        emit(BaseState.success(data));
+        if (!isClosed) {
+          emit(BaseState.success(data));
+        }
       },
       error: (e) {
         log("Error message BaseCubit: $e");
-        emit(BaseState.error(e.toString()));
+        if (!isClosed) {
+          emit(BaseState.error(e.toString()));
+        }
       },
     );
   }
@@ -34,11 +39,15 @@ class BaseCubit<T> extends Cubit<BaseState<T>> {
     response.when(
       success: (data) {
         log("Data cubit: success");
-        emit(BaseState.success(data));
+        if (!isClosed) {
+          emit(BaseState.success(data));
+        }
       },
       error: (e) {
         log("Error message BaseCubit: $e");
-        emit(BaseState.error(e.toString()));
+        if (!isClosed) {
+          emit(BaseState.error(e.toString()));
+        }
       },
     );
   }

@@ -5,7 +5,18 @@ import 'app_text_form_field.dart';
 
 class AppDatePickerField extends StatefulWidget {
   final Function(String?)? onSaved;
-  const AppDatePickerField({super.key, required this.onSaved});
+  final String? hintText;
+  final bool? validator;
+  final bool isRequired;
+  final String? initialValue;
+  const AppDatePickerField({
+    super.key,
+    required this.onSaved,
+    this.hintText,
+    this.validator,
+    this.isRequired = false,
+    this.initialValue,
+  });
 
   @override
   State<AppDatePickerField> createState() => _AppDatePickerFieldState();
@@ -15,14 +26,21 @@ class _AppDatePickerFieldState extends State<AppDatePickerField> {
   String? selectedDate;
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => _selectDate(context),
       child: AppTextFormField(
-        controller: TextEditingController(text: selectedDate),
+        isRequired: widget.isRequired,
+        controller:
+            TextEditingController(text: selectedDate ?? widget.initialValue),
         isclickable: false,
-        labelText: selectedDate != null ? 'Due Date' : null,
-        hintText: 'Due Date',
+        labelText: widget.hintText ?? 'Due Date',
+        hintText: widget.hintText ?? 'Due Date',
         style: R.textStyles.font15RegentGrayW500.copyWith(
           color: R.colors.black,
         ),
@@ -33,12 +51,16 @@ class _AppDatePickerFieldState extends State<AppDatePickerField> {
         fillColor: R.colors.white,
         disabledBorder: const Color(0xFFE8ECF4),
         onSaved: widget.onSaved,
-        validator: (value) {
-          if (selectedDate == null || selectedDate!.isEmpty) {
-            return 'Please enter a valid date';
-          }
-          return null;
-        },
+        validator: widget.isRequired
+            ? (value) {
+                if (widget.validator != false) {
+                  if (selectedDate == null || selectedDate!.isEmpty) {
+                    return 'Please enter a valid date';
+                  }
+                }
+                return null;
+              }
+            : null,
       ),
     );
   }

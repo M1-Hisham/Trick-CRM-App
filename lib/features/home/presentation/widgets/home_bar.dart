@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:trick_crm_app/features/home/logic/cubit/dashboard_cubit.dart';
-import 'package:trick_crm_app/features/home/logic/cubit/dashboard_state.dart';
+import 'package:trick_crm_app/core/cubits/menu_cubit.dart';
+import 'package:trick_crm_app/core/helpers/show_snack_bar.dart';
 
 import '../../../../core/helpers/shaerd_pref_helper.dart';
 import '../../../../core/helpers/spacing.dart';
@@ -35,9 +35,9 @@ class HomeBar extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 22.w, vertical: 10.h),
           child: SafeArea(
-            child: BlocBuilder<DashboardCubit, DashboardState>(
+            child: BlocBuilder<MenuCubit, bool>(
               builder: (context, state) {
-                final cubit = DashboardCubit.get(context);
+                final cubit = MenuCubit.get(context);
 
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,15 +67,20 @@ class HomeBar extends StatelessWidget {
                             tag: 'logo',
                             child: Image.asset(
                               R.icons.logoMenu,
-                              width: 122.w,
+                              // width: 122.w,
                               height: 49.h,
                             ),
                           ),
                           const Spacer(),
-                          SvgPicture.asset(
-                            R.icons.notification,
-                            width: 32.w,
-                            height: 32.h,
+                          InkWell(
+                            onTap: () {
+                              showSnackBar(context, 'Coming soon!');
+                            },
+                            child: SvgPicture.asset(
+                              R.icons.notification,
+                              width: 32.w,
+                              height: 32.h,
+                            ),
                           ),
                         ],
                       ),
@@ -102,7 +107,7 @@ class HomeBar extends StatelessWidget {
           return Row(
             children: [
               CircleAvatar(
-                  radius: 35.dg,
+                  radius: 35.r,
                   backgroundColor: R.colors.transparent,
                   backgroundImage: NetworkImage(
                     userData.avatar ?? '',

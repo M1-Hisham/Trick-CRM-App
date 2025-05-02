@@ -3,9 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:trick_crm_app/features/home/logic/cubit/dashboard_cubit.dart';
-import 'package:trick_crm_app/features/home/logic/cubit/dashboard_state.dart';
-
+import 'package:trick_crm_app/core/cubits/menu_cubit.dart';
 import '../../features/auth/login/data/models/login_response.dart';
 import '../helpers/shaerd_pref_helper.dart';
 import '../helpers/spacing.dart';
@@ -13,7 +11,8 @@ import '../resources/resources.dart';
 import '../routes/routes.dart';
 
 class AppMenu extends StatelessWidget {
-  const AppMenu({super.key});
+  final Function? onTapProfile;
+  const AppMenu({super.key, this.onTapProfile});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,9 +25,9 @@ class AppMenu extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  BlocBuilder<DashboardCubit, DashboardState>(
+                  BlocBuilder<MenuCubit, bool>(
                     builder: (context, state) {
-                      final cubit = DashboardCubit.get(context);
+                      final cubit = MenuCubit.get(context);
 
                       return GestureDetector(
                         onTap: () {
@@ -46,13 +45,13 @@ class AppMenu extends StatelessWidget {
                   Image.asset(
                     R.icons.logoMenu,
                     color: R.colors.primaryColor,
-                    width: 122.w,
+                    // width: 122.w,
                     height: 49.h,
                   ),
                 ],
               ),
               spacingV(25),
-              _userMenu(),
+              _userMenu(onTapProfile),
               spacingV(35),
               ..._menuList(),
             ],
@@ -62,7 +61,7 @@ class AppMenu extends StatelessWidget {
     );
   }
 
-  FutureBuilder _userMenu() {
+  FutureBuilder _userMenu(onTap) {
     return FutureBuilder(
       future: SharedPrefHelper.getUser(),
       builder: (context, snapshot) {
@@ -71,7 +70,7 @@ class AppMenu extends StatelessWidget {
           return Row(
             children: [
               CircleAvatar(
-                  radius: 35.dg,
+                  radius: 35.r,
                   backgroundColor: R.colors.transparent,
                   backgroundImage: NetworkImage(
                     userData.avatar ?? '',
@@ -82,7 +81,7 @@ class AppMenu extends StatelessWidget {
                     }
                     Image.asset(R.icons.imageUserError);
                   }),
-              spacingH(14),
+              spacingH(10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -93,11 +92,18 @@ class AppMenu extends StatelessWidget {
                     ),
                   ),
                   spacingV(1.5),
-                  Text(
-                    "View Profile",
-                    style: R.textStyles.font12PrimaryColorW500.copyWith(
-                      decoration: TextDecoration.underline,
-                      decorationColor: R.colors.primaryColor,
+                  GestureDetector(
+                    onTap: onTap,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        "View Profile",
+                        style: R.textStyles.font12PrimaryColorW500.copyWith(
+                          decoration: TextDecoration.underline,
+                          decorationColor: R.colors.primaryColor,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ),
                 ],
@@ -114,15 +120,24 @@ class AppMenu extends StatelessWidget {
   List<Widget> _menuList() {
     List<Widget> menuItems = [];
     Map<String, String> menuRoutes = {
-      'Dashboard': RoutesNames.home,
+      // 'Dashboard': RoutesNames.home,
+      'Contacts': RoutesNames.contacts,
       'Leads': RoutesNames.leads,
       'Clients': RoutesNames.clients,
+      'Campaigns': RoutesNames.campaigns,
+      'Tasks': RoutesNames.tasks,
+      'Meetings': RoutesNames.meetings,
+      'Calls': RoutesNames.calls,
+      'Deals': RoutesNames.deals,
+      'Projects': RoutesNames.project,
+      'Brokers': RoutesNames.brokers,
+      'Reports': RoutesNames.reports,
       //? more routes here
     };
     for (MapEntry menus in R.icons.iconsMenu.entries) {
       String? routeName = menuRoutes[menus.key];
       menuItems.add(
-        Flexible(
+        Expanded(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 12.w),
             child: GestureDetector(
@@ -136,14 +151,17 @@ class AppMenu extends StatelessWidget {
                 children: [
                   SvgPicture.asset(
                     menus.value,
-                    width: 24.w,
-                    height: 24.h,
+                    width: 27.w,
+                    height: 27.h,
                   ),
                   spacingH(16),
-                  FittedBox(
-                    child: Text(
-                      menus.key,
-                      style: R.textStyles.font20ShadowGray29W500,
+                  Flexible(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        menus.key,
+                        style: R.textStyles.font20ShadowGray29W500,
+                      ),
                     ),
                   ),
                 ],
@@ -152,7 +170,7 @@ class AppMenu extends StatelessWidget {
           ),
         ),
       );
-      menuItems.add(spacingV(22));
+      menuItems.add(spacingV(18));
     }
     return menuItems;
   }

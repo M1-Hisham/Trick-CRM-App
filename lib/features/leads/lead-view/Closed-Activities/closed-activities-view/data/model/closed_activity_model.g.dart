@@ -24,7 +24,6 @@ ClosedActivityModel _$ClosedActivityModelFromJson(Map<String, dynamic> json) =>
       call: json['call'] == null
           ? null
           : ClosedCallModel.fromJson(json['call'] as Map<String, dynamic>),
-      meeting: json['meeting'],
     );
 
 Map<String, dynamic> _$ClosedActivityModelToJson(
@@ -42,5 +41,4 @@ Map<String, dynamic> _$ClosedActivityModelToJson(
       'updated_at': instance.updatedAt,
       'task': instance.task,
       'call': instance.call,
-      'meeting': instance.meeting,
     };

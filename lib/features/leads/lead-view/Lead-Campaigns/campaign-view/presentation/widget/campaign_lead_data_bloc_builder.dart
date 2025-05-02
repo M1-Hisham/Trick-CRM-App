@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:trick_crm_app/core/cubits/base_state.dart';
 import 'package:trick_crm_app/core/helpers/loading_shimmer.dart';
 import 'package:trick_crm_app/core/widgets/app_button.dart';
-import 'package:trick_crm_app/features/leads/lead-view/Lead-Campaigns/campaign-view/data/model/campaign_leads_model.dart';
 import 'package:trick_crm_app/features/leads/lead-view/Lead-Campaigns/create-campaign/presentation/screen/create_lead_campaign.dart';
 
 import '../../../../../../../core/di/setup-di/dependency_injection.dart';
@@ -16,6 +15,7 @@ import '../../../../../../../core/widgets/app_error_message.dart';
 import '../../../../lead-view/data/model/leads_view_model.dart';
 import '../../../../lead-view/logic/cubit/lead_view_cubit.dart';
 import '../../campaign-action-view/presentation/campaign_action_view.dart';
+import '../../data/model/campaign_leads_model.dart';
 
 class CampaignLeadDataBlocBuilder extends StatelessWidget {
   final int leadId;

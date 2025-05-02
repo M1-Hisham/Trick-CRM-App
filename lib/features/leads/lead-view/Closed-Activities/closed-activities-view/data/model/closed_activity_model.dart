@@ -27,7 +27,7 @@ class ClosedActivityModel {
   String? updatedAt;
   ClosedTaskModel? task;
   ClosedCallModel? call;
-  dynamic meeting;
+  // dynamic meeting;
 
   ClosedActivityModel({
     this.id,
@@ -42,7 +42,7 @@ class ClosedActivityModel {
     this.updatedAt,
     this.task,
     this.call,
-    this.meeting,
+    // this.meeting,
   });
   factory ClosedActivityModel.fromJson(Map<String, dynamic> json) =>
       _$ClosedActivityModelFromJson(json);

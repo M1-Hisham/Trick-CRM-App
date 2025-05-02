@@ -6,11 +6,11 @@ import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
 import 'package:trick_crm_app/core/widgets/app_button.dart';
 import 'package:trick_crm_app/core/widgets/app_selection_form_field.dart';
 import 'package:trick_crm_app/core/widgets/app_waiting_feature.dart';
-import 'package:trick_crm_app/features/leads/lead-view/Lead-Campaigns/campaign-view/data/model/campaigns_model.dart';
 
 import '../../../../../../../core/helpers/spacing.dart';
 import '../../../../../../../core/resources/resources.dart';
 import '../../../../lead-view/logic/cubit/lead_view_cubit.dart';
+import '../../../campaign-view/data/model/campaigns_model.dart';
 import '../../logic/cubit/create_lead_campaign_cubit.dart';
 
 class CreateLeadCampaign extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../../Attatchments/attachment-view/model/attachments_model.dart';
-import '../../../Closed-Activities/closed-activities/data/model/closed_activity_model.dart';
+import '../../../Closed-Activities/closed-activities-view/data/model/closed_activity_model.dart';
 import '../../../Emails/data/model/lead_meails_model.dart';
 import '../../../Lead-Campaigns/campaign-view/data/model/campaign_leads_model.dart';
 import '../../../Lead-Campaigns/campaign-view/data/model/campaigns_model.dart';

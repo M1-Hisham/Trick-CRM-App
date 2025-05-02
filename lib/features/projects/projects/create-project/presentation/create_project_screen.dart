@@ -221,6 +221,14 @@ class _CreateProjectScreenState extends State<CreateProjectScreen> {
     return Row(
       children: [
         Checkbox(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4),
+          ),
+          activeColor: R.colors.primaryColor,
+          side: const BorderSide(
+            color: Color(0xffC8C8C8),
+            width: 1,
+          ),
           value: isSelected,
           onChanged: onChanged,
         ),

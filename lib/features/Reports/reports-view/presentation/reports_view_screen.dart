@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 
 import '../../../../../../core/widgets/app_bar.dart';
 import '../../../../../../core/widgets/app_card_feat_view.dart';
-import '../../../../core/helpers/show_snack_bar.dart';
 import '../../../../core/resources/resources.dart';
 import '../../Deals-Report/deals-reports-view/deals_reports_view_screen.dart';
 import '../../Projects-Report/projects-reports-view/projects_reports_view_screen.dart';
@@ -35,31 +34,31 @@ class ReportsViewScreen extends StatelessWidget {
                   Get.to(() => const DealsReportsViewScreen());
                 },
               ),
-              appCardFeatView(
-                title: 'Leads Report',
-                icon: 'Leads',
-                onTap: () {
-                  showSnackBar(context, "Coming soon!");
-                },
-              ),
-              appCardFeatView(
-                title: 'Campaigns Report',
-                icon: 'Campaigns',
-                onTap: () {
-                  showSnackBar(context, "Coming soon!");
-                },
-              ),
-              appCardFeatView(
-                title: 'Clients Report',
-                buildIcon: SvgPicture.asset(
-                  R.icons.iconsMenu["Clients"] ?? '',
-                  width: 42.w,
-                  height: 42.h,
-                ),
-                onTap: () {
-                  showSnackBar(context, "Coming soon!");
-                },
-              ),
+              // appCardFeatView(
+              //   title: 'Leads Report',
+              //   icon: 'Leads',
+              //   onTap: () {
+              //     showSnackBar(context, "Coming soon!");
+              //   },
+              // ),
+              // appCardFeatView(
+              //   title: 'Campaigns Report',
+              //   icon: 'Campaigns',
+              //   onTap: () {
+              //     showSnackBar(context, "Coming soon!");
+              //   },
+              // ),
+              // appCardFeatView(
+              //   title: 'Clients Report',
+              //   buildIcon: SvgPicture.asset(
+              //     R.icons.iconsMenu["Clients"] ?? '',
+              //     width: 42.w,
+              //     height: 42.h,
+              //   ),
+              //   onTap: () {
+              //     showSnackBar(context, "Coming soon!");
+              //   },
+              // ),
               appCardFeatView(
                 title: 'Projects Report',
                 buildIcon: SvgPicture.asset(

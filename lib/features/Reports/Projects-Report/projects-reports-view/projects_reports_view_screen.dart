@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:trick_crm_app/core/api/api_service.dart';
 import 'package:trick_crm_app/core/di/setup-di/dependency_injection.dart';
-import 'package:trick_crm_app/core/helpers/show_snack_bar.dart';
 import 'package:trick_crm_app/features/Reports/Projects-Report/project-pending-units/data/model/project_pending_units_model.dart';
 import 'package:trick_crm_app/features/Reports/Projects-Report/logic/cubit/get_projects_reports_cubit.dart';
 
@@ -25,12 +24,12 @@ class ProjectsReportsViewScreen extends StatelessWidget {
           child: Column(
             children: [
               // Show Cards
-              appCardFeatView(
-                title: 'Project Available Units',
-                onTap: () {
-                  showSnackBar(context, "Coming soon!");
-                },
-              ),
+              // appCardFeatView(
+              //   title: 'Project Available Units',
+              //   onTap: () {
+              //     showSnackBar(context, "Coming soon!");
+              //   },
+              // ),
               appCardFeatView(
                 title: 'Project Pending Units',
                 onTap: () {
@@ -46,24 +45,24 @@ class ProjectsReportsViewScreen extends StatelessWidget {
                   );
                 },
               ),
-              appCardFeatView(
-                title: 'Project Not Available Units',
-                onTap: () {
-                  showSnackBar(context, "Coming soon!");
-                },
-              ),
-              appCardFeatView(
-                title: 'Project Sold Units Income',
-                onTap: () {
-                  showSnackBar(context, "Coming soon!");
-                },
-              ),
-              appCardFeatView(
-                title: 'Units Sales By Person',
-                onTap: () {
-                  showSnackBar(context, "Coming soon!");
-                },
-              ),
+              // appCardFeatView(
+              //   title: 'Project Not Available Units',
+              //   onTap: () {
+              //     showSnackBar(context, "Coming soon!");
+              //   },
+              // ),
+              // appCardFeatView(
+              //   title: 'Project Sold Units Income',
+              //   onTap: () {
+              //     showSnackBar(context, "Coming soon!");
+              //   },
+              // ),
+              // appCardFeatView(
+              //   title: 'Units Sales By Person',
+              //   onTap: () {
+              //     showSnackBar(context, "Coming soon!");
+              //   },
+              // ),
             ],
           ),
         ),

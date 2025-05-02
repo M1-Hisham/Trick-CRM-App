@@ -14,7 +14,6 @@ import 'package:trick_crm_app/features/Reports/Deals-Report/this-quarter-sales/p
 
 import '../../../../core/api/api_service.dart';
 import '../../../../core/di/setup-di/dependency_injection.dart';
-import '../../../../core/helpers/show_snack_bar.dart';
 import '../../../../core/widgets/app_bar.dart';
 import '../../../../core/widgets/app_card_feat_view.dart';
 import '../deals-closing-this-month/data/model/deals_closing_this_month_model.dart';
@@ -33,12 +32,12 @@ class DealsReportsViewScreen extends StatelessWidget {
           child: Column(
             children: [
               // Show Cards
-              appCardFeatView(
-                title: 'Today Sales',
-                onTap: () {
-                  showSnackBar(context, "Coming soon!");
-                },
-              ),
+              // appCardFeatView(
+              //   title: 'Today Sales',
+              //   onTap: () {
+              //     showSnackBar(context, "Coming soon!");
+              //   },
+              // ),
               appCardFeatView(
                 title: 'This Month Sales',
                 onTap: () {
@@ -99,12 +98,12 @@ class DealsReportsViewScreen extends StatelessWidget {
                   );
                 },
               ),
-              appCardFeatView(
-                title: 'Open Deals',
-                onTap: () {
-                  showSnackBar(context, "Coming soon!");
-                },
-              ),
+              // appCardFeatView(
+              //   title: 'Open Deals',
+              //   onTap: () {
+              //     showSnackBar(context, "Coming soon!");
+              //   },
+              // ),
               appCardFeatView(
                 title: 'Closed Deals',
                 onTap: () {
@@ -120,12 +119,12 @@ class DealsReportsViewScreen extends StatelessWidget {
                   );
                 },
               ),
-              appCardFeatView(
-                title: 'Salse By Lead Source',
-                onTap: () {
-                  showSnackBar(context, "Coming soon!");
-                },
-              ),
+              // appCardFeatView(
+              //   title: 'Salse By Lead Source',
+              //   onTap: () {
+              //     showSnackBar(context, "Coming soon!");
+              //   },
+              // ),
             ],
           ),
         ),

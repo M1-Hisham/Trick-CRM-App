@@ -10,7 +10,7 @@ loadingClosedCallsScreen() {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AppDataTable<ClosedCallModel>(
-          dataMessage: 'No Open Calls',
+          dataMessage: 'No Closed Calls',
           data: const [],
           headers: const [
             'Subject',
